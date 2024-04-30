@@ -14,7 +14,7 @@ or (for `unittest`):
 grep "import unittest" */*
 ```
 
-[](../../img/grep_example.png)
+![](../../img/grep_example.png)
 
 2. Go to the directory containing the test functions, zip all file under it:
 
@@ -32,7 +32,7 @@ Upload the `tests.zip`
 Can you unzip the file and analyze the test functions inside?
 ```
 
-[](../../img/gpt4_example.png)
+![](../../img/gpt4_example.png)
 
 ### 2. Classify into Data Pipeline and ML Pipeline
 
@@ -52,4 +52,4 @@ What do the 1st and 2nd project have in common in the ML pipeline related tests?
 Can you make a table to list the mapping of the ML pipeline related tests between the 1st and the 2nd project?
 ```
 
-[](../../img/compare_table_example.png)
+![](../../img/compare_table_example.png)
