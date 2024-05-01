@@ -1,104 +1,85 @@
 # Checklists and LLM prompts for efficient and effective test creation in data analysis - Initial Proposal
 - Authored By John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
-> a maximum of 1200 words (excluding appendices, figure captions, and table captions)
-
 # 1.0 EXECUTIVE SUMMARY
 
 # 2.0 INTRODUCTION
 
 ## 2.1 Problem Statement
+Global artificial intelligence (AI) market is growing exponentially (Ref: https://www.grandviewresearch.com/industry-analysis/artificial-intelligence-ai-market), which is driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis, etc. 
 
-> Broad introduction to the problem statement or question being addressed.
-> Importance and relevance of the problem statement.
-
-Global artificial intelligence (AI) is growing rapidly in terms of both market size and the impact to the society (Ref: https://www.grandviewresearch.com/industry-analysis/artificial-intelligence-ai-market), which roots from its capability to independently make complex decisions that affects human life, including financial decision, autonomous driving, and disease diagnosis, etc.
-
-However, ensuring the software quality of these systems is yet an open challenge (Ref: https://arxiv.org/pdf/2312.12604) and there lacks a well-recognized systematic approach of testing the machine learning (ML) systems. Our team can foresee that ML systems without sufficient quality assurance could put stakeholders at great risk, e.g. financial losses (Ref: https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html) or casualties.
+However, ensuring the software quality of these systems is yet an open challenge (Ref: https://arxiv.org/pdf/2312.12604). A lack of a standardized and comprehensive approach to testing machine learning (ML) systems is observed, which might pose potential risks to stakeholders. Inadequate quality assurance in ML systems could possibly link to severe consequences such as financial losses (Ref: https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html) and safety hazards, which raises our concerns about the need for robust testing methodologies.
 
 ## 2.2 Our Objectives
-
-> Refinement of the problem into specific, actionable objectives.
-
-Our team aim at making applied machine learning software more trustworthy by increasing its robustness (Ref: Dr. Timbers paper) via offering a systemic testing approach. We hope this can influence industrial and academic practices in high quality, reproducible (Ref: https://arxiv.org/abs/2207.07048) ML systems development that mitigates the risk of potential negative impact to the society.
-
-
-## 2.3 Product Proposition
-
-> What is the product?
-
-We provide an end-to-end application to evaluate and enhance the robustness of users' ML systems, which includes
-- Qualitative and quantitative evaluation on the test coverage of users' ML systems source code
-- Tailored recommendations on further test coverage on users' ML systems
-- Automatic test case generation based on the recommendation to enhance the trustworthiness of users' ML systems
+Quality assurance in software engineering is dependent on testing suites. Our proposal aims to enhance the trustworthiness and robustness of applied machine learning (ML) software through the development of comprehensive ML system testing suites. We seek to improve the quality and reproducibility of ML systems (Ref: https://arxiv.org/abs/2207.07048) in both industry and academia via the systematic testing approach. Ultimately, our goal is to mitigate the potential negative societal impacts associated with unreliable ML systems.
 
 # 3.0 OUR PRODUCT
+Our solution offers an end-to-end application for evaluating and enhancing the robustness of users' machine learning (ML) systems. Key features include:
+1. Comprehensive Test Evaluation
+2. Tailored Test Recommendations
+3. Automatic Test Case Generation
 
 ## 3.1 Description
-
-> Description of the final data product to be delivered to the partner.
-> Example components of the data product
-
-We provide a LLM-incorporated application, in the hope of comprehensively evaluating the test quality of applied ML software and enhancing the quality with suggested test cases.
 Basically, our product can be utilized into 3 stages.
 
-- Stage 1: Test Evaluation
+- Stage 1: Comprehensive Test Evaluation
 
-    Users can insert the source code of their ML system source code and our suggested LLM prompts in the application, which will identify the test suites in the code. In return, the application generates a comprehensive report on the ML system's test quality in qualitative measures (e.g. test category/strategy covered) and quantitative measures (e.g. test coverage/score)
+    Users input the source code of their ML systems along with our suggested prompts into the application, which utilizes Large Language Model (LLM) to identify existing test suites within the code. A comprehensive report is generated and provides qualitative (e.g., test categories/strategies covered) and quantitative (e.g., test coverage/score) evaluations of the ML system's test quality.
 
-- Stage 2: Test Recommendation
+- Stage 2: Tailored Test Recommendations
 
-    Based on the general and robust checklist our team created for testing applied ML code, the application can evaluate the adequacy of tests according to the nature of the ML system and the current test coverage. The application will further suggests the test categories/strategies that users can incorporate into their ML system.
+    Based on the robust checklist created by our team for testing applied ML code, the application assesses the adequacy of existing tests. Recommendations on additional test categories/strategies are provided based on the ML system's nature and test evaluation for improvement.
 
-- Stage 3: Test Generation
+- Stage 3: Automatic Test Case Generation
 
-    Users can input the desired test categories/strategies and our suggested LLM prompts, which the application will engineer reproducible test data and software tests itself. The suggested tests can act as a reliable starting points for users to improve their test suites in the code.
+    Users specify desired test categories/strategies and utilize our suggested LLM prompts within the application. The application autonomously engineers reproducible test data and software tests, which serve as reliable starting points for users to improve their test suites within the ML systems.
 
 ## 3.2 Success Metrics
+Success metrics of our product will be dependent on 2 areas.
 
-> which evaluation metrics you are going to use and why, as well as an explicit mention of what the partner is expecting and how you will know when you have met this expectation.
-> Mention different stakeholders that will be affected by the model and why your metrics are important for them.
+1. Test Coverage Enhancement:
+- Evaluation Metrics: Percentage increase in test coverage across various testing categories/strategies before and after using the application.
 
-The test coverage in term of testing category/strategy will be the evaluation metrics. By delivering an increase in test coverage with stated details after using our application on their ML systems, our partner and users will expect a higher extent of trustworthiness of the data and/or ML pipeline within their ML systems.
+    Our partner and stakeholders would expect to see a significant improvement in test coverage across all relevant testing categories/strategies of their ML systems post-application usage.
 
-For training evaluation, we will input the training data into our application and compare the generated testing strategies and/or test cases with our human-evaluated testing strategies to examine its performance.
+2. Training/Test Evaluation Performance:
+- Evaluation Metrics: Accuracy, precision, recall, and F1 score for comparing generated testing strategies/test cases with human-evaluated ones or original test cases.
 
-For test evaluation, we can remove the test cases of ML systems with well-defined tests, input the source codes into our application, and compare the generated results with the original test cases.
+    Our partner and stakeholders will expect the application to demonstrate high accuracy, precision, recall, and F1 score values, which indicates accurate replication or improvement upon existing testing strategies.
 
 ## 3.3 Data Science Approach
 
-> include a description of the data (variables/features and observational units) and some examples/snippets of what the data
-> start with simple data science techniques to obtain a simple version of your data science product
-> Discussion of potential difficulties with the data.
-> Risk/Limitation of the approach/product
-
 ### 3.3.1 Data 
 
-The data would be the repository metadata and source code of the 377 GitHub repositories as identified in Wattanakriengkrai et al. (2022) (Ref: https://www.sciencedirect.com/science/article/pii/S0164121221002144), which is sourced using GitHub API and scripts. The data is further filtered based on the criteria: 1) the projects are related to ML systems; 2) the projects contain test cases; 3) the tests are written in Python/C programming languages.
+We will collect data from the 377 GitHub repositories identified in the study by Wattanakriengkrai et al. (2022) (Ref: https://www.sciencedirect.com/science/article/pii/S0164121221002144). The data will include repository metadata and source code sourced using GitHub API and custom scripts. To ensure relevance to our study, we will apply these criteria for filtering the data: 1) projects related to ML systems; 2) projects contain test cases; 3) test cases are written in Python or C programming languages.
 
 {screencap/copy-and-paste of the code}
 
 ### 3.3.2 Methodologies
-The methodologies will involve both human expert evaluation and prompt engineering.
+Our data science methodology incorporates both human expert evaluation and prompt engineering to assess and enhance the test quality of ML systems.
 
 - Human Expert Evaluation
 
-    The general and robust checklist on the data and ML pipeline will be first formulated based on the testing strategies as illustrated in Openja et al. (2023) (Ref: https://arxiv.org/pdf/2312.12604). The test quality within the selected repositories data will be evaluated and suggested test strategies will be generated by our team. The checklist will be updated simultaneously to ensure its practicality to general ML systems and robustness towards quality testing.
+    We will begin by formulating a comprehensive checklist for evaluating the data and ML pipeline based on established testing strategies outlined in Openja et al. (2023) (Ref: https://arxiv.org/pdf/2312.12604) as the foundational framework. for assessing test quality within selected repositories. Our team will manually evaluate the test quality within the repository data based on the formulated checklist. The checklist will be refined during the process to ensure its applicability and robustness testing general ML systems.
 
 - Prompt Engineering
 
-    LLM prompts will be engineered by our team that serve different purposes under 3 stages: 1) engineer prompts to examine the test cases within the ML system source codes and to deliver qualitative and quantitative test scores during our evaluation of the repositories data; 2) engineer prompts to incorporate the completed checklist and to suggest potential testing strategies via comparison with the ML system source codes; 3) engineer prompts to generate test cases based on the suggested testing strategies and ML system task type (Ref: https://ieeexplore.ieee.org/abstract/document/10329992).
+    We will engineer prompts for LLM to serve various purposes across three stages:
+    1. Prompts to examine test cases within ML system source codes and deliver qualitative and quantitative test scores.
+    2. Prompts incorporated with the completed checklist to suggest potential testing strategies by comparing with ML system source codes.
+    3. Prompts to generate test cases based on suggested testing strategies and ML system task types (Ref: https://ieeexplore.ieee.org/abstract/document/10329992)
 
-### 3.3.3 Limitations
-We are aware of the fact that the selected GitHub repositories data and the quoted research on testing strategies might not be representative to all ML systems or all testing strategies. It only reflects the perspectives of the authors. Regarding the limited time and resources, it is unlikely to assume that our application could cover all the tests necessary for fully testing ML systems. The application will be updated with an iterative approach and the artifacts from the application should be taken with a grain of salt by users.
+### 3.3.3 Iterative Development Approach
+As we leverage data from selected GitHub repositories and references research on testing strategies, it's important to acknowledge that this may not include all ML systems or testing methodologies. To address these considerations, we adopt an iterative development approach by setting up an open and scalable framework for this project. Our application could then undergo continuous updates based on users' feedback and contributors' insights.
+
+We encourage users to interpret the artifacts generated by the application with a grain of salt and recognize the evolving nature of ML system testing practices.
 
 # 4.0 DELIVERY TIMELINE
-
-> Milestones to be achieved at different stages of the project.
+Our follows a timeline for our deliver. We also aim at close communication with our partner to align our product development with thei expectation.
 
 | Timeline | Milestones |
 |---|---|
-| Week 1 (Apr 29) | Proposal of potential solution and Presentation |
+| Week 1 (Apr 29) | Proposal of potential solution and Presentation, Scrape repository data |
 | Week 2 (May 6) | Ship Initial Proposal, Ship Test Evaluation Function, Develop Pipeline Test Checklist   |
 | Week 3 (May 13) | Fine-tune Test Evaluation Function, Ship Pipeline Test Checklist, Develop Test Recommendation Application |
 | Week 4 (May 20) | Fine-tune Pipeline Test Checklist, Ship Test Recommendation Function, Develop Test Generation Function |
@@ -108,3 +89,4 @@ We are aware of the fact that the selected GitHub repositories data and the quot
 | Week 8 (Jun 17) | Ship Final Product, Ship Final Report |
 
 # References
+> Reference to be done with Jupyter notebook
