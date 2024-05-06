@@ -1,0 +1,378 @@
+Link to GitHub Repository,Link to paper,Referencing or not,RQ1 Open Access,RQ2 Relationship between Repository and Paper,RQ2 Diversity of GitHub Repository,RQ2 Affiliation,RQ2 Paper References back to the Repository,RQ3 README evolution,RQ3 Paper evolution
+https://github.com/SimBussy/binarsity,https://arxiv.org/abs/1703.08619,yes,yes,official,deep learning,university,no,no,yes
+https://github.com/previtus/AttentionPipeline,https://arxiv.org/abs/1810.10551,yes,yes,official,computer vision,university,yes,no,no
+https://github.com/SFI-Mechatronics/wp3_decompressor,https://www.mdpi.com/1424-8220/19/3/636,yes,yes,official,sensors,university,yes,no,no
+https://github.com/rickyHong/CaffeDLFramework,https://arxiv.org/abs/1408.5093,yes,yes,fork of official,deep learning,unknow,yes to official,no,no
+https://github.com/laycoding/caffe_focal_loss,https://arxiv.org/abs/1408.5093,yes,yes,fork of official,deep learning,unknow,yes to official,no,no
+https://github.com/moovel/deepvision_flow,https://arxiv.org/abs/1504.06852,yes,yes,independent unofficial,deep learning,industry,no,no,no
+https://github.com/w4k2/stream-learn,,no,,,,,,,
+https://github.com/zsdonghao/text-to-image,https://arxiv.org/abs/1605.05396,yes,yes,independent unofficial,computer vision,university,no,no,no
+https://github.com/gorkazl/PathLims,https://www.nature.com/articles/s42005-019-0239-0,yes,yes,official,networks,university,yes,different paper,no
+https://github.com/vmwghbot/hiero,https://arxiv.org/abs/1907.04827,yes,yes,official,other,both,yes,link changes,no
+https://github.com/paruby/DIP-VAE,https://arxiv.org/abs/1711.00848,yes,yes,independent unofficial,ml,university,no,no,yes
+https://github.com/shuaaa/mean_-teacher-image_recog,https://arxiv.org/abs/1703.01780,yes,yes,fork of offcial,deep learning,unknow,yes to official,no,yes
+https://github.com/Viaviaking/densenet,https://arxiv.org/abs/1608.06993,yes,yes,independent unofficial,deep learning,unknow,yes to official,no,no
+https://github.com/shyamsastha/Mask_RCNN,https://arxiv.org/abs/1703.06870,yes,yes,independent unofficial,computer vision,unknow,yes to official,no,yes
+https://github.com/Feryal/jeju_project,https://arxiv.org/abs/1611.01796,yes,yes,independent unofficial,deep learning,university,yes to official,different paper,no
+https://github.com/jacqurap/Patia,,data,,,,,,,
+https://github.com/MagnusS/p2p-dprd,https://arxiv.org/abs/1210.3552,yes,yes,official,networks,both,no,no,yes
+https://github.com/SpaceAppsXploration/rdfendpoints,https://arxiv.org/abs/1006.3498,yes,yes,independent unofficial,other,industry,no,no,no
+https://github.com/Naman-ntc/3D-HourGlass-Network,https://arxiv.org/abs/1705.07750,yes,yes,independent unofficial,computer vision,university,no,no,no
+https://github.com/whyjz/CARST,https://www.sciencedirect.com/science/article/abs/pii/S0034425718301494?via%3Dihub,yes,yes,official,sensors,university,no,no,no
+https://github.com/PanPalitta/phase_estimation,http://www.diva-portal.org/smash/get/diva2:1062341/FULLTEXT01.pdf,yes,yes,official,quantum,university,no,no,no
+https://github.com/ozymaxx/socceruserstudy_videosearch,https://iui.ku.edu.tr/sezgin_publications/2017/SezginAltiok-IUI-2017.pdf,yes,yes,official,other,university,no,no,no
+https://github.com/lxuechen/inference-suboptimality,https://arxiv.org/abs/1801.03558,yes,yes,official,deep learning,university,yes,no,yes
+https://github.com/yixinLi/caffe,https://arxiv.org/abs/1408.5093,yes,yes,fork of official,deep learning,unknow,yes to official,no,no
+https://github.com/aviyashchin/boxer.ai,https://arxiv.org/pdf/1503.07469.pdf,yes,yes,independent unofficial,deep learning,industry,no,no,no
+https://github.com/InstituteOfErgonomics/DrtRC,,data,,,,,,,
+https://github.com/jsalvatier/PyGame-Learning-Environment,,no,,,,,,,
+https://github.com/DSKSD/SDEN-Pytorch,https://arxiv.org/abs/1705.03455,yes,yes,independent unofficial,nlp,industry,no,no,no
+https://github.com/skmhrk1209/WGAN-GP,https://arxiv.org/pdf/1807.04720.pdf,yes,yes,independent unofficial,deep learning,industry,yes to official,different paper,yes
+https://github.com/dbermbach/web-api-bench,https://arxiv.org/abs/1903.07712,yes,yes,official,other,university,yes,no,yes
+https://github.com/adaerr/pendent-drop,http://dx.doi.org/10.5334/jors.97,yes,yes,official,computer vision,university,yes,no,no
+https://github.com/ferasboulala/staff-detect,https://www.researchgate.net/publication/239762647_An_Effective_Staff_Detection_and_Removal_Technique_for_Musical_Documents,yes,yes,independent unofficial,computer vision,industry,no,no,no
+https://github.com/google/cog,https://arxiv.org/abs/1803.06092,yes,yes,official,deep learning,both,yes,no,yes
+https://github.com/TimSYQQX/BoneNet,https://arxiv.org/abs/1802.10419,yes,yes,fork of official,deep learning,unknow,yes to official,no,yes
+https://github.com/hvy/chainer-began,https://arxiv.org/abs/1703.10717,yes,yes,independent unofficial,computer vision,university,no,no,yes
+https://github.com/yuxng/ObjectInteraction,https://ieeexplore.ieee.org/document/6755942,yes,yes,official,ml,university,no,no,no
+https://github.com/Idein/chainer-pose-proposal-net,http://openaccess.thecvf.com/content_ECCV_2018/papers/Sekii_Pose_Proposal_Networks_ECCV_2018_paper.pdf,yes,yes,independent unofficial,computer vision,industry,no,no,no
+https://github.com/ShaowuYang/ORB-SLAM2,https://arxiv.org/abs/1502.00956,yes,yes,fork of official,robotics,university,yes to official,changes to metadata,no
+https://github.com/shichaoy/semantic_3d_mapping,https://arxiv.org/abs/1707.07388,yes,yes,official,robotics,university,no,link changes,no
+https://github.com/yanshengjia/ml-road,https://arxiv.org/abs/1808.09772,yes,yes,miscellaneous (education),ml,university,yes to official,no,no
+https://github.com/OpenKnowledgeMaps/Headstart,,data,,,,,,,
+https://github.com/kkew3/pytorch-cw2,https://arxiv.org/abs/1608.04644,yes,yes,independent unofficial,other,university,yes to official,no,no
+https://github.com/mpearmain/BayesBoost,https://arxiv.org/abs/1206.2944,yes,yes,independent unofficial,ml,industry,no,no,no
+https://github.com/wondervictor/dpl.pytorch,https://arxiv.org/abs/1705.02429,yes,yes,independent unofficial,deep learning,university,yes to official,no,no
+https://github.com/Intro-Quantitative-Geology/Exercise-9,https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013JB010891,yes,yes,miscellaneous (education),other,university,no,no,no
+https://github.com/bluevoxel/Specvis-ver-1.0.1,https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0186224,yes,yes,official,computer vision,both,yes to official,no,no
+https://github.com/FundamentalEq/HybridChatBot,https://www.semanticscholar.org/paper/IRIS%3A-a-Chat-oriented-Dialogue-System-based-on-the-Banchs-Li/9528fa09fbd918618dbd1bac72fe8c24f5574400,yes,yes,independent unofficial,ml,unknow,no,no,no
+https://github.com/houssamzenati/Efficient-GAN-Anomaly-Detection,https://arxiv.org/abs/1802.06222,yes,yes,official,deep learning,both,yes to official,no,yes
+https://github.com/wazeerzulfikar/Face-Frontalization,https://arxiv.org/abs/1703.10717,yes,yes,independent unofficial,computer vision,university,no,no,no
+https://github.com/fy/compare_dp_mechanisms,https://arxiv.org/abs/1401.5193,yes,yes,official,other,university,no,no,no
+https://github.com/kcajmagic/AI_Final_Project,https://arxiv.org/abs/1207.4708,yes,yes,independent unofficial,ml,industry,no,no,no
+https://github.com/BoPeng/SOS,https://academic.oup.com/bioinformatics/article/34/21/3768/5001386,yes,yes,fork of official,other,university,yes to official,no,no
+https://github.com/phantoms158/Mask-rcnn,https://arxiv.org/abs/1703.06870,yes,yes,independent unofficial,computer vision,industry,yes to official,no,no
+https://github.com/lukewenMX/RCNN_simple_detection,https://arxiv.org/abs/1506.01497,yes,yes,independent unofficial,computer vision,university,yes to official,no,no
+https://github.com/Silvia333/LostSilence,https://arxiv.org/abs/1903.05372,yes,yes,official,network,both,no,changes to metadata,no
+https://github.com/ryancoleman/analysis-scripts,https://onlinelibrary.wiley.com/doi/full/10.1002/prot.22558,yes,yes,official,other,university,no,no,no
+https://github.com/AbhishekRS4/fcn,https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf,yes,yes,independent unofficial,deep learning,industry,yes to official,no,no
+https://github.com/lukessmith/hipims-ocl,https://www.researchgate.net/publication/281689623_A_High-Performance_Integrated_hydrodynamic_Modelling_System_for_urban_flood_simulations,yes,yes,official,computer vision,university,no,no,no
+https://github.com/koustuvsinha/clutrr,https://arxiv.org/abs/1811.02959,yes,yes,official,NLP,university,yes,no,no
+https://github.com/tugstugi/pytorch-saltnet,https://arxiv.org/abs/1505.04597,yes,yes,independent unofficial,computer vision,university,yes to official,no,no
+https://github.com/wozhouh/caffe-gdp,https://arxiv.org/abs/1408.5093,yes,yes,fork of official,deep learning,university,yes to official,no,no
+https://github.com/eveningglow/semi-supervised-CycleGAN,https://arxiv.org/abs/1703.10593,yes,yes,independent unofficial,computer vision,industry,yes to official,no,yes
+https://github.com/ZeWang95/DCFNet-Pytorch,https://arxiv.org/pdf/1802.04145.pdf,yes,yes,independent unofficial,computer vision,university,yes to official,no,no
+https://github.com/XiangruiCAI/mce,https://arxiv.org/pdf/1806.02873.pdf,yes,yes,official,NLP,university,yes,link changes,no
+https://github.com/neb330/DeepLearningA2,https://arxiv.org/pdf/1409.2329.pdf,yes,yes,miscellaneous (education),deep learning,university,yes to official,no,no
+https://github.com/Bartzi/visual-backprop-mxnet,https://arxiv.org/abs/1611.05418,yes,yes,independent unofficial,computer vision,industry,no,no,yes
+https://github.com/HsinYingLee/MDMM,https://arxiv.org/abs/1808.00948,yes,yes,fork of official,computer vision,university,yes to official,no,no
+https://github.com/BOHRTECHNOLOGY/yellow_submarine,https://arxiv.org/abs/1906.07047,yes,yes,official,quantum physics,industry,yes,no,no
+https://github.com/baumgach/acdc_segmenter,https://arxiv.org/abs/1709.04496,yes,yes,official,computer vision,university,yes,link changes,no
+https://github.com/skanti/Scan2CAD-Annotation-Webapp,https://arxiv.org/abs/1811.11187,yes,yes,official,computer vision,university,no,no,no
+https://github.com/RexxarCHL/library-seat-detection,https://arxiv.org/abs/1506.01497,yes,yes,independent unofficial,computer vision,university,yes to official,no,no
+https://github.com/OceanPARCELS/parcels,https://www.geosci-model-dev-discuss.net/gmd-2017-167/gmd-2017-167.pdf,yes,yes,official,other,university,yes,link changes,yes
+https://github.com/bbuchfink/diamond,https://www.nature.com/articles/nmeth.3176,yes,yes,official,other,university,yes,no,no
+https://github.com/SKA-ScienceDataProcessor/sip-maps-pipeline,https://arxiv.org/abs/1709.02072,yes,yes,independent unofficial,other,industry,no,no,no
+https://github.com/ginsongsong/caffe-ssd,https://arxiv.org/abs/1408.5093,yes,yes,fork of official,deep learning,industry,yes to official,no,no
+https://github.com/luochuwei/BLEU_for_Response_Generation,https://www.aclweb.org/anthology/P02-1040.pdf,yes,yes,independent unofficial,NLP,university,no,no,no
+https://github.com/princeton-vl/pose-ae-demo,https://arxiv.org/abs/1611.05424v2,yes,yes,independent unofficial,computer vision,university,no,no,yes
+https://github.com/vivkumar/TryCatchWS,http://users.cecs.anu.edu.au/~steveb/pubs/papers/ws-oopsla-2012.pdf,yes,yes,official,other,both,no,no,no
+https://github.com/MAPconciergeInc/GigaPan_Downloader,https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6064936,yes,yes,fork of official,computer vision,industry,no,no,no
+https://github.com/akshat998/3-GRU-Phases-of-Matter,https://arxiv.org/abs/1810.10584,yes,yes,independent unofficial,quantum,university,yes to official,no,yes
+https://github.com/CARMinesDouai/pose_path_publisher,https://www.researchgate.net/publication/301953107_Team_Size_Optimization_for_Multi-robot_Exploration,yes,yes,official,robotics,university,no,no,no
+https://github.com/ezshen/cs224n-squad,https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1184/reports/6857497.pdf,yes,yes,official,NLP,university,no,link changes,no
+https://github.com/zergylord/MyCaffe,https://arxiv.org/abs/1408.5093,yes,yes,independent unofficial,deep learning,unknow,yes to official,no,no
+https://github.com/quantum-kite/kite,https://arxiv.org/abs/1910.05194,yes,yes,official,quantum,university,no,no,no
+https://github.com/jheo4/gene_classification,https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/wasidennis/DeepHarmonization,https://arxiv.org/abs/1703.00069,yes,yes,official,computer vision,both,no,changes to metadata,no
+https://github.com/Nilesh1989/Gopher,https://arxiv.org/abs/1701.07179,yes,yes,independent unofficial,ml,industry,no,no,yes
+https://github.com/liamb315/CharacterGAN,https://arxiv.org/abs/1406.2661,yes,yes,independent unofficial,nlp,university,yes to official,no,no
+https://github.com/dpscience/dquickltfit,https://arxiv.org/abs/0902.2850,yes,yes,independent unofficial,other,university,yes to official,no,no
+https://github.com/yukia18/pytorch,https://arxiv.org/abs/1511.06434,yes,yes,independent unofficial,deep learning,unknow,no,no,no
+https://github.com/susilehtola/HelFEM,https://arxiv.org/abs/1810.11651,yes,yes,official,other,university,no,no,yes
+https://github.com/PalashBansal96/CUDAPathTracerRL,https://github.com/PalashBansal96/CUDAPathTracerRL/blob/master/CUDAPathTracerRLReport.pdf,yes,yes,official,computer vision,university,no,no,no
+https://github.com/earcanal/meditation-expertise,https://www.frontiersin.org/articles/10.3389/fnhum.2012.00038/full,yes,yes,independent unofficial,other,unknow,no,no,no
+https://github.com/IntelLabs/pWord2Vec,https://arxiv.org/abs/1611.06172,yes,yes,official,ml,university,yes,no,no
+https://github.com/varshanth/AuVi_Buddy_-_A_Synergy_of_FER-MER,https://arxiv.org/abs/1609.06782,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/pfnet-research/robust_estimation,https://arxiv.org/abs/1803.09050,yes,yes,independent unofficial,deep learning,industry,yes to official,no,yes
+https://github.com/xrf/lutario,https://arxiv.org/abs/1512.06956,yes,yes,independent unofficial,quantum,unknow,no,no,no
+https://github.com/Nesvilab/FragPipe,https://www.nature.com/articles/nmeth.4256,yes,yes,independent unofficial,other,industry,yes to official,no,no
+https://github.com/kate-harrison/west,,no,,,,,,,
+https://github.com/kbroman/MUGAarrays,,data,,,,,,,
+https://github.com/khughitt/eve,https://bmcmedgenomics.biomedcentral.com/articles/10.1186/1755-8794-7-20,yes,yes,independent unofficial,other,industry,no,no,no
+https://github.com/garawalid/Multilingual-Unsupervised-Embeddings,https://arxiv.org/pdf/1710.04087.pdf,yes,yes,independent unofficial,nlp,industry,yes to official,no,no
+https://github.com/yihui-he/MNC-for-ultrasound-segmentation,https://arxiv.org/abs/1512.04412,yes,yes,independent unofficial,computer vision,university,no,change to metadata,no
+https://github.com/doitfast1006/Virtual-Try-on,https://arxiv.org/abs/1709.04695,yes,yes,independent unofficial,computer vision,unknow,no,no,no
+https://github.com/OctThe16th/BetterTrainingDataMnist_RL_GAN,https://arxiv.org/abs/1707.06347,yes,yes,independent unofficial,deep learning,unknow,no,no,yes
+https://github.com/pathak22/unsupervised-video,https://arxiv.org/abs/1612.06370,yes,yes,official,computer vision,both,no,no,no
+https://github.com/kongshuchen/retinanet,https://arxiv.org/abs/1708.02002,yes,yes,independent unofficial,computer vision,university,yes to official,no,no
+https://github.com/josephinius/CTMRG,https://arxiv.org/abs/cond-mat/9507087v5,yes,yes,independent unofficial,other,unknow,no,no,no
+https://github.com/MrtnMndt/Rethinking_CNN_Layerwise_Feature_Amounts,https://arxiv.org/abs/1812.05836,yes,yes,official,deep learning,university,yes,link changes,no
+https://github.com/scienceguyrob/PulsarFeatureExtractor,,no,,,,,,,
+https://github.com/amjsmith/hod,https://arxiv.org/abs/1701.06581,yes,yes,independent unofficial,other,unknow,yes to official,no,no
+https://github.com/murrman95/INF573Project2018,https://arxiv.org/pdf/1511.04587.pdf,yes,yes,independent unofficial,computer vision,university,no,no,no
+https://github.com/gmayday1997/SceneChangeDet,https://ieeexplore.ieee.org/document/6238919,yes,yes,independent unofficial,computer vision,university,yes to official,diifferent paper,no
+https://github.com/minyoungg/WMIGFTL,https://arxiv.org/abs/1608.08614,yes,yes,official,deep learning,industry,no,no,no
+https://github.com/abinashsinha330/Solve-Air-Air-Pollution-Forecasting-using-Deep-Attentive-Sequence-Learning,https://arxiv.org/abs/1809.04206v2,yes,yes,independent unofficial,deep learning,university,yes to official,no,yes
+https://github.com/dnbaker/frp,https://arxiv.org/abs/1703.00864,yes,yes,independent unofficial,ml,industry,no,no,no
+https://github.com/andyweizhao/SequenceRL,https://arxiv.org/abs/1609.05473,yes,yes,independent unofficial,deep learning,university,yes to official,no,yes
+https://github.com/alexduer/squad-gated-rep,https://www.semanticscholar.org/paper/Gated-Self-Matching-Networks-for-Reading-and-Wang-Yang/b798cfd967e1a9ca5e7bc995d33a907bf65d1c7f,yes,yes,independent unofficial,nlp,unknow,no,no,no
+https://github.com/ryankiros/visual-semantic-embedding,https://arxiv.org/abs/1411.2539,yes,yes,official,deep learning,university,no,no,no
+https://github.com/lx865712528/EMNLP2018-JMEE,https://arxiv.org/abs/1809.09078,yes,yes,official,NLP,university,yes,link changes,no
+https://github.com/unbase/unbase,https://arxiv.org/abs/1509.05393,yes,yes,independent unofficial,other,unknow,no,no,no
+https://github.com/risi-kondor/pMMF,https://arxiv.org/abs/1507.04396,yes,yes,official,other,university,no,no,no
+https://github.com/jiesutd/YEDDA,https://arxiv.org/pdf/1711.03759.pdf,yes,yes,official,NLP,university,yes,no,no
+https://github.com/joergwicker/scavenger,https://www.researchgate.net/publication/300544275_Scavenger_-_A_Framework_for_Efficient_Evaluation_of_Dynamic_and_Modular_Algorithms,yes,yes,official,ml,university,yes,no,no
+https://github.com/kjgarza/frame_experiment_analysis,,data,,,,,,,
+https://github.com/nicola-decao/s-vae-pytorch,https://arxiv.org/abs/1804.00891,yes,yes,official,ml,university,no,no,yes
+https://github.com/gangadhar-p/NucleiDetectron,https://arxiv.org/abs/1703.06870,yes,yes,independent unofficial,computer vision,unknow,yes to official,no,no
+https://github.com/kmalialis/resource_abstraction,https://arxiv.org/abs/1903.05431,yes,yes,official,ml,university,no,link changes,no
+https://github.com/facebookresearch/ParlAI,https://arxiv.org/abs/1705.06476,yes,yes,official,nlp,industry,yes,no,yes
+https://github.com/ZJULearning/DREN,https://arxiv.org/abs/1705.08623,yes,yes,independent unofficial,deep learning,unknow,yes to official,no,yes
+https://github.com/halloTheCoder/ContextualSLUChatBot,https://www.csie.ntu.edu.tw/~yvchen/doc/IS16_ContextualSLU.pdf,yes,yes,independent unofficial,nlp,unknow,no,no,no
+https://github.com/Phutoast/Stable-Multi-Agent-Reinforcement-Learning,https://www.sciencedirect.com/science/article/pii/S0004370202001212,yes,yes,independent unofficial,ml,university,no,no,no
+https://github.com/nicola-gigante/bitvector,https://link.springer.com/chapter/10.1007%2F978-3-319-15579-1_46,yes,yes,official,other,university,yes,no,no
+https://github.com/kratsg/xAODJetReclustering,https://arxiv.org/pdf/0903.0392v1.pdf,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/EnvModellingGroup/hrds,https://www.researchgate.net/publication/333057394_HRDS_A_Python_package_for_hierarchical_raster_datasets,yes,yes,official,other,university,yes,no,no
+https://github.com/jeeberhardt/visualize,,data,,,,,,,
+https://github.com/dmakian/feudal_networks,https://arxiv.org/abs/1703.01161,yes,yes,independent unofficial,deep learning,unknow,no,no,no
+https://github.com/farhiongit/dancing-links,https://arxiv.org/abs/cs/0011047,yes,yes,independent unofficial,other,unknow,no,no,no
+https://github.com/musyoku/chainer-glow,https://arxiv.org/abs/1807.03039,yes,yes,independent unofficial,computer vision,unknow,yes to official,no,no
+https://github.com/ececyh/baselines,,no,,,,,,,
+https://github.com/MiuLab/CLUSE,https://arxiv.org/abs/1809.05694,yes,yes,official,nlp,university,yes,no,yes
+https://github.com/gyhui14/spottune,https://arxiv.org/abs/1811.08737,yes,yes,independent unofficial,deep learning,unknow,no,no,no
+https://github.com/DiRAC-benchmarks/Grid-Cloud-Testing,https://arxiv.org/abs/1512.03487,yes,yes,independent unofficial,other,unknow,no,no,no
+https://github.com/jizhuoran/SVD_Compression,https://arxiv.org/abs/1408.5093,yes,yes,fork of official,deep learning,industry,yes to official,no,no
+https://github.com/austinschneider/MCLLH,https://link.springer.com/article/10.1007%2FJHEP06%282019%29030,yes,yes,official,other,university,no,change to metadata,no
+https://github.com/gonzazarza/sim-mgmt-tool,https://www.sciencedirect.com/science/article/pii/S1877050912003122?via%3Dihub,yes,yes,official,other,university,no,no,no
+https://github.com/sanshu/protaeljs,,data,,,,,,,
+https://github.com/bguillouet/trajectory_distance,https://arxiv.org/abs/1508.04904,yes,yes,official,ml,university,yes,no,no
+https://github.com/whitesockcat/Discriminative-Feature-Network,https://arxiv.org/abs/1804.09337,yes,yes,independent unofficial,computer vision,unknow,no,no,no
+https://github.com/smdYe/Keras_The-One-Hundred-Layers-Tiramisu,https://arxiv.org/abs/1611.09326,yes,yes,independent unofficial,computer vision,unknow,yes to official,no,no
+https://github.com/iamyuanchung/csdnn,https://arxiv.org/abs/1511.09337,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/shivam7066/Early-Stage-Malware-Prediction-using-Deep-Learning,https://arxiv.org/abs/1708.03513,yes,yes,fork of official,other,university,yes to official,no,no
+https://github.com/lambtron/botson-extension,https://arxiv.org/abs/1602.00975,yes,yes,independent unofficial,other,industry,no,no,no
+https://github.com/angry-tony/loglizer,https://ieeexplore.ieee.org/document/7774521,yes,yes,official,other,unknow,no,no,no
+https://github.com/pjotrp/bioruby-exominer,https://academic.oup.com/bioinformatics/article/26/20/2617/194139,yes,yes,official,other,both,yes to official,no,no
+https://github.com/feiwu77777/Finding_unique_faces,https://arxiv.org/abs/1612.04402,yes,yes,independent unofficial,computer vision,unknow,yes to official,no,no
+https://github.com/heljakka/pioneer,https://arxiv.org/abs/1807.03026,yes,yes,official,computer vision,both,yes to official,no,no
+https://github.com/Ireneruru/Pix2pix_tensorflow,https://arxiv.org/abs/1611.07004?context=cs,yes,yes,independent unofficial,computer vision,university,yes to official,no,yes
+https://github.com/RsynTeam/rsyn-x,https://dl.acm.org/doi/10.1145/3036669.3038249,yes,yes,official,other,university,yes to official,no,no
+https://github.com/aravindr93/hand_dapg,https://arxiv.org/abs/1709.10087,yes,yes,official,robotics,both,yes to official,no,no
+https://github.com/AlenUbuntu/Relational-Network-Pytorch,https://arxiv.org/pdf/1706.01427.pdf,yes,yes,independent unofficial,nlp,university,no,no,no
+https://github.com/santanupal1980/HybridMT-2014,,no,,,,,,,
+https://github.com/sethneel/fairness_gerrymandering,https://arxiv.org/abs/1711.05144,yes,yes,official,ml,both,yes to official,no,yes
+https://github.com/Benzlxs/stereo_matching_slanted_support,https://www.researchgate.net/publication/298329756_Efficient_methods_using_slanted_support_windows_for_slanted_surfaces,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/MultithreadCorner/Hydra,https://inspirehep.net/record/1636201/files/arXiv:1711.05683.pdf,yes,yes,official,other,university,yes,no,no
+https://github.com/aaronsnoswell/irl_methods,http://ai.stanford.edu/~ang/papers/icml00-irl.pdf,yes,yes,independent unofficial,ml,both,no,no,no
+https://github.com/erikgahner/aas2015,https://science.sciencemag.org/content/335/6073/1177,yes,yes,miscellaneous(education),other,industry,no,no,no
+https://github.com/shawnxu1318/Google-Neural-Machine-Translation-GNMT-,https://arxiv.org/abs/1609.08144,yes,yes,independent unofficial,nlp,university,no,no,no
+https://github.com/ceruleanacg/Personae,https://arxiv.org/abs/1509.02971,yes,yes,independent unofficial,ml,university,no,no,yes
+https://github.com/simras/CLAP,https://www.biorxiv.org/content/10.1101/042986v3,yes,yes,official,other,both,no,no,no
+https://github.com/nisargjhaveri/news-access,https://www.aclweb.org/anthology/L18-1507.pdf,yes,yes,official,nlp,university,yes,no,no
+https://github.com/sannebh/riskaverse,https://arxiv.org/pdf/1710.10044.pdf,yes,yes,independent unofficial,ml,unknow,no,no,no
+https://github.com/Johnny-Wish/GAN-metrics,https://arxiv.org/pdf/1801.01973.pdf,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/TiedNets/TiedNets,https://arxiv.org/pdf/1510.08380.pdf,yes,yes,official,networks,university,no,no,no
+https://github.com/mathhobbit/EditCalculateAndChart,https://arxiv.org/abs/1405.5548,yes,yes,official,other,university,no,no,no
+https://github.com/QuantumAgent/QDD_Net,https://arxiv.org/abs/1804.09541,yes,yes,independent unofficial,nlp,unknow,no,no,no
+https://github.com/axhue/DDQRN,https://arxiv.org/abs/1509.06461,yes,yes,independent unofficial,ml,unknow,no,no,no
+https://github.com/larics/assisi-arena-ui,,data,,,,,,,
+https://github.com/KitwareMedical/pyLAR,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4857018/,yes,yes,independent unofficial,computer vision,both,no,no,no
+https://github.com/vonwenm/chromaprint,https://ieeexplore.ieee.org/document/5312768,yes,yes,independent unofficial,ml,industry,no,no,no
+https://github.com/sbalian/spindec,,no,,,,,,,
+https://github.com/radekosmulski/tgs_salt_solution,https://arxiv.org/abs/1505.04597,yes,yes,independent unofficial,deep learning,unknow,yes to offcial,no,no
+https://github.com/gunhoo/Drone-Tracking,https://dl.acm.org/doi/10.1145/3307334.3328613,yes,yes,official,deep learning,university,no,no,no
+https://github.com/SilvioGiancola/TrackingNet-devkit,https://ivul.kaust.edu.sa/Documents/Publications/2018/TrackingNet%20A%20Large%20Scale%20Dataset%20and%20Benchmark%20for%20Object%20Tracking%20in%20the%20Wild.pdf,yes,yes,official,computer vision,university,no,no,no
+https://github.com/BaronYSYong/opencv-test,,no avaliable,,,,,,,
+https://github.com/textmining-project/ArgumentMining-Backend,https://arxiv.org/abs/1604.07370,yes,yes,independent unofficial,nlp,university,no,no,no
+https://github.com/max-andr/joint-cnn-mrf,http://papers.nips.cc/paper/5573-joint-training-of-a-convolutional-network-and-a-graphical-model-for-human-pose-estimation,yes,yes,independent unofficial,computer vision,university,no,link changes,no
+https://github.com/sebastianGehrmann/bottom-up-summary,https://arxiv.org/pdf/1808.10792.pdf,yes,yes,official,nlp,university,yes to offcial,no,yes
+https://github.com/antran89/BoW_frameworks,https://ieeexplore.ieee.org/document/7410728,yes,yes,official,computer vision,university,no,no,no
+https://github.com/bthoven/planckt,https://arxiv.org/abs/1807.06209,yes,yes,independent unofficial,other,industry,no,no,yes
+https://github.com/NervanaSystems/ngraph-python,https://arxiv.org/pdf/1801.08058.pdf,yes,yes,official,deep learning,industry,no,no,no
+https://github.com/ijmarshall/robotreviewer_old,https://academic.oup.com/jamia/article/23/1/193/2379921,yes,yes,official,nlp,university,no,no,no
+https://github.com/mgalardini/pyseer,https://academic.oup.com/bioinformatics/article/34/24/4310/5047751,yes,yes,official,other,university,yes,no,no
+https://github.com/unsuthee/SemanticHashingWeakSupervision,https://dl.acm.org/doi/10.1145/3209978.3210090,yes,yes,official,deep learning,university,no,no,no
+https://github.com/BDNYC/astrodbkit,,data,,,,,,,
+https://github.com/luke-gregor/Thomalla2017_quenching,https://aslopubs.onlinelibrary.wiley.com/doi/abs/10.1002/lom3.10234,yes,yes,official,other,both,no,no,no
+https://github.com/aeantipov/opendf,https://www.sciencedirect.com/science/article/pii/S1875389215007178?via%3Dihub,yes,yes,official,other,university,no,no,no
+https://github.com/zrobertson466920/pybdm,https://arxiv.org/pdf/1609.00110.pdf,yes,yes,independent unofficial,other,university,yes to offcial,no,no
+https://github.com/luizaes/sca-algorithm,https://www.sciencedirect.com/science/article/abs/pii/S0950705115005043?via%3Dihub,yes,yes,independent unofficial,other,university,yes to offcial,no,no
+https://github.com/angeladai/ScanComplete,https://arxiv.org/pdf/1712.10215.pdf,yes,yes,official,computer vision,both,no,no,yes
+https://github.com/jwieting/charagram,https://arxiv.org/abs/1607.02789,yes,yes,official,nlp,university,no,no,no
+https://github.com/mrahtz/musical-pattern-recognition-in-spiking-neural-networks,http://amid.fish/beng_project_report.pdf,yes,yes,official,deep learning,industry,no,no,no
+https://github.com/MShudrak/IDAmetrics,https://www.researchgate.net/publication/312577578_Improving_Fuzzing_Using_Software_Complexity_Metrics,yes,yes,official,other,university,no,no,no
+https://github.com/Natsu6767/DCGAN-PyTorch,https://arxiv.org/abs/1511.06434,yes,yes,independent unofficial,computer vision,industry,no,no,no
+https://github.com/avirmaux/lipEstimation,https://arxiv.org/abs/1805.10965,yes,yes,official,deep learning,industry,yes,no,yes
+https://github.com/gcoter/seq2seq-chatbot,https://arxiv.org/pdf/1506.05869.pdf,yes,yes,independent unofficial,nlp,industry,no,no,no
+https://github.com/Becksteinlab/vesicle_analysis_methods,https://figshare.com/articles/Technical_Report_SPIDAL_Summer_REU_2015_Biomolecular_benchmark_systems/1588804,yes,yes,official,other,university,yes,no,no
+https://github.com/yweweler/single-speaker-tts,https://arxiv.org/abs/1703.10135v2,yes,yes,independent unofficial,deep learning,industry,no,no,no
+https://github.com/cpviolator/QUDA-CPS,https://arxiv.org/pdf/hep-lat/0311018v1.pdf,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/sparticlesteve/pytorch-examples,https://arxiv.org/abs/1711.03573,yes,yes,official,other,both,no,no,no
+https://github.com/jakubkarczewski/SentimNet,https://arxiv.org/pdf/1508.06615.pdf,yes,yes,independent unofficial,nlp,industry,yes to offcial,no,no
+https://github.com/ducha-aiki/LSUVinit,https://arxiv.org/abs/1511.06422,yes,yes,official,deep learning,university,yes,no,yes
+https://github.com/tlatkowski/multihead-siamese-nets,https://arxiv.org/abs/1706.03762,yes,yes,independent unofficial,deep learning,industry,yes to offcial,no,no
+https://github.com/xiao-he/Kernelized-Rank-Learning,https://academic.oup.com/bioinformatics/article/34/16/2808/4924716,yes,yes,official,ml,university,yes,no,no
+https://github.com/abhinavs95/photo-uncrop,https://github.com/abhinavs95/photo-uncrop/blob/master/docs/report.pdf,yes,yes,official,computer vision,university,yes,no,no
+https://github.com/impb-ethz/ciderseq,https://academic.oup.com/nar/article/47/2/e9/5144110,yes,yes,fork of official,other,university,yes to offcial,different paper,no
+https://github.com/rohitgirdhar-cmu-experimental/caffe-3dobjdet,https://arxiv.org/abs/1408.5093,yes,yes,fork of official,deep learning,unknow,yes to offcial,no,no
+https://github.com/ZuoJiaxing/Learn-ORB-VIO-Stereo-Mono,https://arxiv.org/abs/1502.00956,yes,yes,independent unofficial,robotics,university,yes to offcial,no,no
+https://github.com/aykutonol/cito,https://arxiv.org/abs/1810.10462,yes,yes,official,robotics,university,no,no,no
+https://github.com/sappelhoff/sp_experiment,https://psycnet.apa.org/doiLanding?doi=10.1037%2Fbul0000115,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/Phutoast/Learning2RL,https://arxiv.org/abs/1611.05763,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/named-data/Hyperbolic-Greedy-Forwarding-Scenario,https://arxiv.org/abs/1503.05180,yes,yes,independent unofficial,networks,industry,yes to offcial,no,no
+https://github.com/LouisCastricato/DTP-Nengo,https://arxiv.org/pdf/1412.7525v5.pdf,yes,yes,independent unofficial,deep learning,university,yes to offcial,no,no
+https://github.com/TuSimple/rl-multishot-reid,https://arxiv.org/abs/1712.07257,yes,yes,independent unofficial,deep learning,industry,no,no,yes
+https://github.com/LucasSheng/avatar-net,https://arxiv.org/abs/1805.03857,yes,yes,official,computer vision,both,no,no,yes
+https://github.com/hujinsen/pytorch-StarGAN-VC,https://arxiv.org/abs/1806.02169,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/babahooja/pcatxcore,https://www.aaai.org/Papers/IJCAI/2007/IJCAI07-429.pdf,yes,yes,independent unofficial,nlp,university,no,no,no
+https://github.com/warif2/sherlock,https://www.sciencedirect.com/science/article/pii/S1046202318302263?via%3Dihub,yes,yes,official,other,university,yes,no,no
+https://github.com/rajatkb/DBPN-Keras,https://arxiv.org/abs/1803.02735,yes,yes,independent unofficial,computer vision,industry,yes to offcial,no,no
+https://github.com/matan-zur/alon-ssd,https://arxiv.org/abs/1512.02325,yes,yes,independent unofficial,computer vision,unknow,yes to offcial,no,no
+https://github.com/zihtumreth/cond_traj_entropy,https://arxiv.org/abs/1212.2831,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/suchaoxiao/Keras-ResNeXt_modify,https://arxiv.org/pdf/1611.05431.pdf,yes,yes,independent unofficial,deep learning,university,yes to offcial,no,no
+https://github.com/hzm2016/Curiosity-driven-Exploration,https://arxiv.org/abs/1705.05363,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/parklab/PaSD-qc,https://academic.oup.com/nar/article/46/4/e20/4658833,yes,yes,official,other,university,yes,no,no
+https://github.com/tech-srl/code2vec,https://arxiv.org/abs/1803.09473,yes,yes,official,deep learning,industry,yes,link changes,no
+https://github.com/LaurentBerger/ColorMatchTemplate,https://ieeexplore.ieee.org/document/972184,yes,no,,,,,,
+https://github.com/bienz2/Node_Aware_MPI,,no,,,,,,,
+https://github.com/tobias-liaudat/github_repo,https://hal.archives-ouvertes.fr/hal-02088466/document,yes,yes,official,other,industry,yes,no,no
+https://github.com/kamran-haider/SSTMap,https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b00592,yes,yes,fork of offcial,other,unknow,yes,no,no
+https://github.com/d123y456/kablstm,https://www.researchgate.net/publication/326137147_Knowledge-aware_Attentive_Neural_Network_for_Ranking_Question_Answer_Pairs,yes,yes,official,nlp,both,no,no,no
+https://github.com/TGAC/brassica,https://www.researchgate.net/publication/316068714_Introducing_the_Brassica_Information_Portal_Towards_integrating_genotypic_and_phenotypic_Brassica_crop_data,yes,yes,official,other,both,yes,no,no
+https://github.com/andriyukr/FLC,https://ieeexplore.ieee.org/document/8015485,yes,no,,,,,,
+https://github.com/DLR-SC/tigl,https://arxiv.org/abs/1810.10795,yes,yes,independent unofficial,other,industry,no,no,no
+https://github.com/buptdbj/darknet-windows-linux,https://arxiv.org/pdf/1708.02002.pdf,yes,yes,independent unofficial,computer vision,unknow,yes to official,no,no
+https://github.com/davidstutz/mesh-evaluation,https://arxiv.org/abs/1805.07290,yes,yes,official,computer vision,university,no,no,yes
+https://github.com/s7jones/bwta2,http://nova.wolfwork.com/papers/aiide16-workshop.pdf,yes,yes,independent unofficial,deep learning,unknow,404,no,no
+https://github.com/hhexiy/pungen,https://arxiv.org/abs/1904.06828,yes,yes,official,nlp,university,yes,no,no
+https://github.com/ascane/sparse-pca,https://arxiv.org/abs/1408.5369,yes,yes,independent unofficial,ml,university,no,no,no
+https://github.com/gem-pasteur/macsyview,https://journals.plos.org/plosone/article/figure?id=10.1371/journal.pone.0110726.g002,yes,yes,official,other,both,yes to official,no,no
+https://github.com/pfnet-research/chainer-chemistry,https://arxiv.org/abs/1807.01985,yes,yes,independent unofficial,deep learning,industry,yes to official,no,no
+https://github.com/genome/diagnose_dups,,data,,,,,,,
+https://github.com/chen1474147/Deep3DPose,https://arxiv.org/abs/1604.02703,yes,yes,official,computer vision,university,404,different paper,yes
+https://github.com/karanchahal/SaliencyMapper,https://arxiv.org/abs/1705.07857,yes,yes,independent unofficial,computer vision,industry,no,no,no
+https://github.com/bgrimstad/splinter,,no,,,,,,,
+https://github.com/simetenn/medaka,,data,,,,,,,
+https://github.com/VeritasYin/STGCN_IJCAI-18,https://www.ijcai.org/proceedings/2018/0505,yes,yes,independent unofficial,deep learning,university,no,link changes,no
+https://github.com/oddguan/audio_visual_video_caption,https://arxiv.org/pdf/1505.00487.pdf,yes,yes,independent unofficial,deep learning,university,yes to official,no,no
+https://github.com/NovCloud/mlxtend,,data,,,,,,,
+https://github.com/fmckenna/CWE,,data,,,,,,,
+https://github.com/getmlcode/Deep-Lap-V3-Inference-GUI-Tkinter,https://arxiv.org/pdf/1706.05587.pdf,yes,yes,independent unofficial,computer vision,industry,no,no,no
+https://github.com/masterblogger/rhinopython,,no,,,,,,,
+https://github.com/pbteja1998/ire_project_18,https://www.mitpressjournals.org/doi/pdf/10.1162/089120102762671936,yes,yes,independent unofficial,ml,industry,no,no,no
+https://github.com/sutanu70/Segmentation,https://arxiv.org/abs/1412.7062,yes,yes,independent unofficial,computer vision,university,yes to official,no,yes
+https://github.com/qilei123/DEEPLAB_4_RETINA,https://arxiv.org/abs/1703.06211,yes,yes,official,computer vision,industry,yes to official,no,yes
+https://github.com/rinde/pdptw-dataset-generator,,data,,,,,,,
+https://github.com/PeterJackNaylor/dynamic_watershed,https://ieeexplore.ieee.org/document/7950669,yes,yes,independent unofficial,computer vision,unknow,no,no,no
+https://github.com/NoahRJohnson/AlphaZeroShogi,https://arxiv.org/pdf/1712.01815.pdf,yes,yes,independent unofficial,deep learning,industry,no,no,no
+https://github.com/BigDataBiology/ngless2018benchmark,https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-019-0684-8,yes,yes,official,other,both,yes,link changes,no
+https://github.com/geekan/google-scholar-crawler,,no,,,,,,,
+https://github.com/zexihan/caffe-SSDH,https://arxiv.org/abs/1507.00101,yes,yes,fork of official,deep learning,industry,yes to official,no,yes
+https://github.com/fire-rs-laas/fire-rs-saop,https://hal.laas.fr/hal-01852176/document,yes,yes,official,other,university,yes,no,no
+https://github.com/Francis-Hsu/CGALTri,https://www.sciencedirect.com/science/article/abs/pii/S0097849318300098?via%3Dihub,yes,yes,independent unofficial,other,university,yes to official,no,no
+https://github.com/lacava/feat,https://arxiv.org/abs/1807.00981,yes,yes,official,ml,university,yes to official,no,yes
+https://github.com/avlaskin/dev-world-2017-coreml,https://arxiv.org/abs/1605.07678,yes,yes,miscellaneous,deep learning,unknow,no,no,no
+https://github.com/MeiguangJin/Learning-to-See-through-Reflections,https://ieeexplore.ieee.org/document/8368464?part=1,yes,yes,official,computer vision,both,no,no,no
+https://github.com/shashwath94/Semisupervised-learning-with-DCGANs,https://arxiv.org/pdf/1511.06434.pdf,yes,yes,independent unofficial,deep learning,industry,no,no,no
+https://github.com/Chicago/e-coli-beach-predictions,,data,,,,,,,
+https://github.com/r-englund/crowdsys,http://scivis.itn.liu.se/publications/2016/EKR16/,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/AaronCCWong/Show-Attend-and-Tell,https://arxiv.org/pdf/1502.03044.pdf,yes,yes,independent unofficial,deep learning,industry,no,no,no
+https://github.com/RXGottlieb/connect-4-self-play,https://arxiv.org/pdf/1712.01815.pdf,yes,yes,independent unofficial,deep learning,unknow,no,no,no
+https://github.com/analysiscenter/dataset,,data,,,,,,,
+https://github.com/statgen/emeraLD,https://academic.oup.com/bioinformatics/article/35/1/164/5047763,yes,yes,official,other,university,yes,no,no
+https://github.com/mariuspot/openai_gym_taxi_v2_sarsa_max,https://arxiv.org/pdf/cs/9905014.pdf,yes,yes,independent unofficial,ml,industry,no,no,no
+https://github.com/aicentral/darktext,https://arxiv.org/pdf/1506.02640.pdf,yes,yes,independent unofficial,computer vision,industry,yes to official,no,no
+https://github.com/rsachetto/MonoAlg3D_C,https://onlinelibrary.wiley.com/doi/abs/10.1002/cnm.2913,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/Chenyao2333/contactlib,https://www.biorxiv.org/content/10.1101/407106v1,yes,yes,official,other,university,yes,no,yes
+https://github.com/kunalbanerjee/EquivalenceChecker_ADDG,https://link.springer.com/chapter/10.1007%2F978-3-319-68167-2_6,yes,no,,,,,,
+https://github.com/etal/cnvkit-examples,https://www.nature.com/articles/ng.3382,yes,yes,official,other,both,yes to official,no,no
+https://github.com/nell-byler/cloudyfsps,,data,,,,,,,
+https://github.com/meliketoy/graph-cnn.pytorch,https://arxiv.org/abs/1603.08861,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/raahii/video-gans-evaluation,https://arxiv.org/abs/1606.03498,yes,yes,independent unofficial,deep learning,industry,yes to official,no,no
+https://github.com/HumanCompatibleAI/imitation,https://arxiv.org/abs/1710.11248,yes,yes,independent unofficial,ml,industry,yes to official,no,no
+https://github.com/brentp/pedagree,https://www.cell.com/action/showFullTextImages?pii=S0002-9297(17)30017-4,yes,yes,official,other,university,yes,no,no
+https://github.com/uclmr/pycodesuggest,https://arxiv.org/abs/1611.08307,yes,yes,official,deep learning,university,yes,no,no
+https://github.com/MeetDevin/ProjectX,https://www.sciencedirect.com/science/article/pii/S1574954119303206?via%3Dihub,yes,no,,,,,,
+https://github.com/Enjia/Spatial-Regularization-Network-in-Tensorflow,https://arxiv.org/abs/1702.05891,yes,yes,independent unofficial,deep learning,industry,yes to official,no,no
+https://github.com/tensorflow/probability,https://arxiv.org/abs/1711.10604,yes,yes,official,deep learning,industry,yes to official,no,no
+https://github.com/carolinepacheco/lbplibrary,https://www.researchgate.net/publication/270895993_An_eXtended_Center-Symmetric_Local_Binary_Pattern_for_Background_Modeling_and_Subtraction_in_Videos,yes,yes,official,computer vision,both,no,no,no
+https://github.com/exg/llvm-CIA,https://ieeexplore.ieee.org/document/7008460,yes,no,,,,,,
+https://github.com/gteu/DNN-Phase-Reconstruction,https://arxiv.org/abs/1807.03474,yes,yes,independent unofficial,deep learning,unknow,no,no,no
+https://github.com/thw17/Sifaka_assembly,https://www.biorxiv.org/content/10.1101/490839v1,yes,yes,official,other,university,yes,no,no
+https://github.com/billy-mosse/circalgo,https://arxiv.org/pdf/1612.08763.pdf,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/IFTE-EDA/Corblivar,https://www.ifte.de/mitarbeiter/lienig/TCAD_Nov2015_pp1808_1821.pdf,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/jiaorunnju/RL-with-Tensorflow,https://arxiv.org/abs/1312.5602,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/dreamlh/MoStfmodels,https://arxiv.org/abs/1711.03953,yes,yes,independent unofficial,deep learning,unknow,yes to official,no,no
+https://github.com/FlashTek/emomatch-pytorch,https://arxiv.org/abs/1705.08168,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/yingShen-ys/MultiNLI,,no,,,,,,,
+https://github.com/hwang1996/ACME,https://arxiv.org/abs/1905.01273,yes,yes,fork of official,deep learning,university,yes to official,change to metadata,no
+https://github.com/corenel/pytorch-adda,https://arxiv.org/abs/1702.05464,yes,yes,independent unofficial,deep learning,industry,no,no,no
+https://github.com/BartoszPiotrowski/ATPboost,https://link.springer.com/article/10.1007/s10817-013-9286-5,yes,yes,independent unofficial,ml,industry,no,no,no
+https://github.com/yaq007/Autofocus-Layer,https://arxiv.org/pdf/1805.08403.pdf,yes,yes,official,computer vision,both,yes,no,yes
+https://github.com/gitlimlab/BicycleGAN-Tensorflow,http://papers.nips.cc/paper/6650-toward-multimodal-image-to-image-translation.pdf,yes,yes,independent unofficial,computer vision,university,yes to official,no,yes
+https://github.com/meolic/biddy,https://dk.um.si/IzpisGradiva.php?id=68831,yes,yes,official,other,university,yes to official,no,no
+https://github.com/thomasbrueggemann/privacy-risk-mhealth,https://link.springer.com/chapter/10.1007/978-3-319-44760-5_12,yes,yes,official,other,university,no,no,no
+https://github.com/mdekauwe/get_chunk_and_distribute,https://www.biogeosciences.net/10/2011/2013/bg-10-2011-2013.pdf,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/ramakanth-pasunuru/video_captioning_rl,https://arxiv.org/abs/1708.02300,yes,yes,official,deep learning,university,no,no,no
+https://github.com/frsong/tf-examples,https://arxiv.org/abs/1312.6114,yes,yes,miscellaneous,ml,unknow,no,no,no
+https://github.com/Soldie/TrojanNN-PYTHON,https://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=2782&context=cstech,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/robotology-playground/event-driven,https://www.researchgate.net/publication/322525143_The_Event-Driven_Software_Library_for_YARP-With_Algorithms_and_iCub_Applications,yes,yes,official,robotics,industry,yes,no,no
+https://github.com/btamadio/RPV_SUSY,,data,,,,,,,
+https://github.com/iwyoo/tf_ThinPlateSpline,https://arxiv.org/abs/1506.02025,yes,yes,independent unofficial,deep learning,unknow,no,no,no
+https://github.com/UCLA-BD2K/MACCRs,https://www.ncbi.nlm.nih.gov/pubmed/30457569,yes,yes,official,other,both,yes,no,no
+https://github.com/freesouls/Deep-Residual-Network-For-MXNet,https://arxiv.org/abs/1512.03385,yes,yes,independent unofficial,deep learning,industry,no,no,no
+https://github.com/9crk/nakedetection,https://arxiv.org/pdf/1512.03385v1.pdf,yes,yes,independent unofficial,deep learning,industry,no,no,no
+https://github.com/KareemYousrii/2015-DL-TIWafer,https://arxiv.org/abs/1408.5093,yes,yes,independent unofficial,deep learning,university,yes to official,no,no
+https://github.com/Deepak3994/SuMA,http://www.roboticsproceedings.org/rss14/p16.pdf,yes,yes,independent unofficial,robotics,industry,yes to official,no,no
+https://github.com/srl-freiburg/pedsim_ros,https://arxiv.org/pdf/cond-mat/9805244.pdf,yes,yes,independent unofficial,computer vision,university,no,no,no
+https://github.com/leemathew1998/GradientWeight,https://arxiv.org/abs/1611.07004,yes,yes,independent unofficial,deep learning,unknow,yes to official,no,yes
+https://github.com/chanedwin/kaggletoxic,https://arxiv.org/pdf/1508.06615.pdf,yes,yes,miscellaneous,ml,university,yes to official,no,no
+https://github.com/ijmarshall/robotsearch,https://onlinelibrary.wiley.com/doi/full/10.1002/jrsm.1287,yes,yes,official,ml,university,yes,no,no
+https://github.com/mohamedkeid/Texture-Synthesis,https://arxiv.org/pdf/1505.07376v3.pdf,yes,yes,independent unofficial,computer vision,industry,yes,no,no
+https://github.com/ChienliMa/DeConvNet,https://arxiv.org/pdf/1311.2901v3.pdf,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/hanzhanggit/StackGAN-inception-model,https://arxiv.org/pdf/1612.03242v2.pdf,yes,yes,official,deep learning,both,yes,no,no
+https://github.com/JorgeCeja/food101-tensorflow,https://www.vision.ee.ethz.ch/datasets_extra/food-101/static/bossard_eccv14_food-101.pdf,yes,yes,independent unofficial,ml,industry,no,no,no
+https://github.com/BigRedT/nn_pred_surf,,no,,,,,,,
+https://github.com/tianyolanda/derpn-study,https://arxiv.org/abs/1506.01497,yes,yes,independent unofficial,computer vision,university,yes to official,no,no
+https://github.com/Mrpatekful/ptranslate,https://arxiv.org/abs/1711.00043,yes,yes,independent unofficial,deep learning,university,no,no,yes
+https://github.com/zhiqiangdon/pose-adv-aug,https://arxiv.org/pdf/1805.09707.pdf,yes,yes,official,computer vision,both,404,no,no
+https://github.com/rutzeng/GAIN,https://arxiv.org/pdf/1802.10171.pdf,yes,yes,independent unofficial,computer vision,university,no,no,no
+https://github.com/carlohamalainen/volgenmodel-nipype,https://www.sciencedirect.com/science/article/pii/S1046202315000110?via%3Dihub,yes,yes,fork of official,other,industry,yes to official,no,no
+https://github.com/AlexandrTerentyev/Quantum,https://arxiv.org/abs/1612.06322,yes,yes,official,quantum,both,no,no,no
+https://github.com/tangye95/Unsupervised-Cell-level-Visual-Representation-learning-with-GAN,https://arxiv.org/abs/1711.11317,yes,yes,independent unofficial,deep learning,unknow,yes to official,no,no
+https://github.com/tlambert03/FPbase,https://www.nature.com/articles/s41592-019-0352-8,yes,yes,official,other,university,yes,no,no
+https://github.com/kor-al/episodic-control-pong-game,https://arxiv.org/pdf/1606.04460.pdf,yes,yes,independent unofficial,deep learning,unknow,no,no,no
+https://github.com/csdncsdn999/quiz-w7-2-densenet,https://arxiv.org/abs/1608.06993,yes,yes,independent unofficial,deep learning,unknow,yes to official,no,no
+https://github.com/sinaehsani6/csc585rep-fusionnet,https://arxiv.org/abs/1711.07341,yes,yes,fork of official,nlp,unknow,yes to official,no,yes
+https://github.com/WERimagin/QuestionGeneration,https://arxiv.org/abs/1705.00106,yes,yes,independent unofficial,nlp,unknow,yes to official,no,no
+https://github.com/hughsalimbeni/bayesian_benchmarks,http://proceedings.mlr.press/v5/titsias09a/titsias09a.pdf,yes,yes,independent unofficial,ml,university,no,no,no
+https://github.com/rll/rllab,https://arxiv.org/abs/1604.06778,yes,yes,official,ml,both,yes,no,yes
+https://github.com/lucabaroffio/BAMBrisk,http://home.deib.polimi.it/tagliasa/publications/2014/2014_ICIP_Tagliasacchi_1.pdf,yes,yes,official,ml,university,no,change to metadata,no
+https://github.com/marian-nmt/marian,https://arxiv.org/abs/1804.00344,yes,yes,official,deep learning,both,yes,no,no
+https://github.com/Achronus/Machine-Learning-101,https://www.cs.toronto.edu/~hinton/absps/fastnc.pdf,yes,yes,miscellaneous,ml,university,no,no,no
+https://github.com/bartnijssen/plumber_analysis,https://journals.ametsoc.org/doi/10.1175/JHM-D-14-0158.1,yes,yes,independent unofficial,other,university,no,no,no
+https://github.com/subtri/streaming_VOP_clustering,https://arxiv.org/pdf/1601.05447.pdf,yes,yes,official,computer vision,university,no,no,no
+https://github.com/ruizhaogit/MNIST-GuessNumber,https://arxiv.org/abs/1810.01371,yes,yes,official,deep learning,both,yes,no,yes
+https://github.com/benlaug/labgen,https://www.sciencedirect.com/science/article/abs/pii/S0167865516303439,yes,yes,official,computer vision,university,yes,change to metadata,no
+https://github.com/angeladai/3DMV,https://arxiv.org/pdf/1803.10409.pdf,yes,yes,official,computer vision,university,no,no,no
+https://github.com/chanb/metalearning_RL,https://arxiv.org/abs/1611.02779,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/lemire/simdjson,https://arxiv.org/abs/1902.08318,yes,yes,official,other,both,yes,no,yes
+https://github.com/flowgrammable/ofpmsg-js,https://arxiv.org/pdf/1311.3336.pdf,yes,yes,independent unofficial,networks,industry,no,no,no
+https://github.com/giulia-berto/app-multi-lap-anat,,no,,,,,,,
+https://github.com/tyiannak/pyAudioAnalysis,https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144610,yes,yes,official,ml,university,yes,no,no
+https://github.com/alexholcombe/attentional-blink,https://link.springer.com/article/10.3758%2Fs13414-015-0912-7,yes,yes,official,other,university,yes,no,no
+https://github.com/geomstats/geomstats,https://arxiv.org/abs/1805.08308,yes,yes,official,ml,both,no,no,no
+https://github.com/pavesiriccardo/COLDz_calculate_LF,https://arxiv.org/abs/1808.04372,yes,yes,official,other,both,yes to official,no,no
+https://github.com/GerardMJuan/simlr-ad,https://www.biorxiv.org/content/10.1101/339614v3,yes,yes,official,ml,both,yes,no,no
+https://github.com/1206lyp/incremental-word2vec,https://arxiv.org/pdf/1301.3781v3.pdf,yes,yes,independent unofficial,ml,unknow,no,no,no
+https://github.com/Microsoft/AzureML-BERT,https://arxiv.org/abs/1810.04805,yes,yes,independent unofficial,nlp,industry,yes to official,no,no
+https://github.com/cdebacco/MultiTensor,https://arxiv.org/abs/1701.01369,yes,yes,official,networks,university,yes,no,yes
+https://github.com/nikhilsardana/GANcompression,https://arxiv.org/abs/1804.02958,yes,yes,independent unofficial,computer vision,university,no,no,no
+https://github.com/djsaunde/GenerativeDataAugmentation,https://arxiv.org/pdf/1406.2661v1.pdf,yes,yes,independent unofficial,deep learning,industry,yes to official,no,no
+https://github.com/mori97/JKNet-dgl,https://arxiv.org/abs/1806.03536,yes,yes,independent unofficial,deep learning,university,no,no,no
+https://github.com/yanboliang/submarine,https://arxiv.org/pdf/1512.03385.pdf,yes,yes,independent unofficial,deep learning,industry,no,link changes,no
+https://github.com/straylightrun/cytofviz,https://arxiv.org/abs/1201.6082,yes,yes,independent unofficial,ml,industry,no,no,no
+https://github.com/zsylvester/meanderpy,https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/WR020i011p01659,yes,yes,independent unofficial,computer vision,university,no,no,no
+https://github.com/alexandrovteam/curatr,https://www.biorxiv.org/content/10.1101/170571v1,yes,yes,official,other,university,yes,no,no
+https://github.com/yueruchen/Pedestrian-Synthesis-GAN,https://arxiv.org/abs/1804.02047,yes,yes,official,computer vision,both,yes,no,no
