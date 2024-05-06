@@ -1,2 +1,10 @@
-**/*~
 draft/*
+
+# vim swap files
+**/*~
+
+# environment file
+.env
+
+# Intellij IDE
+.idea/
