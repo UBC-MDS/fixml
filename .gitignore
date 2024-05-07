@@ -1,4 +1,6 @@
 draft/*
+**/*~
+.env
 
 # vim swap files
 **/*~

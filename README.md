@@ -4,9 +4,23 @@ To be filled
 
 ## Installation
 
+1. Create a conda envionment using `environment.yml` in the repo:
+
 ```bash
-$ pip install test_creation
+conda env create -f environment.yml
 ```
+
+2. Activate the newly created conda environment (default name `test-creation`):
+```bash
+conda activate test-creation
+```
+
+3. add `.env` with API key attached:
+```bash
+echo "OPENAI_API_KEY=..." > .env
+```
+
+4. Enjoy!
 
 ## Usage
 
