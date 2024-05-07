@@ -1,0 +1,8 @@
+name: test-creation
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - jupyterlab=4.0
+  - jupyter-book=0.15
