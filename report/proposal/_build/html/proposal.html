@@ -1,0 +1,614 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Proposal Report: Checklists and LLM prompts for efficient and effective test creation in data analysis &#8212; Checklists and LLM prompts for efficient and effective test creation in data analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'proposal';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Checklists and LLM prompts for efficient and effective test creation in data analysis - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Checklists and LLM prompts for efficient and effective test creation in data analysis - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Proposal Report: Checklists and LLM prompts for efficient and effective test creation in data analysis
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/proposal.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Proposal Report: Checklists and LLM prompts for efficient and effective test creation in data analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executive-summary">Executive Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">Problem Statement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#our-objectives">Our Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-product">Our Product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#success-metrics">Success Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-approach">Data Science Approach</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-github-repositories">Data: GitHub Repositories</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methodologies">Methodologies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-development-approach">Iterative Development Approach</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delivery-timeline">Delivery Timeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="proposal-report-checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis">
+<h1>Proposal Report: Checklists and LLM prompts for efficient and effective test creation in data analysis<a class="headerlink" href="#proposal-report-checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis" title="Permalink to this heading">#</a></h1>
+<p>by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin</p>
+<section id="executive-summary">
+<h2>Executive Summary<a class="headerlink" href="#executive-summary" title="Permalink to this heading">#</a></h2>
+<p>The rapid growth of global artificial intelligence (AI) market presents both opportunities and challenges. While AI systems have the potential to impact various aspects of human life, ensuring their software quality remains a significant concern. Current testing strategies for machine learning (ML) systems lack standardization and comprehensiveness, which poses risks to stakeholders such as financial losses and safety hazards.</p>
+<p>Our proposal addresses this challenge by developing an end-to-end application that provides comprehensive test evaluation, tailored test recommendations, and automated test specifications generation. Through these features, users can systematically assess, improve, and include tests tailored to their ML systems. By leveraging human expertise and prompt engineering, we build our product to deliver actionable insights for improving users’ test strategies and overall ML system reliability.</p>
+<p>With an iterative development approach, we aim to develop our minimum viable product (MVP) in the first two weeks. We will further iterate and refine our product over the next 3 weeks. During the last 2 weeks, we will carry out rigorous system testing, finalize our final product and report, and deliver to our partners. Ultimately, our goal is to mitigate potential negative societal impacts associated with unreliable ML systems and promote trustworthiness.</p>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<section id="problem-statement">
+<h3>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this heading">#</a></h3>
+<p>Global artificial intelligence (AI) market is growing exponentially <span id="id1">[<a class="reference internal" href="#id10" title="Grand-View-Research. Artificial intelligence market size, share &amp; trends analysis report by solution, by technology (deep learning, machine learning), by end-use, by region, and segment forecasts, 2023 2030. 2021.">Grand-View-Research, 2021</a>]</span>, which is driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis, etc.</p>
+<p>However, ensuring the software quality of these systems remains a significant challenge <span id="id2">[<a class="reference internal" href="#id11" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span>. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses <span id="id3">[<a class="reference internal" href="#id12" title="Asheeta Regidi. Sebi's circular: the black box conundrum and misrepresentation in ai-based mutual funds. 2019. URL: https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html.">Regidi, 2019</a>]</span> and safety hazards.</p>
+<p>Therefore, it is crucial to define and promote an industry standard and establish robust testing methodologies for these systems. But how?</p>
+</section>
+<section id="our-objectives">
+<h3>Our Objectives<a class="headerlink" href="#our-objectives" title="Permalink to this heading">#</a></h3>
+<p>We propose to develop testing suites based on Large Language Models (LLMs), to offer flexibility and to facilitate comprehensive testing of ML systems. Our goal is to enhance the trustworthiness and robustness of applied ML software and improve the quality and reproducibility of ML systems across both industry and academia <span id="id4">[<a class="reference internal" href="#id13" title="Sayash Kapoor and Arvind Narayanan. Leakage and the reproducibility crisis in ml-based science. arXiv preprint arXiv:2207.07048, 2022.">Kapoor and Narayanan, 2022</a>]</span>.</p>
+</section>
+</section>
+<section id="our-product">
+<h2>Our Product<a class="headerlink" href="#our-product" title="Permalink to this heading">#</a></h2>
+<p>Our solution offers an end-to-end application for evaluating and enhancing the robustness of users’ machine learning (ML) systems. Key features include:</p>
+<ol class="arabic simple">
+<li><p>ML Test Completeness Evaluation</p></li>
+<li><p>Missing Test Recommendations</p></li>
+<li><p>Test Function Specification Test Generation</p></li>
+</ol>
+<section id="description">
+<h3>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h3>
+<p>Basically, our product can be utilized into 3 stages.</p>
+<ul>
+<li><p>Stage 1: ML Test Completeness Evaluation</p>
+<p>Users input the source code of their ML systems along with our suggested prompts into the application, which utilizes Large Language Model (LLM) to identify existing test suites within the code. A comprehensive report is generated and provides qualitative (e.g., test categories/strategies covered) and quantitative (e.g., test coverage/score) evaluations of the ML system’s test quality.</p>
+</li>
+<li><p>Stage 2: Missing Test Recommendations</p>
+<p>Based on the robust checklist created by our team for testing applied ML code, the application assesses the adequacy of existing tests. Recommendations on additional test categories/strategies are provided based on the ML system’s nature and test evaluation for improvement.</p>
+</li>
+<li><p>Stage 3: Test Function Specification Test Generation</p>
+<p>Users specify desired test categories/strategies and utilize our suggested LLM prompts within the application. The application autonomously engineers reproducible test data and software tests for reference, which serve as reliable starting points for users to utilize and improve their test suites within the ML systems.</p>
+</li>
+</ul>
+</section>
+<section id="success-metrics">
+<h3>Success Metrics<a class="headerlink" href="#success-metrics" title="Permalink to this heading">#</a></h3>
+<p>The success of our product will be dependent on the mutation testing result of the reference test cases generated by the application. A set of perturbations would be made to the ML project code and the success rate of detecting these perturbations by the implemented test cases will be recorded as the evaluation metric.</p>
+<p>Our partner and stakeholders would expect to see a significant improvement in testing strategies of their ML systems post-application usage. Moreover, the application would demonstrate high accuracy in detecting faults, which ensure consistent and high quality ML projects upon updates.</p>
+</section>
+<section id="data-science-approach">
+<h3>Data Science Approach<a class="headerlink" href="#data-science-approach" title="Permalink to this heading">#</a></h3>
+<section id="data-github-repositories">
+<h4>Data: GitHub Repositories<a class="headerlink" href="#data-github-repositories" title="Permalink to this heading">#</a></h4>
+<p>In this project, GitHub repositories are our data.</p>
+<p>We will collect 11 repositories studied in <span id="id5">[<a class="reference internal" href="#id11" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span> for the development of our testing checklist. Additionally, we will collect 377 repositories identified in the study by <span id="id6">[<a class="reference internal" href="#id14" title="Supatsara Wattanakriengkrai, Bodin Chinthanet, Hideaki Hata, Raula Gaikovina Kula, Christoph Treude, Jin Guo, and Kenichi Matsumoto. Github repositories with links to academic papers: public access, traceability, and evolution. Journal of Systems and Software, 183:111117, 2022.">Wattanakriengkrai <em>et al.</em>, 2022</a>]</span> for our product development.</p>
+<p>For each repository, we are interested in the repository metadata, as well as the ML modeling- and test-related source code. The metadata will be retrieved using the GitHub API, while the source code will be downloaded and filtered using our custom scripts. To ensure the relevance of the repositories to our study, we will apply the following criteria for filtering:</p>
+<ol class="arabic simple">
+<li><p>Repositories that are related to ML systems.</p></li>
+<li><p>Repositories that include test cases.</p></li>
+<li><p>Repositories whose development are written in the Python programming language.</p></li>
+</ol>
+</section>
+<section id="methodologies">
+<h4>Methodologies<a class="headerlink" href="#methodologies" title="Permalink to this heading">#</a></h4>
+<p>Our data science methodology incorporates both human expert evaluation and prompt engineering to assess and enhance the test quality of ML systems.</p>
+<ul>
+<li><p>Human Expert Evaluation</p>
+<p>We will begin by formulating a comprehensive checklist for evaluating the data and ML pipeline based on established testing strategies outlined in <span id="id7">[<a class="reference internal" href="#id11" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span> as the foundational framework. for assessing test quality within selected repositories. Our team will manually evaluate the test quality within the repository data based on the formulated checklist. The checklist will be refined during the process to ensure its applicability and robustness testing general ML systems.</p>
+</li>
+<li><p>Prompt Engineering</p>
+<p>We will engineer prompts for LLM to serve various purposes across three stages:</p>
+<ol class="arabic simple">
+<li><p>Prompts to examine test cases within ML system source codes and deliver qualitative and quantitative test scores.</p></li>
+<li><p>Prompts incorporated with the completed checklist to suggest potential testing strategies by comparing with ML system source codes.</p></li>
+<li><p>Prompts to generate test cases based on suggested testing strategies and ML system task types <span id="id8">[<a class="reference internal" href="#id15" title="Max Schäfer, Sarah Nadi, Aryaz Eghbali, and Frank Tip. An empirical evaluation of using large language models for automated unit test generation. IEEE Transactions on Software Engineering, 2023.">Schäfer <em>et al.</em>, 2023</a>]</span></p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="iterative-development-approach">
+<h4>Iterative Development Approach<a class="headerlink" href="#iterative-development-approach" title="Permalink to this heading">#</a></h4>
+<p>As we leverage data from selected GitHub repositories and references research on testing strategies, it’s important to acknowledge that this may not include all ML systems or testing methodologies. To address these considerations, we adopt an iterative development approach by setting up an open and scalable framework for this project. Our application could then undergo continuous updates based on users’ feedback and contributors’ insights.</p>
+<p>We encourage users to interpret the artifacts generated by the application with a grain of salt and recognize the evolving nature of ML system testing practices.</p>
+</section>
+</section>
+</section>
+<section id="delivery-timeline">
+<h2>Delivery Timeline<a class="headerlink" href="#delivery-timeline" title="Permalink to this heading">#</a></h2>
+<p>Our team follow a timeline for our product delivery. We also aim at close communication with our partner to align our product development with their expectation.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Timeline</p></th>
+<th class="head"><p>Milestones</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Week 1 (Apr 29 - May 3)</p></td>
+<td><p>Prepare and Present Initial Proposal. Scrape repository data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Week 2 - 3 (May 6 - 17)</p></td>
+<td><p>Deliver Proposal. Deliver Draft of ML Pipeline Test Checklist. Develop Minimum Viable Product (Test Completeness Score, Missing Test Recommendation)</p></td>
+</tr>
+<tr class="row-even"><td><p>Week 4 - 5 (May 20 - May 31)</p></td>
+<td><p>Update Test Checklist. Develop Test Function Spec Generator.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Week 6 (Jun 3 - Jun 7)</p></td>
+<td><p>Update Test Checklist. Wrap Up Product.</p></td>
+</tr>
+<tr class="row-even"><td><p>Week 7 (Jun 10 - Jun 14)</p></td>
+<td><p>Finalize Test Checklist. Perform Product System Test. Present Final Product. Prepare Final Product Report.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Week 8 (Jun 17 - Jun 21)</p></td>
+<td><p>Deliver Final Product. Deliver Final Product Report.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id9">
+<dl class="citation">
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id1">GVR21</a></span></dt>
+<dd><p>Grand-View-Research. Artificial intelligence market size, share &amp; trends analysis report by solution, by technology (deep learning, machine learning), by end-use, by region, and segment forecasts, 2023 2030. 2021.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id4">KN22</a></span></dt>
+<dd><p>Sayash Kapoor and Arvind Narayanan. Leakage and the reproducibility crisis in ml-based science. <em>arXiv preprint arXiv:2207.07048</em>, 2022.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">OKF+23</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id5">2</a>,<a href="#id7">3</a>)</span></dt>
+<dd><p>Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. <em>arXiv preprint arXiv:2312.12604</em>, 2023.</p>
+</dd>
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id3">Reg19</a></span></dt>
+<dd><p>Asheeta Regidi. Sebi's circular: the black box conundrum and misrepresentation in ai-based mutual funds. 2019. URL: <a class="reference external" href="https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html">https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html</a>.</p>
+</dd>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id8">SchaferNET23</a></span></dt>
+<dd><p>Max Schäfer, Sarah Nadi, Aryaz Eghbali, and Frank Tip. An empirical evaluation of using large language models for automated unit test generation. <em>IEEE Transactions on Software Engineering</em>, 2023.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id6">WCH+22</a></span></dt>
+<dd><p>Supatsara Wattanakriengkrai, Bodin Chinthanet, Hideaki Hata, Raula Gaikovina Kula, Christoph Treude, Jin Guo, and Kenichi Matsumoto. Github repositories with links to academic papers: public access, traceability, and evolution. <em>Journal of Systems and Software</em>, 183:111117, 2022.</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executive-summary">Executive Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">Problem Statement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#our-objectives">Our Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-product">Our Product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#success-metrics">Success Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-approach">Data Science Approach</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-github-repositories">Data: GitHub Repositories</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methodologies">Methodologies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-development-approach">Iterative Development Approach</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delivery-timeline">Delivery Timeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
