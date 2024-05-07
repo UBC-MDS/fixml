@@ -7,7 +7,7 @@ To be filled
 1. Create a conda envionment using `environment.yml` in the repo:
 
 ```bash
-conda env create -f environment.yaml
+conda env create -f environment.yml
 ```
 
 2. Activate the newly created conda environment (default name `test-creation`):
