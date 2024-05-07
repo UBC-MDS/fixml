@@ -360,13 +360,13 @@ document.write(`
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <section id="problem-statement">
 <h3>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this heading">#</a></h3>
-<p>Global artificial intelligence (AI) market is growing exponentially <span id="id1">[<a class="reference internal" href="#id5" title="Grand-View-Research. Artificial intelligence market size, share &amp; trends analysis report by solution, by technology (deep learning, machine learning), by end-use, by region, and segment forecasts, 2023 2030. 2021.">Grand-View-Research, 2021</a>]</span>, which is driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis, etc.</p>
-<p>However, ensuring the software quality of these systems remains a significant challenge {cite}openja2023studying. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses {cite}Asheeta2019 and safety hazards.</p>
+<p>Global artificial intelligence (AI) market is growing exponentially <span id="id1">[<a class="reference internal" href="#id10" title="Grand-View-Research. Artificial intelligence market size, share &amp; trends analysis report by solution, by technology (deep learning, machine learning), by end-use, by region, and segment forecasts, 2023 2030. 2021.">Grand-View-Research, 2021</a>]</span>, which is driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis, etc.</p>
+<p>However, ensuring the software quality of these systems remains a significant challenge <span id="id2">[<a class="reference internal" href="#id11" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span>. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses <span id="id3">[<a class="reference internal" href="#id12" title="Asheeta Regidi. Sebi's circular: the black box conundrum and misrepresentation in ai-based mutual funds. 2019. URL: https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html.">Regidi, 2019</a>]</span> and safety hazards.</p>
 <p>Therefore, it is crucial to define and promote an industry standard and establish robust testing methodologies for these systems. But how?</p>
 </section>
 <section id="our-objectives">
 <h3>Our Objectives<a class="headerlink" href="#our-objectives" title="Permalink to this heading">#</a></h3>
-<p>We propose to develop testing suites based on Large Language Models (LLMs), to offer flexibility and to facilitate comprehensive testing of ML systems. Our goal is to enhance the trustworthiness and robustness of applied ML software and improve the quality and reproducibility of ML systems across both industry and academia {cite}kapoor2022leakage.</p>
+<p>We propose to develop testing suites based on Large Language Models (LLMs), to offer flexibility and to facilitate comprehensive testing of ML systems. Our goal is to enhance the trustworthiness and robustness of applied ML software and improve the quality and reproducibility of ML systems across both industry and academia <span id="id4">[<a class="reference internal" href="#id13" title="Sayash Kapoor and Arvind Narayanan. Leakage and the reproducibility crisis in ml-based science. arXiv preprint arXiv:2207.07048, 2022.">Kapoor and Narayanan, 2022</a>]</span>.</p>
 </section>
 </section>
 <section id="our-product">
@@ -384,10 +384,10 @@ document.write(`
 <li><p>Stage 1: ML Test Completeness Evaluation</p>
 <p>Users input the source code of their ML systems along with our suggested prompts into the application, which utilizes Large Language Model (LLM) to identify existing test suites within the code. A comprehensive report is generated and provides qualitative (e.g., test categories/strategies covered) and quantitative (e.g., test coverage/score) evaluations of the ML system’s test quality.</p>
 </li>
-<li><p>Stage 2: Tailored Test Recommendations</p>
+<li><p>Stage 2: Missing Test Recommendations</p>
 <p>Based on the robust checklist created by our team for testing applied ML code, the application assesses the adequacy of existing tests. Recommendations on additional test categories/strategies are provided based on the ML system’s nature and test evaluation for improvement.</p>
 </li>
-<li><p>Stage 3: Automated Test Specification Generation</p>
+<li><p>Stage 3: Test Function Specification Test Generation</p>
 <p>Users specify desired test categories/strategies and utilize our suggested LLM prompts within the application. The application autonomously engineers reproducible test data and software tests for reference, which serve as reliable starting points for users to utilize and improve their test suites within the ML systems.</p>
 </li>
 </ul>
@@ -402,7 +402,7 @@ document.write(`
 <section id="data-github-repositories">
 <h4>Data: GitHub Repositories<a class="headerlink" href="#data-github-repositories" title="Permalink to this heading">#</a></h4>
 <p>In this project, GitHub repositories are our data.</p>
-<p>We will collect 11 repositories studied in {cite}openja2023studying for the development of our testing checklist. Additionally, we will collect 377 repositories identified in the study by {cite}wattanakriengkrai2022github for our product development.</p>
+<p>We will collect 11 repositories studied in <span id="id5">[<a class="reference internal" href="#id11" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span> for the development of our testing checklist. Additionally, we will collect 377 repositories identified in the study by <span id="id6">[<a class="reference internal" href="#id14" title="Supatsara Wattanakriengkrai, Bodin Chinthanet, Hideaki Hata, Raula Gaikovina Kula, Christoph Treude, Jin Guo, and Kenichi Matsumoto. Github repositories with links to academic papers: public access, traceability, and evolution. Journal of Systems and Software, 183:111117, 2022.">Wattanakriengkrai <em>et al.</em>, 2022</a>]</span> for our product development.</p>
 <p>For each repository, we are interested in the repository metadata, as well as the ML modeling- and test-related source code. The metadata will be retrieved using the GitHub API, while the source code will be downloaded and filtered using our custom scripts. To ensure the relevance of the repositories to our study, we will apply the following criteria for filtering:</p>
 <ol class="arabic simple">
 <li><p>Repositories that are related to ML systems.</p></li>
@@ -415,14 +415,14 @@ document.write(`
 <p>Our data science methodology incorporates both human expert evaluation and prompt engineering to assess and enhance the test quality of ML systems.</p>
 <ul>
 <li><p>Human Expert Evaluation</p>
-<p>We will begin by formulating a comprehensive checklist for evaluating the data and ML pipeline based on established testing strategies outlined in <span id="id2">[<a class="reference internal" href="#id6" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span> as the foundational framework. for assessing test quality within selected repositories. Our team will manually evaluate the test quality within the repository data based on the formulated checklist. The checklist will be refined during the process to ensure its applicability and robustness testing general ML systems.</p>
+<p>We will begin by formulating a comprehensive checklist for evaluating the data and ML pipeline based on established testing strategies outlined in <span id="id7">[<a class="reference internal" href="#id11" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span> as the foundational framework. for assessing test quality within selected repositories. Our team will manually evaluate the test quality within the repository data based on the formulated checklist. The checklist will be refined during the process to ensure its applicability and robustness testing general ML systems.</p>
 </li>
 <li><p>Prompt Engineering</p>
 <p>We will engineer prompts for LLM to serve various purposes across three stages:</p>
 <ol class="arabic simple">
 <li><p>Prompts to examine test cases within ML system source codes and deliver qualitative and quantitative test scores.</p></li>
 <li><p>Prompts incorporated with the completed checklist to suggest potential testing strategies by comparing with ML system source codes.</p></li>
-<li><p>Prompts to generate test cases based on suggested testing strategies and ML system task types <span id="id3">[<a class="reference internal" href="#id10" title="Max Schäfer, Sarah Nadi, Aryaz Eghbali, and Frank Tip. An empirical evaluation of using large language models for automated unit test generation. IEEE Transactions on Software Engineering, 2023.">Schäfer <em>et al.</em>, 2023</a>]</span></p></li>
+<li><p>Prompts to generate test cases based on suggested testing strategies and ML system task types <span id="id8">[<a class="reference internal" href="#id15" title="Max Schäfer, Sarah Nadi, Aryaz Eghbali, and Frank Tip. An empirical evaluation of using large language models for automated unit test generation. IEEE Transactions on Software Engineering, 2023.">Schäfer <em>et al.</em>, 2023</a>]</span></p></li>
 </ol>
 </li>
 </ul>
@@ -467,16 +467,25 @@ document.write(`
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<div class="docutils container" id="id4">
+<div class="docutils container" id="id9">
 <dl class="citation">
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">GVR21</a></span></dt>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id1">GVR21</a></span></dt>
 <dd><p>Grand-View-Research. Artificial intelligence market size, share &amp; trends analysis report by solution, by technology (deep learning, machine learning), by end-use, by region, and segment forecasts, 2023 2030. 2021.</p>
 </dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">OKF+23</a></span></dt>
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id4">KN22</a></span></dt>
+<dd><p>Sayash Kapoor and Arvind Narayanan. Leakage and the reproducibility crisis in ml-based science. <em>arXiv preprint arXiv:2207.07048</em>, 2022.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">OKF+23</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id5">2</a>,<a href="#id7">3</a>)</span></dt>
 <dd><p>Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. <em>arXiv preprint arXiv:2312.12604</em>, 2023.</p>
 </dd>
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id3">SchaferNET23</a></span></dt>
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id3">Reg19</a></span></dt>
+<dd><p>Asheeta Regidi. Sebi's circular: the black box conundrum and misrepresentation in ai-based mutual funds. 2019. URL: <a class="reference external" href="https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html">https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html</a>.</p>
+</dd>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id8">SchaferNET23</a></span></dt>
 <dd><p>Max Schäfer, Sarah Nadi, Aryaz Eghbali, and Frank Tip. An empirical evaluation of using large language models for automated unit test generation. <em>IEEE Transactions on Software Engineering</em>, 2023.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id6">WCH+22</a></span></dt>
+<dd><p>Supatsara Wattanakriengkrai, Bodin Chinthanet, Hideaki Hata, Raula Gaikovina Kula, Christoph Treude, Jin Guo, and Kenichi Matsumoto. Github repositories with links to academic papers: public access, traceability, and evolution. <em>Journal of Systems and Software</em>, 183:111117, 2022.</p>
 </dd>
 </dl>
 </div>
