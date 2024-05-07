@@ -28,7 +28,6 @@ fi
 CSV_PATH="$(pwd)/$1"
 DOWNLOAD_PATH="$(pwd)/$2"
 
-echo $CSV_PATH
 mkdir -p $DOWNLOAD_PATH && \
         cd $DOWNLOAD_PATH && \
         cut -d',' -f1 $CSV_PATH | \
