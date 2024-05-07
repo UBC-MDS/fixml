@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Checklists and LLM prompts for efficient and effective test creation in data analysis - Initial Proposal &#8212; Checklists and LLM prompts for efficient and effective test creation in data analysis - Initial Proposal</title>
+    <title>Checklists and LLM prompts for efficient and effective test creation in data analysis - Initial Proposal &#8212; Checklists and LLM prompts for efficient and effective test creation in data analysis</title>
   
   
   
@@ -155,8 +155,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Checklists and LLM prompts for efficient and effective test creation in data analysis - Initial Proposal - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Checklists and LLM prompts for efficient and effective test creation in data analysis - Initial Proposal - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="Checklists and LLM prompts for efficient and effective test creation in data analysis - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Checklists and LLM prompts for efficient and effective test creation in data analysis - Home"/>`);</script>
   
   
 </a></div>
@@ -405,7 +405,7 @@ document.write(`
 <h2>3.3 Data Science Approach<a class="headerlink" href="#data-science-approach" title="Permalink to this heading">#</a></h2>
 <section id="data">
 <h3>3.3.1 Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h3>
-<p>We will collect data from the 377 GitHub repositories identified in the study by Wattanakriengkrai et al. (2022) <span id="id5">[<a class="reference internal" href="#id13" title="Supatsara Wattanakriengkrai, Bodin Chinthanet, Hideaki Hata, Raula Gaikovina Kula, Christoph Treude, Jin Guo, and Kenichi Matsumoto. Github repositories with links to academic papers: public access, traceability, and evolution. Journal of Systems and Software, 183:111117, 2022.">Wattanakriengkrai <em>et al.</em>, 2022</a>]</span>. The data will include repository metadata and source code sourced using GitHub API and custom scripts. To ensure relevance to our study, we will apply these criteria for filtering the data: 1) projects that are related to ML systems; 2) projects that contain test cases; 3) test cases are written in Python programming language.</p>
+<p>We will collect data from the 377 GitHub repositories identified in the study by <span id="id5">[<a class="reference internal" href="#id13" title="Supatsara Wattanakriengkrai, Bodin Chinthanet, Hideaki Hata, Raula Gaikovina Kula, Christoph Treude, Jin Guo, and Kenichi Matsumoto. Github repositories with links to academic papers: public access, traceability, and evolution. Journal of Systems and Software, 183:111117, 2022.">Wattanakriengkrai <em>et al.</em>, 2022</a>]</span>. The data will include repository metadata and source code sourced using GitHub API and custom scripts. To ensure relevance to our study, we will apply these criteria for filtering the data: 1) projects that are related to ML systems; 2) projects that contain test cases; 3) test cases are written in Python programming language.</p>
 <p>{screencap/copy-and-paste of the code}</p>
 </section>
 <section id="methodologies">
@@ -413,7 +413,7 @@ document.write(`
 <p>Our data science methodology incorporates both human expert evaluation and prompt engineering to assess and enhance the test quality of ML systems.</p>
 <ul>
 <li><p>Human Expert Evaluation</p>
-<p>We will begin by formulating a comprehensive checklist for evaluating the data and ML pipeline based on established testing strategies outlined in Openja et al. (2023) <span id="id6">[<a class="reference internal" href="#id10" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span> as the foundational framework. for assessing test quality within selected repositories. Our team will manually evaluate the test quality within the repository data based on the formulated checklist. The checklist will be refined during the process to ensure its applicability and robustness testing general ML systems.</p>
+<p>We will begin by formulating a comprehensive checklist for evaluating the data and ML pipeline based on established testing strategies outlined in <span id="id6">[<a class="reference internal" href="#id10" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span> as the foundational framework. for assessing test quality within selected repositories. Our team will manually evaluate the test quality within the repository data based on the formulated checklist. The checklist will be refined during the process to ensure its applicability and robustness testing general ML systems.</p>
 </li>
 <li><p>Prompt Engineering</p>
 <p>We will engineer prompts for LLM to serve various purposes across three stages:</p>
@@ -442,20 +442,23 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Week 1 (Apr 29)</p></td>
-<td><p>Initial Proposal and Presentation, Scrape repository data</p></td>
+<tr class="row-even"><td><p>Week 1 (Apr 29 - May 3)</p></td>
+<td><p>Prepare and Present Initial Proposal. Scrape repository data.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Week 2 - 3 (May 6 - 17)</p></td>
-<td><p>Deliver Initial Proposal, Initial Draft of Pipeline Test Checklist, Develop MVP (Evaluation Function, Recommendation Function, Test Specs Generation Function)</p></td>
+<td><p>Deliver Proposal. Deliver Draft of ML Pipeline Test Checklist. Develop Minimum Viable Product (Test Completeness Score, Missing Test Recommendation)</p></td>
 </tr>
-<tr class="row-even"><td><p>Week 4 - 6 (May 20 - Jun 7)</p></td>
-<td><p>Iterations and Refinement on Test Checklist and Product Functions</p></td>
+<tr class="row-even"><td><p>Week 4 - 5 (May 20 - May 31)</p></td>
+<td><p>Update Test Checklist. Develop Test Function Spec Generator.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Week 7 (Jun 10)</p></td>
-<td><p>Final Product Presentation, Draft Final Product Report, Perform Product System Test</p></td>
+<tr class="row-odd"><td><p>Week 6 (Jun 3 - Jun 7)</p></td>
+<td><p>Update Test Checklist. Wrap Up Product.</p></td>
 </tr>
-<tr class="row-even"><td><p>Week 8 (Jun 17)</p></td>
-<td><p>Deliver Final Product and Final Product Report</p></td>
+<tr class="row-even"><td><p>Week 7 (Jun 10 - Jun 14)</p></td>
+<td><p>Finalize Test Checklist. Perform Product System Test. Present Final Product. Prepare Final Product Report.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Week 8 (Jun 17 - Jun 21)</p></td>
+<td><p>Deliver Final Product. Deliver Final Product Report.</p></td>
 </tr>
 </tbody>
 </table>
