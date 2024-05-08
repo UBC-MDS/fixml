@@ -43,9 +43,10 @@ class PythonASTCodeAnalyzer(CodeAnalyzer):
         packages = self.list_imported_packages()
         if 'unittest' in packages or 'pytest' in packages:
             return True
-        for line in self.content:
-            # pytest
-            if "def test_" in line or "TestCase" in line:
+        for node in ast.walk(self._tree):
+            if isinstance(node, ast.FunctionDef) and node.name.startswith('test_'):
+                return True
+            elif isinstance(node, ast.ClassDef) and ("TestCase" in node.bases or node.name.startswith('Test')):
                 return True
         return False
 
