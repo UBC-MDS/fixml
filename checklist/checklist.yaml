@@ -5,14 +5,14 @@ Title: Checklist for Tests in Machine Learning Projects
 Description: Description about the project and its context
 Test Areas:
   - General:
-      - Description: |
+      - Description: >
           The following items describe best practices for all tests to be
           written.
         Items:
           - Title: Write Descriptive Test Names
-            Recommendation: |
+            Recommendation: >
               Every test function should have a clear, descriptive name
-            Explanation: |
+            Explanation: >
               If out tests are narrow and sufficiently descriptive, the test
               name itself may give us enough information to start debugging.
               This also helps us to identify what is being tested inside the
@@ -22,10 +22,10 @@ Test Areas:
               - https://testing.googleblog.com/2024/05/test-failures-should-be-actionable.html
 
           - Title: Keep Tests Focused
-            Recommendation: |
+            Recommendation: >
               Each test should only test one scenario, meaning that in each
               test we should only use one set of mock data.
-            Explanation: |
+            Explanation: >
               If we test multiple scenarios in a single test, it is hard to
               idenitfy exactly what went wrong. Keeping one scenario in a
               single test helps us to isolate problematic scenarios.
@@ -33,11 +33,11 @@ Test Areas:
               - https://testing.googleblog.com/2018/06/testing-on-toilet-keep-tests-focused.html
 
           - Title: Prefer Narrow Assertions in Unit Tests
-            Recommendation: |
+            Recommendation: >
               The assertions inside the tests should be narrow, meaning that
               when checking a complex object, any unrelated behavior should
               not be tested - Assert on only relevant behaviors.
-            Explanation: |
+            Explanation: >
               If we have overly wide assertions (such as depending on every
               field of a complex output proto), the test may fail for many
               unimportant reasons. False positives are the opoosite of
@@ -46,10 +46,10 @@ Test Areas:
               - https://testing.googleblog.com/2024/04/prefer-narrow-assertions-in-unit-tests.html
 
           - Title: Keep Cause and Effect Clear
-            Recommendation: |
+            Recommendation: >
               The modifications and the assertions of an object's behavior
               in a single test should not be far away from each other.
-            Explanation: |
+            Explanation: >
               Refrain from using large global test data structures shared
               across multiple unit tests. This will allow for clear
               identification of each test's setup and the cause and effect.
@@ -57,14 +57,14 @@ Test Areas:
               - https://testing.googleblog.com/2017/01/testing-on-toilet-keep-cause-and-effect.html
 
   - Data Presence:
-      - Description: |
+      - Description: >
           The following items describe tests that need to be done for testing
           the presence of data.
         Items:
           - Title: Dummy Title
-            Recommendation: |
+            Recommendation: >
               This is a dummy item and there is nothing needed to act on.
-            Explanation: |
+            Explanation: >
               This is a dummy item to show how the checklist items would be
               stored inside this YAML file. It serves no other propose.
             References:
@@ -72,14 +72,14 @@ Test Areas:
               - UBC-MDS
 
   - Data Quality:
-      - Description: |
+      - Description: >
           The following items describe tests that need to be done for testing
           the quality of data.
         Items:
           - Title: Dummy Title
-            Recommendation: |
+            Recommendation: >
               This is a dummy item and there is nothing needed to act on.
-            Explanation: |
+            Explanation: >
               This is a dummy item to show how the checklist items would be
               stored inside this YAML file. It serves no other propose.
             References:
@@ -88,14 +88,14 @@ Test Areas:
 
   - Data Ingestion:
 
-      - Description: |
+      - Description: >
           The following items describe tests that need to be done for testing
           if the data is ingestion properly.
         Items:
           - Title: Dummy Title
-            Recommendation: |
+            Recommendation: >
               This is a dummy item and there is nothing needed to act on.
-            Explanation: |
+            Explanation: >
               This is a dummy item to show how the checklist items would be
               stored inside this YAML file. It serves no other propose.
             References:
@@ -104,14 +104,14 @@ Test Areas:
 
   - Model Fitting:
 
-      - Description: |
+      - Description: >
           The following items describe tests that need to be done for testing
           the model fitting process.
         Items:
           - Title: Dummy Title
-            Recommendation: |
+            Recommendation: >
               This is a dummy item and there is nothing needed to act on.
-            Explanation: |
+            Explanation: >
               This is a dummy item to show how the checklist items would be
               stored inside this YAML file. It serves no other propose.
             References:
@@ -120,14 +120,14 @@ Test Areas:
 
   - Model Evaluation:
 
-      - Description: |
+      - Description: >
           The following items describe tests that need to be done for testing
           the model evaluation process.
         Items:
           - Title: Dummy Title
-            Recommendation: |
+            Recommendation: >
               This is a dummy item and there is nothing needed to act on.
-            Explanation: |
+            Explanation: >
               This is a dummy item to show how the checklist items would be
               stored inside this YAML file. It serves no other propose.
             References:
@@ -136,14 +136,14 @@ Test Areas:
 
   - Artifact Testing:
 
-      - Description: |
+      - Description: >
           The following items describe tests that need to be done for testing
           any artifacts that are created from the project.
         Items:
           - Title: Dummy Title
-            Recommendation: |
+            Recommendation: >
               This is a dummy item and there is nothing needed to act on.
-            Explanation: |
+            Explanation: >
               This is a dummy item to show how the checklist items would be
               stored inside this YAML file. It serves no other propose.
             References:
