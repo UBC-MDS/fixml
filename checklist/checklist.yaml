@@ -4,144 +4,144 @@ Title: Checklist for Tests in Machine Learning Projects
 # TODO: To be filled in later...
 Description: Description about the project and its context
 Test Areas:
-  - General:
-      Description: >
-        The following items describe best practices for all tests to be
-        written.
-      Items:
-        - Title: Write Descriptive Test Names
-          Requirement: >
-            Every test function should have a clear, descriptive name
-          Explanation: >
-            If out tests are narrow and sufficiently descriptive, the test
-            name itself may give us enough information to start debugging.
-            This also helps us to identify what is being tested inside the
-            function.
-          References:
-            - https://testing.googleblog.com/2014/10/testing-on-toilet-writing-descriptive.html
-            - https://testing.googleblog.com/2024/05/test-failures-should-be-actionable.html
+  - Topic: General
+    Description: >
+      The following items describe best practices for all tests to be
+      written.
+    Tests:
+      - Title: Write Descriptive Test Names
+        Requirement: >
+          Every test function should have a clear, descriptive name
+        Explanation: >
+          If out tests are narrow and sufficiently descriptive, the test
+          name itself may give us enough information to start debugging.
+          This also helps us to identify what is being tested inside the
+          function.
+        References:
+          - https://testing.googleblog.com/2014/10/testing-on-toilet-writing-descriptive.html
+          - https://testing.googleblog.com/2024/05/test-failures-should-be-actionable.html
 
-        - Title: Keep Tests Focused
-          Requirement: >
-            Each test should only test one scenario, meaning that in each
-            test we should only use one set of mock data.
-          Explanation: >
-            If we test multiple scenarios in a single test, it is hard to
-            idenitfy exactly what went wrong. Keeping one scenario in a
-            single test helps us to isolate problematic scenarios.
-          References:
-            - https://testing.googleblog.com/2018/06/testing-on-toilet-keep-tests-focused.html
+      - Title: Keep Tests Focused
+        Requirement: >
+          Each test should only test one scenario, meaning that in each
+          test we should only use one set of mock data.
+        Explanation: >
+          If we test multiple scenarios in a single test, it is hard to
+          idenitfy exactly what went wrong. Keeping one scenario in a
+          single test helps us to isolate problematic scenarios.
+        References:
+          - https://testing.googleblog.com/2018/06/testing-on-toilet-keep-tests-focused.html
 
-        - Title: Prefer Narrow Assertions in Unit Tests
-          Requirement: >
-            The assertions inside the tests should be narrow, meaning that
-            when checking a complex object, any unrelated behavior should
-            not be tested - Assert on only relevant behaviors.
-          Explanation: >
-            If we have overly wide assertions (such as depending on every
-            field of a complex output proto), the test may fail for many
-            unimportant reasons. False positives are the opoosite of
-            actionable.
-          References:
-            - https://testing.googleblog.com/2024/04/prefer-narrow-assertions-in-unit-tests.html
+      - Title: Prefer Narrow Assertions in Unit Tests
+        Requirement: >
+          The assertions inside the tests should be narrow, meaning that
+          when checking a complex object, any unrelated behavior should
+          not be tested - Assert on only relevant behaviors.
+        Explanation: >
+          If we have overly wide assertions (such as depending on every
+          field of a complex output proto), the test may fail for many
+          unimportant reasons. False positives are the opoosite of
+          actionable.
+        References:
+          - https://testing.googleblog.com/2024/04/prefer-narrow-assertions-in-unit-tests.html
 
-        - Title: Keep Cause and Effect Clear
-          Requirement: >
-            The modifications and the assertions of an object's behavior
-            in a single test should not be far away from each other.
-          Explanation: >
-            Refrain from using large global test data structures shared
-            across multiple unit tests. This will allow for clear
-            identification of each test's setup and the cause and effect.
-          References:
-            - https://testing.googleblog.com/2017/01/testing-on-toilet-keep-cause-and-effect.html
+      - Title: Keep Cause and Effect Clear
+        Requirement: >
+          The modifications and the assertions of an object's behavior
+          in a single test should not be far away from each other.
+        Explanation: >
+          Refrain from using large global test data structures shared
+          across multiple unit tests. This will allow for clear
+          identification of each test's setup and the cause and effect.
+        References:
+          - https://testing.googleblog.com/2017/01/testing-on-toilet-keep-cause-and-effect.html
 
-  - Data Presence:
-      Description: >
-        The following items describe tests that need to be done for testing
-        the presence of data.
-      Items:
-        - Title: Dummy Title
-          Requirement: >
-            This is a dummy item and there is nothing needed to act on.
-          Explanation: >
-            This is a dummy item to show how the checklist items would be
-            stored inside this YAML file. It serves no other propose.
-          References:
-            - http://128.0.0.1
-            - UBC-MDS
+  - Topic: Data Presence
+    Description: >
+      The following items describe tests that need to be done for testing
+      the presence of data.
+    Tests:
+      - Title: Dummy Title
+        Requirement: >
+          This is a dummy item and there is nothing needed to act on.
+        Explanation: >
+          This is a dummy item to show how the checklist items would be
+          stored inside this YAML file. It serves no other propose.
+        References:
+          - http://128.0.0.1
+          - UBC-MDS
 
-  - Data Quality:
-      Description: >
-        The following items describe tests that need to be done for testing
-        the quality of data.
-      Items:
-        - Title: Dummy Title
-          Requirement: >
-            This is a dummy item and there is nothing needed to act on.
-          Explanation: >
-            This is a dummy item to show how the checklist items would be
-            stored inside this YAML file. It serves no other propose.
-          References:
-            - http://128.0.0.1
-            - UBC-MDS
+  - Topic: Data Quality
+    Description: >
+      The following items describe tests that need to be done for testing
+      the quality of data.
+    Tests:
+      - Title: Dummy Title
+        Requirement: >
+          This is a dummy item and there is nothing needed to act on.
+        Explanation: >
+          This is a dummy item to show how the checklist items would be
+          stored inside this YAML file. It serves no other propose.
+        References:
+          - http://128.0.0.1
+          - UBC-MDS
 
-  - Data Ingestion:
-      Description: >
-        The following items describe tests that need to be done for testing
-        if the data is ingestion properly.
-      Items:
-        - Title: Dummy Title
-          Requirement: >
-            This is a dummy item and there is nothing needed to act on.
-          Explanation: >
-            This is a dummy item to show how the checklist items would be
-            stored inside this YAML file. It serves no other propose.
-          References:
-            - http://128.0.0.1
-            - UBC-MDS
+  - Topic: Data Ingestion
+    Description: >
+      The following items describe tests that need to be done for testing
+      if the data is ingestion properly.
+    Tests:
+      - Title: Dummy Title
+        Requirement: >
+          This is a dummy item and there is nothing needed to act on.
+        Explanation: >
+          This is a dummy item to show how the checklist items would be
+          stored inside this YAML file. It serves no other propose.
+        References:
+          - http://128.0.0.1
+          - UBC-MDS
 
-  - Model Fitting:
-      Description: >
-        The following items describe tests that need to be done for testing
-        the model fitting process.
-      Items:
-        - Title: Dummy Title
-          Requirement: >
-            This is a dummy item and there is nothing needed to act on.
-          Explanation: >
-            This is a dummy item to show how the checklist items would be
-            stored inside this YAML file. It serves no other propose.
-          References:
-            - http://128.0.0.1
-            - UBC-MDS
+  - Topic: Model Fitting
+    Description: >
+      The following items describe tests that need to be done for testing
+      the model fitting process.
+    Tests:
+      - Title: Dummy Title
+        Requirement: >
+          This is a dummy item and there is nothing needed to act on.
+        Explanation: >
+          This is a dummy item to show how the checklist items would be
+          stored inside this YAML file. It serves no other propose.
+        References:
+          - http://128.0.0.1
+          - UBC-MDS
 
-  - Model Evaluation:
-      Description: >
-        The following items describe tests that need to be done for testing
-        the model evaluation process.
-      Items:
-        - Title: Dummy Title
-          Requirement: >
-            This is a dummy item and there is nothing needed to act on.
-          Explanation: >
-            This is a dummy item to show how the checklist items would be
-            stored inside this YAML file. It serves no other propose.
-          References:
-            - http://128.0.0.1
-            - UBC-MDS
+  - Topic: Model Evaluation
+    Description: >
+      The following items describe tests that need to be done for testing
+      the model evaluation process.
+    Tests:
+      - Title: Dummy Title
+        Requirement: >
+          This is a dummy item and there is nothing needed to act on.
+        Explanation: >
+          This is a dummy item to show how the checklist items would be
+          stored inside this YAML file. It serves no other propose.
+        References:
+          - http://128.0.0.1
+          - UBC-MDS
 
-  - Artifact Testing:
-      Description: >
-        The following items describe tests that need to be done for testing
-        any artifacts that are created from the project.
-      Items:
-        - Title: Dummy Title
-          Requirement: >
-            This is a dummy item and there is nothing needed to act on.
-          Explanation: >
-            This is a dummy item to show how the checklist items would be
-            stored inside this YAML file. It serves no other propose.
-          References:
-            - http://128.0.0.1
-            - UBC-MDS
+  - Topic: Artifact Testing
+    Description: >
+      The following items describe tests that need to be done for testing
+      any artifacts that are created from the project.
+    Tests:
+      - Title: Dummy Title
+        Requirement: >
+          This is a dummy item and there is nothing needed to act on.
+        Explanation: >
+          This is a dummy item to show how the checklist items would be
+          stored inside this YAML file. It serves no other propose.
+        References:
+          - http://128.0.0.1
+          - UBC-MDS
