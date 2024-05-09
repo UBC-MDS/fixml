@@ -84,15 +84,32 @@ Test Areas:
         The following items describe tests that need to be done for testing
         the quality of data.
       Items:
-        - Title: Dummy Title
+        - Title: Verify File Content
           Requirement: >
-            This is a dummy item and there is nothing needed to act on.
+            Ensure that all data files are non-empty and contain the necessary data to proceed with the analysis or processing tasks.
           Explanation: >
-            This is a dummy item to show how the checklist items would be
-            stored inside this YAML file. It serves no other propose.
+            This checklist item is crucial as it confirms the presence of usable data within the files. It prevents errors in later stages of the project by ensuring data is available from the start.
           References:
-            - http://128.0.0.1
+            - https://microsoft.github.io/code-with-engineering-playbook 
             - UBC-MDS
+        
+        - Title: Verify Data/Image Format
+          Requirement: >
+            Check that all data and images are in the formats expected by the processing algorithms (e.g., CSV, JPEG, PNG) and that their structure matches the expected schema.
+          Explanation: >
+            Ensuring that data and images are in the correct format is essential for compatibility with processing tools and algorithms, which may not handle unexpected formats gracefully.
+          References:
+            - https://microsoft.github.io/code-with-engineering-playbook 
+            - UBC-MDS 
+
+        - Title: Check for Nulls and Outliers
+          Requirement: >
+            Verify that the data files are free of null values and identify any outliers that may skew the results or affect the analysis.
+          Explanation: >
+            Null values can lead to errors or inaccurate computations in many data processing applications, while outliers can distort statistical analyses and models.
+          References:
+            - https://microsoft.github.io/code-with-engineering-playbook 
+            - UBC-MDS 
 
   - Data Ingestion:
       Description: >
