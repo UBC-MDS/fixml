@@ -61,14 +61,22 @@ Test Areas:
         The following items describe tests that need to be done for testing
         the presence of data.
       Items:
-        - Title: Dummy Title
+        - Title: Validate Data File Loading Functionality
           Requirement: >
-            This is a dummy item and there is nothing needed to act on.
+            Verify that the function for loading data files operates correctly across various file formats and handles errors gracefully.
           Explanation: >
-            This is a dummy item to show how the checklist items would be
-            stored inside this YAML file. It serves no other propose.
+            This item ensures that the data loading mechanism is robust, correctly parses different file types, and provides useful error messages when unable to load data. This test is crucial for the initial steps of data handling in the pipeline.
           References:
-            - http://128.0.0.1
+            - https://microsoft.github.io/code-with-engineering-playbook
+            - UBC-MDS
+  
+        - Title: Validate Data and Figures Saving Functionality
+          Requirement: >
+            Ensure that the function for saving data and figures operates correctly, saving files in the specified formats and locations without corruption or data loss.
+          Explanation: >
+            This item tests the reliability and effectiveness of the saving mechanism used in the project. It is crucial for preserving the results of data analyses and visualizations for future use or review.
+          References:
+            - https://microsoft.github.io/code-with-engineering-playbook
             - UBC-MDS
 
   - Data Quality:
