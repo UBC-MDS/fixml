@@ -3,8 +3,9 @@
 
 title: "Checklists and LLM prompts for efficient and effective test creation in data analysis"
 author: "John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin"
+copyright: "2024"
 logo: logo.png
-
+exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 sphinx:
   config:
     bibtex_reference_style: author_year
