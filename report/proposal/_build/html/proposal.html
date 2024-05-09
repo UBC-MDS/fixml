@@ -372,17 +372,15 @@ document.write(`
 <section id="our-product">
 <h2>Our Product<a class="headerlink" href="#our-product" title="Permalink to this heading">#</a></h2>
 <p>Our solution offers an end-to-end application for evaluating and enhancing the robustness of users’ ML systems.</p>
-<p>Here is a diagram serving as a high-level overview of our proposed system:</p>
 <figure class="align-default" id="overview-diagram">
 <img alt="_images/proposed_system_overview.png" src="_images/proposed_system_overview.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Main components and workflow of the proposed system.</span><a class="headerlink" href="#overview-diagram" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Main components and workflow of the proposed system. The checklist would be written in <a class="reference external" href="https://yaml.org/">YAML</a> to maximize readability for both humans and machines. We hope this will encourage researchers/users to read, understand and modify the checklist items, while keeping the checklist closely integrated with other components in our system.</span><a class="headerlink" href="#overview-diagram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>One big challenge in utilizing LLMs to reliably and consistently evaluate ML systems is their tendency to generate illogical and/or factually wrong information known as hallucination <span id="id5">[<a class="reference internal" href="#id17" title="Yue Zhang, Yafu Li, Leyang Cui, Deng Cai, Lemao Liu, Tingchen Fu, Xinting Huang, Enbo Zhao, Yu Zhang, Yulong Chen, Longyue Wang, Anh Tuan Luu, Wei Bi, Freda Shi, and Shuming Shi. Siren's song in the ai ocean: a survey on hallucination in large language models. 2023. arXiv:2309.01219.">Zhang <em>et al.</em>, 2023</a>]</span>.</p>
-<p>To combat this, the proposed system will incorporate a checklist which would be curated manually and incorporate best practices in software testing and identified areas to be tested inside ML pipeline from human experts and past research.</p>
+<p>To combat this, the proposed system will incorporate a checklist (<a class="reference internal" href="#overview-diagram"><span class="std std-ref">Fig. 1</span></a>) which would be curated manually and incorporate best practices in software testing and identified areas to be tested inside ML pipeline from human experts and past research.</p>
 <p>This checklist will be our basis in evaluating the effectiveness and completeness of existing tests in a given codebase. Relevant information will be injected into a prompt template, which the LLMs would then be prompted to follow the checklist <strong>exactly</strong> during the evaluation.</p>
-<p>We also propose to store the checklist in <a class="reference external" href="https://yaml.org/">YAML</a> format to maximize readability for both humans and machines, which will encourage researchers/users to read, understand and modify the checklist items. Doing so will also make sure that the checklist remains closely integrated with other components in our system.</p>
 <p>Here is an example of how the proposed checklist would be structured:</p>
 <div class="toggle docutils container">
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
@@ -392,123 +390,123 @@ document.write(`
 <span class="w">  </span><span class="no">This is a comprehensive checklist for evaluating the data and ML pipeline</span>
 <span class="w">  </span><span class="no">based on identified testing strategies from experts in the field.</span>
 <span class="nt">Test Areas</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">General</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">        </span><span class="no">The following items describe best practices for all tests to be</span>
-<span class="w">        </span><span class="no">written.</span>
-<span class="w">      </span><span class="nt">Items</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write Descriptive Test Names</span>
-<span class="w">          </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">            </span><span class="no">Every test function should have a clear, descriptive name</span>
-<span class="w">          </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">            </span><span class="no">If out tests are narrow and sufficiently descriptive, the test</span>
-<span class="w">            </span><span class="no">name itself may give us enough information to start debugging.</span>
-<span class="w">            </span><span class="no">This also helps us to identify what is being tested inside the</span>
-<span class="w">            </span><span class="no">function.</span>
-<span class="w">          </span><span class="nt">References</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2014/10/testing-on-toilet-writing-descriptive.html</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2024/05/test-failures-should-be-actionable.html</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">General</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe best practices for all tests to be</span>
+<span class="w">      </span><span class="no">written.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write Descriptive Test Names</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">Every test function should have a clear, descriptive name</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">If out tests are narrow and sufficiently descriptive, the test</span>
+<span class="w">          </span><span class="no">name itself may give us enough information to start debugging.</span>
+<span class="w">          </span><span class="no">This also helps us to identify what is being tested inside the</span>
+<span class="w">          </span><span class="no">function.</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2014/10/testing-on-toilet-writing-descriptive.html</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2024/05/test-failures-should-be-actionable.html</span>
 
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Keep Tests Focused</span>
-<span class="w">          </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">            </span><span class="no">Each test should only test one scenario, meaning that in each</span>
-<span class="w">            </span><span class="no">test we should only use one set of mock data.</span>
-<span class="w">          </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">            </span><span class="no">If we test multiple scenarios in a single test, it is hard to</span>
-<span class="w">            </span><span class="no">idenitfy exactly what went wrong. Keeping one scenario in a</span>
-<span class="w">            </span><span class="no">single test helps us to isolate problematic scenarios.</span>
-<span class="w">          </span><span class="nt">References</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2018/06/testing-on-toilet-keep-tests-focused.html</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Keep Tests Focused</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">Each test should only test one scenario, meaning that in each</span>
+<span class="w">          </span><span class="no">test we should only use one set of mock data.</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">If we test multiple scenarios in a single test, it is hard to</span>
+<span class="w">          </span><span class="no">idenitfy exactly what went wrong. Keeping one scenario in a</span>
+<span class="w">          </span><span class="no">single test helps us to isolate problematic scenarios.</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2018/06/testing-on-toilet-keep-tests-focused.html</span>
 
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefer Narrow Assertions in Unit Tests</span>
-<span class="w">          </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">            </span><span class="no">The assertions inside the tests should be narrow, meaning that</span>
-<span class="w">            </span><span class="no">when checking a complex object, any unrelated behavior should</span>
-<span class="w">            </span><span class="no">not be tested - Assert on only relevant behaviors.</span>
-<span class="w">          </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">            </span><span class="no">If we have overly wide assertions (such as depending on every</span>
-<span class="w">            </span><span class="no">field of a complex output proto), the test may fail for many</span>
-<span class="w">            </span><span class="no">unimportant reasons. False positives are the opposite of</span>
-<span class="w">            </span><span class="no">actionable.</span>
-<span class="w">          </span><span class="nt">References</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2024/04/prefer-narrow-assertions-in-unit-tests.html</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefer Narrow Assertions in Unit Tests</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">The assertions inside the tests should be narrow, meaning that</span>
+<span class="w">          </span><span class="no">when checking a complex object, any unrelated behavior should</span>
+<span class="w">          </span><span class="no">not be tested - Assert on only relevant behaviors.</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">If we have overly wide assertions (such as depending on every</span>
+<span class="w">          </span><span class="no">field of a complex output proto), the test may fail for many</span>
+<span class="w">          </span><span class="no">unimportant reasons. False positives are the opposite of</span>
+<span class="w">          </span><span class="no">actionable.</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2024/04/prefer-narrow-assertions-in-unit-tests.html</span>
 
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Keep Cause and Effect Clear</span>
-<span class="w">          </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">            </span><span class="no">The modifications and the assertions of an object&#39;s behavior</span>
-<span class="w">            </span><span class="no">in a single test should not be far away from each other.</span>
-<span class="w">          </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">            </span><span class="no">Refrain from using large global test data structures shared</span>
-<span class="w">            </span><span class="no">across multiple unit tests. This will allow for clear</span>
-<span class="w">            </span><span class="no">identification of each test&#39;s setup and the cause and effect.</span>
-<span class="w">          </span><span class="nt">References</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2017/01/testing-on-toilet-keep-cause-and-effect.html</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Keep Cause and Effect Clear</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">The modifications and the assertions of an object&#39;s behavior</span>
+<span class="w">          </span><span class="no">in a single test should not be far away from each other.</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">Refrain from using large global test data structures shared</span>
+<span class="w">          </span><span class="no">across multiple unit tests. This will allow for clear</span>
+<span class="w">          </span><span class="no">identification of each test&#39;s setup and the cause and effect.</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2017/01/testing-on-toilet-keep-cause-and-effect.html</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Data Presence</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">        </span><span class="no">The following items describe tests that need to be done for testing</span>
-<span class="w">        </span><span class="no">the presence of data.</span>
-<span class="w">      </span><span class="nt">Items</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">References</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data Presence</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">the presence of data.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Data Quality</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">        </span><span class="no">The following items describe tests that need to be done for testing</span>
-<span class="w">        </span><span class="no">the quality of data.</span>
-<span class="w">      </span><span class="nt">Items</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">References</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data Quality</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">the quality of data.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Data Ingestion</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">        </span><span class="no">The following items describe tests that need to be done for testing</span>
-<span class="w">        </span><span class="no">if the data is ingestion properly.</span>
-<span class="w">      </span><span class="nt">Items</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">References</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data Ingestion</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">if the data is ingestion properly.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Model Fitting</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">        </span><span class="no">The following items describe tests that need to be done for testing</span>
-<span class="w">        </span><span class="no">the model fitting process.</span>
-<span class="w">      </span><span class="nt">Items</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">References</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Model Fitting</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">the model fitting process.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Model Evaluation</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">        </span><span class="no">The following items describe tests that need to be done for testing</span>
-<span class="w">        </span><span class="no">the model evaluation process.</span>
-<span class="w">      </span><span class="nt">Items</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">References</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Model Evaluation</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">the model evaluation process.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Artifact Testing</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">        </span><span class="no">The following items describe tests that need to be done for testing</span>
-<span class="w">        </span><span class="no">any artifacts that are created from the project.</span>
-<span class="w">      </span><span class="nt">Items</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">          </span><span class="nt">References</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Artifact Testing</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">any artifacts that are created from the project.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </pre></div>
 </div>
 </div>
