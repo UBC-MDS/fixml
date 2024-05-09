@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Proposal Report: Checklists and LLM prompts for efficient and effective test creation in data analysis &#8212; Checklists and LLM prompts for efficient and effective test creation in data analysis</title>
+    <title>Proposal Report - Checklists and LLM prompts for efficient and effective test creation in data analysis &#8212; Checklists and LLM prompts for efficient and effective test creation in data analysis</title>
   
   
   
@@ -166,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Proposal Report: Checklists and LLM prompts for efficient and effective test creation in data analysis
+                    Proposal Report - Checklists and LLM prompts for efficient and effective test creation in data analysis
                 </a>
             </li>
         </ul>
@@ -307,7 +307,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Proposal Report: Checklists and LLM prompts for efficient and effective test creation in data analysis</h1>
+    <h1>Proposal Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -324,7 +324,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-product">Our Product</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-artifacts">Evaluation Artifacts</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#success-metrics">Success Metrics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-approach">Data Science Approach</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-github-repositories">Data: GitHub Repositories</a></li>
@@ -348,97 +348,222 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="proposal-report-checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis">
-<h1>Proposal Report: Checklists and LLM prompts for efficient and effective test creation in data analysis<a class="headerlink" href="#proposal-report-checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis" title="Permalink to this heading">#</a></h1>
+<h1>Proposal Report - Checklists and LLM prompts for efficient and effective test creation in data analysis<a class="headerlink" href="#proposal-report-checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis" title="Permalink to this heading">#</a></h1>
 <p>by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin</p>
 <section id="executive-summary">
 <h2>Executive Summary<a class="headerlink" href="#executive-summary" title="Permalink to this heading">#</a></h2>
-<p>The rapid growth of global artificial intelligence (AI) market presents both opportunities and challenges. While AI systems have the potential to impact various aspects of human life, ensuring their software quality remains a significant concern. Current testing strategies for machine learning (ML) systems lack standardization and comprehensiveness, which poses risks to stakeholders such as financial losses and safety hazards.</p>
-<p>Our proposal addresses this challenge by developing an end-to-end application that provides comprehensive test evaluation, tailored test recommendations, and automated test specifications generation. Through these features, users can systematically assess, improve, and include tests tailored to their ML systems. By leveraging human expertise and prompt engineering, we build our product to deliver actionable insights for improving users’ test strategies and overall ML system reliability.</p>
-<p>With an iterative development approach, we aim to develop our minimum viable product (MVP) in the first two weeks. We will further iterate and refine our product over the next 3 weeks. During the last 2 weeks, we will carry out rigorous system testing, finalize our final product and report, and deliver to our partners. Ultimately, our goal is to mitigate potential negative societal impacts associated with unreliable ML systems and promote trustworthiness.</p>
+<p>The rapid growth of global artificial intelligence (AI) markets presents opportunities and challenges. While AI systems have the potential to impact various aspects of human life, ensuring their software quality remains a significant concern. Current testing strategies for machine learning (ML) systems lack standardization and comprehensiveness, which poses risks to stakeholders, such as financial losses and safety hazards.</p>
+<p>Our proposal addresses this challenge by developing a manually curated checklist which contains best practices and recommendations in testing ML systems. Additionally, an end-to-end application incorporating the checklist and Large Language Model (LLM) will be developed to analyze given ML system source codes and provide test completeness evaluation, missing test recommendations, and test function specification generation. Our proposed solution will enable users to systematically assess, improve, and include tests tailored to their ML systems through a combination of human expertise codified within the checklist and parametric memory from LLMs.</p>
+<p>In the following weeks, we will develop and refine our product through a swift and efficient iterative development approach, with the aim to deliver a rigorously tested and fully-documented system to our partners by the end of the project.</p>
 </section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <section id="problem-statement">
 <h3>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this heading">#</a></h3>
-<p>Global artificial intelligence (AI) market is growing exponentially <span id="id1">[<a class="reference internal" href="#id10" title="Grand-View-Research. Artificial intelligence market size, share &amp; trends analysis report by solution, by technology (deep learning, machine learning), by end-use, by region, and segment forecasts, 2023 2030. 2021.">Grand-View-Research, 2021</a>]</span>, which is driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis, etc.</p>
-<p>However, ensuring the software quality of these systems remains a significant challenge <span id="id2">[<a class="reference internal" href="#id11" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span>. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses <span id="id3">[<a class="reference internal" href="#id12" title="Asheeta Regidi. Sebi's circular: the black box conundrum and misrepresentation in ai-based mutual funds. 2019. URL: https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html.">Regidi, 2019</a>]</span> and safety hazards.</p>
-<p>Therefore, it is crucial to define and promote an industry standard and establish robust testing methodologies for these systems. But how?</p>
+<p>The global artificial intelligence (AI) market is growing exponentially <span id="id1">[<a class="reference internal" href="#id11" title="Grand-View-Research. Artificial intelligence market size, share &amp; trends analysis report by solution, by technology (deep learning, machine learning), by end-use, by region, and segment forecasts, 2023 2030. 2021.">Grand-View-Research, 2021</a>]</span>, driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.</p>
+<p>However, ensuring the software quality of these systems remains a significant challenge <span id="id2">[<a class="reference internal" href="#id12" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span>. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses <span id="id3">[<a class="reference internal" href="#id13" title="Asheeta Regidi. Sebi's circular: the black box conundrum and misrepresentation in ai-based mutual funds. 2019. URL: https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html.">Regidi, 2019</a>]</span> and safety hazards.</p>
+<p>Therefore, defining and promoting an industry standard and establishing robust testing methodologies for these systems is crucial. But how?</p>
 </section>
 <section id="our-objectives">
 <h3>Our Objectives<a class="headerlink" href="#our-objectives" title="Permalink to this heading">#</a></h3>
-<p>We propose to develop testing suites based on Large Language Models (LLMs), to offer flexibility and to facilitate comprehensive testing of ML systems. Our goal is to enhance the trustworthiness and robustness of applied ML software and improve the quality and reproducibility of ML systems across both industry and academia <span id="id4">[<a class="reference internal" href="#id13" title="Sayash Kapoor and Arvind Narayanan. Leakage and the reproducibility crisis in ml-based science. arXiv preprint arXiv:2207.07048, 2022.">Kapoor and Narayanan, 2022</a>]</span>.</p>
+<p>We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate a checklist to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software’s trustworthiness, quality, and reproducibility across both the industry and academia <span id="id4">[<a class="reference internal" href="#id14" title="Sayash Kapoor and Arvind Narayanan. Leakage and the reproducibility crisis in ml-based science. arXiv preprint arXiv:2207.07048, 2022.">Kapoor and Narayanan, 2022</a>]</span>.</p>
 </section>
 </section>
 <section id="our-product">
 <h2>Our Product<a class="headerlink" href="#our-product" title="Permalink to this heading">#</a></h2>
-<p>Our solution offers an end-to-end application for evaluating and enhancing the robustness of users’ machine learning (ML) systems. Key features include:</p>
+<p>Our solution offers an end-to-end application for evaluating and enhancing the robustness of users’ ML systems.</p>
+<figure class="align-default" id="overview-diagram">
+<img alt="_images/proposed_system_overview.png" src="_images/proposed_system_overview.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Main components and workflow of the proposed system. The checklist would be written in <a class="reference external" href="https://yaml.org/">YAML</a> to maximize readability for both humans and machines. We hope this will encourage researchers/users to read, understand and modify the checklist items, while keeping the checklist closely integrated with other components in our system.</span><a class="headerlink" href="#overview-diagram" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>One big challenge in utilizing LLMs to reliably and consistently evaluate ML systems is their tendency to generate illogical and/or factually wrong information known as hallucination <span id="id5">[<a class="reference internal" href="#id17" title="Yue Zhang, Yafu Li, Leyang Cui, Deng Cai, Lemao Liu, Tingchen Fu, Xinting Huang, Enbo Zhao, Yu Zhang, Yulong Chen, Longyue Wang, Anh Tuan Luu, Wei Bi, Freda Shi, and Shuming Shi. Siren's song in the ai ocean: a survey on hallucination in large language models. 2023. arXiv:2309.01219.">Zhang <em>et al.</em>, 2023</a>]</span>.</p>
+<p>To combat this, the proposed system will incorporate a checklist (<a class="reference internal" href="#overview-diagram"><span class="std std-ref">Fig. 1</span></a>) which would be curated manually and incorporate best practices in software testing and identified areas to be tested inside ML pipeline from human experts and past research.</p>
+<p>This checklist will be our basis in evaluating the effectiveness and completeness of existing tests in a given codebase. Relevant information will be injected into a prompt template, which the LLMs would then be prompted to follow the checklist <strong>exactly</strong> during the evaluation.</p>
+<p>Here is an example of how the proposed checklist would be structured:</p>
+<div class="toggle docutils container">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
+<span class="nn">---</span>
+<span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checklist for Tests in Machine Learning Projects</span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">  </span><span class="no">This is a comprehensive checklist for evaluating the data and ML pipeline</span>
+<span class="w">  </span><span class="no">based on identified testing strategies from experts in the field.</span>
+<span class="nt">Test Areas</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">General</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe best practices for all tests to be</span>
+<span class="w">      </span><span class="no">written.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write Descriptive Test Names</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">Every test function should have a clear, descriptive name</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">If out tests are narrow and sufficiently descriptive, the test</span>
+<span class="w">          </span><span class="no">name itself may give us enough information to start debugging.</span>
+<span class="w">          </span><span class="no">This also helps us to identify what is being tested inside the</span>
+<span class="w">          </span><span class="no">function.</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2014/10/testing-on-toilet-writing-descriptive.html</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2024/05/test-failures-should-be-actionable.html</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Keep Tests Focused</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">Each test should only test one scenario, meaning that in each</span>
+<span class="w">          </span><span class="no">test we should only use one set of mock data.</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">If we test multiple scenarios in a single test, it is hard to</span>
+<span class="w">          </span><span class="no">idenitfy exactly what went wrong. Keeping one scenario in a</span>
+<span class="w">          </span><span class="no">single test helps us to isolate problematic scenarios.</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2018/06/testing-on-toilet-keep-tests-focused.html</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefer Narrow Assertions in Unit Tests</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">The assertions inside the tests should be narrow, meaning that</span>
+<span class="w">          </span><span class="no">when checking a complex object, any unrelated behavior should</span>
+<span class="w">          </span><span class="no">not be tested - Assert on only relevant behaviors.</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">If we have overly wide assertions (such as depending on every</span>
+<span class="w">          </span><span class="no">field of a complex output proto), the test may fail for many</span>
+<span class="w">          </span><span class="no">unimportant reasons. False positives are the opposite of</span>
+<span class="w">          </span><span class="no">actionable.</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2024/04/prefer-narrow-assertions-in-unit-tests.html</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Keep Cause and Effect Clear</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">The modifications and the assertions of an object&#39;s behavior</span>
+<span class="w">          </span><span class="no">in a single test should not be far away from each other.</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">Refrain from using large global test data structures shared</span>
+<span class="w">          </span><span class="no">across multiple unit tests. This will allow for clear</span>
+<span class="w">          </span><span class="no">identification of each test&#39;s setup and the cause and effect.</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://testing.googleblog.com/2017/01/testing-on-toilet-keep-cause-and-effect.html</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data Presence</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">the presence of data.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data Quality</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">the quality of data.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data Ingestion</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">if the data is ingestion properly.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Model Fitting</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">the model fitting process.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Model Evaluation</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">the model evaluation process.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Artifact Testing</span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">The following items describe tests that need to be done for testing</span>
+<span class="w">      </span><span class="no">any artifacts that are created from the project.</span>
+<span class="w">    </span><span class="nt">Tests</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Requirement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">Explanation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">References</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+</div>
+<section id="evaluation-artifacts">
+<h3>Evaluation Artifacts<a class="headerlink" href="#evaluation-artifacts" title="Permalink to this heading">#</a></h3>
+<p>The end goal of our product is to generate the following three artifacts in relation to the evaluation of a given ML system codebase:</p>
 <ol class="arabic simple">
-<li><p>ML Test Completeness Evaluation</p></li>
-<li><p>Missing Test Recommendations</p></li>
-<li><p>Test Function Specification Test Generation</p></li>
+<li><p><strong>ML Test Completeness Score</strong>: The application utilizes LLMs and our curated checklist to analyze users’ ML system source code and returns a comprehensive score of the system’s test quality.</p></li>
+<li><p><strong>Missing Test Recommendations</strong>: The application evaluates the adequacy of existing tests for users’ ML code and offers recommendations for additional, system-specific tests to enhance testing effectiveness.</p></li>
+<li><p><strong>Test Function Specification Generation</strong>: Users select desired test recommendations and prompt the application to generate test function specifications and references. These are reliable starting points for users to enrich the ML system test suites.</p></li>
 </ol>
-<p>Here is a diagram serving as a high-level overview of our proposed system:</p>
-<p><img alt="" src="_images/proposed_system_overview.png" /></p>
-<section id="description">
-<h3>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h3>
-<p>Basically, our product can be utilized into 3 stages.</p>
-<ul>
-<li><p>Stage 1: ML Test Completeness Evaluation</p>
-<p>Users input the source code of their ML systems along with our suggested prompts into the application, which utilizes Large Language Model (LLM) to identify existing test suites within the code. A comprehensive report is generated and provides qualitative (e.g., test categories/strategies covered) and quantitative (e.g., test coverage/score) evaluations of the ML system’s test quality.</p>
-</li>
-<li><p>Stage 2: Missing Test Recommendations</p>
-<p>Based on the robust checklist created by our team for testing applied ML code, the application assesses the adequacy of existing tests. Recommendations on additional test categories/strategies are provided based on the ML system’s nature and test evaluation for improvement.</p>
-</li>
-<li><p>Stage 3: Test Function Specification Test Generation</p>
-<p>Users specify desired test categories/strategies and utilize our suggested LLM prompts within the application. The application autonomously engineers reproducible test data and software tests for reference, which serve as reliable starting points for users to utilize and improve their test suites within the ML systems.</p>
-</li>
-</ul>
 </section>
 <section id="success-metrics">
 <h3>Success Metrics<a class="headerlink" href="#success-metrics" title="Permalink to this heading">#</a></h3>
-<p>The success of our product will be dependent on the mutation testing result of the reference test cases generated by the application. A set of perturbations would be made to the ML project code and the success rate of detecting these perturbations by the implemented test cases will be recorded as the evaluation metric.</p>
-<p>Our partner and stakeholders would expect to see a significant improvement in testing strategies of their ML systems post-application usage. Moreover, the application would demonstrate high accuracy in detecting faults, which ensure consistent and high quality ML projects upon updates.</p>
+<p>Our product’s success will depend on mutation testing of the test functions developed based on our application-generated specifications. The evaluation metric is the success rate of detecting the perturbations introduced to the ML project code.</p>
+<p>Our partners and stakeholders expect a significant improvement in the testing suites of their ML systems post-application usage. As a result, the testing suites will demonstrate high accuracy in detecting faults, ensuring consistency and high quality of ML projects during updates.</p>
 </section>
 <section id="data-science-approach">
 <h3>Data Science Approach<a class="headerlink" href="#data-science-approach" title="Permalink to this heading">#</a></h3>
 <section id="data-github-repositories">
 <h4>Data: GitHub Repositories<a class="headerlink" href="#data-github-repositories" title="Permalink to this heading">#</a></h4>
 <p>In this project, GitHub repositories are our data.</p>
-<p>We will collect 11 repositories studied in <span id="id5">[<a class="reference internal" href="#id11" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span> for the development of our testing checklist. Additionally, we will collect 377 repositories identified in the study by <span id="id6">[<a class="reference internal" href="#id14" title="Supatsara Wattanakriengkrai, Bodin Chinthanet, Hideaki Hata, Raula Gaikovina Kula, Christoph Treude, Jin Guo, and Kenichi Matsumoto. Github repositories with links to academic papers: public access, traceability, and evolution. Journal of Systems and Software, 183:111117, 2022.">Wattanakriengkrai <em>et al.</em>, 2022</a>]</span> for our product development.</p>
-<p>For each repository, we are interested in the repository metadata, as well as the ML modeling- and test-related source code. The metadata will be retrieved using the GitHub API, while the source code will be downloaded and filtered using our custom scripts. To ensure the relevance of the repositories to our study, we will apply the following criteria for filtering:</p>
+<p>To develop our testing checklist, we will collect 11 repositories studied in <span id="id6">[<a class="reference internal" href="#id12" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span>. Additionally, we will collect 377 repositories identified in the study by <span id="id7">[<a class="reference internal" href="#id15" title="Supatsara Wattanakriengkrai, Bodin Chinthanet, Hideaki Hata, Raula Gaikovina Kula, Christoph Treude, Jin Guo, and Kenichi Matsumoto. Github repositories with links to academic papers: public access, traceability, and evolution. Journal of Systems and Software, 183:111117, 2022.">Wattanakriengkrai <em>et al.</em>, 2022</a>]</span> for our product development.</p>
+<p>For each repository, we are interested in the metadata and the ML modeling- and test-related source code. The metadata will be retrieved using the GitHub API, while the source code will be downloaded and filtered using our custom scripts. To ensure the relevance of the repositories to our study, we will apply the following criteria for filtering:</p>
 <ol class="arabic simple">
 <li><p>Repositories that are related to ML systems.</p></li>
 <li><p>Repositories that include test cases.</p></li>
-<li><p>Repositories whose development are written in the Python programming language.</p></li>
+<li><p>Repositories whose development is written in the Python programming language.</p></li>
 </ol>
 </section>
 <section id="methodologies">
 <h4>Methodologies<a class="headerlink" href="#methodologies" title="Permalink to this heading">#</a></h4>
-<p>Our data science methodology incorporates both human expert evaluation and prompt engineering to assess and enhance the test quality of ML systems.</p>
+<p>Our data science methodology incorporates human expert evaluation and prompt engineering to assess and enhance the test quality of ML systems.</p>
 <ul>
 <li><p>Human Expert Evaluation</p>
-<p>We will begin by formulating a comprehensive checklist for evaluating the data and ML pipeline based on established testing strategies outlined in <span id="id7">[<a class="reference internal" href="#id11" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span> as the foundational framework. for assessing test quality within selected repositories. Our team will manually evaluate the test quality within the repository data based on the formulated checklist. The checklist will be refined during the process to ensure its applicability and robustness testing general ML systems.</p>
+<p>We will begin by formulating a comprehensive checklist for evaluating the data and ML pipeline based on the established testing strategies outlined in <span id="id8">[<a class="reference internal" href="#id12" title="Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. arXiv preprint arXiv:2312.12604, 2023.">Openja <em>et al.</em>, 2023</a>]</span> as the foundational framework. Based on the formulated checklist, our team will manually assess the test quality within each repository data. We will refine the checklist to ensure applicability and robustness when testing general ML systems.</p>
 </li>
 <li><p>Prompt Engineering</p>
-<p>We will engineer prompts for LLM to serve various purposes across three stages:</p>
+<p>We will engineer the prompts for LLM to incorporate with the ML system code and the curated checklist and to serve various purposes across the three-stage process:</p>
 <ol class="arabic simple">
-<li><p>Prompts to examine test cases within ML system source codes and deliver qualitative and quantitative test scores.</p></li>
-<li><p>Prompts incorporated with the completed checklist to suggest potential testing strategies by comparing with ML system source codes.</p></li>
-<li><p>Prompts to generate test cases based on suggested testing strategies and ML system task types <span id="id8">[<a class="reference internal" href="#id15" title="Max Schäfer, Sarah Nadi, Aryaz Eghbali, and Frank Tip. An empirical evaluation of using large language models for automated unit test generation. IEEE Transactions on Software Engineering, 2023.">Schäfer <em>et al.</em>, 2023</a>]</span></p></li>
+<li><p>Prompts to examine test cases within the ML system source codes and deliver test completeness scores.</p></li>
+<li><p>Prompts to compare and contrast the existing tests and the checklist and deliver recommendations.</p></li>
+<li><p>Prompts to generate system-specific test specifications based on user-selected testing recommendations <span id="id9">[<a class="reference internal" href="#id16" title="Max Schäfer, Sarah Nadi, Aryaz Eghbali, and Frank Tip. An empirical evaluation of using large language models for automated unit test generation. IEEE Transactions on Software Engineering, 2023.">Schäfer <em>et al.</em>, 2023</a>]</span></p></li>
 </ol>
 </li>
 </ul>
 </section>
 <section id="iterative-development-approach">
 <h4>Iterative Development Approach<a class="headerlink" href="#iterative-development-approach" title="Permalink to this heading">#</a></h4>
-<p>As we leverage data from selected GitHub repositories and references research on testing strategies, it’s important to acknowledge that this may not include all ML systems or testing methodologies. To address these considerations, we adopt an iterative development approach by setting up an open and scalable framework for this project. Our application could then undergo continuous updates based on users’ feedback and contributors’ insights.</p>
-<p>We encourage users to interpret the artifacts generated by the application with a grain of salt and recognize the evolving nature of ML system testing practices.</p>
+<p>We begin by setting up a foundational framework based on the selected GitHub repositories and research on ML testing. The framework might not cover all ML systems or testing practices. Therefore, we adopt an iterative development approach by establishing an open and scalable framework to address these considerations. The application will be continuously refined based on contributors’ insights.</p>
+<p>Users are encouraged to interpret the generated artifacts with a grain of salt and recognize the evolving nature of ML system testing practices.</p>
 </section>
 </section>
 </section>
 <section id="delivery-timeline">
 <h2>Delivery Timeline<a class="headerlink" href="#delivery-timeline" title="Permalink to this heading">#</a></h2>
-<p>Our team follow a timeline for our product delivery. We also aim at close communication with our partner to align our product development with their expectation.</p>
+<p>Our team follows the timeline below for our product delivery and prioritizes close communication with our partners to ensure that our developments align closely with their expectations.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Timeline</p></th>
@@ -453,7 +578,7 @@ document.write(`
 <td><p>Deliver Proposal. Deliver Draft of ML Pipeline Test Checklist. Develop Minimum Viable Product (Test Completeness Score, Missing Test Recommendation)</p></td>
 </tr>
 <tr class="row-even"><td><p>Week 4 - 5 (May 20 - May 31)</p></td>
-<td><p>Update Test Checklist. Develop Test Function Spec Generator.</p></td>
+<td><p>Update Test Checklist. Develop Test Function Specification Generator.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Week 6 (Jun 3 - Jun 7)</p></td>
 <td><p>Update Test Checklist. Wrap Up Product.</p></td>
@@ -469,25 +594,28 @@ document.write(`
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<div class="docutils container" id="id9">
+<div class="docutils container" id="id10">
 <dl class="citation">
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id1">GVR21</a></span></dt>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id1">GVR21</a></span></dt>
 <dd><p>Grand-View-Research. Artificial intelligence market size, share &amp; trends analysis report by solution, by technology (deep learning, machine learning), by end-use, by region, and segment forecasts, 2023 2030. 2021.</p>
 </dd>
-<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id4">KN22</a></span></dt>
+<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id4">KN22</a></span></dt>
 <dd><p>Sayash Kapoor and Arvind Narayanan. Leakage and the reproducibility crisis in ml-based science. <em>arXiv preprint arXiv:2207.07048</em>, 2022.</p>
 </dd>
-<dt class="label" id="id11"><span class="brackets">OKF+23</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id5">2</a>,<a href="#id7">3</a>)</span></dt>
+<dt class="label" id="id12"><span class="brackets">OKF+23</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id6">2</a>,<a href="#id8">3</a>)</span></dt>
 <dd><p>Moses Openja, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, and others. Studying the practices of testing machine learning software in the wild. <em>arXiv preprint arXiv:2312.12604</em>, 2023.</p>
 </dd>
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id3">Reg19</a></span></dt>
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id3">Reg19</a></span></dt>
 <dd><p>Asheeta Regidi. Sebi's circular: the black box conundrum and misrepresentation in ai-based mutual funds. 2019. URL: <a class="reference external" href="https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html">https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html</a>.</p>
 </dd>
-<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id8">SchaferNET23</a></span></dt>
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id9">SchaferNET23</a></span></dt>
 <dd><p>Max Schäfer, Sarah Nadi, Aryaz Eghbali, and Frank Tip. An empirical evaluation of using large language models for automated unit test generation. <em>IEEE Transactions on Software Engineering</em>, 2023.</p>
 </dd>
-<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id6">WCH+22</a></span></dt>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id7">WCH+22</a></span></dt>
 <dd><p>Supatsara Wattanakriengkrai, Bodin Chinthanet, Hideaki Hata, Raula Gaikovina Kula, Christoph Treude, Jin Guo, and Kenichi Matsumoto. Github repositories with links to academic papers: public access, traceability, and evolution. <em>Journal of Systems and Software</em>, 183:111117, 2022.</p>
+</dd>
+<dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id5">ZLC+23</a></span></dt>
+<dd><p>Yue Zhang, Yafu Li, Leyang Cui, Deng Cai, Lemao Liu, Tingchen Fu, Xinting Huang, Enbo Zhao, Yu Zhang, Yulong Chen, Longyue Wang, Anh Tuan Luu, Wei Bi, Freda Shi, and Shuming Shi. Siren's song in the ai ocean: a survey on hallucination in large language models. 2023. <a class="reference external" href="https://arxiv.org/abs/2309.01219">arXiv:2309.01219</a>.</p>
 </dd>
 </dl>
 </div>
@@ -547,7 +675,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-product">Our Product</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-artifacts">Evaluation Artifacts</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#success-metrics">Success Metrics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-approach">Data Science Approach</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-github-repositories">Data: GitHub Repositories</a></li>
@@ -583,7 +711,7 @@ By John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2024.
       <br/>
     
   </p>
