@@ -1,5 +1,6 @@
 import os
 from typing import Union
+
 import fire
 from ruamel.yaml import YAML
 
