@@ -6,174 +6,184 @@ Description: Description about the project and its context
 Test Areas:
   - Topic: General
     Description: >
-      The following items describe best practices for all tests to be
-      written.
+      The following items describe best practices for all tests to be written.
     Tests:
       - Title: Write Descriptive Test Names
         Requirement: >
           Every test function should have a clear, descriptive name
         Explanation: >
-          If out tests are narrow and sufficiently descriptive, the test
-          name itself may give us enough information to start debugging.
-          This also helps us to identify what is being tested inside the
-          function.
+          If out tests are narrow and sufficiently descriptive, the test name
+          itself may give us enough information to start debugging.  This also
+          helps us to identify what is being tested inside the function.
         References:
           - https://testing.googleblog.com/2014/10/testing-on-toilet-writing-descriptive.html
           - https://testing.googleblog.com/2024/05/test-failures-should-be-actionable.html
 
       - Title: Keep Tests Focused
         Requirement: >
-          Each test should only test one scenario, meaning that in each
-          test we should only use one set of mock data.
+          Each test should only test one scenario, meaning that in each test we
+          should only use one set of mock data.
         Explanation: >
-          If we test multiple scenarios in a single test, it is hard to
-          idenitfy exactly what went wrong. Keeping one scenario in a
-          single test helps us to isolate problematic scenarios.
+          If we test multiple scenarios in a single test, it is hard to idenitfy
+          exactly what went wrong. Keeping one scenario in a single test helps
+          us to isolate problematic scenarios.
         References:
           - https://testing.googleblog.com/2018/06/testing-on-toilet-keep-tests-focused.html
 
       - Title: Prefer Narrow Assertions in Unit Tests
         Requirement: >
-          The assertions inside the tests should be narrow, meaning that
-          when checking a complex object, any unrelated behavior should
-          not be tested - Assert on only relevant behaviors.
+          The assertions inside the tests should be narrow, meaning that when
+          checking a complex object, any unrelated behavior should not be tested
+          - Assert on only relevant behaviors.
         Explanation: >
-          If we have overly wide assertions (such as depending on every
-          field of a complex output proto), the test may fail for many
-          unimportant reasons. False positives are the opoosite of
-          actionable.
+          If we have overly wide assertions (such as depending on every field of
+          a complex output proto), the test may fail for many unimportant
+          reasons. False positives are the opoosite of actionable.
         References:
           - https://testing.googleblog.com/2024/04/prefer-narrow-assertions-in-unit-tests.html
 
       - Title: Keep Cause and Effect Clear
         Requirement: >
-          The modifications and the assertions of an object's behavior
-          in a single test should not be far away from each other.
+          The modifications and the assertions of an object's behavior in a
+          single test should not be far away from each other.
         Explanation: >
-          Refrain from using large global test data structures shared
-          across multiple unit tests. This will allow for clear
-          identification of each test's setup and the cause and effect.
+          Refrain from using large global test data structures shared across
+          multiple unit tests. This will allow for clear identification of each
+          test's setup and the cause and effect.
         References:
           - https://testing.googleblog.com/2017/01/testing-on-toilet-keep-cause-and-effect.html
 
   - Topic: Data Presence
     Description: >
-      The following items describe tests that need to be done for testing
-      the presence of data.
+      The following items describe tests that need to be done for testing the
+      presence of data. This area of tests mainly concern whether the reading
+      and saving operations are behaving as expected, and any unexpected
+      behavior would not be passed silently.
     Tests:
       - Title: Ensure Data File Loads as Expected
         Requirement: >
-          Verify the function for loading data files load the file if
-          the files exists with the right format, and doesn't load the
-          file if it doesn't exist, and that it returns the expected
-          results.
+          Verify the function for loading data files load the file if the files
+          exists with the right format, and doesn't load the file if it doesn't
+          exist, and that it returns the expected results.
         Explanation: >
-          Reading data is a common scenario encountered in ML projects.
-          This item ensures that the data exists and can be loaded
-          with expected format, and gracefully exit when unable to
-          load the data.
+          Reading data is a common scenario encountered in ML projects.  This
+          item ensures that the data exists and can be loaded with expected
+          format, and gracefully exit when unable to load the data.
         References:
           - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
 
       - Title: Ensure Saving Data/Figures Function Works as Expected
         Requirement: >
-          Verify the functions for saving data and figures can write
-          as expected. They should check the if the write operation
-          is successfully carried out, and the content is in an
-          expected format.
+          Verify the functions for saving data and figures can write as
+          expected. They should check the if the write operation is successfully
+          carried out, and the content is in an expected format.
         Explanation: >
-          Writing operations create artifacts at different stages of
-          the analysis. Making sure the artifacts are created as
-          expected ensures that the artifacts we obtained at the end
-          of the analysis would be consistent and reproducible.
+          Writing operations create artifacts at different stages of the
+          analysis. Making sure the artifacts are created as expected ensures
+          that the artifacts we obtained at the end of the analysis would be
+          consistent and reproducible.
         References:
           - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
 
   - Topic: Data Quality
     Description: >
-      The following items describe tests that need to be done for testing
-      the quality of data.
+      The following items describe tests that need to be done for testing the
+      quality of data. This area of tests mainly concern whether the data
+      supplied is in the expected format, data containing null values or
+      outliers to make sure that the data processing pipeline is robust.
     Tests:
-      - Title: Verify File Content
+      - Title: Files Contain Data
         Requirement: >
-          Ensure that all data files are non-empty and contain the necessary data to proceed with the analysis or processing tasks.
+          Ensure that all data files are non-empty and contain the necessary
+          data to proceed with the analysis or processing tasks.
         Explanation: >
-          This checklist item is crucial as it confirms the presence of usable data within the files. It prevents errors in later stages of the project by ensuring data is available from the start.
+          This checklist item is crucial as it confirms the presence of usable
+          data within the files. It prevents errors in later stages of the
+          project by ensuring data is available from the start.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook 
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
       
-      - Title: Verify Data/Image Format
+      - Title: Data in the Expected Format
         Requirement: >
-          Check that all data and images are in the formats expected by the processing algorithms (e.g., CSV, JPEG, PNG) and that their structure matches the expected schema.
+          Check that the data to be ingested is in the format expected by the
+          processing algorithms (e.g., Is the CSV loaded as a `pd.DataFrame`? Is
+          the image file loaded as a `np.array`, or a `PIL.Image`?) and that
+          their structure matches the expected schema, any present.
         Explanation: >
-          Ensuring that data and images are in the correct format is essential for compatibility with processing tools and algorithms, which may not handle unexpected formats gracefully.
+          Ensuring that data and images are in the correct format is essential
+          for compatibility with processing tools and algorithms, which may not
+          handle unexpected formats gracefully.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook 
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
 
-      - Title: Check for Nulls and Outliers
+      - Title: Data Does Not Contain Null Values or Outliers
         Requirement: >
-          Verify that the data files are free of null values and identify any outliers that may skew the results or affect the analysis.
+          Verify that the data files are free of unexpected null values and
+          identify any outliers that may skew the results or affect the
+          analysis. If null values are expected, 
         Explanation: >
-          Null values can lead to errors or inaccurate computations in many data processing applications, while outliers can distort statistical analyses and models.
+          Null values can lead to errors or inaccurate computations in many data
+          processing applications, while outliers can distort statistical
+          analyses and models.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook 
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
 
   - Topic: Data Ingestion
     Description: >
-      The following items describe tests that need to be done for testing
-      if the data is ingestion properly.
+      The following items describe tests that need to be done for testing if the
+      data is ingestion properly.
     Tests:
       - Title: Dummy Title
         Requirement: >
           This is a dummy item and there is nothing needed to act on.
         Explanation: >
-          This is a dummy item to show how the checklist items would be
-          stored inside this YAML file. It serves no other propose.
+          This is a dummy item to show how the checklist items would be stored
+          inside this YAML file. It serves no other propose.
         References:
           - http://128.0.0.1
           - UBC-MDS
 
   - Topic: Model Fitting
     Description: >
-      The following items describe tests that need to be done for testing
-      the model fitting process.
+      The following items describe tests that need to be done for testing the
+      model fitting process.
     Tests:
       - Title: Dummy Title
         Requirement: >
           This is a dummy item and there is nothing needed to act on.
         Explanation: >
-          This is a dummy item to show how the checklist items would be
-          stored inside this YAML file. It serves no other propose.
+          This is a dummy item to show how the checklist items would be stored
+          inside this YAML file. It serves no other propose.
         References:
           - http://128.0.0.1
           - UBC-MDS
 
   - Topic: Model Evaluation
     Description: >
-      The following items describe tests that need to be done for testing
-      the model evaluation process.
+      The following items describe tests that need to be done for testing the
+      model evaluation process.
     Tests:
       - Title: Dummy Title
         Requirement: >
           This is a dummy item and there is nothing needed to act on.
         Explanation: >
-          This is a dummy item to show how the checklist items would be
-          stored inside this YAML file. It serves no other propose.
+          This is a dummy item to show how the checklist items would be stored
+          inside this YAML file. It serves no other propose.
         References:
           - http://128.0.0.1
           - UBC-MDS
 
   - Topic: Artifact Testing
     Description: >
-      The following items describe tests that need to be done for testing
-      any artifacts that are created from the project.
+      The following items describe tests that need to be done for testing any
+      artifacts that are created from the project.
     Tests:
       - Title: Dummy Title
         Requirement: >
           This is a dummy item and there is nothing needed to act on.
         Explanation: >
-          This is a dummy item to show how the checklist items would be
-          stored inside this YAML file. It serves no other propose.
+          This is a dummy item to show how the checklist items would be stored
+          inside this YAML file. It serves no other propose.
         References:
           - http://128.0.0.1
           - UBC-MDS
