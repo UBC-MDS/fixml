@@ -101,7 +101,7 @@ Test Areas:
           data within the files. It prevents errors in later stages of the
           project by ensuring data is available from the start.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#data-validation
       
       - Title: Data in the Expected Format
         Requirement: >
@@ -114,19 +114,21 @@ Test Areas:
           for compatibility with processing tools and algorithms, which may not
           handle unexpected formats gracefully.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#data-validation
 
       - Title: Data Does Not Contain Null Values or Outliers
         Requirement: >
           Verify that the data files are free of unexpected null values and
           identify any outliers that may skew the results or affect the
-          analysis. If null values are expected, 
+          analysis. If null values are expected, it must be explicitly stated
+          in the tests.
         Explanation: >
-          Null values can lead to errors or inaccurate computations in many data
-          processing applications, while outliers can distort statistical
-          analyses and models.
+          Null values can lead to errors or inaccurate computations in many
+          data processing applications, while outliers can distort statistical
+          analyses and models. As such, these values should be checked when the
+          data is being ingested.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#data-validation
 
   - Topic: Data Ingestion
     Description: >
