@@ -61,23 +61,33 @@ Test Areas:
       The following items describe tests that need to be done for testing
       the presence of data.
     Tests:
-      - Title: Validate Data File Loading Functionality
+      - Title: Ensure Data File Loads as Expected
         Requirement: >
-          Verify that the function for loading data files operates correctly across various file formats and handles errors gracefully.
+          Verify the function for loading data files load the file if
+          the files exists with the right format, and doesn't load the
+          file if it doesn't exist, and that it returns the expected
+          results.
         Explanation: >
-          This item ensures that the data loading mechanism is robust, correctly parses different file types, and provides useful error messages when unable to load data. This test is crucial for the initial steps of data handling in the pipeline.
+          Reading data is a common scenario encountered in ML projects.
+          This item ensures that the data exists and can be loaded
+          with expected format, and gracefully exit when unable to
+          load the data.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook
-          - UBC-MDS
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
 
-      - Title: Validate Data and Figures Saving Functionality
+      - Title: Ensure Saving Data/Figures Function Works as Expected
         Requirement: >
-          Ensure that the function for saving data and figures operates correctly, saving files in the specified formats and locations without corruption or data loss.
+          Verify the functions for saving data and figures can write
+          as expected. They should check the if the write operation
+          is successfully carried out, and the content is in an
+          expected format.
         Explanation: >
-          This item tests the reliability and effectiveness of the saving mechanism used in the project. It is crucial for preserving the results of data analyses and visualizations for future use or review.
+          Writing operations create artifacts at different stages of
+          the analysis. Making sure the artifacts are created as
+          expected ensures that the artifacts we obtained at the end
+          of the analysis would be consistent and reproducible.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook
-          - UBC-MDS
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
 
   - Topic: Data Quality
     Description: >
@@ -91,7 +101,6 @@ Test Areas:
           This checklist item is crucial as it confirms the presence of usable data within the files. It prevents errors in later stages of the project by ensuring data is available from the start.
         References:
           - https://microsoft.github.io/code-with-engineering-playbook 
-          - UBC-MDS
       
       - Title: Verify Data/Image Format
         Requirement: >
@@ -100,7 +109,6 @@ Test Areas:
           Ensuring that data and images are in the correct format is essential for compatibility with processing tools and algorithms, which may not handle unexpected formats gracefully.
         References:
           - https://microsoft.github.io/code-with-engineering-playbook 
-          - UBC-MDS 
 
       - Title: Check for Nulls and Outliers
         Requirement: >
@@ -109,7 +117,6 @@ Test Areas:
           Null values can lead to errors or inaccurate computations in many data processing applications, while outliers can distort statistical analyses and models.
         References:
           - https://microsoft.github.io/code-with-engineering-playbook 
-          - UBC-MDS
 
   - Topic: Data Ingestion
     Description: >
