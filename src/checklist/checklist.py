@@ -42,6 +42,7 @@ class Checklist:
 
 if __name__ == "__main__":
     def example(checklist_path: str):
+        """Example calls. To be removed later."""
         checklist = Checklist(checklist_path)
         # tests = checklist.get_tests_by_areas("General", requirements_only=False)
         tests = checklist.get_all_tests()
