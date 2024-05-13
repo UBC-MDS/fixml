@@ -125,8 +125,8 @@ Test Areas:
         Explanation: >
           Null values can lead to errors or inaccurate computations in many
           data processing applications, while outliers can distort statistical
-          analyses and models. As such, these values should be checked when the
-          data is being ingested.
+          analyses and models. As such, these values should be checked when
+          before the data is being ingested.
         References:
           - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#data-validation
 
@@ -135,30 +135,94 @@ Test Areas:
       The following items describe tests that need to be done for testing if the
       data is ingestion properly.
     Tests:
-      - Title: Dummy Title
+      - Title: Cleaning and Transformation Functions Work as Expected
         Requirement: >
-          This is a dummy item and there is nothing needed to act on.
+          Test input and output so that a fixed input would get an expected
+          output. One such test could be testing the output shap of the data
+          after transformation. Ideally, each test should be limited to test
+          just one verification.
         Explanation: >
-          This is a dummy item to show how the checklist items would be stored
-          inside this YAML file. It serves no other purpose.
+          Fixed input and output during the data cleaning and transformation
+          routines should be tested so that no unexpected transformation is
+          introduced during these steps.
         References:
-          - http://128.0.0.1
-          - UBC-MDS
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#transforming-data
 
   - Topic: Model Fitting
     Description: >
       The following items describe tests that need to be done for testing the
-      model fitting process.
+      model fitting process. The unit tests written for this section usually
+      mock model load and model predictions similarly to mocking file access.
     Tests:
-      - Title: Dummy Title
+      - Title: Validate Model Input and Output Compatibility
         Requirement: >
-          This is a dummy item and there is nothing needed to act on.
+          Confirm that the model accepts the correct input shapes and types,
+          and produces outputs of the expected shapes and types without errors.
         Explanation: >
-          This is a dummy item to show how the checklist items would be stored
-          inside this YAML file. It serves no other purpose.
+          Ensuring that inputs and outputs conform to expected specifications
+          is critical for the correct functioning of the model in a production
+          environment.
         References:
-          - http://128.0.0.1
-          - UBC-MDS
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#model-load-or-predict
+
+      - Title: Check Model is Learning During Fit
+        Requirement: >
+          If a parametric model is used during the training process, make sure
+          that the model's weights are being updated correctly as expected per
+          training iteration. If a non-parametric model is used, check if the
+          data is fitted into the model.
+        Explanation: >
+          Making sure the training process is indeed training the model is
+          crucial as model without training is not fitted to any data and the
+          performance would suffer.
+        References:
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#model-load-or-predict
+
+      - Title: Ensure Model Output Shape Aligns with Expectation
+        Requirement: >
+          Ensure that the shape of model output aligns with what is expected
+          based the task of the model. For example, in classification task, the
+          shape of the model output should be aligned with the number of labels
+          in the dataset.
+        Explanation: >
+          Correct output alignment confirms that the model is accurately
+          interpreting the input data and making predictions that are sensible
+          given the context.
+        References:
+          - https://www.jeremyjordan.me/testing-ml/
+
+      - Title: Ensure Model Output Aligns with Task Trained
+        Requirement: >
+          Verify that the output values are aligned with the task of the model.
+          For example, a classification model would output probabilities which
+          should sum to 1.
+        Explanation: >
+          This ensures that the model's output is interpretable and relevant to
+          the task it was trained for.
+        References:
+          - https://www.jeremyjordan.me/testing-ml/
+
+      - Title: Validate Loss Reduction on Gradient Update
+        Requirement: >
+          If the model relies on gradient descent for training, make sure a
+          single gradient step on a batch of data yields a decrease in the
+          model's training loss.
+        Explanation: >
+          A decrease in training loss after a gradient update demonstrates that
+          the data is adequate to be fitted into the model.
+        References:
+          - https://www.jeremyjordan.me/testing-ml/
+
+      - Title: Check for Data Leakage
+        Requirement: >
+          Confirm that there is no leakage between train/val/test or CV splits.
+        Explanation: >
+          Data leakage can compromise the model's ability to generalize to
+          unseen data, making it crucial to ensure datasets are properly
+          segregated.
+        References:
+          - https://www.jeremyjordan.me/testing-ml/
+
 
   - Topic: Model Evaluation
     Description: >
