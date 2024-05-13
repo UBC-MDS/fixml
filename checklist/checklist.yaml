@@ -151,7 +151,8 @@ Test Areas:
   - Topic: Model Fitting
     Description: >
       The following items describe tests that need to be done for testing the
-      model fitting process.
+      model fitting process. The unit tests written for this section usually
+      mock model load and model predictions similarly to mocking file access.
     Tests:
       - Title: Validate Model Input and Output Compatibility
         Requirement: >
@@ -162,24 +163,27 @@ Test Areas:
           is critical for the correct functioning of the model in a production
           environment.
         References:
-          - http://microsoft.github.io/code-with-engineering-playbook
-          - UBC-MDS
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#model-load-or-predict
 
-      - Title: Verify Model Weight Updates
+      - Title: Check Model is Learning During Fit
         Requirement: >
-          Check that during training, the model's weights are being updated
-          correctly as expected per training iteration.
+          If a parametric model is used during the training process, make sure
+          that the model's weights are being updated correctly as expected per
+          training iteration. If a non-parametric model is used, check if the
+          data is fitted into the model.
         Explanation: >
-          Weight updates are fundamental to the learning process, indicating
-          that the model is learning from the training data.
+          Making sure the training process is indeed training the model is
+          crucial as model without training is not fitted to any data and the
+          performance would suffer.
         References:
-          - http://microsoft.github.io/code-with-engineering-playbook
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#model-load-or-predict
 
-      - Title: Assess Model Output Alignment with Expectations
+      - Title: Ensure Model Output Shape Aligns with Expectation
         Requirement: >
-          Ensure that the outputs of the model align with what is expected
-          based on the inputs, especially in classification tasks where the
-          output labels should match expected categories.
+          Ensure that the shape of model output aligns with what is expected
+          based the task of the model. For example, in classification task, the
+          shape of the model output should be aligned with the number of labels
+          in the dataset.
         Explanation: >
           Correct output alignment confirms that the model is accurately
           interpreting the input data and making predictions that are sensible
@@ -187,32 +191,31 @@ Test Areas:
         References:
           - https://www.jeremyjordan.me/testing-ml/
 
-      - Title: Check Output Probability Distribution
+      - Title: Ensure Model Output Aligns with Task Trained
         Requirement: >
-          Verify that the outputs, especially in probabilistic outputs like in
-          classification models, sum to 1 and align with probability
-          distribution expectations.
+          Verify that the output values are aligned with the task of the model.
+          For example, a classification model would output probabilities which
+          should sum to 1.
         Explanation: >
-          This ensures that the model's output is valid in probabilistic terms
-          and usable for decision-making in classification contexts.
+          This ensures that the model's output is interpretable and relevant to
+          the task it was trained for.
         References:
           - https://www.jeremyjordan.me/testing-ml/
 
       - Title: Validate Loss Reduction on Gradient Update
         Requirement: >
-          Test if a single gradient update step during training effectively
-          reduces the model's loss, indicating proper backpropagation.
+          If the model relies on gradient descent for training, make sure a
+          single gradient step on a batch of data yields a decrease in the
+          model's training loss.
         Explanation: >
-          A decrease in loss after a gradient update demonstrates that the
-          model is improving and learning from the data.
+          A decrease in training loss after a gradient update demonstrates that
+          the data is adequate to be fitted into the model.
         References:
           - https://www.jeremyjordan.me/testing-ml/
 
       - Title: Check for Data Leakage
         Requirement: >
-          Confirm that there is no leakage between training, validation, and
-          test datasets, which can result in misleadingly high performance
-          metrics.
+          Confirm that there is no leakage between train/val/test or CV splits.
         Explanation: >
           Data leakage can compromise the model's ability to generalize to
           unseen data, making it crucial to ensure datasets are properly
