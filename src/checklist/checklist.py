@@ -16,7 +16,7 @@ class Checklist:
         except Exception as e:
             raise SyntaxError("Failed to parse the checklist. Make sure that it is a YAML 1.2 document.")
 
-    def get_tests_by_areas(self, areas: Union[list, str], requirements_only: bool = False):
+    def get_tests_by_areas(self, areas: Union[list, str, set], requirements_only: bool = False):
         tests = []
 
         if isinstance(areas, str):
@@ -33,11 +33,18 @@ class Checklist:
                 tests += area["Tests"]
         return tests
 
+    def get_all_tests(self):
+        return self.get_tests_by_areas(self.test_areas)
+
+    def get_test_areas(self):
+        return self.test_areas
+
 
 if __name__ == "__main__":
     def example(checklist_path: str):
         checklist = Checklist(checklist_path)
-        tests = checklist.get_tests_by_areas("General", requirements_only=False)
+        # tests = checklist.get_tests_by_areas("General", requirements_only=False)
+        tests = checklist.get_all_tests()
         print(tests)
 
     fire.Fire(example)
