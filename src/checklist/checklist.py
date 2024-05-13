@@ -33,8 +33,8 @@ class Checklist:
                 tests += area["Tests"]
         return tests
 
-    def get_all_tests(self):
-        return self.get_tests_by_areas(self.test_areas)
+    def get_all_tests(self, requirements_only: bool = False):
+        return self.get_tests_by_areas(self.test_areas, requirements_only)
 
     def get_test_areas(self):
         return self.test_areas
