@@ -125,8 +125,8 @@ Test Areas:
         Explanation: >
           Null values can lead to errors or inaccurate computations in many
           data processing applications, while outliers can distort statistical
-          analyses and models. As such, these values should be checked when the
-          data is being ingested.
+          analyses and models. As such, these values should be checked when
+          before the data is being ingested.
         References:
           - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#data-validation
 
@@ -135,20 +135,18 @@ Test Areas:
       The following items describe tests that need to be done for testing if the
       data is ingestion properly.
     Tests:
-      - Title: Validate Data Cleaning and Transformation
+      - Title: Cleaning and Transformation Functions Work as Expected
         Requirement: >
-          Confirm that data cleaning and transformation functions execute
-          without errors and result in data that meets predefined standards and
-          formats.
+          Test input and output so that a fixed input would get an expected
+          output. One such test could be testing the output shap of the data
+          after transformation. Ideally, each test should be limited to test
+          just one verification.
         Explanation: >
-          Proper functioning of data cleaning and transformation routines is
-          crucial as they prepare the raw data for analysis, removing
-          inconsistencies, and standardizing formats which are essential for
-          downstream processes.
+          Fixed input and output during the data cleaning and transformation
+          routines should be tested so that no unexpected transformation is
+          introduced during these steps.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook 
-          - UBC-MDS 
-
+          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#transforming-data
 
   - Topic: Model Fitting
     Description: >
