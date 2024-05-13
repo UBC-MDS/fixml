@@ -13,12 +13,12 @@ dependencies:
   - langchain=0.1.16
   - ruamel.yaml=0.18.6
   - pip:
-      - distro==1.9.0
-      - h11==0.14.0
-      - httpcore==1.0.5
-      - httpx==0.27.0
-      - langchain-openai==0.1.6
-      - openai==1.26.0
-      - regex==2024.4.28
-      - tiktoken==0.6.0
-      - tqdm==4.66.4
+    - distro==1.9.0
+    - h11==0.14.0
+    - httpcore==1.0.5
+    - httpx==0.27.0
+    - langchain-openai==0.1.6
+    - openai==1.26.0
+    - regex==2024.4.28
+    - tiktoken==0.6.0
+    - tqdm==4.66.4

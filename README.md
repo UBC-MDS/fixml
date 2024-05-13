@@ -24,7 +24,16 @@ echo "OPENAI_API_KEY=..." > .env
 
 ## Usage
 
-- TODO
+### code_analyzer
+
+This is used to analyze and extract information from a downloaded repo.
+
+There is a file containing the example calls. Run:
+
+```console
+$ python ./src/code_analyzer/example.py <path-to-your-repo>
+```
+
 
 ## Contributing
 
