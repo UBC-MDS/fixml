@@ -16,8 +16,8 @@ Test Areas:
           itself may give us enough information to start debugging.  This also
           helps us to identify what is being tested inside the function.
         References:
-          - https://testing.googleblog.com/2014/10/testing-on-toilet-writing-descriptive.html
-          - https://testing.googleblog.com/2024/05/test-failures-should-be-actionable.html
+          - trenk2014
+          - winters2024
 
       - Title: Keep Tests Focused
         Requirement: >
@@ -28,7 +28,7 @@ Test Areas:
           exactly what went wrong. Keeping one scenario in a single test helps
           us to isolate problematic scenarios.
         References:
-          - https://testing.googleblog.com/2018/06/testing-on-toilet-keep-tests-focused.html
+          - yu2018
 
       - Title: Prefer Narrow Assertions in Unit Tests
         Requirement: >
@@ -40,7 +40,7 @@ Test Areas:
           a complex output proto), the test may fail for many unimportant
           reasons. False positives are the opoosite of actionable.
         References:
-          - https://testing.googleblog.com/2024/04/prefer-narrow-assertions-in-unit-tests.html
+          - kent2024
 
       - Title: Keep Cause and Effect Clear
         Requirement: >
@@ -51,7 +51,7 @@ Test Areas:
           multiple unit tests. This will allow for clear identification of each
           test's setup and the cause and effect.
         References:
-          - https://testing.googleblog.com/2017/01/testing-on-toilet-keep-cause-and-effect.html
+          - yu2017
 
   - Topic: Data Presence
     Description: >
@@ -70,7 +70,7 @@ Test Areas:
           item ensures that the data exists and can be loaded with expected
           format, and gracefully exit when unable to load the data.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
+          - msise2023
 
       - Title: Ensure Saving Data/Figures Function Works as Expected
         Requirement: >
@@ -83,7 +83,7 @@ Test Areas:
           that the artifacts we obtained at the end of the analysis would be
           consistent and reproducible.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#saving-and-loading-data
+          - msise2023
 
   - Topic: Data Quality
     Description: >
@@ -101,7 +101,7 @@ Test Areas:
           data within the files. It prevents errors in later stages of the
           project by ensuring data is available from the start.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#data-validation
+          - msise2023
       
       - Title: Data in the Expected Format
         Requirement: >
@@ -114,7 +114,7 @@ Test Areas:
           for compatibility with processing tools and algorithms, which may not
           handle unexpected formats gracefully.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#data-validation
+          - msise2023
 
       - Title: Data Does Not Contain Null Values or Outliers
         Requirement: >
@@ -128,7 +128,7 @@ Test Areas:
           analyses and models. As such, these values should be checked when
           before the data is being ingested.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#data-validation
+          - msise2023
 
   - Topic: Data Ingestion
     Description: >
@@ -146,7 +146,7 @@ Test Areas:
           routines should be tested so that no unexpected transformation is
           introduced during these steps.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#transforming-data
+          - msise2023
 
   - Topic: Model Fitting
     Description: >
@@ -163,7 +163,7 @@ Test Areas:
           is critical for the correct functioning of the model in a production
           environment.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#model-load-or-predict
+          - msise2023
 
       - Title: Check Model is Learning During Fit
         Requirement: >
@@ -176,7 +176,7 @@ Test Areas:
           crucial as model without training is not fitted to any data and the
           performance would suffer.
         References:
-          - https://microsoft.github.io/code-with-engineering-playbook/machine-learning/ml-testing/#model-load-or-predict
+          - msise2023
 
       - Title: Ensure Model Output Shape Aligns with Expectation
         Requirement: >
@@ -189,7 +189,7 @@ Test Areas:
           interpreting the input data and making predictions that are sensible
           given the context.
         References:
-          - https://www.jeremyjordan.me/testing-ml/
+          - jordan2020
 
       - Title: Ensure Model Output Aligns with Task Trained
         Requirement: >
@@ -200,7 +200,7 @@ Test Areas:
           This ensures that the model's output is interpretable and relevant to
           the task it was trained for.
         References:
-          - https://www.jeremyjordan.me/testing-ml/
+          - jordan2020
 
       - Title: Validate Loss Reduction on Gradient Update
         Requirement: >
@@ -211,7 +211,7 @@ Test Areas:
           A decrease in training loss after a gradient update demonstrates that
           the data is adequate to be fitted into the model.
         References:
-          - https://www.jeremyjordan.me/testing-ml/
+          - jordan2020
 
       - Title: Check for Data Leakage
         Requirement: >
@@ -221,7 +221,7 @@ Test Areas:
           unseen data, making it crucial to ensure datasets are properly
           segregated.
         References:
-          - https://www.jeremyjordan.me/testing-ml/
+          - jordan2020
 
 
   - Topic: Model Evaluation
