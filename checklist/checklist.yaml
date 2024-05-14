@@ -2,7 +2,8 @@
 ---
 Title: Checklist for Tests in Machine Learning Projects
 # TODO: To be filled in later...
-Description: Description about the project and its context
+Description: This is a comprehensive checklist for evaluating the data and ML
+  pipeline based on identified testing strategies from experts in the field.
 Test Areas:
   - Topic: General
     Description: >
@@ -226,8 +227,8 @@ Test Areas:
 
   - Topic: Model Evaluation
     Description: >
-      The following items describe tests that need to be done for testing the
-      model evaluation process.
+      The following items covers tests to validate the model's perfromance on a
+      validation or test dataset.
     Tests:
       - Title: Dummy Title
         Requirement: >
@@ -241,8 +242,8 @@ Test Areas:
 
   - Topic: Artifact Testing
     Description: >
-      The following items describe tests that need to be done for testing any
-      artifacts that are created from the project.
+      The following items involves explicit checks for behaviors that we expect
+      the artifacts e.g. models, plots, etc., to follow.
     Tests:
       - Title: Dummy Title
         Requirement: >
