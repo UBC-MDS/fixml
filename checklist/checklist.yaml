@@ -1,7 +1,6 @@
 %YAML 1.2
 ---
 Title: Checklist for Tests in Machine Learning Projects
-# TODO: To be filled in later...
 Description: This is a comprehensive checklist for evaluating the data and ML
   pipeline based on identified testing strategies from experts in the field.
 Test Areas:
