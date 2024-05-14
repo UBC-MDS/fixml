@@ -11,6 +11,7 @@ dependencies:
   - python-dotenv=1.0.1
   - fire=0.6.0
   - langchain=0.1.16
+  - ruamel.yaml=0.18.6
   - pip:
     - distro==1.9.0
     - h11==0.14.0
