@@ -4,80 +4,88 @@ Title: Checklist for Tests in Machine Learning Projects
 # TODO: To be filled in later...
 Description: Description about the project and its context
 Test Areas:
-  - Topic: General
-    Description: >
+  - ID: "1"
+    Topic: General
+    Description: >-
       The following items describe best practices for all tests to be written.
     Tests:
-      - Title: Write Descriptive Test Names
-        Requirement: >
+      - ID: "1.1"
+        Title: Write Descriptive Test Names
+        Requirement: >-
           Every test function should have a clear, descriptive name
-        Explanation: >
+        Explanation: >-
           If out tests are narrow and sufficiently descriptive, the test name
-          itself may give us enough information to start debugging.  This also
+          itself may give us enough information to start debugging. This also
           helps us to identify what is being tested inside the function.
         References:
           - trenk2014
           - winters2024
 
-      - Title: Keep Tests Focused
-        Requirement: >
+      - ID: "1.2"
+        Title: Keep Tests Focused
+        Requirement: >-
           Each test should only test one scenario, meaning that in each test we
           should only use one set of mock data.
-        Explanation: >
+        Explanation: >-
           If we test multiple scenarios in a single test, it is hard to idenitfy
           exactly what went wrong. Keeping one scenario in a single test helps
           us to isolate problematic scenarios.
         References:
           - yu2018
 
-      - Title: Prefer Narrow Assertions in Unit Tests
-        Requirement: >
+      - ID: "1.3"
+        Title: Prefer Narrow Assertions in Unit Tests
+        Requirement: >-
           The assertions inside the tests should be narrow, meaning that when
           checking a complex object, any unrelated behavior should not be tested
           - Assert on only relevant behaviors.
-        Explanation: >
+        Explanation: >-
           If we have overly wide assertions (such as depending on every field of
           a complex output proto), the test may fail for many unimportant
           reasons. False positives are the opoosite of actionable.
         References:
           - kent2024
 
-      - Title: Keep Cause and Effect Clear
-        Requirement: >
+      - ID: "1.4"
+        Title: Keep Cause and Effect Clear
+        Requirement: >-
           The modifications and the assertions of an object's behavior in a
           single test should not be far away from each other.
-        Explanation: >
+        Explanation: >-
           Refrain from using large global test data structures shared across
           multiple unit tests. This will allow for clear identification of each
           test's setup and the cause and effect.
         References:
           - yu2017
 
-  - Topic: Data Presence
-    Description: >
+  - ID: "2"
+    Topic: Data Presence
+    Description: >-
       The following items describe tests that need to be done for testing the
       presence of data. This area of tests mainly concern whether the reading
       and saving operations are behaving as expected, and any unexpected
       behavior would not be passed silently.
     Tests:
-      - Title: Ensure Data File Loads as Expected
-        Requirement: >
+      - ID: "2.1"
+        Title: Ensure Data File Loads as Expected
+        Requirement: >-
           Verify the function for loading data files load the file if the files
           exists with the right format, and doesn't load the file if it doesn't
           exist, and that it returns the expected results.
-        Explanation: >
+        Explanation: >-
           Reading data is a common scenario encountered in ML projects.  This
           item ensures that the data exists and can be loaded with expected
           format, and gracefully exit when unable to load the data.
         References:
           - msise2023
 
-      - Title: Ensure Saving Data/Figures Function Works as Expected
-        Requirement: >
+      - ID: "2.2"
+        Title: Ensure Saving Data/Figures Function Works as Expected
+        Requirement: >-
           Verify the functions for saving data and figures can write as
           expected. They should check the if the write operation is successfully
           carried out, and the content is in an expected format.
-        Explanation: >
+        Explanation: >-
           Writing operations create artifacts at different stages of the
           analysis. Making sure the artifacts are created as expected ensures
           that the artifacts we obtained at the end of the analysis would be
@@ -85,44 +93,48 @@ Test Areas:
         References:
           - msise2023
 
-  - Topic: Data Quality
-    Description: >
+  - ID: "3"
+    Topic: Data Quality
+    Description: >-
       The following items describe tests that need to be done for testing the
       quality of data. This area of tests mainly concern whether the data
       supplied is in the expected format, data containing null values or
       outliers to make sure that the data processing pipeline is robust.
     Tests:
-      - Title: Files Contain Data
-        Requirement: >
+      - ID: "3.1"
+        Title: Files Contain Data
+        Requirement: >-
           Ensure that all data files are non-empty and contain the necessary
           data to proceed with the analysis or processing tasks.
-        Explanation: >
+        Explanation: >-
           This checklist item is crucial as it confirms the presence of usable
           data within the files. It prevents errors in later stages of the
           project by ensuring data is available from the start.
         References:
           - msise2023
       
-      - Title: Data in the Expected Format
-        Requirement: >
+      - ID: "3.2"
+        Title: Data in the Expected Format
+        Requirement: >-
           Check that the data to be ingested is in the format expected by the
           processing algorithms (e.g., Is the CSV loaded as a `pd.DataFrame`? Is
           the image file loaded as a `np.array`, or a `PIL.Image`?) and that
           their structure matches the expected schema, any present.
-        Explanation: >
+        Explanation: >-
           Ensuring that data and images are in the correct format is essential
           for compatibility with processing tools and algorithms, which may not
           handle unexpected formats gracefully.
         References:
           - msise2023
 
-      - Title: Data Does Not Contain Null Values or Outliers
-        Requirement: >
+      - ID: "3.3"
+        Title: Data Does Not Contain Null Values or Outliers
+        Requirement: >-
           Verify that the data files are free of unexpected null values and
           identify any outliers that may skew the results or affect the
           analysis. If null values are expected, it must be explicitly stated
           in the tests.
-        Explanation: >
+        Explanation: >-
           Null values can lead to errors or inaccurate computations in many
           data processing applications, while outliers can distort statistical
           analyses and models. As such, these values should be checked when
@@ -130,93 +142,102 @@ Test Areas:
         References:
           - msise2023
 
-  - Topic: Data Ingestion
-    Description: >
+  - ID: "4"
+    Topic: Data Ingestion
+    Description: >-
       The following items describe tests that need to be done for testing if the
       data is ingestion properly.
     Tests:
-      - Title: Cleaning and Transformation Functions Work as Expected
-        Requirement: >
+      - ID: "4.1"
+        Title: Cleaning and Transformation Functions Work as Expected
+        Requirement: >-
           Test input and output so that a fixed input would get an expected
           output. One such test could be testing the output shap of the data
           after transformation. Ideally, each test should be limited to test
           just one verification.
-        Explanation: >
+        Explanation: >-
           Fixed input and output during the data cleaning and transformation
           routines should be tested so that no unexpected transformation is
           introduced during these steps.
         References:
           - msise2023
 
-  - Topic: Model Fitting
-    Description: >
+  - ID: "5"
+    Topic: Model Fitting
+    Description: >-
       The following items describe tests that need to be done for testing the
       model fitting process. The unit tests written for this section usually
       mock model load and model predictions similarly to mocking file access.
     Tests:
-      - Title: Validate Model Input and Output Compatibility
-        Requirement: >
+      - ID: "5.1"
+        Title: Validate Model Input and Output Compatibility
+        Requirement: >-
           Confirm that the model accepts the correct input shapes and types,
           and produces outputs of the expected shapes and types without errors.
-        Explanation: >
+        Explanation: >-
           Ensuring that inputs and outputs conform to expected specifications
           is critical for the correct functioning of the model in a production
           environment.
         References:
           - msise2023
 
-      - Title: Check Model is Learning During Fit
-        Requirement: >
+      - ID: "5.2"
+        Title: Check Model is Learning During Fit
+        Requirement: >-
           If a parametric model is used during the training process, make sure
           that the model's weights are being updated correctly as expected per
           training iteration. If a non-parametric model is used, check if the
           data is fitted into the model.
-        Explanation: >
+        Explanation: >-
           Making sure the training process is indeed training the model is
           crucial as model without training is not fitted to any data and the
           performance would suffer.
         References:
           - msise2023
 
-      - Title: Ensure Model Output Shape Aligns with Expectation
-        Requirement: >
+      - ID: "5.3"
+        Title: Ensure Model Output Shape Aligns with Expectation
+        Requirement: >-
           Ensure that the shape of model output aligns with what is expected
           based the task of the model. For example, in classification task, the
           shape of the model output should be aligned with the number of labels
           in the dataset.
-        Explanation: >
+        Explanation: >-
           Correct output alignment confirms that the model is accurately
           interpreting the input data and making predictions that are sensible
           given the context.
         References:
           - jordan2020
 
-      - Title: Ensure Model Output Aligns with Task Trained
-        Requirement: >
+      - ID: "5.4"
+        Title: Ensure Model Output Aligns with Task Trained
+        Requirement: >-
           Verify that the output values are aligned with the task of the model.
           For example, a classification model would output probabilities which
           should sum to 1.
-        Explanation: >
+        Explanation: >-
           This ensures that the model's output is interpretable and relevant to
           the task it was trained for.
         References:
           - jordan2020
 
-      - Title: Validate Loss Reduction on Gradient Update
-        Requirement: >
+      - ID: "5.5"
+        Title: Validate Loss Reduction on Gradient Update
+        Requirement: >-
           If the model relies on gradient descent for training, make sure a
           single gradient step on a batch of data yields a decrease in the
           model's training loss.
-        Explanation: >
+        Explanation: >-
           A decrease in training loss after a gradient update demonstrates that
           the data is adequate to be fitted into the model.
         References:
           - jordan2020
 
-      - Title: Check for Data Leakage
-        Requirement: >
+      - ID: "5.6"
+        Title: Check for Data Leakage
+        Requirement: >-
           Confirm that there is no leakage between train/val/test or CV splits.
-        Explanation: >
+        Explanation: >-
           Data leakage can compromise the model's ability to generalize to
           unseen data, making it crucial to ensure datasets are properly
           segregated.
@@ -224,30 +245,34 @@ Test Areas:
           - jordan2020
 
 
-  - Topic: Model Evaluation
-    Description: >
+  - ID: "6"
+    Topic: Model Evaluation
+    Description: >-
       The following items describe tests that need to be done for testing the
       model evaluation process.
     Tests:
-      - Title: Dummy Title
-        Requirement: >
+      - ID: "6.1"
+        Title: Dummy Title
+        Requirement: >-
           This is a dummy item and there is nothing needed to act on.
-        Explanation: >
+        Explanation: >-
           This is a dummy item to show how the checklist items would be stored
           inside this YAML file. It serves no other purpose.
         References:
           - http://128.0.0.1
           - UBC-MDS
 
-  - Topic: Artifact Testing
-    Description: >
+  - ID: "7"
+    Topic: Artifact Testing
+    Description: >-
       The following items describe tests that need to be done for testing any
       artifacts that are created from the project.
     Tests:
-      - Title: Dummy Title
-        Requirement: >
+      - ID: "7.1"
+        Title: Dummy Title
+        Requirement: >-
           This is a dummy item and there is nothing needed to act on.
-        Explanation: >
+        Explanation: >-
           This is a dummy item to show how the checklist items would be stored
           inside this YAML file. It serves no other purpose.
         References:
