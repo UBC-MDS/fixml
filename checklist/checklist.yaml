@@ -288,7 +288,7 @@ Test Areas:
           quality which might lead to over-optimistic and/or non-representable
           performance metrics in cases where the importance of certain outcomes
           far outweigh the rest. For example, falsely identifying valid emails
-          as spam has a more serious consequences than identifying a spam as a
+          as spam has a more serious consequence than identifying a spam as a
           valid email.
         References:
           - jordan2020
