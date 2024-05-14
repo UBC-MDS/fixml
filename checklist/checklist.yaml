@@ -102,7 +102,7 @@ Test Areas:
           project by ensuring data is available from the start.
         References:
           - msise2023
-      
+
       - Title: Data in the Expected Format
         Requirement: >
           Check that the data to be ingested is in the format expected by the
