@@ -11,11 +11,11 @@ Test Areas:
     Tests:
       - ID: "1.1"
         Title: Write Descriptive Test Names
-        Requirement: >
+        Requirement: >-
           Each test function should have a clear, descriptive name that
           accurately reflects the test's purpose and the specific functionality
           or scenario it examines.
-        Explanation: >
+        Explanation: >-
           If out tests are narrow and sufficiently descriptive, the test name
           itself may give us enough information to start debugging. This also
           helps us to identify what is being tested inside the function.
@@ -25,11 +25,11 @@ Test Areas:
 
       - ID: "1.2"
         Title: Keep Tests Focused
-        Requirement: >
+        Requirement: >-
           Each test should focus on a single scenario, using only one set of
           mock data and testing one specific behavior or outcome to ensure
           clarity and isolate issues.
-        Explanation: >
+        Explanation: >-
           If we test multiple scenarios in a single test, it is hard to idenitfy
           exactly what went wrong. Keeping one scenario in a single test helps
           us to isolate problematic scenarios.
@@ -38,11 +38,11 @@ Test Areas:
 
       - ID: "1.3"
         Title: Prefer Narrow Assertions in Unit Tests
-        Requirement: >
+        Requirement: >-
           Assertions within tests should be focused and narrow. Ensure you are
           only testing relevant behaviors of complex objects and not including
           unrelated assertions.
-        Explanation: >
+        Explanation: >-
           If we have overly wide assertions (such as depending on every field of
           a complex output proto), the test may fail for many unimportant
           reasons. False positives are the opoosite of actionable.
@@ -51,11 +51,11 @@ Test Areas:
 
       - ID: "1.4"
         Title: Keep Cause and Effect Clear
-        Requirement: >
+        Requirement: >-
           Keep any modifications to objects and the corresponding assertions
           close together in your tests to maintain readability and clearly show
           the cause-and-effect relationship.
-        Explanation: >
+        Explanation: >-
           Refrain from using large global test data structures shared across
           multiple unit tests. This will allow for clear identification of each
           test's setup and the cause and effect.
@@ -72,11 +72,11 @@ Test Areas:
     Tests:
       - ID: "2.1"
         Title: Ensure Data File Loads as Expected
-        Requirement: >
+        Requirement: >-
           Ensure that data-loading functions correctly load files when they
           exist and match the expected format, handle non-existent files
           appropriately, and return the expected results.
-        Explanation: >
+        Explanation: >-
           Reading data is a common scenario encountered in ML projects.  This
           item ensures that the data exists and can be loaded with expected
           format, and gracefully exit when unable to load the data.
@@ -85,11 +85,11 @@ Test Areas:
 
       - ID: "2.2"
         Title: Ensure Saving Data/Figures Function Works as Expected
-        Requirement: >
+        Requirement: >-
           Verify that functions for saving data and figures perform write
           operations correctly, checking that the operation succeeds and the
           content matches the expected format.
-        Explanation: >
+        Explanation: >-
           Writing operations create artifacts at different stages of the
           analysis. Making sure the artifacts are created as expected ensures
           that the artifacts we obtained at the end of the analysis would be
@@ -107,10 +107,10 @@ Test Areas:
     Tests:
       - ID: "3.1"
         Title: Files Contain Data
-        Requirement: >
+        Requirement: >-
           Ensure all data files are non-empty and contain the necessary data
           required for further analysis or processing tasks.
-        Explanation: >
+        Explanation: >-
           This checklist item is crucial as it confirms the presence of usable
           data within the files. It prevents errors in later stages of the
           project by ensuring data is available from the start.
@@ -119,11 +119,11 @@ Test Areas:
 
       - ID: "3.2"
         Title: Data in the Expected Format
-        Requirement: >
+        Requirement: >-
           Verify that the data to be ingested matches the format expected by
           processing algorithms (like pd.DataFrame for CSVs or np.array for
           images) and adheres to the expected schema.
-        Explanation: >
+        Explanation: >-
           Ensuring that data and images are in the correct format is essential
           for compatibility with processing tools and algorithms, which may not
           handle unexpected formats gracefully.
@@ -132,11 +132,11 @@ Test Areas:
 
       - ID: "3.3"
         Title: Data Does Not Contain Null Values or Outliers
-        Requirement: >
+        Requirement: >-
           Check that data files are free from unexpected null values and
           identify any outliers that could affect the analysis. Tests should
           explicitly state if null values are part of expected data.
-        Explanation: >
+        Explanation: >-
           Null values can lead to errors or inaccurate computations in many
           data processing applications, while outliers can distort statistical
           analyses and models. As such, these values should be checked when
@@ -152,11 +152,11 @@ Test Areas:
     Tests:
       - ID: "4.1"
         Title: Cleaning and Transformation Functions Work as Expected
-        Requirement: >
+        Requirement: >-
           Test that a fixed input to a function or model produces the expected
           output, focusing on one verification per test to ensure predictable
           behavior.
-        Explanation: >
+        Explanation: >-
           Fixed input and output during the data cleaning and transformation
           routines should be tested so that no unexpected transformation is
           introduced during these steps.
@@ -172,11 +172,11 @@ Test Areas:
     Tests:
       - ID: "5.1"
         Title: Validate Model Input and Output Compatibility
-        Requirement: >
+        Requirement: >-
           Confirm that the model accepts inputs of the correct shapes and types
           and produces outputs that meet the expected shapes and types without
           any errors.
-        Explanation: >
+        Explanation: >-
           Ensuring that inputs and outputs conform to expected specifications
           is critical for the correct functioning of the model in a production
           environment.
@@ -185,11 +185,11 @@ Test Areas:
 
       - ID: "5.2"
         Title: Check Model is Learning During Fit
-        Requirement: >
+        Requirement: >-
           For parametric models, ensure that the model's weights update
           correctly per training iteration. For non-parametric models, verify
           that the data fits correctly into the model.
-        Explanation: >
+        Explanation: >-
           Making sure the training process is indeed training the model is
           crucial as model without training is not fitted to any data and the
           performance would suffer.
@@ -198,11 +198,11 @@ Test Areas:
 
       - ID: "5.3"
         Title: Ensure Model Output Shape Aligns with Expectation
-        Requirement: >
+        Requirement: >-
           Ensure the shape of the model's output aligns with the expected
           structure based on the task, such as matching the number of labels in
           a classification task.
-        Explanation: >
+        Explanation: >-
           Correct output alignment confirms that the model is accurately
           interpreting the input data and making predictions that are sensible
           given the context.
@@ -211,11 +211,11 @@ Test Areas:
 
       - ID: "5.4"
         Title: Ensure Model Output Aligns with Task Trained
-        Requirement: >
+        Requirement: >-
           Verify that the model's output values are appropriate for its task,
           such as outputting probabilities that sum to 1 for classification
           tasks.
-        Explanation: >
+        Explanation: >-
           This ensures that the model's output is interpretable and relevant to
           the task it was trained for.
         References:
@@ -223,11 +223,11 @@ Test Areas:
 
       - ID: "5.5"
         Title: Validate Loss Reduction on Gradient Update
-        Requirement: >
+        Requirement: >-
           If using gradient descent for training, verify that a single gradient
           step on a batch of data results in a decrease in the model's training
           loss.
-        Explanation: >
+        Explanation: >-
           A decrease in training loss after a gradient update demonstrates that
           the data is adequate to be fitted into the model.
         References:
@@ -235,11 +235,11 @@ Test Areas:
 
       - ID: "5.6"
         Title: Check for Data Leakage
-        Requirement: >
+        Requirement: >-
           Confirm that there is no leakage of data between training, validation,
           and testing sets, or across cross-validation folds, to ensure the
           integrity of the splits.
-        Explanation: >
+        Explanation: >-
           Data leakage can compromise the model's ability to generalize to
           unseen data, making it crucial to ensure datasets are properly
           segregated.
