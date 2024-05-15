@@ -88,7 +88,9 @@ class CsvChecklistIO(ChecklistIO):
 
             for topic in topics:
                 topic_id = topic["ID"]
-                topic_tests = [test for test in tests if test["ID"].startswith(topic_id)]
+                # matches all tests with ID that starts with the same as current topic ID
+                # this assumes that the test item ID would contain a dot i.e. `.`.
+                topic_tests = [test for test in tests if test["ID"].split(".")[0] == topic_id]
                 topic[cls.topics_field_name_nested] = topic_tests
 
             content = overview[0]
@@ -175,8 +177,9 @@ if __name__ == "__main__":
         2. `topics.csv`
         3. `tests.csv`
         """
-        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
-        checklist.to_yaml("test-dump.yaml", no_preserve_format=True, exist_ok=True)
+        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.YAML)
+        checklist.to_csv("./checklist/csv/", exist_ok=False)
+        # checklist.to_yaml("test-dump.yaml", no_preserve_format=True, exist_ok=True)
 
 
     fire.Fire(example)
