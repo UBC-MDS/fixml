@@ -91,12 +91,15 @@ class CsvChecklistIO(ChecklistIO):
             for topic in topics:
                 topic_id = topic["ID"]
                 # matches all tests with ID that starts with the same as current topic ID
-                # this assumes that the test item ID would contain a dot i.e. `.`.
+                # this assumes that the test item ID would contain a dot i.e. `.` and
+                # follows the format `{topic-id}.{test-number}`, where the `{test-number}
+                # is an incremental number to indicate the ordering of the test within
+                # a topic.
                 topic_tests = [test for test in tests if test["ID"].split(".")[0] == topic_id]
                 topic[cls.topics_field_name_nested] = topic_tests
 
             for test in tests:
-                # convert the references back into a list
+                # convert the references back into a list from its joined string representation
                 test['References'] = test['References'].split(',')
                 test['References'] = [x.strip(' ') for x in test['References']]
 
@@ -180,9 +183,9 @@ class Checklist:
         YamlChecklistIO.write(output_path, self.content)
 
     def to_csv(self, output_path, exist_ok: bool = False):
-        """Dump the checklist to three separate CSV files."""
+        """Dump the checklist to a directory containing three separate CSV files."""
         if not exist_ok and os.path.exists(output_path):
-            raise FileExistsError("Output file already exists. Use `exist_ok=True` to overwrite.")
+            raise FileExistsError("Output directory already exists. Use `exist_ok=True` to overwrite.")
         CsvChecklistIO.write(output_path, self.content)
 
 
