@@ -49,10 +49,11 @@ class YamlChecklistIO(ChecklistIO):
 
 class CsvChecklistIO(ChecklistIO):
     overview_field_names_unnested = ["Title", "Description"]
-    topics_field_names_unnested = ["ID", "Topic", "Description"]
-    tests_field_names_unnested = ["ID", "Topic", "Title", "Requirement", "Explanation", "References"]
     overview_field_name_nested = "Test Areas"
+    topics_field_names_unnested = ["ID", "Topic", "Description"]
     topics_field_name_nested = "Tests"
+    tests_field_names_unnested = ["ID", "Topic", "Title", "Requirement", "Explanation", "References"]
+    tests_field_names_ignore = ["Topic"]
     overview_filename = "overview.csv"
     topics_filename = "topics.csv"
     tests_filename = "tests.csv"
@@ -99,6 +100,10 @@ class CsvChecklistIO(ChecklistIO):
                 test['References'] = test['References'].split(',')
                 test['References'] = [x.strip(' ') for x in test['References']]
 
+                # remove keys to be ignored (i.e. not included) in the constructed dictionary
+                for key in cls.tests_field_names_ignore:
+                    test.pop(key, None)
+
             content = overview[0]
             content[cls.overview_field_name_nested] = topics
             return content
@@ -111,7 +116,6 @@ class CsvChecklistIO(ChecklistIO):
         os.makedirs(path, exist_ok=True)
         overview = [filter_dict(data, cls.overview_field_names_unnested)]
         topics = [filter_dict(area, cls.topics_field_names_unnested) for area in data["Test Areas"]]
-        tests = sum([area["Tests"] for area in data["Test Areas"]], [])
 
         # change the representation of tests:
         # 1. Add `Topic` from the parent Topic
