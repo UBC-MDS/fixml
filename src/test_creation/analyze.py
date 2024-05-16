@@ -3,6 +3,7 @@ import pprint
 from collections import defaultdict
 
 import fire
+import pandas as pd
 from dotenv import load_dotenv
 from tqdm import tqdm
 from langchain_community.document_loaders import DirectoryLoader, PythonLoader
@@ -135,7 +136,8 @@ class TestEvaluator:
 
     def init_system_message(self):
         if len(self.checklist) == 0:
-            self.load_checklist()
+            # self.load_checklist()
+            raise ValueError("Checklist is empty, make sure you have configured the checklist loader right!")
 
         self.system_message = [
             ("system",
@@ -213,8 +215,9 @@ class TestEvaluator:
                 self.load_test_file(fp)
                 print(f"# splits: {len(self.test_fps)}")
                 response, history = self.get_evaluation_response()  # FIXME: it sometimes tests only part of the checklist items
+                # print(response)
                 report = self.extract_json(response)
-                print(report)
+                # print(report)
                 for item in report:
                     item['file'] = fp
                 result += [{
@@ -235,18 +238,22 @@ class TestEvaluator:
             }]
 
         self.evaluation_result = result
-        return result
+        return
 
     def get_completeness_score(self):
-        pass
+        report_df = pd.DataFrame(self.evaluation_result)['report'].explode('report').apply(pd.Series)
+        report_df = report_df[report_df['Title'] != 'Dummy Title']
+        report_df = report_df.groupby(['ID']).max('Score')
+        score = f'{report_df['Score'].sum()}/{report_df['Score'].count()}'
+        print(f'Score: {score}')
+        return score
 
 
 if __name__ == '__main__':
     def main(checklist_path, repo_path):
         test = TestEvaluator(repo_path)
         test.load_checklist(checklist_path)
-        test.load_test_file(test.test_fps[2])
-        report, history = test.get_evaluation_response(test.py_splits)
-        pprint.pprint(test.extract_json(report))
+        test.evaluate()
+        test.get_completeness_score()
 
     fire.Fire(main)
