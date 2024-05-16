@@ -1,5 +1,6 @@
 import os
 import csv
+import copy
 from enum import Enum
 from typing import Union
 from abc import ABC, abstractmethod
@@ -49,7 +50,7 @@ class YamlChecklistIO(ChecklistIO):
 class CsvChecklistIO(ChecklistIO):
     overview_field_names_unnested = ["Title", "Description"]
     topics_field_names_unnested = ["ID", "Topic", "Description"]
-    tests_field_names_unnested = ["ID", "Title", "Requirement", "Explanation", "References"]
+    tests_field_names_unnested = ["ID", "Topic", "Title", "Requirement", "Explanation", "References"]
     overview_field_name_nested = "Test Areas"
     topics_field_name_nested = "Tests"
     overview_filename = "overview.csv"
@@ -66,7 +67,7 @@ class CsvChecklistIO(ChecklistIO):
     @staticmethod
     def _write_file(path: str, items: list, field_names: list) -> None:
         with open(path, "w") as f:
-            w = csv.DictWriter(f, fieldnames=field_names)
+            w = csv.DictWriter(f, fieldnames=field_names, extrasaction='ignore')
             w.writeheader()
             for item in items:
                 w.writerow(item)
@@ -93,6 +94,11 @@ class CsvChecklistIO(ChecklistIO):
                 topic_tests = [test for test in tests if test["ID"].split(".")[0] == topic_id]
                 topic[cls.topics_field_name_nested] = topic_tests
 
+            for test in tests:
+                # convert the references back into a list
+                test['References'] = test['References'].split(',')
+                test['References'] = [x.strip(' ') for x in test['References']]
+
             content = overview[0]
             content[cls.overview_field_name_nested] = topics
             return content
@@ -106,6 +112,17 @@ class CsvChecklistIO(ChecklistIO):
         overview = [filter_dict(data, cls.overview_field_names_unnested)]
         topics = [filter_dict(area, cls.topics_field_names_unnested) for area in data["Test Areas"]]
         tests = sum([area["Tests"] for area in data["Test Areas"]], [])
+
+        # change the representation of tests:
+        # 1. Add `Topic` from the parent Topic
+        # 2. Change references representation from list to string
+        tests = []
+        for area in data["Test Areas"]:
+            new_tests = copy.deepcopy(area["Tests"])
+            for test in new_tests:
+                test["Topic"] = area["Topic"]
+                test["References"] = ', '.join(test["References"])
+            tests += new_tests
 
         cls._write_file(os.path.join(path, cls.overview_filename), overview, cls.overview_field_names_unnested)
         cls._write_file(os.path.join(path, cls.topics_filename), topics, cls.topics_field_names_unnested)
@@ -177,9 +194,8 @@ if __name__ == "__main__":
         2. `topics.csv`
         3. `tests.csv`
         """
-        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.YAML)
-        checklist.to_csv("./checklist/csv/", exist_ok=False)
-        # checklist.to_yaml("test-dump.yaml", no_preserve_format=True, exist_ok=True)
+        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
+        print(checklist.get_all_tests())
 
 
     fire.Fire(example)
