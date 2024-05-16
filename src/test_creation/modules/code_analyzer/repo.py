@@ -2,7 +2,7 @@ import os
 import logging
 from collections import defaultdict
 
-from analyzers.python import PythonNaiveCodeAnalyzer, PythonASTCodeAnalyzer
+from .analyzers.python import PythonNaiveCodeAnalyzer, PythonASTCodeAnalyzer
 
 logger = logging.getLogger("test-creation.repo")
 
