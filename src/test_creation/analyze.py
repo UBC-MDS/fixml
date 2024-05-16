@@ -1,4 +1,5 @@
 import json
+import pprint
 from collections import defaultdict
 
 import fire
@@ -45,7 +46,7 @@ class TestEvaluator:
             Confirm that there is no leakage of data between training, validation, and testing sets, or across cross-validation folds, to ensure the integrity of the splits.
         """
         self.system_message = []
-        self.model = 'gpt-4'
+        self.model = 'gpt-3.5-turbo'
         self.temperature = 0
         self.chain = None
 
@@ -80,6 +81,8 @@ class TestEvaluator:
                     "Score": (1 for Satisfied / 0.5 for Partially Satisfied / 0 for Not Satisfied)
                 }
         """
+
+        self.evaluation_result = None
 
         if repo_path is not None:
             self.load_repo(repo_path)
@@ -182,7 +185,10 @@ class TestEvaluator:
 
         return response, history
 
-    def get_evaluation_response(self, py_splits):
+    def get_evaluation_response(self, py_splits=None):
+        if py_splits is None:
+            py_splits = self.py_splits
+
         return self.get_ai_response(
             message=self.evaluation_message,
             context=py_splits
@@ -190,7 +196,7 @@ class TestEvaluator:
 
     # FIXME: combine evaluation
     # to be tested
-    def extract_json(response, start='[', end=']'):
+    def extract_json(self, response, start='[', end=']'):
         start_idx = response.index(start)
         end_idx = response[::-1].index(end)
         if end_idx == 0:
@@ -202,10 +208,13 @@ class TestEvaluator:
     def evaluate(self, on_file=True):
         result = []
         if on_file:
-            for fp in self.test_fps:
+            for fp in tqdm(self.test_fps):
+                print(fp)
                 self.load_test_file(fp)
-                response, history = self.get_evaluation_response(self.py_splits)
+                print(f"# splits: {len(self.test_fps)}")
+                response, history = self.get_evaluation_response()  # FIXME: it sometimes tests only part of the checklist items
                 report = self.extract_json(response)
+                print(report)
                 for item in report:
                     item['file'] = fp
                 result += [{
@@ -215,7 +224,7 @@ class TestEvaluator:
                 }]
         else:
             self.load_test_dir(self.test_dir_path)
-            response, history = self.get_evaluation_response(self.py_splits)
+            response, history = self.get_evaluation_response()
             report = self.extract_json(response)
             for item in report:
                 item['file'] = self.test_dir_path
@@ -225,6 +234,7 @@ class TestEvaluator:
                 'history': history
             }]
 
+        self.evaluation_result = result
         return result
 
     def get_completeness_score(self):
@@ -237,6 +247,6 @@ if __name__ == '__main__':
         test.load_checklist(checklist_path)
         test.load_test_file(test.test_fps[2])
         report, history = test.get_evaluation_response(test.py_splits)
-        print(report)
+        pprint.pprint(test.extract_json(report))
 
     fire.Fire(main)
