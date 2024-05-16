@@ -191,6 +191,7 @@ class Checklist:
 
 if __name__ == "__main__":
     def example(checklist_path: str):
+        import pprint
         """Example calls. To be removed later.
 
         Example:
@@ -201,8 +202,8 @@ if __name__ == "__main__":
         2. `topics.csv`
         3. `tests.csv`
         """
-        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
-        print(checklist.get_all_tests())
+        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.YAML)
+        pprint.pprint(checklist.get_all_tests())
 
 
     fire.Fire(example)
