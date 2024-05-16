@@ -3,7 +3,7 @@ import logging
 
 import fire
 
-from modules.repo import Repository
+from repo import Repository
 
 
 logger = logging.getLogger('code_analyzer')
