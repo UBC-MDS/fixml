@@ -1,5 +1,6 @@
 import os
 import csv
+import copy
 from enum import Enum
 from typing import Union
 from abc import ABC, abstractmethod
@@ -48,10 +49,11 @@ class YamlChecklistIO(ChecklistIO):
 
 class CsvChecklistIO(ChecklistIO):
     overview_field_names_unnested = ["Title", "Description"]
-    topics_field_names_unnested = ["ID", "Topic", "Description"]
-    tests_field_names_unnested = ["ID", "Title", "Requirement", "Explanation", "References"]
     overview_field_name_nested = "Test Areas"
+    topics_field_names_unnested = ["ID", "Topic", "Description"]
     topics_field_name_nested = "Tests"
+    tests_field_names_unnested = ["ID", "Topic", "Title", "Requirement", "Explanation", "References"]
+    tests_field_names_ignore = ["Topic"]
     overview_filename = "overview.csv"
     topics_filename = "topics.csv"
     tests_filename = "tests.csv"
@@ -66,7 +68,7 @@ class CsvChecklistIO(ChecklistIO):
     @staticmethod
     def _write_file(path: str, items: list, field_names: list) -> None:
         with open(path, "w") as f:
-            w = csv.DictWriter(f, fieldnames=field_names)
+            w = csv.DictWriter(f, fieldnames=field_names, extrasaction='ignore')
             w.writeheader()
             for item in items:
                 w.writerow(item)
@@ -89,9 +91,21 @@ class CsvChecklistIO(ChecklistIO):
             for topic in topics:
                 topic_id = topic["ID"]
                 # matches all tests with ID that starts with the same as current topic ID
-                # this assumes that the test item ID would contain a dot i.e. `.`.
+                # this assumes that the test item ID would contain a dot i.e. `.` and
+                # follows the format `{topic-id}.{test-number}`, where the `{test-number}
+                # is an incremental number to indicate the ordering of the test within
+                # a topic.
                 topic_tests = [test for test in tests if test["ID"].split(".")[0] == topic_id]
                 topic[cls.topics_field_name_nested] = topic_tests
+
+            for test in tests:
+                # convert the references back into a list from its joined string representation
+                test['References'] = test['References'].split(',')
+                test['References'] = [x.strip(' ') for x in test['References']]
+
+                # remove keys to be ignored (i.e. not included) in the constructed dictionary
+                for key in cls.tests_field_names_ignore:
+                    test.pop(key, None)
 
             content = overview[0]
             content[cls.overview_field_name_nested] = topics
@@ -105,7 +119,17 @@ class CsvChecklistIO(ChecklistIO):
         os.makedirs(path, exist_ok=True)
         overview = [filter_dict(data, cls.overview_field_names_unnested)]
         topics = [filter_dict(area, cls.topics_field_names_unnested) for area in data["Test Areas"]]
-        tests = sum([area["Tests"] for area in data["Test Areas"]], [])
+
+        # change the representation of tests:
+        # 1. Add `Topic` from the parent Topic
+        # 2. Change references representation from list to string
+        tests = []
+        for area in data["Test Areas"]:
+            new_tests = copy.deepcopy(area["Tests"])
+            for test in new_tests:
+                test["Topic"] = area["Topic"]
+                test["References"] = ', '.join(test["References"])
+            tests += new_tests
 
         cls._write_file(os.path.join(path, cls.overview_filename), overview, cls.overview_field_names_unnested)
         cls._write_file(os.path.join(path, cls.topics_filename), topics, cls.topics_field_names_unnested)
@@ -159,9 +183,9 @@ class Checklist:
         YamlChecklistIO.write(output_path, self.content)
 
     def to_csv(self, output_path, exist_ok: bool = False):
-        """Dump the checklist to three separate CSV files."""
+        """Dump the checklist to a directory containing three separate CSV files."""
         if not exist_ok and os.path.exists(output_path):
-            raise FileExistsError("Output file already exists. Use `exist_ok=True` to overwrite.")
+            raise FileExistsError("Output directory already exists. Use `exist_ok=True` to overwrite.")
         CsvChecklistIO.write(output_path, self.content)
 
 
@@ -177,9 +201,8 @@ if __name__ == "__main__":
         2. `topics.csv`
         3. `tests.csv`
         """
-        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.YAML)
-        checklist.to_csv("./checklist/csv/", exist_ok=False)
-        # checklist.to_yaml("test-dump.yaml", no_preserve_format=True, exist_ok=True)
+        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
+        print(checklist.get_all_tests())
 
 
     fire.Fire(example)
