@@ -6,6 +6,7 @@ channels:
 dependencies:
   - jupyter-book=0.15
   - jupyterlab=4.0
+  - pandas=2.2.2
   - pip=24.0
   - python=3.12
   - python-dotenv=1.0.1
