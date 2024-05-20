@@ -266,19 +266,19 @@ Test Areas:
 
   - ID: "7"
     Topic: Artifact Testing
-    Description: >
+    Description: >-
       The following items involves explicit checks for behaviors that we expect
       the artifacts e.g. models, plots, etc., to follow.
     Tests:
       - ID: "7.1"
         Title: Invariance Tests
-        Requirement: >
+        Requirement: >-
           There are tests to ensure making a set of preturbations to the input
           that is expected to cause no effect would not change the model's
           output. For example, in sentiment analysis tasks, changing the name of
           the subject or the name of a location should not affect the sentence's
           sentiment.
-        Explanation: >
+        Explanation: >-
           Models should be making predictions in a robust and consistent manner
           such that changes to the input which are known or expected to have no
           effect on the model's task should not affect the model's prediction.
@@ -288,13 +288,13 @@ Test Areas:
 
       - ID: "7.2"
         Title: Directional Expectation Tests
-        Requirement: >
+        Requirement: >-
           There are tests to ensure making a set of preturbations to the input
           that is expected to affect the predications in a particular direction
           would change the model's output in a same direction. For example, in a
           regression model, increasing the number of bathrooms (holding all
           other features constnat) should not cause a drop in price.
-        Explanation: >
+        Explanation: >-
           Models should be making predictions in a robust and consistent manner
           such that changes to the input which are known or expected to have an
           directional effect should be reflected in the model's predictions.
@@ -304,14 +304,14 @@ Test Areas:
 
       - ID: "7.3"
         Title: Minimum Functionality Tests
-        Requirement: >
+        Requirement: >-
           If there are critical scenarios where prediction errors lead to high
           consequences, tests should be written for ensuring the model's
           behavior in the scenario is expected. For example, in text
           classification, a test can check the model's output for sentences less
           than 5 words would perform as expected if the performance on short
           pieces of text is critical.
-        Explanation: >
+        Explanation: >-
           In real world, some model outcomes are often more important than
           others. Traditional Machine Learning systems optimize for overall
           quality which might lead to over-optimistic and/or non-representable
