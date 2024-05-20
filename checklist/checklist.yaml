@@ -1,8 +1,8 @@
 %YAML 1.2
 ---
 Title: Checklist for Tests in Machine Learning Projects
-# TODO: To be filled in later...
-Description: Description about the project and its context
+Description: This is a comprehensive checklist for evaluating the data and ML
+  pipeline based on identified testing strategies from experts in the field.
 Test Areas:
   - ID: "1"
     Topic: General
@@ -267,16 +267,58 @@ Test Areas:
   - ID: "7"
     Topic: Artifact Testing
     Description: >-
-      The following items describe tests that need to be done for testing any
-      artifacts that are created from the project.
+      The following items involves explicit checks for behaviors that we expect
+      the artifacts e.g. models, plots, etc., to follow.
     Tests:
       - ID: "7.1"
-        Title: Dummy Title
+        Title: Invariance Tests
         Requirement: >-
-          This is a dummy item and there is nothing needed to act on.
+          There are tests to ensure making a set of preturbations to the input
+          that is expected to cause no effect would not change the model's
+          output. For example, in sentiment analysis tasks, changing the name of
+          the subject or the name of a location should not affect the sentence's
+          sentiment.
         Explanation: >-
-          This is a dummy item to show how the checklist items would be stored
-          inside this YAML file. It serves no other purpose.
+          Models should be making predictions in a robust and consistent manner
+          such that changes to the input which are known or expected to have no
+          effect on the model's task should not affect the model's prediction.
         References:
-          - http://128.0.0.1
-          - UBC-MDS
+          - jordan2020
+          - ribeiro2020accuracy
+
+      - ID: "7.2"
+        Title: Directional Expectation Tests
+        Requirement: >-
+          There are tests to ensure making a set of preturbations to the input
+          that is expected to affect the predications in a particular direction
+          would change the model's output in a same direction. For example, in a
+          regression model, increasing the number of bathrooms (holding all
+          other features constnat) should not cause a drop in price.
+        Explanation: >-
+          Models should be making predictions in a robust and consistent manner
+          such that changes to the input which are known or expected to have an
+          directional effect should be reflected in the model's predictions.
+        References:
+          - jordan2020
+          - ribeiro2020accuracy
+
+      - ID: "7.3"
+        Title: Minimum Functionality Tests
+        Requirement: >-
+          If there are critical scenarios where prediction errors lead to high
+          consequences, tests should be written for ensuring the model's
+          behavior in the scenario is expected. For example, in text
+          classification, a test can check the model's output for sentences less
+          than 5 words would perform as expected if the performance on short
+          pieces of text is critical.
+        Explanation: >-
+          In real world, some model outcomes are often more important than
+          others. Traditional Machine Learning systems optimize for overall
+          quality which might lead to over-optimistic and/or non-representable
+          performance metrics in cases where the importance of certain outcomes
+          far outweigh the rest. For example, falsely identifying valid emails
+          as spam has a more serious consequence than identifying a spam as a
+          valid email.
+        References:
+          - jordan2020
+          - ribeiro2020accuracy
