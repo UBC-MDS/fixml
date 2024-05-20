@@ -72,7 +72,7 @@ class TestEvaluator:
             Your task is to answer each question in the checklist using only the provided test functions.
             If an answer to the question is provided, it must be annotated with a citation of the test function(s) in the Observation session.
             Output a JSON format:
-                {
+                [{
                     "ID": 
                     "Title":
                     "Requirement":
@@ -80,7 +80,7 @@ class TestEvaluator:
                     "Functions": [ ... ]
                     "Evaluation": Satisfied/Partially Satisfied/Not Satisfied
                     "Score": (1 for Satisfied / 0.5 for Partially Satisfied / 0 for Not Satisfied)
-                }
+                }]
         """
 
         self.evaluation_result = None
@@ -207,17 +207,17 @@ class TestEvaluator:
             string = response[start_idx:-end_idx]
         return json.loads(string)
 
-    def evaluate(self, on_file=True):
+    def evaluate(self, on_file=True, verbose=False):
         result = []
         if on_file:
             for fp in tqdm(self.test_fps):
-                print(fp)
+                if verbose:
+                    print(fp)
                 self.load_test_file(fp)
-                print(f"# splits: {len(self.test_fps)}")
+                if verbose:
+                    print(f"# splits: {len(self.test_fps)}")
                 response, history = self.get_evaluation_response()  # FIXME: it sometimes tests only part of the checklist items
-                # print(response)
                 report = self.extract_json(response)
-                # print(report)
                 for item in report:
                     item['file'] = fp
                 result += [{
@@ -240,19 +240,26 @@ class TestEvaluator:
         self.evaluation_result = result
         return
 
-    def get_completeness_score(self):
+    def get_completeness_score(self, score_format='fraction', verbose=False):
         report_df = pd.DataFrame(self.evaluation_result)['report'].explode('report').apply(pd.Series)
         report_df = report_df.groupby(['ID', 'Title']).agg({
             'Score': ['max', 'count'],
             'Functions': ['sum']
         })
         report_df.columns = ['is_Satisfied', 'n_files_tested', 'functions']
-        score = f"{report_df['is_Satisfied'].sum()}/{report_df['is_Satisfied'].count()}"
-        print("Report:")
-        print(report_df)
-        print()
-        print(f'Score: {score}')
-        print()
+        self.evaluation_report = report_df
+
+        if score_format == 'fraction':
+            score = f"{report_df['is_Satisfied'].sum()}/{report_df['is_Satisfied'].count()}"
+        elif score_format == 'number':
+            score = report_df['is_Satisfied'].sum()/report_df['is_Satisfied'].count()
+
+        if verbose:
+            print("Report:")
+            print(report_df)
+            print()
+            print(f'Score: {score}')
+            print()
         return score
 
 
