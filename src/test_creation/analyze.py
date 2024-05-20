@@ -122,7 +122,7 @@ class TestEvaluator:
         self.py_splits = text_splitter.split_documents(docs)
 
     def load_checklist(self, checklist_path):
-        raw_checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.YAML)
+        raw_checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
 
         checklist = []
         for item in raw_checklist.get_all_tests():

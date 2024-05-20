@@ -1,0 +1,4 @@
+ID,Topic,Description
+1,General,The following items describe best practices for all tests to be written.
+2,Data Presence,"The following items describe tests that need to be done for testing the presence of data. This area of tests mainly concern whether the reading and saving operations are behaving as expected, and any unexpected behavior would not be passed silently."
+5,Model Fitting,The following items describe tests that need to be done for testing the model fitting process. The unit tests written for this section usually mock model load and model predictions similarly to mocking file access.
