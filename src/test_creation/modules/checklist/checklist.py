@@ -149,7 +149,7 @@ class Checklist:
 
         self.test_areas = set([x["Topic"] for x in self.content["Test Areas"]])
 
-    def get_tests_by_areas(self, areas: Union[list, str, set], requirements_only: bool = False):
+    def get_tests_by_areas(self, areas: Union[list, str, set], keys: Union[list, None] = None) -> list:
         tests = []
 
         if isinstance(areas, str):
@@ -160,16 +160,16 @@ class Checklist:
 
         areas = [x for x in self.content["Test Areas"] if x["Topic"] in areas]
         for area in areas:
-            if requirements_only:
-                tests += [x.get("Requirement") for x in area["Tests"]]
+            if keys:
+                tests += [filter_dict(x, keys) for x in area["Tests"]]
             else:
                 tests += area["Tests"]
         return tests
 
-    def get_all_tests(self, requirements_only: bool = False):
-        return self.get_tests_by_areas(self.test_areas, requirements_only)
+    def get_all_tests(self, keys=None) -> list:
+        return self.get_tests_by_areas(self.test_areas, keys=keys)
 
-    def get_test_areas(self):
+    def get_test_areas(self) -> set:
         return self.test_areas
 
     def to_yaml(self, output_path: str, no_preserve_format: bool = False, exist_ok: bool = False):
@@ -203,7 +203,7 @@ if __name__ == "__main__":
         3. `tests.csv`
         """
         checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.YAML)
-        pprint.pprint(checklist.get_all_tests())
+        pprint.pprint(checklist.get_all_tests(keys=["Title", "Requirement"]))
 
 
     fire.Fire(example)
