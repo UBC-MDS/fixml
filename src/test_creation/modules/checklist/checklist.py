@@ -209,12 +209,12 @@ class Checklist:
 
         # handle repeated columns and references
         for k in repeated_col:
-            if k not in ['References']:
+            if k != 'References':
                 for item in content[k]:
                     md_repr += self._get_md_representation(item, curr_level=curr_level + 1)
-            elif k == 'References':
+            else:
                 md_repr += '**References:**\n\n' + '\n'.join(f'  - {item}' for item in content['References']) + '\n\n'
-        # md_repr += '\n'
+
         return md_repr
 
     @staticmethod
@@ -253,7 +253,7 @@ if __name__ == "__main__":
         """
         checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
         print(checklist.as_markdown())
-        checklist.export_quarto("checklist.pdf", exist_ok=True)
+        checklist.export_pdf("checklist.pdf", exist_ok=True)
 
 
     fire.Fire(example)
