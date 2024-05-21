@@ -84,6 +84,7 @@ class TestEvaluator:
         """
 
         self.evaluation_result = None
+        self.evaluation_report = None
 
         if repo_path is not None:
             self.load_repo(repo_path)
@@ -261,7 +262,15 @@ class TestEvaluator:
             print(f'Score: {score}')
             print()
         return score
-
+    
+    def export_evaluation_report_to_html(self, output_path):
+        if self.evaluation_report is None:
+            raise NotImplementedError(
+                "Evaluation report is not yet created. Please make sure the function `get_completeness_score` is run before calling this export function"
+            )
+        else:
+            with open(output_path, 'w') as f:
+                f.write(self.evaluation_report.to_html())
 
 if __name__ == '__main__':
     def main(checklist_path, repo_path):
