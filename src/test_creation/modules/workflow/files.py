@@ -15,5 +15,5 @@ class PythonTestFileExtractor(RepoFileExtractor):
     def __init__(self, repository: Repository):
         super().__init__(repository)
 
-    def extract(self):
+    def extract(self) -> list:
         return self._repo.list_test_files()['Python']

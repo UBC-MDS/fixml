@@ -5,7 +5,7 @@ class ResponseParser:
     def __init__(self, response):
         self.response = response
 
-    def get_completeness_score(self):
+    def get_completeness_score(self) -> str:
         report_df = pd.DataFrame(self.response)['report'].explode('report').apply(pd.Series)
         report_df = report_df.groupby(['ID', 'Title']).agg({
             'Score': ['max', 'count'],

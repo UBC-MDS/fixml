@@ -12,6 +12,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 from langchain_openai import ChatOpenAI
 from langchain_core.language_models import LanguageModelLike
 from langchain_core.tools import ValidationError
+from langchain_core.documents import Document
 
 from modules.checklist.checklist import Checklist, ChecklistFormat
 from modules.code_analyzer.repo import Repository
@@ -68,18 +69,18 @@ class TestEvaluator:
         self.chain = self.prompt | self.llm | self.parser
 
     @staticmethod
-    def _load_test_file_into_splits(file_path):
+    def _load_test_file_into_splits(file_path: str) -> List[Document]:
         loader = PythonLoader(file_path)
         py = loader.load()
         py_splits = RecursiveCharacterTextSplitter.from_language(language=Language.PYTHON, chunk_size=1000,
                                                                  chunk_overlap=0).split_documents(py)
         return py_splits
 
-    def _load_tests_from_checklist(self):
+    def _load_tests_from_checklist(self) -> str:
         checklist = self.checklist.get_all_tests(['ID', 'Title', 'Requirement'])
         return json.dumps(checklist)
 
-    def evaluate(self):
+    def evaluate(self) -> List[dict]:
         result = []
         for fp in tqdm(self.files):
             print(fp)
