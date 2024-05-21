@@ -225,11 +225,11 @@ class Checklist:
 
     def export_html(self, output_path: str, exist_ok: bool = False):
         self.__filedump_check(output_path, exist_ok)
-        pypandoc.convert_text(self.as_markdown(), 'html', format='md', outputfile='checklist.html')
+        pypandoc.convert_text(self.as_markdown(), 'html', format='md', outputfile=output_path)
 
     def export_pdf(self, output_path: str, exist_ok: bool = False):
         self.__filedump_check(output_path, exist_ok)
-        pypandoc.convert_text(self.as_markdown(), 'pdf', format='md', outputfile='checklist.pdf')
+        pypandoc.convert_text(self.as_markdown(), 'pdf', format='md', outputfile=output_path)
 
     def export_quarto(self, output_path: str, exist_ok: bool = False):
         self.__filedump_check(output_path, exist_ok)
@@ -241,7 +241,6 @@ class Checklist:
 
 if __name__ == "__main__":
     def example(checklist_path: str):
-        import pprint
         """Example calls. To be removed later.
 
         Example:
@@ -253,9 +252,8 @@ if __name__ == "__main__":
         3. `tests.csv`
         """
         checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
-        # pprint.pprint(checklist.get_all_tests())
         print(checklist.as_markdown())
-        checklist.export_quarto("checklist.qmd", exist_ok=True)
+        checklist.export_quarto("checklist.pdf", exist_ok=True)
 
 
     fire.Fire(example)
