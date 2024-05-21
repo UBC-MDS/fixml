@@ -243,11 +243,13 @@ class TestEvaluator:
 
     def get_completeness_score(self, score_format='fraction', verbose=False):
         report_df = pd.DataFrame(self.evaluation_result)['report'].explode('report').apply(pd.Series)
+        report_df = report_df.rename(columns={"file": "File_Path"})
+        report_df['Function_Sources'] = report_df[['File_Path', 'Functions']].to_dict(orient='records')
         report_df = report_df.groupby(['ID', 'Title']).agg({
             'Score': ['max', 'count'],
-            'Functions': ['sum']
+            'Function_Sources': [list]
         })
-        report_df.columns = ['is_Satisfied', 'n_files_tested', 'functions']
+        report_df.columns = ['is_Satisfied', 'n_files_tested', 'function_sources']
         self.evaluation_report = report_df
 
         if score_format == 'fraction':
