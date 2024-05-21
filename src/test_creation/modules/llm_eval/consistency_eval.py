@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 class ConsistencyEvaluator:
     def __init__(self):
         self.evaluation_reports = None
@@ -52,6 +53,3 @@ class ConsistencyEvaluator:
         consistency_df.columns = consistency_df.columns.droplevel(level=0)
         consistency_df['consistency'] = consistency_df.eq(consistency_df.iloc[:, 0], axis=0).all(1)
         return consistency_df
-
-if __name__ == '__main__':
-    pass
