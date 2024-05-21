@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 from typing import List
 from langchain_core.prompts.prompt import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
-from langchain_community.document_loaders import DirectoryLoader, PythonLoader
+from langchain_community.document_loaders import PythonLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 from langchain_openai import ChatOpenAI
 from langchain_core.language_models import LanguageModelLike
@@ -80,12 +80,14 @@ class TestEvaluator:
         checklist = self.checklist.get_all_tests(['ID', 'Title', 'Requirement'])
         return json.dumps(checklist)
 
-    def evaluate(self) -> List[dict]:
+    def evaluate(self, verbose: bool = False) -> List[dict]:
         result = []
         for fp in tqdm(self.files):
-            print(fp)
+            if verbose:
+                print(fp)
             splits = self._load_test_file_into_splits(fp)
-            print(f"# splits: {len(self.files)}")
+            if verbose:
+                print(f"# splits: {len(self.files)}")
             # FIXME: it sometimes tests only part of the checklist items
 
             response = None
@@ -113,7 +115,7 @@ class TestEvaluator:
 if __name__ == '__main__':
     def main(checklist_path, repo_path):
         llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
-        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.YAML)
+        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
         extractor = PythonTestFileExtractor(Repository(repo_path))
 
         evaluator = TestEvaluator(llm, extractor, checklist)
