@@ -6,4 +6,4 @@ ID,Topic,Description
 5,Model Fitting,The following items describe tests that need to be done for testing the model fitting process. The unit tests written for this section usually mock model load and model predictions similarly to mocking file access.
 6,Model Evaluation,The following items describe tests that need to be done for testing the model evaluation process.
 7,Artifact Testing,"The following items involves explicit checks for behaviors that we expect the artifacts e.g. models, plots, etc., to follow."
-8,Data Quality optional,"The following items describe tests that need to be done for testing the quality of data, but they may not be applicable to all projects."
+8,Data Quality (Optional),"The following items describe tests that need to be done for testing the quality of data, but they may not be applicable to all projects."
