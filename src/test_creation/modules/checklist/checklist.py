@@ -244,7 +244,7 @@ if __name__ == "__main__":
         """Example calls. To be removed later.
 
         Example:
-        python src/checklist/checklist.py ./test-dump-csv/
+        python src/test_creation/modules/checklist/checklist.py ./checklist/test-dump-csv/
 
         Note that the supplied path must be a directory containing 3 CSV files:
         1. `overview.csv`
@@ -253,7 +253,7 @@ if __name__ == "__main__":
         """
         checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
         print(checklist.as_markdown())
-        checklist.export_pdf("checklist.pdf", exist_ok=True)
+        checklist.export_html("checklist.html", exist_ok=True)
 
 
     fire.Fire(example)
