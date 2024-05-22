@@ -150,7 +150,7 @@ class Checklist:
 
         self.test_areas = set([x["Topic"] for x in self.content["Test Areas"]])
 
-    def get_tests_by_areas(self, areas: Union[list, str, set], requirements_only: bool = False):
+    def get_tests_by_areas(self, areas: Union[list, str, set], keys: Union[list, None] = None) -> list:
         tests = []
 
         if isinstance(areas, str):
@@ -161,16 +161,16 @@ class Checklist:
 
         areas = [x for x in self.content["Test Areas"] if x["Topic"] in areas]
         for area in areas:
-            if requirements_only:
-                tests += [x.get("Requirement") for x in area["Tests"]]
+            if keys:
+                tests += [filter_dict(x, keys) for x in area["Tests"]]
             else:
                 tests += area["Tests"]
         return tests
 
-    def get_all_tests(self, requirements_only: bool = False):
-        return self.get_tests_by_areas(self.test_areas, requirements_only)
+    def get_all_tests(self, keys=None) -> list:
+        return self.get_tests_by_areas(self.test_areas, keys=keys)
 
-    def get_test_areas(self):
+    def get_test_areas(self) -> set:
         return self.test_areas
 
     def to_yaml(self, output_path: str, no_preserve_format: bool = False, exist_ok: bool = False):
@@ -229,7 +229,8 @@ class Checklist:
 
     def export_pdf(self, output_path: str, exist_ok: bool = False):
         self.__filedump_check(output_path, exist_ok)
-        pypandoc.convert_text(self.as_markdown(), 'pdf', format='md', outputfile=output_path)
+        pypandoc.convert_text(self.as_markdown(), 'pdf', format='md', outputfile=output_path,
+                              extra_args=['--pdf-engine=tectonic'])
 
     def export_quarto(self, output_path: str, exist_ok: bool = False):
         self.__filedump_check(output_path, exist_ok)
