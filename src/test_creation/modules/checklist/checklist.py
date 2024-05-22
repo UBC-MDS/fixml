@@ -229,7 +229,8 @@ class Checklist:
 
     def export_pdf(self, output_path: str, exist_ok: bool = False):
         self.__filedump_check(output_path, exist_ok)
-        pypandoc.convert_text(self.as_markdown(), 'pdf', format='md', outputfile=output_path)
+        pypandoc.convert_text(self.as_markdown(), 'pdf', format='md', outputfile=output_path,
+                              extra_args=['--pdf-engine=tectonic'])
 
     def export_quarto(self, output_path: str, exist_ok: bool = False):
         self.__filedump_check(output_path, exist_ok)
