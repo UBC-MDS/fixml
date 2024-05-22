@@ -245,7 +245,7 @@ if __name__ == "__main__":
         """Example calls. To be removed later.
 
         Example:
-        python src/checklist/checklist.py ./test-dump-csv/
+        python src/test_creation/modules/checklist/checklist.py ./checklist/test-dump-csv
 
         Note that the supplied path must be a directory containing 3 CSV files:
         1. `overview.csv`
