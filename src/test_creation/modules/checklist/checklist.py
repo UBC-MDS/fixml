@@ -254,7 +254,7 @@ if __name__ == "__main__":
         """
         checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
         print(checklist.as_markdown())
-        checklist.export_html("checklist.html", exist_ok=True)
+        checklist.export_pdf("checklist.pdf", exist_ok=True)
 
 
     fire.Fire(example)
