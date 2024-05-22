@@ -1,4 +1,5 @@
 import pandas as pd
+from ..workflow.parse import ResponseParser
 
 
 class ConsistencyEvaluator:
@@ -21,10 +22,10 @@ class ConsistencyEvaluator:
                 
                 result = dict()
                 model = item['model']
-                model.evaluate()
-        
-                result['score'] = model.get_completeness_score(score_format='number')
-                result['report'] = model.evaluation_report
+                response = model.evaluate()
+                parser = ResponseParser(response)
+                result['score'] = parser.get_completeness_score(score_format='number')
+                result['report'] = parser.evaluation_report
                 result['model_name'] = item['name']
                 result['test_no'] = test_no+1
                 results.append(result)

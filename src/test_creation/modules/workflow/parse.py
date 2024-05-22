@@ -4,6 +4,7 @@ import pandas as pd
 class ResponseParser:
     def __init__(self, response):
         self.response = response
+        self.evaluation_report = None
 
     def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> str:
         report_df = pd.DataFrame(self.response)['report'].explode('report').apply(pd.Series)
