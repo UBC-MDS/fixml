@@ -1,5 +1,7 @@
 # test_creation
 ![](img/logo.jpg)
+<img src="img/logo.jpg" alt="test_creation logo" width="200"/>
+
 
 `test_creation` is a tool designed to improve the quality and reliability of machine learning (ML) systems through comprehensive testing. By utilizing a manually curated checklist and Large Language Models (LLM), test_creation provides test completeness evaluations, missing test recommendations, and test function specification generation for ML system source codes.
 
