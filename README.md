@@ -1,6 +1,9 @@
 # test_creation
+![](img/logo.jpg)
 
-To be filled
+`test_creation` is a tool designed to improve the quality and reliability of machine learning (ML) systems through comprehensive testing. By utilizing a manually curated checklist and Large Language Models (LLM), test_creation provides test completeness evaluations, missing test recommendations, and test function specification generation for ML system source codes.
+
+For more details, see the [Documentation](https://ubc-mds.github.io/test-creation/proposal.html).
 
 ## Installation
 
@@ -34,14 +37,29 @@ There is a file containing the example calls. Run:
 $ python ./src/code_analyzer/example.py <path-to-your-repo>
 ```
 
+If `test_creation` assists your research, please cite it as follows:
+```bibtex
+@inproceedings{DBLP:conf/recsys/Kula15,
+  author    = {John Shiu and Orix Au Yeung and Tony Shum and Yingzi Jin},
+  title     = {Checklists and LLM prompts for efficient and effective test creation in data analysis},
+  year      = {2024},
+  url       = {http://example.com/paper.pdf},
+}
+
+```
 
 ## Contributing
 
 Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
 
 ## License
+test_creation is licensed under the MIT License.
 
-`test_creation` was created by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin. It is licensed under the terms of the MIT license.
+## Contributors
+John Shiu
+Orix Au Yeung
+Tony Shum
+Yingzi Jin
 
 ## Credits
 
