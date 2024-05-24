@@ -30,8 +30,6 @@ echo "OPENAI_API_KEY=..." > .env
 $ python ./src/test_creation/analyze.py <path-to-your-checklist> <path-to-your-repo>
 ```
 
-```
-
 ## Contributing
 
 Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
