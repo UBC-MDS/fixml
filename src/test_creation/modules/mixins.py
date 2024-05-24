@@ -7,15 +7,23 @@ import pypandoc
 class WriteableMixin:
     """A mixin for classes which will write content to filesystem."""
     def _filedump_check(self, output_path: str, exist_ok: bool, expects_directory_if_exists: bool = False):
-        if not os.access(output_path, os.W_OK):
-            raise PermissionError(f"Write permission is not granted for the output path: {output_path}")
-        if not exist_ok and os.path.exists(output_path):
-            raise FileExistsError("Output file already exists. Use `exist_ok=True` to overwrite.")
-        else:
-            if expects_directory_if_exists and os.path.isfile(output_path):
-                raise NotADirectoryError("An object already exists in the path, expecting a directory but it is a file.")
-            elif not expects_directory_if_exists and os.path.isdir(output_path):
-                raise IsADirectoryError("An object already exists in the path, expecting a file but it is a directory.")
+        normalized_path = os.path.abspath(os.path.normpath(output_path))
+        dir_path = os.path.dirname(normalized_path)
+        print(normalized_path, dir_path)
+        if not os.access(dir_path, os.W_OK):
+            raise PermissionError(f"Write permission is not granted for the output path: {dir_path}")
+
+        if not exist_ok:
+            if os.path.exists(normalized_path):
+                raise FileExistsError("Output file already exists. Use `exist_ok=True` to overwrite.")
+        elif os.path.exists(normalized_path):
+            if expects_directory_if_exists and not os.path.isdir(normalized_path):
+                raise NotADirectoryError("An non-directory already exists in the path but the write operation is expecting to overwrite a directory.")
+            elif not expects_directory_if_exists and not os.path.isfile(normalized_path):
+                raise IsADirectoryError("An non-file object already exists in the path but the write operation is expecting to overwrite a file.")
+
+            if not os.access(normalized_path, os.W_OK):
+                raise PermissionError(f"Write permission is not granted for the output path: {normalized_path}")
         return True
 
 
