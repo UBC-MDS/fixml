@@ -90,7 +90,6 @@ class ResponseParser(ExportableMixin):
         """
         Export the test evaluation report
         """
-        print(self.as_markdown())
         if format=='html':
             self.export_html(output_path, exist_ok)
         elif format=='pdf':

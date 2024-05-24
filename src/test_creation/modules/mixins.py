@@ -29,12 +29,13 @@ class ExportableMixin(WriteableMixin, ABC):
         pass
 
     @staticmethod
-    def _escape_slashes(string: str) -> str:
+    def _escape_single_quotes(string: str) -> str:
         return string.replace("'", "\\'")
 
     def export_html(self, output_path: str, exist_ok: bool = False):
         self._filedump_check(output_path, exist_ok)
-        pypandoc.convert_text(self._escape_slashes(self.as_markdown()), 'html', format='md', outputfile=output_path)
+        pypandoc.convert_text(self._escape_single_quotes(self.as_markdown()), 'html', format='md',
+                              outputfile=output_path)
 
     def export_pdf(self, output_path: str, exist_ok: bool = False):
         self._filedump_check(output_path, exist_ok)
