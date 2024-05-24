@@ -1,4 +1,5 @@
 # test_creation
+<img src="img/logo.jpg" alt="test_creation logo" width="400"/>
 
 `test_creation` is a tool designed to improve the quality and reliability of machine learning (ML) systems through comprehensive testing. By utilizing a manually curated checklist and Large Language Models (LLM), test_creation provides test completeness evaluations, missing test recommendations, and test function specification generation for ML system source codes.
 
@@ -26,14 +27,8 @@ echo "OPENAI_API_KEY=..." > .env
 
 ## Usage
 
-### code_analyzer
-
-This is used to analyze and extract information from a downloaded repo.
-
-There is a file containing the example calls. Run:
-
 ```console
-$ python ./src/code_analyzer/example.py <path-to-your-repo>
+$ python ./src/test_creation/analyze.py <path-to-your-checklist> <path-to-your-repo>
 ```
 
 If `test_creation` assists your research, please cite it as follows:
@@ -52,13 +47,8 @@ If `test_creation` assists your research, please cite it as follows:
 Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
 
 ## License
-test_creation is licensed under the MIT License.
 
-## Contributors
-John Shiu
-Orix Au Yeung
-Tony Shum
-Yingzi Jin
+`test_creation` was created by John Shiu, Orix Au Yeung, Tony Shum, and Yingzi Jin. It is licensed under the terms of the MIT license for software code. Reports and instructional materials are licensed under the terms of the CC-BY 4.0 license.
 
 ## Credits
 
