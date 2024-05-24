@@ -184,7 +184,7 @@ class Checklist(ExportableMixin):
 
     def to_csv(self, output_path: str, exist_ok: bool = False):
         """Dump the checklist to a directory containing three separate CSV files."""
-        self._filedump_check(output_path, exist_ok)
+        self._filedump_check(output_path, exist_ok, expects_directory_if_exists=True)
         CsvChecklistIO.write(output_path, self.content)
 
     def as_markdown(self):

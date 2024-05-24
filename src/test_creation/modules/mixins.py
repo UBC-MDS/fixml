@@ -6,9 +6,16 @@ import pypandoc
 
 class WriteableMixin:
     """A mixin for classes which will write content to filesystem."""
-    def _filedump_check(self, output_path: str, exist_ok: bool):
+    def _filedump_check(self, output_path: str, exist_ok: bool, expects_directory_if_exists: bool = False):
+        if not os.access(output_path, os.W_OK):
+            raise PermissionError(f"Write permission is not granted for the output path: {output_path}")
         if not exist_ok and os.path.exists(output_path):
             raise FileExistsError("Output file already exists. Use `exist_ok=True` to overwrite.")
+        else:
+            if expects_directory_if_exists and os.path.isfile(output_path):
+                raise NotADirectoryError("An object already exists in the path, expecting a directory but it is a file.")
+            elif not expects_directory_if_exists and os.path.isdir(output_path):
+                raise IsADirectoryError("An object already exists in the path, expecting a file but it is a directory.")
         return True
 
 
