@@ -30,15 +30,6 @@ echo "OPENAI_API_KEY=..." > .env
 $ python ./src/test_creation/analyze.py <path-to-your-checklist> <path-to-your-repo>
 ```
 
-If `test_creation` assists your research, please cite it as follows:
-```bibtex
-@inproceedings{DBLP:conf/recsys/Kula15,
-  author    = {John Shiu and Orix Au Yeung and Tony Shum and Yingzi Jin},
-  title     = {Checklists and LLM prompts for efficient and effective test creation in data analysis},
-  year      = {2024},
-  url       = {http://example.com/paper.pdf},
-}
-
 ```
 
 ## Contributing
