@@ -73,12 +73,15 @@ class PerFileTestEvaluator(TestEvaluator):
             while not response and retry_count < self.retries:
                 try:
                     response = self.chain.invoke({"codebase": splits, "checklist": json.dumps(self._test_items)})
+
+                    # TODO: to be moved in PR for #103
                     # inconsistent behaviour across langchains' parsers!
                     # some will return dictionary while some will return pydantic model
                     if not isinstance(response, dict):
                         print(response.results)
                         response = response.dict()
                         print(response)
+
                 except (PydanticValidationError, LangchainValidationError, OutputParserException) as e:
                     retry_count += 1
                     continue
@@ -102,26 +105,17 @@ if __name__ == '__main__':
         langchain.debug = True
         from langchain_openai import ChatOpenAI
 
-        from modules.workflow.prompt_format import JSONPromptFormat, YAMLPromptFormat, PydanticPromptFormat
+        from modules.workflow.prompt_format import EvaluationPromptFormat
 
-        # llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
-        llm = ChatOpenAI(model="gpt-4o", temperature=0)
+        llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
         checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
         repo = Repository(repo_path)
 
-        # json_format = JSONPromptFormat()
-        # json_evaluator = PerFileTestEvaluator(llm, prompt_format=json_format, repository=repo, checklist=checklist)
-        # json_response = json_evaluator.evaluate()
-        #
-        # parser = ResponseParser(json_response)
-        # parser.get_completeness_score()
+        prompt_format = EvaluationPromptFormat()
+        evaluator = PerFileTestEvaluator(llm, prompt_format=prompt_format, repository=repo, checklist=checklist)
+        response = evaluator.evaluate()
 
-        yaml_format = YAMLPromptFormat()
-        yaml_evaluator = PerFileTestEvaluator(llm, prompt_format=yaml_format, repository=repo, checklist=checklist)
-        yaml_response = yaml_evaluator.evaluate()
-
-        parser = ResponseParser(yaml_response)
+        parser = ResponseParser(response)
         parser.get_completeness_score()
-
 
     fire.Fire(main)
