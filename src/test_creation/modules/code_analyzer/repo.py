@@ -24,6 +24,7 @@ class Repository:
             '.c': 'C'
         }
         self.lf_map = self._get_language_file_map()
+        self.ffl_map = self._get_file_function_lineno_map() # file-function-lineno map
 
     def _get_all_files(self, include_git_dir: bool = False):
         file_paths = []
@@ -44,7 +45,19 @@ class Repository:
             for k, v in self.fileext_language_map.items():
                 if file.endswith(k):
                     file_language_map[v].append(file)
-        return file_language_map
+        return file_language_map # FIXME: why is it called file_language_map instead of language_file_map?
+
+    def _get_file_function_lineno_map(self):
+        file_function_lineno_map = defaultdict(lambda: defaultdict(int))
+        files = self.lf_map.get("Python", [])
+        ast = PythonASTCodeAnalyzer() # FIXME: only support Python ATS, what's the implication?
+        for file in files:
+            try:
+                ast.read(file)
+                file_function_lineno_map[file] = ast._get_function_lineno_map()
+            except Exception as e:
+                logger.info("Exception occurred when parsing using ast (Python 2 code?) Using naive parser...")
+        return file_function_lineno_map
 
     def list_languages(self):
         return list(self.lf_map.keys())
@@ -78,3 +91,4 @@ class Repository:
                 if naive.contains_test():
                     testfiles["Python"].append(file)
         return testfiles
+
