@@ -1,12 +1,9 @@
 import json
 from abc import ABC, abstractmethod
+from datetime import datetime
 
-from dotenv import load_dotenv
 from tqdm import tqdm
 from typing import List
-from pydantic_core._pydantic_core import ValidationError as PydanticValidationError
-from langchain_core.tools import ValidationError as LangchainValidationError
-from langchain_core.exceptions import OutputParserException
 from langchain_community.document_loaders import PythonLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 from langchain_core.language_models import LanguageModelLike
@@ -15,15 +12,13 @@ from langchain_core.documents import Document
 from ..checklist.checklist import Checklist
 from ..code_analyzer.repo import Repository
 from .prompt_format import PromptFormat
-from .response import Response
-
-load_dotenv()
+from .response import EvaluationResponse, CallResult
 
 
 class Evaluator(ABC):
     """Abstract base class for evaluators i.e. class object to assemble prompt and to obtain response from LLMs."""
     @abstractmethod
-    def evaluate(self) -> Response:
+    def evaluate(self):
         pass
 
 
@@ -34,6 +29,7 @@ class TestEvaluator(Evaluator, ABC):
     def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat, repository: Repository,
                  checklist: Checklist):
         self.llm = llm
+
         self.checklist = checklist
         self.repository = repository
         self.prompt_format = prompt_format
@@ -65,9 +61,13 @@ class PerFileTestEvaluator(TestEvaluator):
                                                                  chunk_overlap=0).split_documents(py)
         return py_splits
 
-    def evaluate(self, verbose: bool = False) -> Response:
-        response = Response()
-        result = []
+    def evaluate(self, verbose: bool = False) -> EvaluationResponse:
+        eval_response = EvaluationResponse(
+            model={'name': self.llm.model_name, 'temperature': self.llm.temperature},
+            repository_path=self.repository.path,
+            checklist_path=self.checklist.path
+        )
+
         for fp in tqdm(self._files):
             if verbose:
                 print(fp)
@@ -78,30 +78,44 @@ class PerFileTestEvaluator(TestEvaluator):
 
             response = None
             retry_count = 0
+            errors = []
+            start_time = datetime.now()
+
+            context = {"codebase": splits, "checklist": json.dumps(self._test_items)}
+
             while not response and retry_count < self.retries:
                 try:
-                    response = self.chain.invoke({"codebase": splits, "checklist": json.dumps(self._test_items)})
+                    response = self.chain.invoke(context)
 
-                    # TODO: to be moved in PR for #103
                     # inconsistent behaviour across langchains' parsers!
-                    # some will return dictionary while some will return pydantic model
+                    # some will return dictionary while some will return pydantic model.
+                    # for now, we coerce all responses to dictionary, but later on it might be preferable to coerce all
+                    # into pydantic model for easier validation instead.
                     if not isinstance(response, dict):
-                        print(response.results)
                         response = response.dict()
-                        print(response)
 
-                except (PydanticValidationError, LangchainValidationError, OutputParserException) as e:
+                except Exception as e:
+                    errors.append({'name': e.__class__.__name__, 'description': str(e)})
                     retry_count += 1
                     continue
 
             if not response:
-                raise RuntimeError(f"Unable to obtain valid response from LLM within {self.retries} attempts")
+                print(f"Unable to obtain valid response from LLM within {self.retries} attempts")
+                print("continuing...")
 
-            report = response['results']
-            for item in report:
-                item['file'] = fp
-            result += [{
-                'file': fp,
-                'report': report,
-            }]
-        return response
+            end_time = datetime.now()
+
+            call_result = CallResult(
+                start_time=start_time,
+                end_time=end_time,
+                files_evaluated=[fp],
+                injected=context,
+                prompt=self.prompt_format.prompt.format(**context),
+                success=bool(response),
+                parsed_response=response,
+                errors=errors
+            )
+
+            eval_response.call_results.append(call_result)
+
+        return eval_response

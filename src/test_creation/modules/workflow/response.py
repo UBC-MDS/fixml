@@ -1,64 +1,57 @@
-"""
-Response object. Here is the JSON representation:
-{
-    model
-    repo_path
-    checklist [{
-        ID
-        Title
-        Requirement
-    }]
-    prompt_format
-    evaluator
-    calls [{
-        start_time
-        end_time
-        injected
-        prompt
-        parsed_response
-        errors [{
-            exception_name
-            description
+from datetime import datetime
+from typing import List, Dict, Any, Optional
+
+from pydantic import BaseModel, Field
+
+
+class LLM(BaseModel):
+    name: str = Field(description="Name of the LLM used")
+    temperature: float = Field(description="Temperature of the LLM")
+
+
+class Error(BaseModel):
+    name: str = Field(description="Class name of the error")
+    description: str = Field(description="Description of the error")
+
+
+class CallResult(BaseModel):
+    start_time: datetime = Field(description="Start time of the call")
+    end_time: datetime = Field(description="End time of the call")
+    files_evaluated: List[str] = Field(description="List of files used in the call")
+    injected: Dict[str, Any] = Field(description="Injected context as a dictionary")
+    prompt: str = Field(description="Final constructed prompt sent to LLM")
+    success: bool = Field(description="Whether the call is successful")
+    parsed_response: Optional[Dict] = Field(description="Parsed response")
+    errors: List[Error] = Field(description="List of errors (if any)", default=[])
+
+
+class EvaluationResponse(BaseModel):
+    """A data class to store all information from test evaluation runs.
+
+    Here is the schema:
+    {
+        model {
+            name
+            temperature
+        }
+        repository_path
+        checklist_path
+        call_results [{
+            start_time
+            end_time
+            files_evaluated
+            injected
+            prompt
+            success
+            parsed_response
+            errors [{
+                name
+                description
+            }]
         }]
-
-    }]
-}
-
-This can be obtained by calling `Response.__repr__()`.
-"""
-from abc import ABC
-
-from langchain_core.language_models import LanguageModelLike
-
-
-from .evaluator import Evaluator, TestEvaluator
-from .prompt_format import PromptFormat
-from ..checklist.checklist import Checklist
-from ..code_analyzer.repo import Repository
-
-
-class Response(ABC):
-    """Abstract class object obtained from running evaluation from evaluators."""
-    def __init__(self, evaluator: Evaluator):
-        self.evaluator = evaluator
-
-
-class EvaluationResponse(Response):
-    """Class object to store all information from test evaluation runs."""
-
-    def __init__(self, model: LanguageModelLike, repo_path: str, checklist_path: str, prompt_format: PromptFormat,
-                 evaluator: TestEvaluator):
-        super().__init__(evaluator)
-        self.model = model
-        self.repo_path = repo_path
-        self.checklist_path = checklist_path
-        self.prompt = prompt_format
-        self.evaluator = evaluator
-
-    def __repr__(self):
-        # TODO
-        return self
-
-    def add_call_result(self, start_time, end_time, files_injected, prompt_injected, parsed_response, errors):
-        # TODO
-        pass
+    }
+    """
+    model: LLM = Field(description="LLM-related information")
+    repository_path: str = Field(description="Repository path")
+    checklist_path: str = Field(description="Checklist path")
+    call_results: List[CallResult] = Field(description="List of call results", default=[])
