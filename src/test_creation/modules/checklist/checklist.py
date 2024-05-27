@@ -139,12 +139,13 @@ class CsvChecklistIO(ChecklistIO):
 
 class Checklist:
     def __init__(self, checklist_path: str, checklist_format: ChecklistFormat):
-        if not os.path.exists(checklist_path):
+        self.path = checklist_path
+        if not os.path.exists(self.path):
             raise FileNotFoundError("Checklist file not found.")
         if checklist_format == ChecklistFormat.YAML:
-            self.content = YamlChecklistIO.read(checklist_path)
+            self.content = YamlChecklistIO.read(self.path)
         elif checklist_format == ChecklistFormat.CSV:
-            self.content = CsvChecklistIO.read(checklist_path)
+            self.content = CsvChecklistIO.read(self.path)
         else:
             raise NotImplementedError(f"Format {checklist_format} is not supported.")
 
