@@ -15,8 +15,8 @@ class ResponseParser(ExportableMixin):
         Compute Evaluation Report and Completeness Score
         """
         report_df = pd.DataFrame(self.response)['report'].explode('report').apply(pd.Series)
-        report_df = report_df.rename(columns={"file": "File Path"})
-        report_df['Function References'] = report_df[['File Path', 'Functions']].to_dict(orient='records')
+        report_df = report_df.rename(columns={"file": "File Path", "lineno": "Line Numbers"})
+        report_df['Function References'] = report_df[['File Path', 'Functions', "Line Numbers"]].to_dict(orient='records')
         report_df['Observation'] = '(' + report_df['File Path'].apply(lambda x: os.path.split(x)[-1]) + ') ' + \
                                    report_df['Observation']
         report_df = report_df.groupby(['ID', 'Title']).agg({

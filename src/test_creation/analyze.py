@@ -105,6 +105,7 @@ class TestEvaluator:
             report = response['results']
             for item in report:
                 item['file'] = fp
+                item['lineno'] = [self.file_extractor._repo.ffl_map[fp][func] for func in item['Functions']]
             result += [{
                 'file': fp,
                 'report': report,
