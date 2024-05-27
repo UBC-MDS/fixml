@@ -6,7 +6,7 @@ class ConsistencyEvaluator:
     def __init__(self):
         self.evaluation_reports = None
 
-    def evaluate(self, models, num_test_runs=2, verbose=False):
+    def evaluate(self, models, num_test_runs=2, verbose=False, version_before_refactoring=False): # FIXME: version_before_refactoring is for demo purpose, to be removed
         """
         Input the initialized TestEvaluator models, test run `num_test_runs` times to obtain the result
         models = [{'name': 'model_no1', 'model': {{model object}}}, ...]
@@ -22,12 +22,26 @@ class ConsistencyEvaluator:
                 
                 result = dict()
                 model = item['model']
-                response = model.evaluate()
-                parser = ResponseParser(response)
-                result['score'] = parser.get_completeness_score(score_format='number')
-                result['report'] = parser.evaluation_report
-                result['model_name'] = item['name']
-                result['test_no'] = test_no+1
+                if version_before_refactoring:
+                    model.evaluate()
+                    report_df = pd.DataFrame(model.evaluation_result)['report'].explode('report').apply(pd.Series)
+                    report_df = report_df.groupby(['ID', 'Title']).agg({
+                        'Score': ['max', 'count'],
+                        'Functions': ['sum']
+                    })
+                    report_df.columns = ['is_Satisfied', 'n_files_tested', 'functions']
+
+                    result['report'] = report_df
+                    result['score'] = model.get_completeness_score(score_format='number')
+                    result['model_name'] = item['name']
+                    result['test_no'] = test_no + 1
+                else:
+                    response = model.evaluate()
+                    parser = ResponseParser(response)
+                    result['score'] = parser.get_completeness_score(score_format='number')
+                    result['report'] = parser.evaluation_report
+                    result['model_name'] = item['name']
+                    result['test_no'] = test_no+1
                 results.append(result)
         self.evaluation_reports = pd.DataFrame(results)
         return
