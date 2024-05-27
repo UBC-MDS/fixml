@@ -47,17 +47,34 @@ class ExportableMixin(WriteableMixin, ABC):
     def _escape_single_quotes(string: str) -> str:
         return string.replace("'", "\\'")
 
-    def export_html(self, output_path: str, exist_ok: bool = False):
+    def __format_check(self, output_path, format):
+        formats = {
+            "pdf": ["pdf"],
+            "html": ["htm", "html"],
+            "qmd": ["qmd"]
+        }
+
+        normalized_ext = output_path.split(".")[-1].lower()
+        if normalized_ext not in formats[format]:
+            raise ValueError(f"Output file path `{output_path}` does not meet expectation. When specifying `{format}` to be exported, please use one of the following extensions: {str(formats[format])}.")
+
+    def _export_check(self, output_path: str, format: str, exist_ok: bool):
         self._filedump_check(output_path, exist_ok)
+        self.__format_check(output_path, format)
+
+    def export_html(self, output_path: str, exist_ok: bool = False):
+        self._export_check(output_path, format="html", exist_ok=exist_ok)
         pypandoc.convert_text(self._escape_single_quotes(self.as_markdown()), 'html', format='md',
                               outputfile=output_path)
 
     def export_pdf(self, output_path: str, exist_ok: bool = False):
+        self._export_check(output_path, format="pdf", exist_ok=exist_ok)
         self._filedump_check(output_path, exist_ok)
         pypandoc.convert_text(self.as_markdown(), 'pdf', format='md', outputfile=output_path,
                               extra_args=['--pdf-engine=tectonic'])
 
     def export_quarto(self, output_path: str, exist_ok: bool = False):
+        self._export_check(output_path, format="qmd", exist_ok=exist_ok)
         self._filedump_check(output_path, exist_ok)
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(self.as_quarto_markdown())
