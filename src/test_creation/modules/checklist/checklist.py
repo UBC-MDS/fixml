@@ -161,10 +161,12 @@ class Checklist:
 
         areas = [x for x in self.content["Test Areas"] if x["Topic"] in areas]
         for area in areas:
-            if keys:
-                tests += [filter_dict(x, keys) for x in area["Tests"]]
-            else:
-                tests += area["Tests"]
+            for test in area["Tests"]:
+                if test['Is Evaluator Applicable'] == '1':
+                    if keys:
+                        tests.append(filter_dict(test, keys))
+                    else:
+                        tests.append(test)
         return tests
 
     def get_all_tests(self, keys=None) -> list:
