@@ -76,9 +76,15 @@ class TestEvaluator:
                                                                  chunk_overlap=0).split_documents(py)
         return py_splits
 
-    def _load_tests_from_checklist(self) -> str:
-        checklist = self.checklist.get_all_tests(['ID', 'Title', 'Requirement'])
-        return json.dumps(checklist)
+    def _load_tests_from_checklist(self) -> List[dict]:
+        return self.checklist.get_all_tests(['ID', 'Title', 'Requirement'])
+
+    def _validate_response(self, raw_response: dict) -> None:
+        """Validation logics that are not covered by pydantic or langchain."""
+        # ensures the number of items in the response is the same as provided checklists
+        if len(raw_response['results']) != len(self.test_items):
+            raise ValidationError("Number of items returned from LLM does not match that in checklist.")
+
 
     def evaluate(self, verbose: bool = False) -> List[dict]:
         result = []
@@ -88,13 +94,16 @@ class TestEvaluator:
             splits = self._load_test_file_into_splits(fp)
             if verbose:
                 print(f"# splits: {len(self.files)}")
-            # FIXME: it sometimes tests only part of the checklist items
 
             response = None
             retry_count = 0
             while not response and retry_count < self.retries:
                 try:
-                    response = self.chain.invoke({"context": splits, "checklist": self.test_items})
+                    response = self.chain.invoke({
+                        "context": splits,
+                        "checklist": json.dumps(self.test_items)
+                    })
+                    self._validate_response(response)
                 except ValidationError as e:
                     retry_count += 1
                     continue
