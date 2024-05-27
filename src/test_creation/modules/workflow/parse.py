@@ -22,7 +22,7 @@ class ResponseParser:
 
         if verbose:
             print("Report:")
-            print(report_df)
+            print(report_df[['is_Satisfied', 'n_files_tested']])
             print()
             print(f'Score: {score}')
             print()
