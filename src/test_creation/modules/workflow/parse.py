@@ -1,13 +1,22 @@
+from typing import Optional
+
 import pandas as pd
+
+from .response import EvaluationResponse
 
 
 class ResponseParser:
-    def __init__(self, response):
+    def __init__(self, response: EvaluationResponse):
         self.response = response
         self.evaluation_report = None
 
-    def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> str:
-        report_df = pd.DataFrame(self.response)['report'].explode('report').apply(pd.Series)
+    def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> Optional[float]:
+        for result in self.response.call_results:
+            if not result.success:
+                print("failed to obtain valid response, cannot calculate completeness score")
+                return None
+        parsed_responses = [result.parsed_response for result in self.response.call_results]
+        report_df = pd.DataFrame(parsed_responses)['results'].explode('results').apply(pd.Series)
         report_df = report_df.groupby(['ID', 'Title']).agg({
             'Score': ['max', 'count'],
             'Functions': ['sum']
