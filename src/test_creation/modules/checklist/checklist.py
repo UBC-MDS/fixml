@@ -5,9 +5,9 @@ from enum import Enum
 from typing import Union
 from abc import ABC, abstractmethod
 
-import fire
-import pypandoc
 from ruamel.yaml import YAML
+
+from ..mixins import ExportableMixin
 
 
 def filter_dict(d: dict, keys: list) -> dict:
@@ -137,7 +137,7 @@ class CsvChecklistIO(ChecklistIO):
         cls._write_file(os.path.join(path, cls.tests_filename), tests, cls.tests_field_names_unnested)
 
 
-class Checklist:
+class Checklist(ExportableMixin):
     def __init__(self, checklist_path: str, checklist_format: ChecklistFormat):
         if not os.path.exists(checklist_path):
             raise FileNotFoundError("Checklist file not found.")
@@ -179,82 +179,45 @@ class Checklist:
                 "Roundtripping is not yet implemented. If you want to dump the YAML file disregarding the original "
                 "formatting, use `no_preserve_format=True`."
             )
-        self.__filedump_check(output_path, exist_ok)
+        self._filedump_check(output_path, exist_ok)
         YamlChecklistIO.write(output_path, self.content)
 
     def to_csv(self, output_path: str, exist_ok: bool = False):
         """Dump the checklist to a directory containing three separate CSV files."""
-        self.__filedump_check(output_path, exist_ok)
+        self._filedump_check(output_path, exist_ok, expects_directory_if_exists=True)
         CsvChecklistIO.write(output_path, self.content)
 
     def as_markdown(self):
-        return self._get_md_representation(self.content, curr_level=1)
+        def _get_md_representation(content: dict, curr_level: int):
+            repeated_col = [k for k, v in content.items() if isinstance(v, list)]
 
-    def _get_md_representation(self, content: dict, curr_level: int):
-        repeated_col = [k for k, v in content.items() if isinstance(v, list)]
+            # print out header for each item
+            md_repr = '#' * curr_level
+            if 'ID' in content.keys():
+                md_repr += f" {content['ID']}"
+            if 'Title' in content.keys():
+                md_repr += f" {content['Title']}\n\n"
+            elif 'Topic' in content.keys():
+                md_repr += f" {content['Topic']}\n\n"
 
-        # print out header for each item
-        md_repr = '#' * curr_level
-        if 'ID' in content.keys():
-            md_repr += f" {content['ID']}"
-        if 'Title' in content.keys():
-            md_repr += f" {content['Title']}\n\n"
-        elif 'Topic' in content.keys():
-            md_repr += f" {content['Topic']}\n\n"
+            # print out non-title, non-repeated items
+            for k, v in content.items():
+                if k not in repeated_col and k not in ['Title', 'Topic', 'ID']:
+                    md_repr += f'**{k}**: {v}\n\n'
 
-        # print out non-title, non-repeated items
-        for k, v in content.items():
-            if k not in repeated_col and k not in ['Title', 'Topic', 'ID']:
-                md_repr += f'**{k}**: {v.replace("'", "\\'")}\n\n'
+            # handle repeated columns and references
+            for k in repeated_col:
+                if k != 'References':
+                    for item in content[k]:
+                        md_repr += _get_md_representation(item, curr_level=curr_level + 1)
+                else:
+                    md_repr += '**References:**\n\n' + '\n'.join(
+                        f'  - {item}' for item in content['References']) + '\n\n'
 
-        # handle repeated columns and references
-        for k in repeated_col:
-            if k != 'References':
-                for item in content[k]:
-                    md_repr += self._get_md_representation(item, curr_level=curr_level + 1)
-            else:
-                md_repr += '**References:**\n\n' + '\n'.join(f'  - {item}' for item in content['References']) + '\n\n'
+            return md_repr
 
-        return md_repr
+        return _get_md_representation(self.content, curr_level=1)
 
-    @staticmethod
-    def __filedump_check(output_path: str, exist_ok: bool):
-        if not exist_ok and os.path.exists(output_path):
-            raise FileExistsError("Output file already exists. Use `exist_ok=True` to overwrite.")
-        return True
-
-    def export_html(self, output_path: str, exist_ok: bool = False):
-        self.__filedump_check(output_path, exist_ok)
-        pypandoc.convert_text(self.as_markdown(), 'html', format='md', outputfile=output_path)
-
-    def export_pdf(self, output_path: str, exist_ok: bool = False):
-        self.__filedump_check(output_path, exist_ok)
-        pypandoc.convert_text(self.as_markdown(), 'pdf', format='md', outputfile=output_path,
-                              extra_args=['--pdf-engine=tectonic'])
-
-    def export_quarto(self, output_path: str, exist_ok: bool = False):
-        self.__filedump_check(output_path, exist_ok)
-        header = f'---\ntitle: "{self.content['Title']}"\nformat:\n  html:\n  code-fold: true\n---\n\n'
-        qmd_repr = header + self.as_markdown()
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(qmd_repr)
-
-
-if __name__ == "__main__":
-    def example(checklist_path: str):
-        """Example calls. To be removed later.
-
-        Example:
-        python src/test_creation/modules/checklist/checklist.py ./checklist/test-dump-csv/
-
-        Note that the supplied path must be a directory containing 3 CSV files:
-        1. `overview.csv`
-        2. `topics.csv`
-        3. `tests.csv`
-        """
-        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
-        print(checklist.as_markdown())
-        checklist.export_pdf("checklist.pdf", exist_ok=True)
-
-
-    fire.Fire(example)
+    def as_quarto_markdown(self):
+        header = header = '---\ntitle: "{}"\nformat:\n  html:\n    code-fold: true\n---\n\n'.format(self.content['Title'])
+        return header + self.as_markdown()
