@@ -103,9 +103,14 @@ class TestEvaluator:
                 raise RuntimeError(f"Unable to obtain valid response from LLM within {self.retries} attempts")
 
             report = response['results']
+            repo = self.file_extractor._repo
             for item in report:
                 item['file'] = fp
-                item['lineno'] = [self.file_extractor._repo.ffl_map[fp][func] for func in item['Functions']]
+                item['lineno'] = [repo.ffl_map[fp][func] for func in item['Functions']]
+                item['lineno_href'] = [
+                    f"[{lineno}]({repo._get_git_direct_link(repo._get_relative_path(fp), lineno)})"
+                    for lineno in item['lineno']
+                ]
             result += [{
                 'file': fp,
                 'report': report,
