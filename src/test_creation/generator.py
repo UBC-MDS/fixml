@@ -22,7 +22,7 @@ from modules.workflow.parse import ResponseParser
 load_dotenv()
 
 
-class TestGenerator:
+class TestSpecGenerator:
     def __init__(self, llm: LanguageModelLike, extractor: RepoFileExtractor = None, checklist: Checklist = None, retries: int = 3):
         self.llm = llm
         self.checklist = checklist
