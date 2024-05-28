@@ -219,5 +219,5 @@ class Checklist(ExportableMixin):
         return _get_md_representation(self.content, curr_level=1)
 
     def as_quarto_markdown(self):
-        header = f'---\ntitle: "{self.content['Title']}"\nformat:\n  html:\n  code-fold: true\n---\n\n'
+        header = header = '---\ntitle: "{}"\nformat:\n  html:\n    code-fold: true\n---\n\n'.format(self.content['Title'])
         return header + self.as_markdown()
