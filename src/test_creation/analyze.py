@@ -13,7 +13,12 @@ load_dotenv()
 
 
 if __name__ == '__main__':
-    def main(checklist_path, repo_path):
+    def main(checklist_path, repo_path, report_output_path, report_output_format='html'):
+        """
+        Example:
+        ----------
+        >>> python src/test_creation/analyze.py --checklist_path='./checklist/checklist_demo.csv' --repo_path='../lightfm/' --report_output_path='./report/evaluation_report.html' --report_output_format='html'
+        """
         llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
         checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
         repo = Repository(repo_path)
@@ -24,5 +29,7 @@ if __name__ == '__main__':
 
         parser = ResponseParser(response)
         parser.get_completeness_score(verbose=True)
+
+        parser.export_evaluation_report(report_output_path, report_output_format, exist_ok=True)
 
     fire.Fire(main)
