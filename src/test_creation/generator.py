@@ -50,7 +50,7 @@ class TestGenerator:
         
         self.prompt = PromptTemplate(
             template="You are an expert Machine Learning Engineer.\n"
-                     "Please generate empty test functions with docstring based corresponding requirement of given checklist.\n"
+                     "Please generate empty Python test functions based on corresponding requirement of given checklist, with docstring of numpy format.\n"
                      "{format_instructions}\n" 
                      "Here is the checklist as a list of JSON objects:\n```{checklist}```\n",
                      #"Here is the code to be analyzed:\n{context}",
@@ -61,6 +61,8 @@ class TestGenerator:
         )
 
         self.chain = self.prompt | self.llm | self.parser
+
+        self.spec = []
 
     @staticmethod
     def _load_test_file_into_splits(file_path: str) -> List[Document]:
@@ -89,8 +91,29 @@ class TestGenerator:
             raise RuntimeError(f"Unable to obtain valid response from LLM within {self.retries} attempts")
 
         result = response['results']
+        self.spec = result
             
         return result
+
+    def fill_functions_body(self) -> List[dict]:
+        prompt = PromptTemplate(
+            template="You are an expert Machine Learning Engineer.\n"
+                     "Please fill the Python test functions' body with docstring of numpy format.\n"
+                     "{format_instructions}\n" 
+                     "Here is a list of JSON objects, in which the 'Function's are the functions to be filled:\n```{functions}```\n",
+                     #"Here is the code to be analyzed:\n{context}",
+            description="Filling Test Functions for Machine Learning Project",
+            #input_variables=["checklist", "context"],
+            input_variables=["functions"],
+            partial_variables={"format_instructions": self.parser.get_format_instructions()},
+        )
+
+        chain = prompt | self.llm | self.parser
+
+        response = chain.invoke({"functions": json.dumps(self.spec)})
+        #result = response['results']
+
+        return response
 
 
 if __name__ == '__main__':
