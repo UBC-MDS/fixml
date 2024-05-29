@@ -41,7 +41,7 @@ class TestGenerator:
         class TestSpecGeneration(BaseModel):
             ID: str = Field(description="The corresponding `ID` of the checklist item provided")
             Title: str = Field(description="The corresponding `Title` of the checklist item provided")
-            Function: str = Field(description="An empty test function with the docstring of numpy format") # FIXME: define python function format
+            Function: str = Field(description="A test function with the docstring of numpy format") # FIXME: define python function format
 
         class SpecGenResult(BaseModel):
             results: List[TestSpecGeneration]
@@ -50,11 +50,11 @@ class TestGenerator:
         
         self.prompt = PromptTemplate(
             template="You are an expert Machine Learning Engineer.\n"
-                     "Please generate empty Python test functions based on corresponding requirement of given checklist, with docstring of numpy format.\n"
+                     "Please generate Python test functions based on corresponding requirement of given checklist, with docstring of numpy format.\n"
                      "{format_instructions}\n" 
                      "Here is the checklist as a list of JSON objects:\n```{checklist}```\n",
                      #"Here is the code to be analyzed:\n{context}",
-            description="Test Specification Generation for Machine Learning Project",
+            description="Test Generation for Machine Learning Project",
             #input_variables=["checklist", "context"],
             input_variables=["checklist"],
             partial_variables={"format_instructions": self.parser.get_format_instructions()},
