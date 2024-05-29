@@ -47,10 +47,10 @@ class TestGenerator:
             Title: str = Field(description="The corresponding `Title` of the checklist item provided")
             Function: str = Field(description="An empty test function with the docstring of numpy format") # FIXME: define numpy docstring format
 
-        class TestCases(BaseModel):
+        class GenerationResult(BaseModel):
             results: List[TestCase]
 
-        self.parser = JsonOutputParser(pydantic_object=TestCases)
+        self.parser = JsonOutputParser(pydantic_object=GenerationResult)
         
         self.prompt = PromptTemplate(
             template="You are an expert Machine Learning Engineer.\n"
