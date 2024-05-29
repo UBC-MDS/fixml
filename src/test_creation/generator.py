@@ -22,13 +22,13 @@ from modules.workflow.parse import ResponseParser
 load_dotenv()
 
 
-class TestSpecGenerator:
+class TestGenerator:
     def __init__(self, llm: LanguageModelLike, extractor: RepoFileExtractor = None, checklist: Checklist = None, retries: int = 3):
         self.llm = llm
         self.checklist = checklist
         self.file_extractor = extractor
 
-        self.retries = retries # FIXME: to examine whether we need it.
+        self.retries = retries
 
         # self.files = self.file_extractor.extract()
         # if not self.files:
@@ -38,34 +38,29 @@ class TestSpecGenerator:
         if not self.test_items:
             print("Loaded checklist successfully, but it contains no test items!")
 
-        # class TestItemEvaluation(BaseModel):
-        #     ID: str = Field(description="The corresponding `ID` of the checklist item provided")
-        #     Title: str = Field(description="The corresponding `Title` of the checklist item provided")
-        #     Requirement: str = Field(description="The corresponding `Requirement` of the checklist item provided")
-        #     Observation: str = Field(description="Your detailed observation of the code in accordance to the given checklist item")
-        #     Functions: List[str] = Field(description="Test functions that satisfy the given requirement (if any)")
-        #     Evaluation: str = Field(description="The summarized evaluation. Must be one of Satisfied/Partially Satisfied/Not Satisfied.")
-        #     Score: int = Field(description="The score obtained from the given evaluation (1 for Satisfied / 0.5 for Partially Satisfied / 0 for Not Satisfied)")
+        class TestSpecGeneration(BaseModel):
+            ID: str = Field(description="The corresponding `ID` of the checklist item provided")
+            Title: str = Field(description="The corresponding `Title` of the checklist item provided")
+            Function: str = Field(description="An empty test function with the docstring of numpy format") # FIXME: define python function format
 
-        # class EvalResult(BaseModel):
-        #     results: List[TestItemEvaluation]
+        class SpecGenResult(BaseModel):
+            results: List[TestSpecGeneration]
 
-        # self.parser = JsonOutputParser(pydantic_object=EvalResult)
-
-        # FIXME: parser required?
+        self.parser = JsonOutputParser(pydantic_object=SpecGenResult)
         
         self.prompt = PromptTemplate(
             template="You are an expert Machine Learning Engineer.\n"
                      "Please generate empty test functions with docstring based corresponding requirement of given checklist.\n"
-                     #"{format_instructions}\n" # FIXME: define python function format
+                     "{format_instructions}\n" 
                      "Here is the checklist as a list of JSON objects:\n```{checklist}```\n",
                      #"Here is the code to be analyzed:\n{context}",
             description="Test Specification Generation for Machine Learning Project",
-            input_variables=["checklist", "context"],
-            #partial_variables={"format_instructions": self.parser.get_format_instructions()},
+            #input_variables=["checklist", "context"],
+            input_variables=["checklist"],
+            partial_variables={"format_instructions": self.parser.get_format_instructions()},
         )
 
-        self.chain = self.prompt | self.llm #| self.parser
+        self.chain = self.prompt | self.llm | self.parser
 
     @staticmethod
     def _load_test_file_into_splits(file_path: str) -> List[Document]:
@@ -80,55 +75,41 @@ class TestSpecGenerator:
         checklist = self.checklist.get_all_tests(['ID', 'Title', 'Requirement'])
         return json.dumps(checklist)
 
-    def generate(self, verbose: bool = False) -> List[dict]:
-        result = []
-        for fp in tqdm(self.files):
-            if verbose:
-                print(fp)
-            splits = self._load_test_file_into_splits(fp)
-            if verbose:
-                print(f"# splits: {len(self.files)}")
-            # FIXME: it sometimes tests only part of the checklist items
+    def generate_spec(self) -> List[dict]:
+        response = None
+        retry_count = 0
+        while not response and retry_count < self.retries:
+            try:
+                response = self.chain.invoke({"checklist": self.test_items})
+            except ValidationError as e:
+                retry_count += 1
+                continue
 
-            response = None
-            retry_count = 0
-            while not response and retry_count < self.retries:
-                try:
-                    response = self.chain.invoke({"context": splits, "checklist": self.test_items})
-                except ValidationError as e:
-                    retry_count += 1
-                    continue
+        if not response:
+            raise RuntimeError(f"Unable to obtain valid response from LLM within {self.retries} attempts")
 
-            if not response:
-                raise RuntimeError(f"Unable to obtain valid response from LLM within {self.retries} attempts")
-
-            report = response['results']
-            for item in report:
-                item['file'] = fp
-            result += [{
-                'file': fp,
-                'report': report,
-            }]
+        result = response['results']
+            
         return result
 
 
 if __name__ == '__main__':
     # FIXME: to be updated
-    # def main(checklist_path, repo_path, report_output_path, report_output_format='html'):
-    #     """
-    #     Example:
-    #     ----------
-    #     >>> python src/test_creation/analyze.py --checklist_path='./checklist/checklist_demo.csv' --repo_path='../lightfm/' --report_output_path='./report/evaluation_report.html' --report_output_format='html'
-    #     """
-    #     llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
-    #     checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
-    #     extractor = PythonTestFileExtractor(Repository(repo_path))
+    def main(checklist_path, repo_path, report_output_path, report_output_format='html'):
+        """
+        Example:
+        ----------
+        >>> python src/test_creation/analyze.py --checklist_path='./checklist/checklist_demo.csv' --repo_path='../lightfm/' --report_output_path='./report/evaluation_report.html' --report_output_format='html'
+        """
+        llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+        checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
+        extractor = PythonTestFileExtractor(Repository(repo_path))
 
-    #     evaluator = TestEvaluator(llm, extractor, checklist)
-    #     response = evaluator.evaluate()
+        evaluator = TestEvaluator(llm, extractor, checklist)
+        response = evaluator.evaluate()
 
-    #     parser = ResponseParser(response)
-    #     parser.get_completeness_score(verbose=True)
-    #     parser.export_evaluation_report(report_output_path, report_output_format, exist_ok=True)
+        parser = ResponseParser(response)
+        parser.get_completeness_score(verbose=True)
+        parser.export_evaluation_report(report_output_path, report_output_format, exist_ok=True)
 
-    # fire.Fire(main)
+    fire.Fire(main)
