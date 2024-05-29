@@ -117,7 +117,7 @@ if __name__ == '__main__':
         """
         Example:
         ----------
-        >>> python src/test_creation/analyze.py --checklist_path='./checklist/checklist_demo.csv' --repo_path='../lightfm/' --report_output_path='./report/evaluation_report.html' --report_output_format='html'
+        >>> python src/test_creation/evaluate.py --checklist_path='./checklist/checklist.csv' --repo_path='../lightfm/' --report_output_path='./report/evaluation_report.html' --report_output_format='html'
         """
         llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
         checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
