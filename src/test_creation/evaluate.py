@@ -27,7 +27,7 @@ if __name__ == '__main__':
         evaluator = PerFileTestEvaluator(llm, prompt_format=prompt_format, repository=repo, checklist=checklist)
         response = evaluator.evaluate()
 
-        parser = ResponseParser(response)
+        parser = ResponseParser(response, repo)
         parser.get_completeness_score(verbose=True)
 
         parser.export_evaluation_report(report_output_path, report_output_format, exist_ok=True)
