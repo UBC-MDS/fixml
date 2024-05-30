@@ -1,27 +1,18 @@
-import json
-
 import fire
-from dotenv import load_dotenv
-from tqdm import tqdm
-from pydantic import BaseModel, Field
-from typing import List
-from langchain_core.prompts.prompt import PromptTemplate
-from langchain_core.output_parsers import JsonOutputParser
-from langchain_community.document_loaders import PythonLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
-from langchain_openai import ChatOpenAI
-from langchain_core.language_models import LanguageModelLike
-from langchain_core.tools import ValidationError
-from langchain_core.documents import Document
 
+from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
+
+from modules.workflow.prompt_format import EvaluationPromptFormat
+from modules.workflow.evaluator import PerFileTestEvaluator
 from modules.checklist.checklist import Checklist, ChecklistFormat
 from modules.code_analyzer.repo import Repository
-from modules.workflow.files import PythonTestFileExtractor, RepoFileExtractor
 from modules.workflow.parse import ResponseParser
 
 load_dotenv()
 
 
+<<<<<<< HEAD
 class TestEvaluator:
     def __init__(self, llm: LanguageModelLike, extractor: RepoFileExtractor, checklist: Checklist, retries: int = 3):
         self.llm = llm
@@ -118,6 +109,8 @@ class TestEvaluator:
         return result
 
 
+=======
+>>>>>>> main
 if __name__ == '__main__':
     def main(checklist_path, repo_path, report_output_path, report_output_format='html'):
         """
@@ -127,13 +120,15 @@ if __name__ == '__main__':
         """
         llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
         checklist = Checklist(checklist_path, checklist_format=ChecklistFormat.CSV)
-        extractor = PythonTestFileExtractor(Repository(repo_path))
+        repo = Repository(repo_path)
+        prompt_format = EvaluationPromptFormat()
 
-        evaluator = TestEvaluator(llm, extractor, checklist)
+        evaluator = PerFileTestEvaluator(llm, prompt_format=prompt_format, repository=repo, checklist=checklist)
         response = evaluator.evaluate()
 
         parser = ResponseParser(response)
         parser.get_completeness_score(verbose=True)
+
         parser.export_evaluation_report(report_output_path, report_output_format, exist_ok=True)
 
     fire.Fire(main)

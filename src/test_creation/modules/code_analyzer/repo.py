@@ -3,6 +3,7 @@ import re
 import logging
 from collections import defaultdict
 from configparser import ConfigParser
+from typing import Dict, List
 
 from .analyzers.python import PythonNaiveCodeAnalyzer, PythonASTCodeAnalyzer
 
@@ -133,7 +134,7 @@ class Repository:
         packages = list(set(packages))
         return packages
 
-    def list_test_files(self):
+    def list_test_files(self) -> Dict[str, List[str]]:
         testfiles = defaultdict(list)
         # for now only Python is supported
         files = self.lf_map.get("Python", [])

@@ -139,12 +139,13 @@ class CsvChecklistIO(ChecklistIO):
 
 class Checklist(ExportableMixin):
     def __init__(self, checklist_path: str, checklist_format: ChecklistFormat):
-        if not os.path.exists(checklist_path):
+        self.path = checklist_path
+        if not os.path.exists(self.path):
             raise FileNotFoundError("Checklist file not found.")
         if checklist_format == ChecklistFormat.YAML:
-            self.content = YamlChecklistIO.read(checklist_path)
+            self.content = YamlChecklistIO.read(self.path)
         elif checklist_format == ChecklistFormat.CSV:
-            self.content = CsvChecklistIO.read(checklist_path)
+            self.content = CsvChecklistIO.read(self.path)
         else:
             raise NotImplementedError(f"Format {checklist_format} is not supported.")
 
@@ -161,10 +162,12 @@ class Checklist(ExportableMixin):
 
         areas = [x for x in self.content["Test Areas"] if x["Topic"] in areas]
         for area in areas:
-            if keys:
-                tests += [filter_dict(x, keys) for x in area["Tests"]]
-            else:
-                tests += area["Tests"]
+            for test in area["Tests"]:
+                if test['Is Evaluator Applicable'] == '1':
+                    if keys:
+                        tests.append(filter_dict(test, keys))
+                    else:
+                        tests.append(test)
         return tests
 
     def get_all_tests(self, keys=None) -> list:
@@ -184,7 +187,7 @@ class Checklist(ExportableMixin):
 
     def to_csv(self, output_path: str, exist_ok: bool = False):
         """Dump the checklist to a directory containing three separate CSV files."""
-        self._filedump_check(output_path, exist_ok)
+        self._filedump_check(output_path, exist_ok, expects_directory_if_exists=True)
         CsvChecklistIO.write(output_path, self.content)
 
     def as_markdown(self):
@@ -219,5 +222,5 @@ class Checklist(ExportableMixin):
         return _get_md_representation(self.content, curr_level=1)
 
     def as_quarto_markdown(self):
-        header = f'---\ntitle: "{self.content['Title']}"\nformat:\n  html:\n  code-fold: true\n---\n\n'
+        header = header = '---\ntitle: "{}"\nformat:\n  html:\n    code-fold: true\n---\n\n'.format(self.content['Title'])
         return header + self.as_markdown()
