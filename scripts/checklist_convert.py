@@ -1,6 +1,6 @@
 import fire
 
-from modules.checklist.checklist import Checklist, ChecklistFormat
+from test_creation.modules.checklist.checklist import Checklist, ChecklistFormat
 
 
 class Converter():
