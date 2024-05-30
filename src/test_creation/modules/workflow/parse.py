@@ -7,6 +7,8 @@ from typing import Union
 from .response import EvaluationResponse
 from ..mixins import ExportableMixin
 
+from modules.code_analyzer.repo import Repository
+
 
 class ResponseParser(ExportableMixin):
     def __init__(self, response: EvaluationResponse, respository: Repository = None):
