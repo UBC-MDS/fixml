@@ -99,13 +99,13 @@ class Repository:
         return file_paths
 
     def _get_language_file_map(self):
-        file_language_map = defaultdict(list)
+        language_file_map = defaultdict(list)
         files = self._get_all_files()
         for file in files:
             for k, v in self.fileext_language_map.items():
                 if file.endswith(k):
-                    file_language_map[v].append(file)
-        return file_language_map # FIXME: why is it called file_language_map instead of language_file_map?
+                    language_file_map[v].append(file)
+        return language_file_map
 
     def _get_file_function_lineno_map(self):
         file_function_lineno_map = defaultdict(lambda: defaultdict(int))
