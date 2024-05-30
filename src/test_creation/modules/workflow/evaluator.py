@@ -61,6 +61,13 @@ class PerFileTestEvaluator(TestEvaluator):
                                                                  chunk_overlap=0).split_documents(py)
         return py_splits
 
+    def _validate_response(self, raw_response: dict) -> None:
+        """Validation logics that are not covered by pydantic or langchain."""
+        # ensures the number of items in the response is the same as provided checklists
+        if len(raw_response['results']) != len(self.test_items):
+            raise ValidationError("Number of items returned from LLM does not match that in checklist.")
+
+
     def evaluate(self, verbose: bool = False) -> EvaluationResponse:
         eval_response = EvaluationResponse(
             model={'name': self.llm.model_name, 'temperature': self.llm.temperature},
@@ -93,6 +100,8 @@ class PerFileTestEvaluator(TestEvaluator):
                     # into pydantic model for easier validation instead.
                     if not isinstance(response, dict):
                         response = response.dict()
+
+                    self._validate_response(response)
 
                 except Exception as e:
                     errors.append({'name': e.__class__.__name__, 'description': str(e)})
