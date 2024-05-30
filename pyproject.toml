@@ -19,8 +19,6 @@ langchain-openai = "^0.1.7"
 langchain-community = "^0.2.1"
 langchain-core = "^0.2.1"
 
-[tool.poetry.dev-dependencies]
-
 [tool.poetry.group.dev.dependencies]
 jupyter = "^1.0.0"
 jupyter-book = "^1.0.0"
