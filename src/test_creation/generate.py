@@ -16,7 +16,6 @@ from langchain_core.documents import Document
 
 from modules.checklist.checklist import Checklist, ChecklistFormat
 from modules.code_analyzer.repo import Repository
-from modules.workflow.files import PythonTestFileExtractor, RepoFileExtractor
 from modules.workflow.parse import ResponseParser
 
 load_dotenv()
@@ -24,17 +23,18 @@ load_dotenv()
 
 # NOTE: only support Python
 class TestGenerator:
-    def __init__(self, llm: LanguageModelLike, extractor: RepoFileExtractor = None, checklist: Checklist = None, retries: int = 3):
+    def __init__(self, llm: LanguageModelLike, repository: Repository = None, checklist: Checklist = None, retries: int = 3):
+        # TODO: to take in prompt_format: PromptFormat for generator
         self.llm = llm
         self.checklist = checklist
-        self.file_extractor = extractor
+        self.repository = repository
 
         self.retries = retries
 
         self.result = []
 
-        if extractor:
-            self.files = self.file_extractor.extract()
+        if repository:
+            self.files = self.repository.list_test_files()['Python']
             if not self.files:
                 print("File loader returned no files!")
 
@@ -51,15 +51,15 @@ class TestGenerator:
             results: List[TestCase]
 
         self.parser = JsonOutputParser(pydantic_object=GenerationResult)
-        
+
         self.prompt = PromptTemplate(
             template="You are an expert Machine Learning Engineer.\n"
                      "Please generate empty Python test functions based on corresponding requirement of given checklist, with docstring of numpy format.\n"
-                     "{format_instructions}\n" 
+                     "{format_instructions}\n"
                      "Here is the checklist as a list of JSON objects:\n```{checklist}```\n",
                      #"Here is the code to be analyzed:\n{context}",
             description="Test Specification Generation for Machine Learning Project",
-            input_variables=["checklist"], 
+            input_variables=["checklist"],
             partial_variables={"format_instructions": self.parser.get_format_instructions()},
         )
 
@@ -94,7 +94,7 @@ class TestGenerator:
 
         result = response['results']
         self.result = result
-            
+
         return result
 
     def export_py(self, output_path: str, exist_ok: bool = False):
