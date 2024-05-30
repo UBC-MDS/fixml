@@ -1,6 +1,7 @@
 import os
 import csv
 import copy
+from pathlib import Path
 from enum import Enum
 from typing import Union
 from abc import ABC, abstractmethod
@@ -173,7 +174,7 @@ class Checklist:
     def get_test_areas(self) -> set:
         return self.test_areas
 
-    def to_yaml(self, output_path: str, no_preserve_format: bool = False, exist_ok: bool = False):
+    def to_yaml(self, output_path: Union[str, Path], no_preserve_format: bool = False, exist_ok: bool = False):
         if not no_preserve_format:
             raise NotImplementedError(
                 "Roundtripping is not yet implemented. If you want to dump the YAML file disregarding the original "
@@ -182,7 +183,7 @@ class Checklist:
         self.__filedump_check(output_path, exist_ok)
         YamlChecklistIO.write(output_path, self.content)
 
-    def to_csv(self, output_path: str, exist_ok: bool = False):
+    def to_csv(self, output_path: Union[str, Path], exist_ok: bool = False):
         """Dump the checklist to a directory containing three separate CSV files."""
         self.__filedump_check(output_path, exist_ok)
         CsvChecklistIO.write(output_path, self.content)
@@ -223,16 +224,19 @@ class Checklist:
             raise FileExistsError("Output file already exists. Use `exist_ok=True` to overwrite.")
         return True
 
-    def export_html(self, output_path: str, exist_ok: bool = False):
+    def export_html(self, output_path: Union[str, Path], exist_ok: bool = False):
         self.__filedump_check(output_path, exist_ok)
+        # TODO: raise error when pandoc is not installed
         pypandoc.convert_text(self.as_markdown(), 'html', format='md', outputfile=output_path)
 
-    def export_pdf(self, output_path: str, exist_ok: bool = False):
+    def export_pdf(self, output_path: Union[str, Path], exist_ok: bool = False):
         self.__filedump_check(output_path, exist_ok)
+        # TODO: raise error when pandoc is not installed
+        # TODO: raise error when tectonic is not installed
         pypandoc.convert_text(self.as_markdown(), 'pdf', format='md', outputfile=output_path,
                               extra_args=['--pdf-engine=tectonic'])
 
-    def export_quarto(self, output_path: str, exist_ok: bool = False):
+    def export_quarto(self, output_path: Union[str, Path], exist_ok: bool = False):
         self.__filedump_check(output_path, exist_ok)
         header = f'---\ntitle: "{self.content['Title']}"\nformat:\n  html:\n  code-fold: true\n---\n\n'
         qmd_repr = header + self.as_markdown()
