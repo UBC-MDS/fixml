@@ -1,5 +1,6 @@
 import ast
 from functools import wraps
+from collections import defaultdict
 
 from . import CodeAnalyzer
 
@@ -25,6 +26,14 @@ class PythonASTCodeAnalyzer(CodeAnalyzer):
             self._tree = ast.parse(self.content)
 
     @assert_have_read_content
+    def _get_function_lineno_map(self): # FIXME: when to use _xxx? when to use xxx?
+        function_lineno_map = defaultdict(int)
+        for node in ast.walk(self._tree):
+            if isinstance(node, ast.FunctionDef):
+                function_lineno_map[node.name] = node.lineno
+        return function_lineno_map
+
+    @assert_have_read_content
     def list_imported_packages(self):
         packages = set()
         for node in ast.walk(self._tree):
@@ -36,7 +45,7 @@ class PythonASTCodeAnalyzer(CodeAnalyzer):
 
     @assert_have_read_content
     def list_all_functions(self):
-        raise NotImplementedError()
+        return self._get_function_lineno_map().keys()
 
     @assert_have_read_content
     def contains_test(self):

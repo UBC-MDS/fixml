@@ -81,7 +81,6 @@ class PerFileTestEvaluator(TestEvaluator):
             splits = self._load_test_file_into_splits(fp)
             if verbose:
                 print(f"# splits: {len(self._files)}")
-            # FIXME: it sometimes tests only part of the checklist items
 
             response = None
             retry_count = 0
