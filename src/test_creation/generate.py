@@ -54,9 +54,13 @@ class TestGenerator:
 
         self.prompt = PromptTemplate(
             template="You are an expert Machine Learning Engineer.\n"
-                     "Please generate empty Python test functions based on corresponding requirement of given checklist, with docstring of numpy format.\n"
+                     "Please generate empty Python test functions based on corresponding requirement of given checklist, write the docstring using the numpy format.\n"
                      "{format_instructions}\n"
                      "Here is the checklist as a list of JSON objects:\n```{checklist}```\n",
+            # FIXME: add expected use case, some possible edge case (to be defined in the checklist)
+            # FIXME: provide examples of good quality of test files + providing ground truth
+            # FIXME: define numpy format and provide example
+            # FIXME: add an optional argument: giving all the docstrings of functions in project repo (+ return statement)
                      #"Here is the code to be analyzed:\n{context}",
             description="Test Specification Generation for Machine Learning Project",
             input_variables=["checklist"],
