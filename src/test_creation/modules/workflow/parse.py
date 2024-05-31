@@ -1,20 +1,32 @@
+from typing import Optional
+
 import pandas as pd
 import os
 from typing import Union
 
+from .response import EvaluationResponse
 from ..mixins import ExportableMixin
 
 
 class ResponseParser(ExportableMixin):
-    def __init__(self, response):
+    def __init__(self, response: EvaluationResponse):
         self.response = response
         self.evaluation_report = None
 
-    def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> Union[float, str]:
-        """
-        Compute Evaluation Report and Completeness Score
-        """
-        report_df = pd.DataFrame(self.response)['report'].explode('report').apply(pd.Series)
+    def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> Optional[float]:
+        for result in self.response.call_results:
+            if not result.success:
+                print("failed to obtain valid response, cannot calculate completeness score")
+                return None
+
+        report = []
+        for result in self.response.call_results:
+            response = result.parsed_response['results']
+            for item in response:
+                item['file'] = result.files_evaluated[0] # FIXME: it might fail if the evaluation is on multiple files
+                report.append(item)
+
+        report_df = pd.DataFrame(report)
         report_df = report_df.rename(columns={"file": "File Path"})
         report_df['Function References'] = report_df[['File Path', 'Functions']].to_dict(orient='records')
         report_df['Observation'] = '(' + report_df['File Path'].apply(lambda x: os.path.split(x)[-1]) + ') ' + \
