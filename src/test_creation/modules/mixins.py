@@ -15,7 +15,9 @@ class WriteableMixin:
 
         if not exist_ok:
             if os.path.exists(normalized_path):
-                raise FileExistsError("Output file already exists. Use `exist_ok=True` to overwrite.")
+                raise FileExistsError("Output file already exists. (Have you "
+                                      "provided a flag/argument for "
+                                      "file overwriting?)")
         elif os.path.exists(normalized_path):
             if expects_directory_if_exists and not os.path.isdir(normalized_path):
                 raise NotADirectoryError("An non-directory already exists in the path but the write operation is expecting to overwrite a directory.")
