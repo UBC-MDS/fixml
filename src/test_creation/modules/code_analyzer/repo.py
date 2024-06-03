@@ -4,8 +4,6 @@ from pathlib import Path
 from collections import defaultdict
 from typing import Dict, List
 
-from keyring.backends.macOS.api import NotFound
-
 from .analyzers.python import PythonNaiveCodeAnalyzer, PythonASTCodeAnalyzer
 
 logger = logging.getLogger("test-creation.repo")
