@@ -9,7 +9,7 @@ from test_creation.modules.checklist import checklist as c
 ################################################################################
 @pytest.fixture(scope="module")
 def loaded_checklist():
-    return c.Checklist("checklist/checklist.csv/", checklist_format=c.ChecklistFormat.CSV)
+    return c.Checklist("checklist/checklist.csv/")
 
 
 def test_loaded_checklist_is_indeed_a_checklist(loaded_checklist):
@@ -18,7 +18,7 @@ def test_loaded_checklist_is_indeed_a_checklist(loaded_checklist):
 
 def test_error_when_checklist_file_does_not_exist(loaded_checklist):
     with pytest.raises(FileNotFoundError):
-        c.Checklist("checklist/this_checklist_does_not_exist.csv/", checklist_format=c.ChecklistFormat.CSV)
+        c.Checklist("checklist/this_checklist_does_not_exist.csv/")
 
 
 def test_checklist_content_is_a_dictionary(loaded_checklist):
