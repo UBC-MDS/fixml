@@ -8,6 +8,7 @@ from langchain_community.document_loaders import PythonLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 from langchain_core.language_models import LanguageModelLike
 from langchain_core.documents import Document
+from pydantic import ValidationError
 
 from ..checklist.checklist import Checklist
 from ..code_analyzer.repo import Repository
@@ -15,14 +16,17 @@ from .prompt_format import PromptFormat
 from .response import EvaluationResponse, CallResult
 
 
-class Evaluator(ABC):
-    """Abstract base class for evaluators i.e. class object to assemble prompt and to obtain response from LLMs."""
+class PipelineRunner(ABC):
+    """Abstract base class for running langchain pipelines.
+
+    This class object assembles prompt and to obtain response from LLMs.
+    """
     @abstractmethod
-    def evaluate(self):
+    def run(self):
         pass
 
 
-class TestEvaluator(Evaluator, ABC):
+class TestEvaluator(PipelineRunner, ABC):
     """Abstract base class for test evaluators
     i.e. class object to run evaluation of test files from a given repository.
     """
@@ -67,8 +71,7 @@ class PerFileTestEvaluator(TestEvaluator):
         if len(raw_response['results']) != len(self.test_items):
             raise ValidationError("Number of items returned from LLM does not match that in checklist.")
 
-
-    def evaluate(self, verbose: bool = False) -> EvaluationResponse:
+    def run(self, verbose: bool = False) -> EvaluationResponse:
         eval_response = EvaluationResponse(
             model={'name': self.llm.model_name, 'temperature': self.llm.temperature},
             repository_path=self.repository.path,
