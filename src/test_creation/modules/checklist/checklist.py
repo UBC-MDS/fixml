@@ -1,6 +1,7 @@
 import os
 import csv
 import copy
+from pathlib import Path
 from enum import Enum
 from typing import Union
 from abc import ABC, abstractmethod
@@ -176,7 +177,7 @@ class Checklist(ExportableMixin):
     def get_test_areas(self) -> set:
         return self.test_areas
 
-    def to_yaml(self, output_path: str, no_preserve_format: bool = False, exist_ok: bool = False):
+    def to_yaml(self, output_path: Union[str, Path], no_preserve_format: bool = False, exist_ok: bool = False):
         if not no_preserve_format:
             raise NotImplementedError(
                 "Roundtripping is not yet implemented. If you want to dump the YAML file disregarding the original "
@@ -185,7 +186,7 @@ class Checklist(ExportableMixin):
         self._filedump_check(output_path, exist_ok)
         YamlChecklistIO.write(output_path, self.content)
 
-    def to_csv(self, output_path: str, exist_ok: bool = False):
+    def to_csv(self, output_path: Union[str, Path], exist_ok: bool = False):
         """Dump the checklist to a directory containing three separate CSV files."""
         self._filedump_check(output_path, exist_ok, expects_directory_if_exists=True)
         CsvChecklistIO.write(output_path, self.content)

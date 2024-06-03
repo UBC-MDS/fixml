@@ -15,7 +15,9 @@ class WriteableMixin:
 
         if not exist_ok:
             if os.path.exists(normalized_path):
-                raise FileExistsError("Output file already exists. Use `exist_ok=True` to overwrite.")
+                raise FileExistsError("Output file already exists. (Have you "
+                                      "provided a flag/argument for "
+                                      "file overwriting?)")
         elif os.path.exists(normalized_path):
             if expects_directory_if_exists and not os.path.isdir(normalized_path):
                 raise NotADirectoryError("An non-directory already exists in the path but the write operation is expecting to overwrite a directory.")
@@ -63,11 +65,14 @@ class ExportableMixin(WriteableMixin, ABC):
         self.__format_check(output_path, format)
 
     def export_html(self, output_path: str, exist_ok: bool = False):
+        # TODO: raise error when pandoc is not installed
         self._export_check(output_path, format="html", exist_ok=exist_ok)
         pypandoc.convert_text(self._escape_single_quotes(self.as_markdown()), 'html', format='md',
                               outputfile=output_path)
 
     def export_pdf(self, output_path: str, exist_ok: bool = False):
+        # TODO: raise error when pandoc is not installed
+        # TODO: raise error when tectonic is not installed
         self._export_check(output_path, format="pdf", exist_ok=exist_ok)
         self._filedump_check(output_path, exist_ok)
         pypandoc.convert_text(self.as_markdown(), 'pdf', format='md', outputfile=output_path,

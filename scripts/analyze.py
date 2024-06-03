@@ -3,11 +3,11 @@ import fire
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 
-from modules.workflow.prompt_format import EvaluationPromptFormat
-from modules.workflow.evaluator import PerFileTestEvaluator
-from modules.checklist.checklist import Checklist, ChecklistFormat
-from modules.code_analyzer.repo import Repository
-from modules.workflow.parse import ResponseParser
+from test_creation.modules.workflow.prompt_format import EvaluationPromptFormat
+from test_creation.modules.workflow.evaluator import PerFileTestEvaluator
+from test_creation.modules.checklist.checklist import Checklist, ChecklistFormat
+from test_creation.modules.code_analyzer.repo import Repository
+from test_creation.modules.workflow.parse import ResponseParser
 
 load_dotenv()
 
