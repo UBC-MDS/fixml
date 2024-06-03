@@ -155,3 +155,6 @@
 
   - (test_movielens.py): 'Functions': [`test_movielens_accuracy`, `test_logistic_precision`, `test_bpr_precision`, `test_bpr_precision_multithreaded`, `test_warp_precision`, `test_warp_precision_high_interaction_values`, `test_bpr_precision_high_interaction_values`, `test_warp_precision_multithreaded`, `test_warp_precision_adadelta`, `test_warp_precision_adadelta_multithreaded`, `test_warp_precision_max_sampled`, `test_warp_kos_precision`,  `test_movielens_genre_accuracy`, `test_movielens_both_accuracy`, `test_movielens_accuracy_fit`, `test_movielens_accuracy_pickle`, `test_movielens_accuracy_resume`, `test_movielens_accuracy_sample_weights_grad_accumulation`, `test_state_reset`, `test_user_supplied_features_accuracy`, `test_zeros_negative_accuracy`, `test_zero_weights_accuracy`, `test_hogwild_accuracy`, `test_movielens_excessive_regularization`, `test_overfitting`, `test_regularization`]
   - (test_evaluation.py): 'Functions': [`test_precision_at_k`, `test_precision_at_k_with_ties`, `test_recall_at_k`, `test_auc_score`, `test_intersections_check`]
+
+## Communication Records
+[#113](https://github.com/UBC-MDS/test-creation/issues/113)
