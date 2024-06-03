@@ -27,11 +27,11 @@ echo "OPENAI_API_KEY=..." > .env
 
 5. Enjoy! This package comes will an executable `test-creation` and a bunch of scripts. Here are some examples:
 ```bash
-# displays dummy call (for now)
-test-creation
+# evaluate a repository and write a HTML report, display verbose messages
+test-creation evaluate $REPO_PATH ./report.html --verbose
 
-# analyze repo
-python ./scripts/analyze.py ./checklist/checklist.csv/ ${PATH_TO_YOUR_REPO}
+# export checklist items into a PDF, overwrite file if exists in the specified path
+test-creation checklist export checklist.pdf --overwrite
 ```
 
 ## Usage
