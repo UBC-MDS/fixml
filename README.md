@@ -31,7 +31,7 @@ echo "OPENAI_API_KEY=..." > .env
 test-creation
 
 # analyze repo
-python ./scripts/analyze.py ./checklist/checklist.csv/ ${PATH_TO_YOUR_REPO}
+python ./scripts/analyze.py ./checklist/checklist.csv/ ${PATH_TO_YOUR_REPO} ${PATH_FOR_REPORT_OUTPUT}
 ```
 
 ## Usage
