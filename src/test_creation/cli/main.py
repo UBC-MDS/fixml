@@ -3,9 +3,8 @@
 import fire
 from dotenv import load_dotenv
 
-from test_creation.cli.checklist import ChecklistActions
-from test_creation.cli.repository import RepositoryActions
-from test_creation.cli.consistency import ConsistencyCheckingActions
+from .checklist import ChecklistActions
+from .repository import RepositoryActions
 
 load_dotenv()
 
@@ -15,15 +14,10 @@ class TestCreation(object):
 
     def __init__(self):
         self.repository = RepositoryActions()
-        self.consistency = ConsistencyCheckingActions()
         self.checklist = ChecklistActions()
 
         self.evaluate = self.repository.evaluate
         self.generate = self.repository.generate
-
-    def evaluate(self, checklist_path, repo_path, report_output_path):
-        """Evaluate a given git repository. Alias to `repository evaluate`."""
-        self.repository.evaluate(checklist_path, repo_path, report_output_path)
 
 
 def main():

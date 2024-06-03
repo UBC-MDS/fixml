@@ -1,5 +1,6 @@
 from datetime import datetime
-from typing import List, Dict, Any, Optional
+from pathlib import Path
+from typing import List, Dict, Any, Optional, Union
 
 from pydantic import BaseModel, Field
 
@@ -52,6 +53,6 @@ class EvaluationResponse(BaseModel):
     }
     """
     model: LLM = Field(description="LLM-related information")
-    repository_path: str = Field(description="Repository path")
-    checklist_path: str = Field(description="Checklist path")
+    repository_path: Union[str, Path] = Field(description="Repository path")
+    checklist_path: Union[str, Path] = Field(description="Checklist path")
     call_results: List[CallResult] = Field(description="List of call results", default=[])

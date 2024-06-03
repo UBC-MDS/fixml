@@ -1,5 +1,6 @@
 # read version from installed package
 from importlib.metadata import version
 
-from .test_creation import main
+from .cli.main import main as cli_main
+
 __version__ = version("test_creation")

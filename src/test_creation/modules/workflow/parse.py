@@ -2,18 +2,29 @@ from typing import Optional
 
 import pandas as pd
 import os
-from typing import Union
 
 from .response import EvaluationResponse
 from ..mixins import ExportableMixin
+from ..utils import get_extension
 
 
 class ResponseParser(ExportableMixin):
     def __init__(self, response: EvaluationResponse):
+        super().__init__()
         self.response = response
         self.evaluation_report = None
 
     def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> Optional[float]:
+
+        # TODO: change this after putting the logic to load data from JSON file
+        #  instead of from a Python object.
+        if not self.response.call_results:
+            raise NotImplementedError(
+                "Response contains no results from LLM. (No files were passed?)"
+                " This is a won't fix for now as the response will be written "
+                "into a JSON file and to be read here later on."
+            )
+
         for result in self.response.call_results:
             if not result.success:
                 print("failed to obtain valid response, cannot calculate completeness score")
@@ -98,12 +109,10 @@ class ResponseParser(ExportableMixin):
         header = '---\ntitle: "Test Evaluation Report"\nformat:\n  html:\n  code-fold: true\n---\n\n'
         return header + self.as_markdown()
 
-    def export_evaluation_report(self, output_path, format='html', exist_ok: bool = False):
+    def export_evaluation_report(self, output_path,
+                                 exist_ok: bool = False) -> None:
         """
         Export the test evaluation report
         """
-        if format=='html':
-            self.export_html(output_path, exist_ok)
-        elif format=='pdf':
-            self.export_pdf(output_path, exist_ok)
-        return
+        ext = get_extension(output_path)
+        self.export_ext_func_map[ext](output_path, exist_ok)
