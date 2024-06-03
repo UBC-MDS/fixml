@@ -4,7 +4,7 @@ To be filled
 
 ## Installation
 
-1. Create a conda envionment using `environment.yml` in the repo:
+1. Create a conda environment using `environment.yml` in the repo:
 
 ```bash
 conda env create -f environment.yml
