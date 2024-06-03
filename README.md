@@ -31,7 +31,7 @@ echo "OPENAI_API_KEY=..." > .env
 test-creation evaluate $REPO_PATH ./report.html --verbose
 
 # export checklist items into a PDF, overwrite file if exists in the specified path
-test-creation checklist export checklist.pdf --overwrite
+test-creation checklist export ./checklist/checklist.csv/ checklist.pdf --overwrite
 ```
 
 ## Usage
