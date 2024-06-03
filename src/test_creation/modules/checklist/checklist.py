@@ -1,6 +1,7 @@
 import os
 import csv
 import copy
+from pathlib import Path
 from enum import Enum
 from typing import Union
 from abc import ABC, abstractmethod
@@ -8,6 +9,7 @@ from abc import ABC, abstractmethod
 from ruamel.yaml import YAML
 
 from ..mixins import ExportableMixin
+from ..utils import get_extension
 
 
 def filter_dict(d: dict, keys: list) -> dict:
@@ -15,8 +17,8 @@ def filter_dict(d: dict, keys: list) -> dict:
 
 
 class ChecklistFormat(Enum):
-    YAML = 1
-    CSV = 2
+    YAML = 'yaml'
+    CSV = 'csv'
 
 
 class ChecklistIO(ABC):
@@ -138,18 +140,28 @@ class CsvChecklistIO(ChecklistIO):
 
 
 class Checklist(ExportableMixin):
-    def __init__(self, checklist_path: str, checklist_format: ChecklistFormat):
+    def __init__(self, checklist_path: str):
+        super().__init__()
+        self.ext_io_map = {
+            'csv': CsvChecklistIO,
+            'yaml': YamlChecklistIO,
+            'yml': YamlChecklistIO
+        }
+        ext = get_extension(checklist_path)
+        self.__check_ext_is_valid(ext)
         self.path = checklist_path
         if not os.path.exists(self.path):
             raise FileNotFoundError("Checklist file not found.")
-        if checklist_format == ChecklistFormat.YAML:
-            self.content = YamlChecklistIO.read(self.path)
-        elif checklist_format == ChecklistFormat.CSV:
-            self.content = CsvChecklistIO.read(self.path)
-        else:
-            raise NotImplementedError(f"Format {checklist_format} is not supported.")
-
+        self.content = self.ext_io_map[ext].read(self.path)
         self.test_areas = set([x["Topic"] for x in self.content["Test Areas"]])
+
+    def __check_ext_is_valid(self, ext: str) -> bool:
+        if ext not in self.ext_io_map:
+            raise ValueError(
+                f"Invalid input format(s) provided. The acceptable formats "
+                f"are {list(self.ext_io_map.keys())}."
+            )
+        return True
 
     def get_tests_by_areas(self, areas: Union[list, str, set], keys: Union[list, None] = None) -> list:
         tests = []
@@ -176,7 +188,21 @@ class Checklist(ExportableMixin):
     def get_test_areas(self) -> set:
         return self.test_areas
 
-    def to_yaml(self, output_path: str, no_preserve_format: bool = False, exist_ok: bool = False):
+    def write_to(self, output_path: Union[str, Path], exist_ok=False) -> None:
+        """Write the checklist to a file.
+
+        This is a simple wrapper to automatically write checklist into
+        appropriate format determined by the extension given in the specified
+        output path.
+        """
+        ext = get_extension(output_path)
+        self.__check_ext_is_valid(ext)
+        if ext == 'yaml':
+            self.to_yaml(output_path, no_preserve_format=True, exist_ok=exist_ok)
+        elif ext == 'csv':
+            self.to_csv(output_path, exist_ok=exist_ok)
+
+    def to_yaml(self, output_path: Union[str, Path], no_preserve_format: bool = False, exist_ok: bool = False):
         if not no_preserve_format:
             raise NotImplementedError(
                 "Roundtripping is not yet implemented. If you want to dump the YAML file disregarding the original "
@@ -185,7 +211,7 @@ class Checklist(ExportableMixin):
         self._filedump_check(output_path, exist_ok)
         YamlChecklistIO.write(output_path, self.content)
 
-    def to_csv(self, output_path: str, exist_ok: bool = False):
+    def to_csv(self, output_path: Union[str, Path], exist_ok: bool = False):
         """Dump the checklist to a directory containing three separate CSV files."""
         self._filedump_check(output_path, exist_ok, expects_directory_if_exists=True)
         CsvChecklistIO.write(output_path, self.content)
@@ -222,5 +248,5 @@ class Checklist(ExportableMixin):
         return _get_md_representation(self.content, curr_level=1)
 
     def as_quarto_markdown(self):
-        header = header = '---\ntitle: "{}"\nformat:\n  html:\n    code-fold: true\n---\n\n'.format(self.content['Title'])
+        header = '---\ntitle: "{}"\nformat:\n  html:\n    code-fold: true\n---\n\n'.format(self.content['Title'])
         return header + self.as_markdown()
