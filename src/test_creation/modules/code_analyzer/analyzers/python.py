@@ -1,17 +1,38 @@
+from abc import ABC, abstractmethod
 import ast
+from typing import Union
+from pathlib import Path
 from functools import wraps
 from collections import defaultdict
-
-from . import CodeAnalyzer
 
 
 def assert_have_read_content(f):
     @wraps(f)
-    def decorator(*args, **kwargs):
-        if args[0].content is None:
+    def decorator(self, *args, **kwargs):
+        if self.content is None:
             raise RuntimeError("No content has been read yet.")
-        return f(*args, **kwargs)
+        return f(self, *args, **kwargs)
+
     return decorator
+
+
+class CodeAnalyzer(ABC):
+
+    @abstractmethod
+    def read(self, file_path: Union[str, Path]) -> None:
+        pass
+
+    @abstractmethod
+    def list_imported_packages(self):
+        pass
+
+    @abstractmethod
+    def list_all_functions(self):
+        pass
+
+    @abstractmethod
+    def contains_test(self):
+        pass
 
 
 class PythonASTCodeAnalyzer(CodeAnalyzer):
@@ -26,7 +47,7 @@ class PythonASTCodeAnalyzer(CodeAnalyzer):
             self._tree = ast.parse(self.content)
 
     @assert_have_read_content
-    def _get_function_lineno_map(self): # FIXME: when to use _xxx? when to use xxx?
+    def _get_function_lineno_map(self):
         function_lineno_map = defaultdict(int)
         for node in ast.walk(self._tree):
             if isinstance(node, ast.FunctionDef):
