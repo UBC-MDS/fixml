@@ -8,3 +8,4 @@ dependencies:
   - pandoc=3.2
   - poetry=1.8.3
   - python=3.12
+  - altair=5.3
