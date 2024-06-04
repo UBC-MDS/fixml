@@ -1,6 +1,7 @@
 import os
 import re
 import logging
+from pathlib import Path
 from collections import defaultdict
 from configparser import ConfigParser
 from typing import Dict, List
@@ -12,7 +13,6 @@ logger = logging.getLogger("test-creation.repo")
 
 class Repository:
     def __init__(self, path: str):
-        self.path = path
 
         # git metadata
         self.url = ''
@@ -22,6 +22,15 @@ class Repository:
         self.name = ''
         self.main_branch = ''
         
+        if not os.path.exists(path):
+            raise FileNotFoundError(f"Repository {path} does not exist.")
+        elif os.path.isfile(path):
+            raise NotADirectoryError("The path provided is not a directory.")
+        self.path = Path(path)
+        if not os.path.exists(self.path / ".git"):
+            # TODO: to be converted to use logger
+            print("Warning: The repository is not a git repository.")
+
         self.files = []
         self.fileext_language_map = {
             '.js': 'JavaScript',
@@ -44,8 +53,8 @@ class Repository:
 
     def _get_git_metadata(self):
         config = ConfigParser()
-        if os.path.exists(self.path + '/.git/config'):
-            config.read(self.path + '/.git/config')
+        if os.path.exists(self.path / '.git/config'):
+            config.read(self.path / '.git/config')
         else:
             raise FileNotFoundError('/.git/config does not exist')
 
