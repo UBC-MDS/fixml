@@ -28,7 +28,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y pandoc
 
       - name: Install tectonic
-        run: sudo snap update && sudo snap install tectonic
+        run: sudo snap refresh && sudo snap install tectonic
 
       - name: Test with pytest
         run: poetry run pytest tests
