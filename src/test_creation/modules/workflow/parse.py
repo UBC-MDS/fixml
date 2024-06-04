@@ -10,13 +10,13 @@ from ..code_analyzer.repo import Repository
 
 
 class ResponseParser(ExportableMixin):
-    def __init__(self, response: EvaluationResponse, respository: Repository = None):
+    def __init__(self, response: EvaluationResponse, repository: Repository = None):
         # FIXME: respository is required to extract the line numbers for functions
         #        I added an optional argument "respository" here, can't think of any better way to handle it yet
         super().__init__()
         self.response = response
         self.evaluation_report = None
-        self.repository = respository
+        self.repository = repository
         self.items = []
 
     def _parse_items(self):
@@ -27,17 +27,16 @@ class ResponseParser(ExportableMixin):
                 fp = result.files_evaluated[0] # FIXME: it might fail if the evaluation is on multiple files
                 item['File Path'] = fp
                 if self.repository:
-                    item['lineno'] = [self.repository.ffl_map[fp][func] for func in item['Functions']]
+                    item['lineno'] = [self.repository.ffl_map['Python'][fp][func] for func in item['Functions']]
                 else:
                     item['lineno'] = []
                 item['Line Numbers'] = [
-                    f"[{lineno}]({self.repository._get_git_direct_link(self.repository._get_relative_path(fp), lineno)})"
+                    f"[{lineno}]({self.repository._get_git_direct_link(fp, lineno)})"
                     for lineno in item['lineno']
                 ]
                 items.append(item)
         self.items = items
         return items
-
 
     def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> Optional[float]:
         """Compute Evaluation Report and Completeness Score."""
