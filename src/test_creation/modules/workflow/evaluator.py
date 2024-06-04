@@ -30,22 +30,24 @@ class TestEvaluator(PipelineRunner, ABC):
     """Abstract base class for test evaluators
     i.e. class object to run evaluation of test files from a given repository.
     """
-    def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat, repository: Repository,
-                 checklist: Checklist):
+
+    def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat,
+                 repository: Repository, checklist: Checklist):
         self.llm = llm
 
         self.checklist = checklist
         self.repository = repository
         self.prompt_format = prompt_format
-        self.test_items = None
+        self._test_items = None
 
         self.chain = self.prompt_format.prompt | self.llm | self.prompt_format.parser
 
 
 class PerFileTestEvaluator(TestEvaluator):
     """Concrete test evaluator that performs per-file evaluation."""
-    def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat, repository: Repository,
-                 checklist: Checklist, retries: int = 3):
+
+    def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat,
+                 repository: Repository, checklist: Checklist, retries: int = 3):
         super().__init__(llm, prompt_format, repository, checklist)
         self.retries = retries
 
@@ -53,7 +55,8 @@ class PerFileTestEvaluator(TestEvaluator):
         if not self._files:
             print("File loader returned no files!")
 
-        self._test_items = self.checklist.get_all_tests(['ID', 'Title', 'Requirement'])
+        self._test_items = self.checklist.get_all_tests(['ID', 'Title',
+                                                         'Requirement'])
         if not self._test_items:
             print("Loaded checklist successfully, but it contains no test items!")
 
@@ -67,9 +70,12 @@ class PerFileTestEvaluator(TestEvaluator):
 
     def _validate_response(self, raw_response: dict) -> None:
         """Validation logics that are not covered by pydantic or langchain."""
-        # ensures the number of items in the response is the same as provided checklists
-        if len(raw_response['results']) != len(self.test_items):
-            raise ValidationError("Number of items returned from LLM does not match that in checklist.")
+        # ensures the number of items in the response is the same as provided
+        # checklists
+        if len(raw_response['results']) != len(self._test_items):
+            raise AssertionError("Number of items returned from LLM does not match that in checklist.")
+        if not all(['Functions' in item for item in raw_response['results']]):
+            raise AssertionError("Not all items returned contain the attribute `Functions`.")
 
     def run(self, verbose: bool = False) -> EvaluationResponse:
         eval_response = EvaluationResponse(
@@ -106,8 +112,11 @@ class PerFileTestEvaluator(TestEvaluator):
                     self._validate_response(response)
 
                 except Exception as e:
+                    if verbose:
+                        print(f"error occurred: {e.__class__.__name__} - {str(e)}")
                     errors.append({'name': e.__class__.__name__, 'description': str(e)})
                     retry_count += 1
+                    response = None
                     continue
 
             if not response:
