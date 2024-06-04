@@ -1,27 +1,30 @@
 import os
-import re
 import logging
+from functools import wraps
 from pathlib import Path
 from collections import defaultdict
-from configparser import ConfigParser
-from typing import Dict, List
+from typing import Optional
 
 from .analyzers.python import PythonNaiveCodeAnalyzer, PythonASTCodeAnalyzer
+from .git import GitContext
 
 logger = logging.getLogger("test-creation.repo")
+
+
+def requires_git_context(func):
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        """wrapper function to check if we have git context."""
+        if self.git_context is None:
+            raise RuntimeError("This repository has no git context.")
+        func(self, *args, **kwargs)
+
+    return wrapper
 
 
 class Repository:
     def __init__(self, path: str):
 
-        # git metadata
-        self.url = ''
-        self.mode = ''
-        self.service = ''
-        self.user = ''
-        self.name = ''
-        self.main_branch = ''
-        
         if not os.path.exists(path):
             raise FileNotFoundError(f"Repository {path} does not exist.")
         elif os.path.isfile(path):
@@ -30,6 +33,9 @@ class Repository:
         if not os.path.exists(self.path / ".git"):
             # TODO: to be converted to use logger
             print("Warning: The repository is not a git repository.")
+            self.git_context = None
+        else:
+            self.git_context = GitContext(self.path)
 
         self.files = []
         self.fileext_language_map = {
@@ -46,55 +52,11 @@ class Repository:
         }
         self.lf_map = self._get_language_file_map()
         self.ffl_map = self._get_file_function_lineno_map()
-        try:
-            self._get_git_metadata()
-        except Exception as e:
-            logger.info(e)
 
-    def _get_git_metadata(self):
-        config = ConfigParser()
-        if os.path.exists(self.path / '.git/config'):
-            config.read(self.path / '.git/config')
-        else:
-            raise FileNotFoundError('/.git/config does not exist')
+    @requires_git_context
+    def _get_git_direct_link(self, file: str, lineno: Optional[int] = None):
+        return self.git_context.construct_remote_link_to_file(file, line_num=lineno)
 
-        self.url = config['remote "origin"']['url']
-        
-        if 'git@' in self.url:
-            self.mode = 'ssh'
-            pattern = 'git@(.*?):(.*?)/(.*?).git'
-        elif 'https' in self.url:
-            self.mode = 'https'
-            pattern = 'https://(.*?)/(.*?)/(.*?).git'
-            
-        self.service, self.user, self.name = re.search(pattern, self.url).group(1,2,3)
-
-        if 'branch "master"' in list(config):
-            self.main_branch = 'master'
-        elif 'branch "main"' in list(config):
-            self.main_branch = 'main'
-
-        return {
-            'mode': self.mode,
-            'service': self.service,
-            'user': self.user,
-            'name': self.name,
-            'main_branch': self.main_branch
-        }
-
-    def _get_git_direct_link(self, file: str, lineno: int = None):
-        link = f'https://{self.service}/{self.user}/{self.name}/blob/{self.main_branch}/{file}'
-        if lineno:
-            link += f'#L{lineno}'
-        return link
-
-    def _get_relative_path(self, file: str):
-        path = file.replace(self.path, '', 1)
-        if path[0] == '/':
-            return path
-        else:
-            return '/' + path
-    
     def _get_all_files(self, include_git_dir: bool = False):
         file_paths = []
         results = list(os.walk(self.path))
@@ -107,7 +69,7 @@ class Repository:
                 file_paths.append(f'{root}/{file}')
         return file_paths
 
-    def _get_language_file_map(self):
+    def _get_language_file_map(self) -> dict[str, list[str]]:
         language_file_map = defaultdict(list)
         files = self._get_all_files()
         for file in files:
@@ -116,16 +78,18 @@ class Repository:
                     language_file_map[v].append(file)
         return language_file_map
 
-    def _get_file_function_lineno_map(self):
+    def _get_file_function_lineno_map(self) -> dict[str, dict[str, list[str]]]:
         file_function_lineno_map = defaultdict(lambda: defaultdict(int))
-        files = self.lf_map.get("Python", [])
-        ast = PythonASTCodeAnalyzer() # FIXME: only support Python ATS, what's the implication?
-        for file in files:
-            try:
-                ast.read(file)
-                file_function_lineno_map[file] = ast._get_function_lineno_map()
-            except Exception as e:
-                logger.info("Exception occurred when parsing using ast (Python 2 code?) Using naive parser...")
+        for lang, files in self.lf_map.items():
+            # TODO: only Python is supported now
+            if lang == "Python":
+                ast = PythonASTCodeAnalyzer()
+                for file in files:
+                    try:
+                        ast.read(file)
+                        file_function_lineno_map[lang][file] = ast._get_function_lineno_map()
+                    except Exception as e:
+                        logger.info("Exception occurred when parsing using ast (Python 2 code?) Using naive parser...")
         return file_function_lineno_map
 
     def list_languages(self):
@@ -143,7 +107,7 @@ class Repository:
         packages = list(set(packages))
         return packages
 
-    def list_test_files(self) -> Dict[str, List[str]]:
+    def list_test_files(self) -> dict[str, list[str]]:
         testfiles = defaultdict(list)
         # for now only Python is supported
         files = self.lf_map.get("Python", [])
@@ -160,4 +124,3 @@ class Repository:
                 if naive.contains_test():
                     testfiles["Python"].append(file)
         return testfiles
-
