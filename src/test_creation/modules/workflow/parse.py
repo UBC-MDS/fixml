@@ -2,21 +2,21 @@ from typing import Optional
 
 import pandas as pd
 import os
-from typing import Union
 
 from .response import EvaluationResponse
 from ..mixins import ExportableMixin
-
-from modules.code_analyzer.repo import Repository
+from ..utils import get_extension
 
 
 class ResponseParser(ExportableMixin):
-    def __init__(self, response: EvaluationResponse, respository: Repository = None):
+    def __init__(self, response: EvaluationResponse):
         # FIXME: respository is required to extract the line numbers for functions
         #        I added an optional argument "respository" here, can't think of any better way to handle it yet
+        super().__init__()
         self.response = response
         self.evaluation_report = None
-        self.repository = respository
+        self.repository = self.response.repository.object
+        self.git_context = self.repository.git_context
         self.items = []
 
     def _parse_items(self):
@@ -24,25 +24,32 @@ class ResponseParser(ExportableMixin):
         for result in self.response.call_results:
             response = result.parsed_response['results']
             for item in response:
-                fp = result.files_evaluated[0] # FIXME: it might fail if the evaluation is on multiple files
+                fp = result.files_evaluated[0]
                 item['File Path'] = fp
                 if self.repository:
-                    item['lineno'] = [self.repository.ffl_map[fp][func] for func in item['Functions']]
+                    item['lineno'] = [self.repository.ffl_map['Python'][fp][func] for func in item['Functions']]
                 else:
                     item['lineno'] = []
-                item['Line Numbers'] = [
-                    f"[{lineno}]({self.repository._get_git_direct_link(self.repository._get_relative_path(fp), lineno)})"
-                    for lineno in item['lineno']
+                item['Referenced Functions'] = [
+                    f"[{func}]({self.repository.get_git_direct_link(fp, lineno)})"
+                    for func, lineno in zip(item['Functions'], item['lineno'])
                 ]
                 items.append(item)
         self.items = items
         return items
 
-
     def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> Optional[float]:
-        """
-        Compute Evaluation Report and Completeness Score
-        """
+        """Compute Evaluation Report and Completeness Score."""
+
+        # TODO: change this after putting the logic to load data from JSON file
+        #  instead of from a Python object.
+        if not self.response.call_results:
+            raise NotImplementedError(
+                "Response contains no results from LLM. (No files were passed?)"
+                " This is a won't fix for now as the response will be written "
+                "into a JSON file and to be read here later on."
+            )
+
         for result in self.response.call_results:
             if not result.success:
                 print("failed to obtain valid response, cannot calculate completeness score")
@@ -51,7 +58,7 @@ class ResponseParser(ExportableMixin):
         items = self._parse_items()
 
         report_df = pd.DataFrame(items)
-        report_df['Function References'] = report_df[['File Path', 'Functions', "Line Numbers"]].to_dict(orient='records')
+        report_df['Function References'] = report_df[['File Path', 'Referenced Functions']].to_dict(orient='records')
         report_df['Observation'] = '(' + report_df['File Path'].apply(lambda x: os.path.split(x)[-1]) + ') ' + \
                                    report_df['Observation']
         report_df = report_df.groupby(['ID', 'Title']).agg({
@@ -121,12 +128,10 @@ class ResponseParser(ExportableMixin):
         header = '---\ntitle: "Test Evaluation Report"\nformat:\n  html:\n  code-fold: true\n---\n\n'
         return header + self.as_markdown()
 
-    def export_evaluation_report(self, output_path, format='html', exist_ok: bool = False):
+    def export_evaluation_report(self, output_path,
+                                 exist_ok: bool = False) -> None:
         """
         Export the test evaluation report
         """
-        if format=='html':
-            self.export_html(output_path, exist_ok)
-        elif format=='pdf':
-            self.export_pdf(output_path, exist_ok)
-        return
+        ext = get_extension(output_path)
+        self.export_ext_func_map[ext](output_path, exist_ok)

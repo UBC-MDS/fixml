@@ -1,12 +1,30 @@
 from datetime import datetime
-from typing import List, Dict, Any, Optional
+from pathlib import Path
+from typing import List, Dict, Any, Optional, Union
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
+
+from ..code_analyzer.repo import Repository
+from ..checklist.checklist import Checklist
 
 
-class LLM(BaseModel):
+class LLMInfo(BaseModel):
     name: str = Field(description="Name of the LLM used")
     temperature: float = Field(description="Temperature of the LLM")
+
+
+class RepositoryInfo(BaseModel):
+    path: Union[str, Path] = Field(description="Path of the repository")
+    object: Repository = Field(description="Repository object")
+
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
+
+class ChecklistInfo(BaseModel):
+    path: Union[str, Path] = Field(description="Path of the checklist")
+    object: Checklist = Field(description="Checklist object")
+
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
 
 class Error(BaseModel):
@@ -34,8 +52,14 @@ class EvaluationResponse(BaseModel):
             name
             temperature
         }
-        repository_path
-        checklist_path
+        repository {
+            path
+            object
+        }
+        checklist {
+            path
+            object
+        }
         call_results [{
             start_time
             end_time
@@ -51,7 +75,7 @@ class EvaluationResponse(BaseModel):
         }]
     }
     """
-    model: LLM = Field(description="LLM-related information")
-    repository_path: str = Field(description="Repository path")
-    checklist_path: str = Field(description="Checklist path")
+    model: LLMInfo = Field(description="LLM-related information")
+    repository: RepositoryInfo = Field(description="Repository-related information")
+    checklist: ChecklistInfo = Field(description="Checklist-related information")
     call_results: List[CallResult] = Field(description="List of call results", default=[])

@@ -15,33 +15,38 @@ from .prompt_format import PromptFormat
 from .response import EvaluationResponse, CallResult
 
 
-class Evaluator(ABC):
-    """Abstract base class for evaluators i.e. class object to assemble prompt and to obtain response from LLMs."""
+class PipelineRunner(ABC):
+    """Abstract base class for running langchain pipelines.
+
+    This class object assembles prompt and to obtain response from LLMs.
+    """
     @abstractmethod
-    def evaluate(self):
+    def run(self):
         pass
 
 
-class TestEvaluator(Evaluator, ABC):
+class TestEvaluator(PipelineRunner, ABC):
     """Abstract base class for test evaluators
     i.e. class object to run evaluation of test files from a given repository.
     """
-    def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat, repository: Repository,
-                 checklist: Checklist):
+
+    def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat,
+                 repository: Repository, checklist: Checklist):
         self.llm = llm
 
         self.checklist = checklist
         self.repository = repository
         self.prompt_format = prompt_format
-        self.test_items = None
+        self._test_items = None
 
         self.chain = self.prompt_format.prompt | self.llm | self.prompt_format.parser
 
 
 class PerFileTestEvaluator(TestEvaluator):
     """Concrete test evaluator that performs per-file evaluation."""
-    def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat, repository: Repository,
-                 checklist: Checklist, retries: int = 3):
+
+    def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat,
+                 repository: Repository, checklist: Checklist, retries: int = 3):
         super().__init__(llm, prompt_format, repository, checklist)
         self.retries = retries
 
@@ -49,7 +54,8 @@ class PerFileTestEvaluator(TestEvaluator):
         if not self._files:
             print("File loader returned no files!")
 
-        self._test_items = self.checklist.get_all_tests(['ID', 'Title', 'Requirement'])
+        self._test_items = self.checklist.get_all_tests(['ID', 'Title',
+                                                         'Requirement'])
         if not self._test_items:
             print("Loaded checklist successfully, but it contains no test items!")
 
@@ -63,16 +69,18 @@ class PerFileTestEvaluator(TestEvaluator):
 
     def _validate_response(self, raw_response: dict) -> None:
         """Validation logics that are not covered by pydantic or langchain."""
-        # ensures the number of items in the response is the same as provided checklists
-        if len(raw_response['results']) != len(self.test_items):
-            raise ValidationError("Number of items returned from LLM does not match that in checklist.")
+        # ensures the number of items in the response is the same as provided
+        # checklists
+        if len(raw_response['results']) != len(self._test_items):
+            raise AssertionError("Number of items returned from LLM does not match that in checklist.")
+        if not all(['Functions' in item for item in raw_response['results']]):
+            raise AssertionError("Not all items returned contain the attribute `Functions`.")
 
-
-    def evaluate(self, verbose: bool = False) -> EvaluationResponse:
+    def run(self, verbose: bool = False) -> EvaluationResponse:
         eval_response = EvaluationResponse(
             model={'name': self.llm.model_name, 'temperature': self.llm.temperature},
-            repository_path=self.repository.path,
-            checklist_path=self.checklist.path
+            repository={'path': self.repository.path, 'object': self.repository},
+            checklist={'path': self.checklist.path, 'object': self.checklist}
         )
 
         for fp in tqdm(self._files):
@@ -103,8 +111,11 @@ class PerFileTestEvaluator(TestEvaluator):
                     self._validate_response(response)
 
                 except Exception as e:
+                    if verbose:
+                        print(f"error occurred: {e.__class__.__name__} - {str(e)}")
                     errors.append({'name': e.__class__.__name__, 'description': str(e)})
                     retry_count += 1
+                    response = None
                     continue
 
             if not response:
