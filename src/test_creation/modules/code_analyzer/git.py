@@ -56,7 +56,7 @@ class GitContext:
             return None, None, "."
 
     def construct_remote_link_to_file(self, file_path: Union[str, Path],
-                                      line_num: Optional[int] = 0) -> str:
+                                      line_num: Optional[int] = None) -> str:
         path = Path(file_path)
         if path.is_absolute():
             rel_path = path.relative_to(self.git_dir)
