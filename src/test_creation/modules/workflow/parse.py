@@ -6,17 +6,16 @@ import os
 from .response import EvaluationResponse
 from ..mixins import ExportableMixin
 from ..utils import get_extension
-from ..code_analyzer.repo import Repository
 
 
 class ResponseParser(ExportableMixin):
-    def __init__(self, response: EvaluationResponse, repository: Repository = None):
+    def __init__(self, response: EvaluationResponse):
         # FIXME: respository is required to extract the line numbers for functions
         #        I added an optional argument "respository" here, can't think of any better way to handle it yet
         super().__init__()
         self.response = response
         self.evaluation_report = None
-        self.repository = repository
+        self.repository = self.response.repository.object
         self.items = []
 
     def _parse_items(self):
@@ -24,16 +23,19 @@ class ResponseParser(ExportableMixin):
         for result in self.response.call_results:
             response = result.parsed_response['results']
             for item in response:
-                fp = result.files_evaluated[0] # FIXME: it might fail if the evaluation is on multiple files
+                fp = result.files_evaluated[0]
                 item['File Path'] = fp
                 if self.repository:
                     item['lineno'] = [self.repository.ffl_map['Python'][fp][func] for func in item['Functions']]
                 else:
                     item['lineno'] = []
+                print(item)
+                print(item['lineno'])
                 item['Line Numbers'] = [
                     f"[{lineno}]({self.repository._get_git_direct_link(fp, lineno)})"
                     for lineno in item['lineno']
                 ]
+                print(item['Line Numbers'])
                 items.append(item)
         self.items = items
         return items

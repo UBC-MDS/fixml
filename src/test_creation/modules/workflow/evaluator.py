@@ -80,8 +80,8 @@ class PerFileTestEvaluator(TestEvaluator):
     def run(self, verbose: bool = False) -> EvaluationResponse:
         eval_response = EvaluationResponse(
             model={'name': self.llm.model_name, 'temperature': self.llm.temperature},
-            repository_path=self.repository.path,
-            checklist_path=self.checklist.path
+            repository={'path': self.repository.path, 'object': self.repository},
+            checklist={'path': self.checklist.path, 'object': self.checklist}
         )
 
         for fp in tqdm(self._files):

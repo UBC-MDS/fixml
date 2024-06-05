@@ -65,7 +65,7 @@ class RepositoryActions(object):
                                          repository=repo, checklist=checklist)
         response = evaluator.run()
 
-        parser = ResponseParser(response, repository=repo)
+        parser = ResponseParser(response)
         parser.get_completeness_score(verbose=verbose)
 
         parser.export_evaluation_report(report_output_path, exist_ok=overwrite)
