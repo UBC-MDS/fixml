@@ -16,6 +16,7 @@ class ResponseParser(ExportableMixin):
         self.response = response
         self.evaluation_report = None
         self.repository = self.response.repository.object
+        self.git_context = self.repository.git_context
         self.items = []
 
     def _parse_items(self):
@@ -29,13 +30,10 @@ class ResponseParser(ExportableMixin):
                     item['lineno'] = [self.repository.ffl_map['Python'][fp][func] for func in item['Functions']]
                 else:
                     item['lineno'] = []
-                print(item)
-                print(item['lineno'])
-                item['Line Numbers'] = [
-                    f"[{lineno}]({self.repository._get_git_direct_link(fp, lineno)})"
-                    for lineno in item['lineno']
+                item['Referenced Functions'] = [
+                    f"[{func}]({self.repository.get_git_direct_link(fp, lineno)})"
+                    for func, lineno in zip(item['Functions'], item['lineno'])
                 ]
-                print(item['Line Numbers'])
                 items.append(item)
         self.items = items
         return items
@@ -60,7 +58,7 @@ class ResponseParser(ExportableMixin):
         items = self._parse_items()
 
         report_df = pd.DataFrame(items)
-        report_df['Function References'] = report_df[['File Path', 'Functions', "Line Numbers"]].to_dict(orient='records')
+        report_df['Function References'] = report_df[['File Path', 'Referenced Functions']].to_dict(orient='records')
         report_df['Observation'] = '(' + report_df['File Path'].apply(lambda x: os.path.split(x)[-1]) + ') ' + \
                                    report_df['Observation']
         report_df = report_df.groupby(['ID', 'Title']).agg({

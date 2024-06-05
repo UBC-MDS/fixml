@@ -62,11 +62,10 @@ class GitContext:
             f_str = copy(self.remote_link_format_map[self.remote_service_family])
             if line_num is None:
                 f_str = f_str.split("#")[0]
-            injected_str =  f"{self.remote_protocol}://" + \
+            injected_str = f"{self.remote_protocol}://" + \
                 f_str.format(host=self.host, org=self.org, repo=self.repo_name,
                              branch=self.branch, path=rel_path,
                              line_num=line_num)
-            print(injected_str)
             return injected_str
         else:
             print("No matching service. Using local link instead...")

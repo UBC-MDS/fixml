@@ -17,7 +17,7 @@ def requires_git_context(func):
         """wrapper function to check if we have git context."""
         if self.git_context is None:
             raise RuntimeError("This repository has no git context.")
-        func(self, *args, **kwargs)
+        return func(self, *args, **kwargs)
 
     return wrapper
 
@@ -54,8 +54,10 @@ class Repository:
         self.ffl_map = self._get_file_function_lineno_map()
 
     @requires_git_context
-    def _get_git_direct_link(self, file: str, lineno: Optional[int] = None):
-        return self.git_context.construct_remote_link_to_file(file, line_num=lineno)
+    def get_git_direct_link(self, file: str,
+                             lineno: Optional[int] = None) -> str:
+        return self.git_context.construct_remote_link_to_file(file,
+                                                              line_num=lineno)
 
     def _get_all_files(self, include_git_dir: bool = False):
         file_paths = []
