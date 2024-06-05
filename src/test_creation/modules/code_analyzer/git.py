@@ -22,6 +22,16 @@ class GitContext:
             "gitee": "{host}/{org}/{repo}/blob/{branch}{path}#L{line_num}"
         }
         self.remote_protocol = "https"
+        self.remote_service_family = self.__get_remote_service_family()
+
+    def __get_remote_service_family(self):
+        result = None
+        if self.host:
+            hits = [key for key in self.remote_link_format_map.keys() if
+                    key in self.host]
+            if hits:
+                result = hits[0]
+        return result
 
     def _get_current_branch(self):
         if self.git_repo.head.is_detached:
@@ -48,17 +58,16 @@ class GitContext:
     def construct_remote_link_to_file(self, file_path: Union[str, Path],
                                       line_num: Optional[int] = 0) -> str:
         rel_path = Path(file_path).relative_to(self.git_dir)
-        hits = [keyword for keyword in
-                self.remote_link_format_map.keys() if keyword in self.host]
-        if hits:
-            hit = hits[0]
-            f_str = copy(self.remote_link_format_map[hit])
+        if self.remote_service_family:
+            f_str = copy(self.remote_link_format_map[self.remote_service_family])
             if line_num is None:
                 f_str = f_str.split("#")[0]
-            return f"{self.remote_protocol}://" + \
+            injected_str =  f"{self.remote_protocol}://" + \
                 f_str.format(host=self.host, org=self.org, repo=self.repo_name,
                              branch=self.branch, path=rel_path,
                              line_num=line_num)
+            print(injected_str)
+            return injected_str
         else:
             print("No matching service. Using local link instead...")
             return f"file://{str(self.git_dir)}/{rel_path}"
