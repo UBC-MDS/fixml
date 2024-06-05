@@ -11,22 +11,26 @@ conda env create -f environment.yml
 ```
 
 2. Activate the newly created conda environment (default name `test-creation`):
+
 ```bash
 conda activate test-creation
 ```
 
 3. In the conda environment, `poetry` should be installed. Use Poetry to install the package:
+
 ```bash
 poetry install
 ```
 
 4. add `.env` with API key attached:
+
 ```bash
 echo "OPENAI_API_KEY=..." > .env
 ```
 
 5. Enjoy! This package comes will an executable `test-creation` and a bunch of scripts. Here are some examples:
 ```bash
+
 # evaluate a repository and write a HTML report, display verbose messages
 test-creation evaluate $REPO_PATH ./report.html --verbose
 
