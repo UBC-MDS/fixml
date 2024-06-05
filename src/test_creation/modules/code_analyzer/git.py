@@ -57,7 +57,11 @@ class GitContext:
 
     def construct_remote_link_to_file(self, file_path: Union[str, Path],
                                       line_num: Optional[int] = 0) -> str:
-        rel_path = Path(file_path).relative_to(self.git_dir)
+        path = Path(file_path)
+        if path.is_absolute():
+            rel_path = path.relative_to(self.git_dir)
+        else:
+            rel_path = path
         if self.remote_service_family:
             f_str = copy(self.remote_link_format_map[self.remote_service_family])
             if line_num is None:

@@ -83,3 +83,9 @@ def test_git_context_can_extract_remote_git_urls(fixture_name, remote_name,
     repo.api.create_remote(remote_name, remote_url)
     gc = GitContext(repo.workspace)
     assert (gc.host, gc.org, gc.repo_name) == expected
+
+
+def test_git_context_gives_out_local_link_when_no_remote(test_git_repo):
+    context = GitContext(test_git_repo.workspace)
+    link = context.construct_remote_link_to_file("src/python/main.py")
+    assert link == f"file://{test_git_repo.workspace}/src/python/main.py"
