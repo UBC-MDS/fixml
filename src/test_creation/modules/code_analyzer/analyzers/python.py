@@ -91,6 +91,15 @@ class PythonNaiveCodeAnalyzer(CodeAnalyzer):
             self.content = f.readlines()
 
     @assert_have_read_content
+    def _get_function_lineno_map(self):
+        function_lineno_map = defaultdict(int)
+        for line_num, line in enumerate(self.content):
+            if line.lstrip().startswith('def '):
+                func_name = line.lstrip().split('(')[0].split(' ')[1]
+                function_lineno_map[func_name] = line_num + 1 # line starts with 1
+        return function_lineno_map
+
+    @assert_have_read_content
     def list_imported_packages(self):
         packages = set()
         for line in self.content:

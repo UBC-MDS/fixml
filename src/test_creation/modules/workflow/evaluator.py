@@ -8,7 +8,6 @@ from langchain_community.document_loaders import PythonLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 from langchain_core.language_models import LanguageModelLike
 from langchain_core.documents import Document
-from pydantic import ValidationError
 
 from ..checklist.checklist import Checklist
 from ..code_analyzer.repo import Repository
