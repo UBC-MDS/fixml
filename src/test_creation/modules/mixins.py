@@ -21,10 +21,16 @@ class WriteableMixin:
                                       "provided a flag/argument for "
                                       "file overwriting?)")
         elif os.path.exists(normalized_path):
-            if expects_directory_if_exists and not os.path.isdir(normalized_path):
-                raise NotADirectoryError("An non-directory already exists in the path but the write operation is expecting to overwrite a directory.")
-            elif not expects_directory_if_exists and not os.path.isfile(normalized_path):
-                raise IsADirectoryError("An non-file object already exists in the path but the write operation is expecting to overwrite a file.")
+            if expects_directory_if_exists and not os.path.isdir(
+                    normalized_path):
+                raise NotADirectoryError("An non-directory already exists in "
+                                         "the path but the write operation is"
+                                         " expecting to overwrite a directory.")
+            elif not expects_directory_if_exists and not os.path.isfile(
+                    normalized_path):
+                raise IsADirectoryError("An non-file object already exists in "
+                                        "the path but the write operation is "
+                                        "expecting to overwrite a file.")
 
             if not os.access(normalized_path, os.W_OK):
                 raise PermissionError(f"Write permission is not granted for the output path: {normalized_path}")
