@@ -128,7 +128,7 @@ class PerFileTestEvaluator(TestEvaluator):
                 start_time=start_time,
                 end_time=end_time,
                 files_evaluated=[fp],
-                injected=context,
+                context={k: str(v) for k, v in context.items()},
                 prompt=self.prompt_format.prompt.format(**context),
                 success=bool(response),
                 parsed_response=response,
