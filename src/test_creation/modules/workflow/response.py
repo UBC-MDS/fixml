@@ -15,14 +15,14 @@ class LLMInfo(BaseModel):
 
 class RepositoryInfo(BaseModel):
     path: Union[str, Path] = Field(description="Path of the repository")
-    object: Repository = Field(description="Repository object")
+    object: Repository = Field(description="Repository object", exclude=True)
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
 
 class ChecklistInfo(BaseModel):
     path: Union[str, Path] = Field(description="Path of the checklist")
-    object: Checklist = Field(description="Checklist object")
+    object: Checklist = Field(description="Checklist object", exclude=True)
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
@@ -36,7 +36,7 @@ class CallResult(BaseModel):
     start_time: datetime = Field(description="Start time of the call")
     end_time: datetime = Field(description="End time of the call")
     files_evaluated: List[str] = Field(description="List of files used in the call")
-    injected: Dict[str, Any] = Field(description="Injected context as a dictionary")
+    context: Dict[str, str] = Field(description="Injected context as a dictionary")
     prompt: str = Field(description="Final constructed prompt sent to LLM")
     success: bool = Field(description="Whether the call is successful")
     parsed_response: Optional[Dict] = Field(description="Parsed response")
@@ -54,11 +54,11 @@ class EvaluationResponse(BaseModel):
         }
         repository {
             path
-            object
+            object (excluded when exporting)
         }
         checklist {
             path
-            object
+            object (excluded when exporting)
         }
         call_results [{
             start_time
