@@ -25,7 +25,7 @@ class EvaluationPromptFormat(PromptFormat):
             Title: str = Field(description="The corresponding `Title` of the checklist item provided")
             Requirement: str = Field(description="The corresponding `Requirement` of the checklist item provided")
             Observation: str = Field(description="Your detailed observation of the code in accordance to the given checklist item")
-            Functions: List[str] = Field(description="Test functions that satisfy the given requirement (if any)")
+            Functions: List[str] = Field(description="Test functions that satisfy the given requirement. If no function satisfies, an empty list i.e. [] should be returned.")
             Evaluation: str = Field(description="The summarized evaluation. Must be one of Satisfied/Partially Satisfied/Not Satisfied.")
             Score: float = Field(description="The score obtained from the given evaluation (1 for Satisfied / 0.5 for Partially Satisfied / 0 for Not Satisfied)")
 
