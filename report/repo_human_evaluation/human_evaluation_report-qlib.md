@@ -160,3 +160,6 @@
 
   - {'File Path': '../../../qlib/tests/test_all_pipeline.py', 'Functions': ['test_0_train', 'test_1_backtest']}
   - {'File Path': '../../../qlib/tests/rl/test_trainer.py', 'Functions': ['test_trainer', 'test_trainer_earlystop']}
+
+## Communication Records
+[#130](https://github.com/UBC-MDS/test-creation/issues/130)
