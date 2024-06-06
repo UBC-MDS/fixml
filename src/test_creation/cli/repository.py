@@ -71,8 +71,11 @@ class RepositoryActions(object):
                                          repository=repo, checklist=checklist)
         response = evaluator.run()
         if response_output_path:
-            with open(response_output_path, 'wb') as file:
-                pickle.dump(response, file)
+            # with open(response_output_path+".pickle", 'wb') as file:
+            #     pickle.dump(response, file)
+            json_str = response.model_dump_json()
+            with open(response_output_path, 'w') as f:
+                f.write(json_str)
 
         if report_output_path:
             parser = ResponseParser(response)
