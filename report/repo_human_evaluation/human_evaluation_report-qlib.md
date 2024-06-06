@@ -4,7 +4,7 @@
 
 ## Summary
 
-**Completeness Score**: 4.0/7
+**Completeness Score**: 5.0/7
 
 **Completeness Score per Checklist Item**: 
 
