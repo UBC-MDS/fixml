@@ -1,5 +1,4 @@
 import json
-from abc import ABC, abstractmethod
 from datetime import datetime
 
 from tqdm import tqdm
@@ -9,40 +8,14 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 from langchain_core.language_models import LanguageModelLike
 from langchain_core.documents import Document
 
-from ..checklist.checklist import Checklist
-from ..code_analyzer.repo import Repository
-from .prompt_format import PromptFormat
-from .response import EvaluationResponse, CallResult
+from .base import PromptInjectionRunner
+from ..prompt_format import PromptFormat
+from ..response import EvaluationResponse, CallResult
+from ...checklist.checklist import Checklist
+from ...code_analyzer.repo import Repository
 
 
-class PipelineRunner(ABC):
-    """Abstract base class for running langchain pipelines.
-
-    This class object assembles prompt and to obtain response from LLMs.
-    """
-    @abstractmethod
-    def run(self):
-        pass
-
-
-class TestEvaluator(PipelineRunner, ABC):
-    """Abstract base class for test evaluators
-    i.e. class object to run evaluation of test files from a given repository.
-    """
-
-    def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat,
-                 repository: Repository, checklist: Checklist):
-        self.llm = llm
-
-        self.checklist = checklist
-        self.repository = repository
-        self.prompt_format = prompt_format
-        self._test_items = None
-
-        self.chain = self.prompt_format.prompt | self.llm | self.prompt_format.parser
-
-
-class PerFileTestEvaluator(TestEvaluator):
+class PerFileTestEvaluator(PromptInjectionRunner):
     """Concrete test evaluator that performs per-file evaluation."""
 
     def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat,
