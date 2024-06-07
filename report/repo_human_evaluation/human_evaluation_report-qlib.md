@@ -1,10 +1,12 @@
-# Test Evaluation Report - lightfm
+# Test Evaluation Report - qlib
 
 - Repo URL: https://github.com/microsoft/qlib
 
 ## Summary
 
 **Completeness Score**: 5.0/7
+
+The evaluation for the qlib project covers 31 test files, providing a comprehensive overview of the test coverage. The test files demonstrate strengths in ensuring data format correctness and model performance verification. However, there are areas needing improvement, such as explicit error handling in data loading and checking for duplicate records. Overall, the test suite is robust with a completeness score of 5.0 out of 7.
 
 **Completeness Score per Checklist Item**: 
 
@@ -92,7 +94,6 @@
 
   - None of test function fulfilled
 
-**Function References:**
 
 ### 4.2 Verify Data Split Proportion
 
