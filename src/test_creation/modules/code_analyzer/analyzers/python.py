@@ -1,9 +1,12 @@
 from abc import ABC, abstractmethod
+import codecs
 import ast
 from typing import Union
 from pathlib import Path
 from functools import wraps
 from collections import defaultdict
+
+from chardet import detect
 
 
 def assert_have_read_content(f):
@@ -34,6 +37,24 @@ class CodeAnalyzer(ABC):
     def contains_test(self):
         pass
 
+    def _determine_encodings(self, file_path: Union[str, Path]) -> str:
+        try:
+            with open(file_path, 'rb') as f:
+                result = detect(f.read())
+            encoding = result['encoding']
+            if not encoding:
+                # chardet failed to detect encoding, returning `utf-8` as
+                # fallback
+                return 'utf-8'
+            # make sure that python can read this codec, if not, a Lookup Error
+            # will be raised
+            codecs.lookup(encoding)
+            return encoding
+        except LookupError as e:
+            print("failed to extract codec that is readable by Python, falling back to `utf-8`...")
+            print("error:", e.__class__.__name__, str(e))
+            return 'utf-8'
+
 
 class PythonASTCodeAnalyzer(CodeAnalyzer):
     def __init__(self):
@@ -41,8 +62,9 @@ class PythonASTCodeAnalyzer(CodeAnalyzer):
         self.content = None
         self._tree = None
 
-    def read(self, file_path: str):
-        with open(file_path, 'r') as f:
+    def read(self, file_path: Union[str, Path]):
+        encoding = self._determine_encodings(file_path)
+        with open(file_path, 'r', encoding=encoding) as f:
             self.content = f.read()
             self._tree = ast.parse(self.content)
 
@@ -98,8 +120,9 @@ class PythonNaiveCodeAnalyzer(CodeAnalyzer):
         super().__init__()
         self.content = None
 
-    def read(self, file_path: str):
-        with open(file_path, 'r') as f:
+    def read(self, file_path: Union[str, Path]):
+        encoding = self._determine_encodings(file_path)
+        with open(file_path, 'r', encoding=encoding) as f:
             self.content = f.readlines()
 
     @assert_have_read_content
