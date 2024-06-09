@@ -32,7 +32,7 @@ class TokenInfo(BaseModel):
     output_count: int = Field(description="Number of tokens used in the response generated")
 
 
-class Error(BaseModel):
+class ErrorInfo(BaseModel):
     name: str = Field(description="Class name of the error")
     description: str = Field(description="Description of the error")
 
@@ -46,7 +46,7 @@ class CallResult(BaseModel):
     prompt: str = Field(description="Final constructed prompt sent to LLM")
     success: bool = Field(description="Whether the call is successful")
     parsed_response: Optional[Dict] = Field(description="Parsed response")
-    errors: List[Error] = Field(description="List of errors (if any)", default=[])
+    error: Optional[ErrorInfo] = Field(description="List of errors (if any)", default=None)
 
 
 class EvaluationResponse(BaseModel):

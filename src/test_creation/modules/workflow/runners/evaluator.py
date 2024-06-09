@@ -66,7 +66,6 @@ class PerFileTestEvaluator(PromptInjectionRunner):
 
             response = None
             retry_count = 0
-            errors = []
             start_time = datetime.now()
 
             context = {"codebase": splits, "checklist": json.dumps(self._test_items)}
@@ -77,9 +76,10 @@ class PerFileTestEvaluator(PromptInjectionRunner):
                         response = self.chain.invoke(context)
 
                     # inconsistent behaviour across langchains' parsers!
-                    # some will return dictionary while some will return pydantic model.
-                    # for now, we coerce all responses to dictionary, but later on it might be preferable to coerce all
-                    # into pydantic model for easier validation instead.
+                    # some will return dictionary while some will return
+                    # pydantic model. For now, we coerce all responses to
+                    # dictionary, but later on it might be preferable to coerce
+                    # all into pydantic model for easier validation instead.
                     if not isinstance(response, dict):
                         response = response.dict()
 
@@ -88,9 +88,29 @@ class PerFileTestEvaluator(PromptInjectionRunner):
                 except Exception as e:
                     if verbose:
                         print(f"error occurred: {e.__class__.__name__} - {str(e)}")
-                    errors.append({'name': e.__class__.__name__, 'description': str(e)})
-                    retry_count += 1
                     response = None
+                    call_result = CallResult(
+                        start_time=start_time,
+                        end_time=datetime.now(),
+                        tokens_used={
+                            # default is set to 0 if something fails, we don't
+                            # have to do error handling on this
+                            'input_count': cb.prompt_tokens,
+                            'output_count': cb.completion_tokens
+                        },
+                        files_evaluated=[fp],
+                        injected=context,
+                        prompt=self.prompt_format.prompt.format(**context),
+                        success=bool(response),
+                        parsed_response=response,
+                        error={
+                            'name': e.__class__.__name__,
+                            'description': str(e)
+                        }
+                    )
+
+                    eval_response.call_results.append(call_result)
+                    retry_count += 1
                     continue
 
             if not response:
@@ -111,7 +131,6 @@ class PerFileTestEvaluator(PromptInjectionRunner):
                 prompt=self.prompt_format.prompt.format(**context),
                 success=bool(response),
                 parsed_response=response,
-                errors=errors
             )
 
             eval_response.call_results.append(call_result)
