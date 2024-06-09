@@ -1,5 +1,7 @@
 import json
+from pathlib import Path
 from datetime import datetime
+from typing import Optional, Union, Iterable
 
 from tqdm import tqdm
 from typing import List
@@ -19,11 +21,13 @@ class PerFileTestEvaluator(PromptInjectionRunner):
     """Concrete test evaluator that performs per-file evaluation."""
 
     def __init__(self, llm: LanguageModelLike, prompt_format: PromptFormat,
-                 repository: Repository, checklist: Checklist, retries: int = 3):
+                 repository: Repository, checklist: Checklist,
+                 test_dirs: Optional[Iterable[Union[str, Path]]] = None,
+                 retries: int = 3):
         super().__init__(llm, prompt_format, repository, checklist)
         self.retries = retries
 
-        self._files = self.repository.list_test_files()['Python']
+        self._files = self.repository.list_test_files(test_dirs=test_dirs)['Python']
         if not self._files:
             print("File loader returned no files!")
 
