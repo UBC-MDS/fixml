@@ -4,6 +4,7 @@ from datetime import datetime
 from tqdm import tqdm
 from typing import List
 from langchain_community.document_loaders import PythonLoader
+from langchain_community.callbacks.manager import get_openai_callback
 from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 from langchain_core.language_models import LanguageModelLike
 from langchain_core.documents import Document
@@ -72,7 +73,8 @@ class PerFileTestEvaluator(PromptInjectionRunner):
 
             while not response and retry_count < self.retries:
                 try:
-                    response = self.chain.invoke(context)
+                    with get_openai_callback() as cb:
+                        response = self.chain.invoke(context)
 
                     # inconsistent behaviour across langchains' parsers!
                     # some will return dictionary while some will return pydantic model.
@@ -100,6 +102,10 @@ class PerFileTestEvaluator(PromptInjectionRunner):
             call_result = CallResult(
                 start_time=start_time,
                 end_time=end_time,
+                tokens_used={
+                    'input_count': cb.prompt_tokens,
+                    'output_count': cb.completion_tokens
+                },
                 files_evaluated=[fp],
                 injected=context,
                 prompt=self.prompt_format.prompt.format(**context),
