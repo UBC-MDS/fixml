@@ -18,12 +18,14 @@ langchain = "^0.2.1"
 langchain-openai = "^0.1.7"
 langchain-community = "^0.2.1"
 langchain-core = "^0.2.1"
+gitpython = "^3.1.43"
 
 [tool.poetry.group.dev.dependencies]
 jupyter = "^1.0.0"
 jupyter-book = "^1.0.0"
 jupyterlab = "^4.2.1"
 pytest = "^8.2.1"
+pytest-git = "^1.7.0"
 
 [tool.poetry.scripts]
 test-creation = "test_creation:cli_main"

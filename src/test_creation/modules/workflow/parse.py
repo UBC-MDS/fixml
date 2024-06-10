@@ -10,11 +10,36 @@ from ..utils import get_extension
 
 class ResponseParser(ExportableMixin):
     def __init__(self, response: EvaluationResponse):
+        # FIXME: respository is required to extract the line numbers for functions
+        #        I added an optional argument "respository" here, can't think of any better way to handle it yet
         super().__init__()
         self.response = response
         self.evaluation_report = None
+        self.repository = self.response.repository.object
+        self.git_context = self.repository.git_context
+        self.items = []
+
+    def _parse_items(self):
+        items = []
+        for result in self.response.call_results:
+            response = result.parsed_response['results']
+            for item in response:
+                fp = result.files_evaluated[0]
+                item['File Path'] = fp
+                if self.repository:
+                    item['lineno'] = [self.repository.ffl_map['Python'][fp][func] for func in item['Functions']]
+                else:
+                    item['lineno'] = []
+                item['Referenced Functions'] = [
+                    f"[{func}]({self.repository.get_git_direct_link(fp, lineno)})"
+                    for func, lineno in zip(item['Functions'], item['lineno'])
+                ]
+                items.append(item)
+        self.items = items
+        return items
 
     def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> Optional[float]:
+        """Compute Evaluation Report and Completeness Score."""
 
         # TODO: change this after putting the logic to load data from JSON file
         #  instead of from a Python object.
@@ -30,16 +55,10 @@ class ResponseParser(ExportableMixin):
                 print("failed to obtain valid response, cannot calculate completeness score")
                 return None
 
-        report = []
-        for result in self.response.call_results:
-            response = result.parsed_response['results']
-            for item in response:
-                item['file'] = result.files_evaluated[0] # FIXME: it might fail if the evaluation is on multiple files
-                report.append(item)
+        items = self._parse_items()
 
-        report_df = pd.DataFrame(report)
-        report_df = report_df.rename(columns={"file": "File Path"})
-        report_df['Function References'] = report_df[['File Path', 'Functions']].to_dict(orient='records')
+        report_df = pd.DataFrame(items)
+        report_df['Function References'] = report_df[['File Path', 'Referenced Functions']].to_dict(orient='records')
         report_df['Observation'] = '(' + report_df['File Path'].apply(lambda x: os.path.split(x)[-1]) + ') ' + \
                                    report_df['Observation']
         report_df = report_df.groupby(['ID', 'Title']).agg({
@@ -58,7 +77,7 @@ class ResponseParser(ExportableMixin):
 
         if verbose:
             print("Report:")
-            print(report_df)
+            print(report_df[['is_Satisfied', 'n_files_tested']])
             print()
             print(f'Score: {score}')
             print()
