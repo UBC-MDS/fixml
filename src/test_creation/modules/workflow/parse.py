@@ -77,8 +77,20 @@ class ResponseParser(ExportableMixin):
 
         if verbose:
             print("Report:")
-            print(report_df[['is_Satisfied', 'n_files_tested']])
-            print()
+            n_files_tested = report_df['n_files_tested'].unique()
+            if n_files_tested.shape[0] == 1:
+                print(report_df[['is_Satisfied']])
+                print()
+                if n_files_tested[0] == 1:
+                    print(f"{n_files_tested[0]} test file is tested.")
+                else:
+                    print(f"{n_files_tested[0]} test files are tested.")
+                print()
+            else:
+                print(report_df[['is_Satisfied', 'n_files_tested']])
+                print()
+                print(f"WARNING: `n_files_tested` is not unique!")
+                print()
             print(f'Score: {score}')
             print()
         return score
