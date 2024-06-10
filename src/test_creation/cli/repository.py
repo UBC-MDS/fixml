@@ -50,7 +50,7 @@ class RepositoryActions(object):
         result = generator.run(verbose=verbose)
 
         # FIXME: assume overwrite
-        with open(test_file_path, "w") as file:
+        with open(test_output_path, "w") as file:
             for res in result:
                 file.write(f"# {res['ID']} {res['Title']}\n")
                 file.write(res['Function'])
