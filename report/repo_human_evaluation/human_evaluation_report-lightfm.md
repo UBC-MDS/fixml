@@ -24,7 +24,7 @@
 
 **Requirement**: Ensure that data-loading functions correctly load files when they exist and match the expected format, handle non-existent files appropriately, and return the expected results.
 
-**Observations:**
+**Observations: Satisfied**
 
   - (test_fast_functions.py) The code does not directly address data file loading.
   - (test_movielens.py) The code does not directly address data file loading.
@@ -52,7 +52,7 @@
   - (test_data.py) The provided code ensures that the data (users and items) is in the expected format for the Dataset object.
   - (test_api.py) The code does not verify the format of the data to be ingested.
 
-**Function References:**
+**Observations: Satisfied**
 
   - (test_datasets.py): 'Functions': [`test_basic_fetching_movielens`, `test_basic_fetching_stackexchange`]
   - (test_data.py): 'Functions': [`test_fitting`, `test_fitting_no_identity`, `test_build_features`]
@@ -61,7 +61,7 @@
 
 **Requirement**: Check for duplicate records in the dataset and ensure that there are none.
 
-**Observations:**
+**Observations: Not Satisfied**
 
   - (test_fast_functions.py) No check for duplicate records in the dataset is performed in the provided code.
   - (test_movielens.py) The code does not explicitly check for duplicate records.
@@ -77,7 +77,7 @@
 
 **Requirement**: Check that the data is split into training and testing sets in the expected proportion.
 
-**Observations:**
+**Observations: Satisfied**
 
   - (test_fast_functions.py) The code does not involve data splitting or verification of split proportions.
   - (test_movielens.py) The code does not involve data splitting or verification of split proportions.
@@ -95,7 +95,7 @@
 
 **Requirement**: Ensure the shape of the model's output aligns with the expected structure based on the task, such as matching the number of labels in a classification task.
 
-**Observations:**
+**Observations: Partially Satisfied**
 
   - (test_fast_functions.py) The code does not relate to model output shape alignment.
   - (test_movielens.py) The code does not address model output shape alignment.
@@ -113,7 +113,7 @@
 
 **Requirement**: Verify that the evaluation metrics are correctly implemented and appropriate for the model's task.
 
-**Observations:**
+**Observations: Satisfied**
 
   - (test_fast_functions.py) The code does not verify evaluation metrics implementation.
   - (test_movielens.py) The code implements evaluation metrics such as precision_at_k and auc_score. But there is no assertion/other method to verify the calculation.
@@ -137,7 +137,7 @@
 
 **Requirement**: Compute evaluation metrics for both the training and testing datasets and ensure that these metrics exceed predefined threshold values, indicating acceptable model performance.
 
-**Observations:**
+**Observations: Satisfied**
 
   - (test_fast_functions.py) The code does not evaluate the model's performance against thresholds.
   - (test_movielens.py) Most test functions evaluates model performance against predefined threshold values for metrics like precision and AUC, e.g. 
