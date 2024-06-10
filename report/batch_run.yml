@@ -37,15 +37,15 @@ repo:
   #    path: './group_16'
   #  - name: group_17
   #    path: './group_17'
-  #  - name: group_18 # FIXME
-  #    path: './group_18'
-  - name: group_19
-    path: './group_19'
-  - name: group_20
-    path: './group_20'
-  - name: group_21
-    path: './group_21'
-  - name: group_22
-    path: './group_22'
-  - name: group_23
-    path: './group_23'
+  - name: group_18
+    path: './group_18'
+      #  - name: group_19
+      #    path: './group_19'
+      #  - name: group_20
+      #    path: './group_20'
+      #  - name: group_21
+      #    path: './group_21'
+      #  - name: group_22
+      #    path: './group_22'
+      #  - name: group_23
+      #    path: './group_23'
