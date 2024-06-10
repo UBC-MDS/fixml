@@ -14,7 +14,8 @@ from ..modules.checklist.checklist import Checklist
 
 class RepositoryActions(object):
     @staticmethod
-    def generate(checklist_path: str = "./checklist/checklist.csv/",
+    def generate(test_output_path: str,
+                 checklist_path: str = "./checklist/checklist.csv/",
                  model="gpt-3.5-turbo", verbose: bool = False,
                  debug: bool = False):
         """Test spec generation.
@@ -26,6 +27,8 @@ class RepositoryActions(object):
 
         Parameters
         ----------
+        test_output_path
+            Test file path that the system will write the test functions to.
         checklist_path
             Optional flag to use non-default checklist during the operation.
         model
@@ -46,7 +49,12 @@ class RepositoryActions(object):
         generator = NaiveTestGenerator(llm, prompt_format, checklist=checklist)
         result = generator.run(verbose=verbose)
 
-        print(result)
+        # FIXME: assume overwrite
+        with open(test_file_path, "w") as file:
+            for res in result:
+                file.write(f"# {res['ID']} {res['Title']}\n")
+                file.write(res['Function'])
+                file.write("\n\n")
 
     @staticmethod
     def evaluate(repo_path: str, report_output_path: str = None,
