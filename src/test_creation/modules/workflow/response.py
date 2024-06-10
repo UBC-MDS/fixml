@@ -27,7 +27,12 @@ class ChecklistInfo(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
 
-class Error(BaseModel):
+class TokenInfo(BaseModel):
+    input_count: int = Field(description="Number of tokens used in prompt")
+    output_count: int = Field(description="Number of tokens used in the response generated")
+
+
+class ErrorInfo(BaseModel):
     name: str = Field(description="Class name of the error")
     description: str = Field(description="Description of the error")
 
@@ -35,12 +40,13 @@ class Error(BaseModel):
 class CallResult(BaseModel):
     start_time: datetime = Field(description="Start time of the call")
     end_time: datetime = Field(description="End time of the call")
+    tokens_used: TokenInfo = Field(description="Token related information")
     files_evaluated: List[str] = Field(description="List of files used in the call")
     injected: Dict[str, Any] = Field(description="Injected context as a dictionary")
     prompt: str = Field(description="Final constructed prompt sent to LLM")
     success: bool = Field(description="Whether the call is successful")
     parsed_response: Optional[Dict] = Field(description="Parsed response")
-    errors: List[Error] = Field(description="List of errors (if any)", default=[])
+    error: Optional[ErrorInfo] = Field(description="List of errors (if any)", default=None)
 
 
 class EvaluationResponse(BaseModel):
@@ -63,6 +69,10 @@ class EvaluationResponse(BaseModel):
         call_results [{
             start_time
             end_time
+            tokens_used {
+                input_count
+                output_count
+            }
             files_evaluated
             injected
             prompt
