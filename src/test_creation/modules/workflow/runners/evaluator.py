@@ -56,7 +56,7 @@ class PerFileTestEvaluator(PromptInjectionRunner):
     def run(self, verbose: bool = False) -> EvaluationResponse:
         eval_response = EvaluationResponse(
             model={'name': self.llm.model_name, 'temperature': self.llm.temperature},
-            repository={'path': self.repository.path, 'object': self.repository},
+            repository={'path': self.repository.root, 'object': self.repository},
             checklist={'path': self.checklist.path, 'object': self.checklist}
         )
 
