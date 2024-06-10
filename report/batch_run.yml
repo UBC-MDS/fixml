@@ -3,42 +3,42 @@ checklist_path: '../checklist/checklist.csv/'
 repo_base_path: '../data/raw/522/'
 response_path: '../data/processed/522_batch_run'
 repo:
-  - name: group_01
-    path: './group_01'
-  - name: group_02
-    path: './group_02'
-  - name: group_03
-    path: './group_03'
-  - name: group_04
-    path: './group_04'
-  - name: group_05
-    path: './group_05'
-  - name: group_06
-    path: './group_06'
-  - name: group_07
-    path: './group_07'
-  - name: group_08
-    path: './group_08'
-  - name: group_09
-    path: './group_09'
-  - name: group_10
-    path: './group_10'
-  - name: group_11
-    path: './group_11'
-  - name: group_12
-    path: './group_12'
-  - name: group_13
-    path: './group_13'
-  - name: group_14
-    path: './group_14'
-  - name: group_15
-    path: './group_15'
-  - name: group_16
-    path: './group_16'
-  - name: group_17
-    path: './group_17'
-  - name: group_18
-    path: './group_18'
+  #  - name: group_01
+  #    path: './group_01'
+  #  - name: group_02
+  #    path: './group_02'
+  #  - name: group_03
+  #    path: './group_03'
+  #  - name: group_04
+  #    path: './group_04'
+  #  - name: group_05
+  #    path: './group_05'
+  #  - name: group_06
+  #    path: './group_06'
+  #  - name: group_07
+  #    path: './group_07'
+  #  - name: group_08
+  #    path: './group_08'
+  #  - name: group_09
+  #    path: './group_09'
+  #  - name: group_10
+  #    path: './group_10'
+  #  - name: group_11
+  #    path: './group_11'
+  #  - name: group_12
+  #    path: './group_12'
+  #  - name: group_13
+  #    path: './group_13'
+  #  - name: group_14
+  #    path: './group_14'
+  #  - name: group_15
+  #    path: './group_15'
+  #  - name: group_16
+  #    path: './group_16'
+  #  - name: group_17
+  #    path: './group_17'
+  #  - name: group_18 # FIXME
+  #    path: './group_18'
   - name: group_19
     path: './group_19'
   - name: group_20
