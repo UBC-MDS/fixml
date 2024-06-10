@@ -1,6 +1,11 @@
+from pathlib import Path
+from typing import Union
+from pprint import pprint
+
 from langchain_openai import ChatOpenAI
 from langchain.globals import set_debug
 
+from .utils import parse_list
 from ..modules.workflow.prompt_format import EvaluationPromptFormat, \
     GenerationPromptFormat
 from ..modules.workflow.runners.evaluator import PerFileTestEvaluator
@@ -59,7 +64,8 @@ class RepositoryActions(object):
     def evaluate(repo_path: str, report_output_path: str,
                  checklist_path: str = "./checklist/checklist.csv/",
                  model="gpt-3.5-turbo", verbose: bool = False,
-                 overwrite: bool = False, debug: bool = False) -> None:
+                 overwrite: bool = False, debug: bool = False,
+                 test_dirs: list[Union[str, Path]] = None) -> None:
         """Evaluate a given repo based on the completeness of the test suites.
 
         This will evaluate the completeness of the test suites given a git
@@ -78,6 +84,11 @@ class RepositoryActions(object):
             `.pdf`, or `.qmd`.
         checklist_path
             Optional flag to use non-default checklist during the operation.
+        test_dirs
+            Optional list of directories to indicate where the test files are
+            located. If provided, only files inside these directories will be
+            scanned. Otherwise, all files in the repository will be scanned,
+            which is the default behaviour.
         model
             Optional flag to specify a specific model to be used. Default is
             `gpt-3.5-turbo`.
@@ -92,16 +103,41 @@ class RepositoryActions(object):
             mode to expose all debug messages to the standard output.
         """
         set_debug(debug)
+        parsed_test_dirs = parse_list(test_dirs)
         llm = ChatOpenAI(model=model, temperature=0)
         checklist = Checklist(checklist_path)
         repo = Repository(repo_path)
         prompt_format = EvaluationPromptFormat()
 
         evaluator = PerFileTestEvaluator(llm, prompt_format=prompt_format,
-                                         repository=repo, checklist=checklist)
+                                         repository=repo, checklist=checklist,
+                                         test_dirs=parsed_test_dirs)
         response = evaluator.run()
 
         parser = ResponseParser(response)
         parser.get_completeness_score(verbose=verbose)
 
         parser.export_evaluation_report(report_output_path, exist_ok=overwrite)
+
+    @staticmethod
+    def list_tests(repo_path: str, test_dirs: list[Union[str, Path]] = None):
+        """List out all tests found in this repository.
+
+        Parameters
+        ----------
+        repo_path
+            The path of the git repository to be analyzed.
+        test_dirs
+            Optional list of directories to indicate where the test files are
+            located. If provided, only files inside these directories will be
+            scanned. Otherwise, all files in the repository will be scanned,
+            which is the default behaviour.
+        """
+
+        dirs = parse_list(test_dirs)
+        repo = Repository(repo_path)
+        test_lang_file_map = repo.list_test_files(test_dirs=dirs)
+        print("Test files found:")
+        for lang, files in test_lang_file_map.items():
+            print(f"{lang}: ", end='')
+            pprint(files)
