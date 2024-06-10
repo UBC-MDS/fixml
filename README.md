@@ -34,6 +34,10 @@ echo "OPENAI_API_KEY=..." > .env
 # evaluate a repository and write a HTML report, display verbose messages
 test-creation evaluate $REPO_PATH ./report.html --verbose
 
+# optional arguments to modify the default behaviour
+# see `test-creation evaluate --help`
+test-creation evaluate $REPO_PATH --test_dirs=./tests,./src/tests --model=gpt-4o
+
 # export checklist items into a PDF, overwrite file if exists in the specified path
 test-creation checklist export checklist.pdf --overwrite
 ```
