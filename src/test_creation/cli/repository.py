@@ -106,6 +106,10 @@ class RepositoryActions(object):
         debug
             Optional. If provided, the system will enable langchain's debug
             mode to expose all debug messages to the standard output.
+        """
+        set_debug(debug)
+        parsed_test_dirs = parse_list(test_dirs)
+        llm = ChatOpenAI(model=model, temperature=0)
         checklist = Checklist(checklist_path)
         repo = Repository(repo_path)
         prompt_format = EvaluationPromptFormat()
