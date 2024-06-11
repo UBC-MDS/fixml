@@ -1,7 +1,10 @@
 import os
 from abc import ABC, abstractmethod
+from typing import Union
+from pathlib import Path
 
 import pypandoc
+import quarto
 
 from .utils import get_extension
 
@@ -11,7 +14,6 @@ class WriteableMixin:
     def _filedump_check(self, output_path: str, exist_ok: bool, expects_directory_if_exists: bool = False):
         normalized_path = os.path.abspath(os.path.normpath(output_path))
         dir_path = os.path.dirname(normalized_path)
-        print(normalized_path, dir_path)
         if not os.access(dir_path, os.W_OK):
             raise PermissionError(f"Write permission is not granted for the output path: {dir_path}")
 
@@ -37,13 +39,15 @@ class WriteableMixin:
         return True
 
 
-class ExportableMixin(WriteableMixin, ABC):
-    """A mixin that provides functionality to export (dump) content as HTML/PDF/Quarto documents.
+class MarkdownExportableMixin(WriteableMixin, ABC):
+    """A mixin that provides functionality to export (dump) content as markdown,
+    then to convert it into HTML/PDF/Quarto documents.
 
     Extends WriteableMixin.
 
-    Relies on markdown representations of the object.
-    The class including mixin must have `.as_markdown()` and `.as_quarto_markdown()` implemented.
+    This mixin relies on markdown representations of the object.
+    The class including mixin must have `.as_markdown()` and
+    `.as_quarto_markdown()` implemented.
     """
 
     def __init__(self):
@@ -56,8 +60,6 @@ class ExportableMixin(WriteableMixin, ABC):
 
     def export(self, output_path: str, exist_ok: bool = False):
         to_ext = get_extension(output_path)
-        print(output_path)
-        print(to_ext)
         if to_ext not in self.export_ext_func_map.keys():
             raise ValueError(
                 f"Invalid output format(s) provided. The "
@@ -109,3 +111,44 @@ class ExportableMixin(WriteableMixin, ABC):
         self._export_check(output_path, format="qmd", exist_ok=exist_ok)
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(self.as_quarto_markdown())
+
+
+class RenderableMixin(WriteableMixin, ABC):
+    """A mixin that provides functionality to render content using Quarto.
+
+    Extends WriteableMixin.
+
+    This mixin relies on Quarto documents, which will be run during the
+    rendering process.
+
+    The class including mixin must have `self._qmd_template_path` sepecified.
+    """
+
+    def __init__(self, qmd_template_path: str):
+        self._qmd_template = qmd_template_path
+
+    def render(self, to: Union[str, Path], format: str = "html"):
+        quarto.render(self._qmd_template,
+                      execute_params={"json_file": self._response_json})
+
+    @abstractmethod
+    def as_markdown(self) -> str:
+        pass
+
+    @abstractmethod
+    def as_quarto_markdown(self) -> str:
+        pass
+
+    def __format_check(self, output_path, format):
+        formats = {
+            "pdf": ["pdf"],
+            "html": ["htm", "html"],
+            "qmd": ["qmd"]
+        }
+
+        if get_extension(output_path) not in formats[format]:
+            raise ValueError(f"Output file path `{output_path}` does not meet expectation. When specifying `{format}` to be exported, please use one of the following extensions: {str(formats[format])}.")
+
+    def _export_check(self, output_path: str, format: str, exist_ok: bool):
+        self._filedump_check(output_path, exist_ok)
+        self.__format_check(output_path, format)

@@ -1,6 +1,7 @@
 import os
 import csv
 import copy
+from importlib.resources import files
 from pathlib import Path
 from enum import Enum
 from typing import Union
@@ -8,7 +9,7 @@ from abc import ABC, abstractmethod
 
 from ruamel.yaml import YAML
 
-from ..mixins import ExportableMixin
+from ..mixins import MarkdownExportableMixin
 from ..utils import get_extension
 
 
@@ -139,14 +140,16 @@ class CsvChecklistIO(ChecklistIO):
         cls._write_file(os.path.join(path, cls.tests_filename), tests, cls.tests_field_names_unnested)
 
 
-class Checklist(ExportableMixin):
-    def __init__(self, checklist_path: str):
+class Checklist(MarkdownExportableMixin):
+    def __init__(self, checklist_path: str = None):
         super().__init__()
         self.ext_io_map = {
             'csv': CsvChecklistIO,
             'yaml': YamlChecklistIO,
             'yml': YamlChecklistIO
         }
+        if not checklist_path:
+            checklist_path = files("test_creation.data.checklist") / "checklist.csv"
         ext = get_extension(checklist_path)
         self.__check_ext_is_valid(ext)
         self.path = checklist_path

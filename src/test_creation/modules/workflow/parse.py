@@ -4,11 +4,11 @@ import pandas as pd
 import os
 
 from .response import EvaluationResponse
-from ..mixins import ExportableMixin
+from ..mixins import MarkdownExportableMixin
 from ..utils import get_extension
 
 
-class ResponseParser(ExportableMixin):
+class ResponseParser(MarkdownExportableMixin):
     def __init__(self, response: EvaluationResponse):
         # FIXME: respository is required to extract the line numbers for functions
         #        I added an optional argument "respository" here, can't think of any better way to handle it yet

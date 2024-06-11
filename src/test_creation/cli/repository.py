@@ -18,7 +18,7 @@ from ..modules.checklist.checklist import Checklist
 class RepositoryActions(object):
     @staticmethod
     def generate(test_output_path: str,
-                 checklist_path: str = "./checklist/checklist.csv/",
+                 checklist_path: str = None,
                  model="gpt-3.5-turbo", verbose: bool = False,
                  debug: bool = False):
         """Test spec generation.
@@ -62,7 +62,7 @@ class RepositoryActions(object):
     @staticmethod
     def evaluate(repo_path: str, save_response_to: str = None,
                  export_report_to: str = None,
-                 checklist_path: str = "./checklist/checklist.csv/",
+                 checklist_path: str = None,
                  model="gpt-3.5-turbo", verbose: bool = False,
                  overwrite: bool = False, debug: bool = False,
                  test_dirs: list[Union[str, Path]] = None) -> None:
@@ -142,7 +142,7 @@ class RepositoryActions(object):
     @staticmethod
     def quarto_test(repo_path: str, report_output_path: str = None,
                  response_output_path: str = None,
-                 checklist_path: str = "./checklist/checklist.csv/",
+                 checklist_path: str = None,
                  model="gpt-3.5-turbo", verbose: bool = False,
                  overwrite: bool = False, debug: bool = False) -> None:
         """Evaluate a given repo based on the completeness of the test suites.
@@ -199,10 +199,9 @@ class RepositoryActions(object):
 
         from quarto import render
 
-        # TODO: add check to confirm quarto and papermill are installed
-        render("quarto-test.qmd",
-               param="json_file:./test-response.json",)
 
+        render("quarto-test.qmd",
+               execute_params={"json_file": "./test-response.json"})
         # if report_output_path:
         #     parser = ResponseParser(response)
         #     parser.get_completeness_score(verbose=verbose)
