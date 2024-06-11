@@ -31,13 +31,13 @@ if __name__ == '__main__':
             for run in range(1, runs+1):
                 action.evaluate(
                     repo_path=os.path.join(from_dir, repo['path']),
-                    response_output_path=f"{to_dir}/{repo['name']}_{"{:02d}".format(run)}.pickle",
+                    save_to=f"{to_dir}/{repo['name']}_{"{:02d}".format(run)}.json",
                     checklist_path=checklist_path
                 )
                 
                 record.append({
                     'repo': repo['name'],
-                    'response_path': f"{to_dir}/{repo['name']}_{"{:02d}".format(run)}.pickle",
+                    'response_path': f"{to_dir}/{repo['name']}_{"{:02d}".format(run)}.json",
                     'run': run
                 })
                 with open(f"{to_dir}/record.yml", 'w') as file:
