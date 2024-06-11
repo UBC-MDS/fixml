@@ -109,3 +109,73 @@ class RepositoryActions(object):
             parser.get_completeness_score(verbose=verbose)
 
             parser.export_evaluation_report(report_output_path, exist_ok=overwrite)
+
+    @staticmethod
+    def quarto_test(repo_path: str, report_output_path: str = None,
+                 response_output_path: str = None,
+                 checklist_path: str = "./checklist/checklist.csv/",
+                 model="gpt-3.5-turbo", verbose: bool = False,
+                 overwrite: bool = False, debug: bool = False) -> None:
+        """Evaluate a given repo based on the completeness of the test suites.
+
+        This will evaluate the completeness of the test suites given a git
+        repository, based on a checklist which consists of items relevant to
+        various aspects related to Data Science/Machine Learning projects. A
+        report will be generated according to the given format specified in
+
+        Parameters
+        ----------
+        repo_path
+            The path of the git repository to be analyzed.
+        report_output_path
+            Optional. If provided, the system will write the evaluation to
+            the path. The format of the evaluation report will be based on
+            the extension provided in this path. The extensions must be
+            either one of `.html`, `.htm`, `.pdf`, or `.qmd`.
+        response_output_path
+            Optional. If provided, the system will write the response in
+            PICKLE to the path.
+        checklist_path
+            Optional flag to use non-default checklist during the operation.
+        model
+            Optional flag to specify a specific model to be used. Default is
+            `gpt-3.5-turbo`.
+        verbose
+            Optional. If provided, the system will print out evaluation
+            results to standard output. Default is `False`.
+        overwrite
+            Optional. If provided, the system will not stop when
+            attempting to overwrite an existing evaluation report.
+        debug
+            Optional. If provided, the system will enable langchain's debug
+            mode to expose all debug messages to the standard output.
+        """
+        set_debug(debug)
+        llm = ChatOpenAI(model=model, temperature=0)
+        checklist = Checklist(checklist_path)
+        repo = Repository(repo_path)
+        prompt_format = EvaluationPromptFormat()
+
+        evaluator = PerFileTestEvaluator(llm, prompt_format=prompt_format,
+                                         repository=repo, checklist=checklist)
+        response = evaluator.run()
+        json_str = response.model_dump_json()
+        with open("test-response.json", 'w') as f:
+            f.write(json_str)
+
+        # quarto-python does not support providing params by -P flag so a
+        # YAML file has to be created in order to pass the parameters
+        # with open("params.yml", 'w') as f:
+        #     f.write("json_file: ./test-response.json")
+
+        from quarto import render
+
+        # TODO: add check to confirm quarto and papermill are installed
+        render("quarto-test.qmd",
+               param="json_file:./test-response.json",)
+
+        # if report_output_path:
+        #     parser = ResponseParser(response)
+        #     parser.get_completeness_score(verbose=verbose)
+        #
+        #     parser.export_evaluation_report(report_output_path, exist_ok=overwrite)

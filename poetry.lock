@@ -150,6 +150,17 @@ files = [
 ]
 
 [[package]]
+name = "ansicolors"
+version = "1.1.8"
+description = "ANSI colors for Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "ansicolors-1.1.8-py2.py3-none-any.whl", hash = "sha256:00d2dde5a675579325902536738dd27e4fac1fd68f773fe36c21044eb559e187"},
+    {file = "ansicolors-1.1.8.zip", hash = "sha256:99f94f5e3348a0bcd43c82e5fc4414013ccc19d70bd939ad71e0133ce9c372e0"},
+]
+
+[[package]]
 name = "anyio"
 version = "4.4.0"
 description = "High level compatibility layer for multiple asynchronous event loop implementations"
@@ -672,6 +683,17 @@ python-versions = ">=3.7"
 files = [
     {file = "docutils-0.20.1-py3-none-any.whl", hash = "sha256:96f387a2c5562db4476f09f13bbab2192e764cac08ebbf3a34a95d9b1e4a59d6"},
     {file = "docutils-0.20.1.tar.gz", hash = "sha256:f08a4e276c3a1583a86dce3e34aba3fe04d02bba2dd51ed16106244e8a923e3b"},
+]
+
+[[package]]
+name = "entrypoints"
+version = "0.4"
+description = "Discover and load entry points from installed packages."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "entrypoints-0.4-py3-none-any.whl", hash = "sha256:f174b5ff827504fd3cd97cc3f8649f3693f51538c7e4bdf3ef002c8429d42f9f"},
+    {file = "entrypoints-0.4.tar.gz", hash = "sha256:b706eddaa9218a19ebcd67b56818f05bb27589b1ca9e8d797b74affad4ccacd4"},
 ]
 
 [[package]]
@@ -2450,6 +2472,41 @@ files = [
 ]
 
 [[package]]
+name = "papermill"
+version = "2.6.0"
+description = "Parameterize and run Jupyter and nteract Notebooks"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "papermill-2.6.0-py3-none-any.whl", hash = "sha256:0f09da6ef709f3f14dde77cb1af052d05b14019189869affff374c9e612f2dd5"},
+    {file = "papermill-2.6.0.tar.gz", hash = "sha256:9fe2a91912fd578f391b4cc8d6d105e73124dcd0cde2a43c3c4a1c77ac88ea24"},
+]
+
+[package.dependencies]
+aiohttp = {version = ">=3.9.0", markers = "python_version == \"3.12\""}
+ansicolors = "*"
+click = "*"
+entrypoints = "*"
+nbclient = ">=0.2.0"
+nbformat = ">=5.2.0"
+pyyaml = "*"
+requests = "*"
+tenacity = ">=5.0.2"
+tqdm = ">=4.32.2"
+
+[package.extras]
+all = ["PyGithub (>=1.55)", "azure-datalake-store (>=0.0.30)", "azure-identity (>=1.3.1)", "azure-storage-blob (>=12.1.0)", "black (>=19.3b0)", "boto3", "gcsfs (>=0.2.0)", "pyarrow (>=2.0)", "requests (>=2.21.0)"]
+azure = ["azure-datalake-store (>=0.0.30)", "azure-identity (>=1.3.1)", "azure-storage-blob (>=12.1.0)", "requests (>=2.21.0)"]
+black = ["black (>=19.3b0)"]
+dev = ["attrs (>=17.4.0)", "azure-datalake-store (>=0.0.30)", "azure-identity (>=1.3.1)", "azure-storage-blob (>=12.1.0)", "black (>=19.3b0)", "boto3", "botocore", "bumpversion", "check-manifest", "codecov", "coverage", "gcsfs (>=0.2.0)", "google-compute-engine", "ipython (>=5.0)", "ipywidgets", "moto (>=5.0.0,<5.1.0)", "notebook", "pip (>=18.1)", "pre-commit", "pytest (>=4.1)", "pytest-cov (>=2.6.1)", "pytest-env (>=0.6.2)", "pytest-mock (>=1.10)", "recommonmark", "requests (>=2.21.0)", "setuptools (>=38.6.0)", "tox", "twine (>=1.11.0)", "wheel (>=0.31.0)"]
+docs = ["PyGithub (>=1.55)", "Sphinx (>=7.2.6)", "azure-datalake-store (>=0.0.30)", "azure-identity (>=1.3.1)", "azure-storage-blob (>=12.1.0)", "black (>=19.3b0)", "boto3", "entrypoints", "furo (>=2023.9.10)", "gcsfs (>=0.2.0)", "moto (>=4.2.8)", "myst-parser (>=2.0.0)", "nbformat", "pyarrow (>=2.0)", "requests (>=2.21.0)", "sphinx-copybutton (>=0.5.2)"]
+gcs = ["gcsfs (>=0.2.0)"]
+github = ["PyGithub (>=1.55)"]
+hdfs = ["pyarrow (>=2.0)"]
+s3 = ["boto3"]
+test = ["attrs (>=17.4.0)", "azure-datalake-store (>=0.0.30)", "azure-identity (>=1.3.1)", "azure-storage-blob (>=12.1.0)", "black (>=19.3b0)", "boto3", "botocore", "bumpversion", "check-manifest", "codecov", "coverage", "gcsfs (>=0.2.0)", "google-compute-engine", "ipython (>=5.0)", "ipywidgets", "moto (>=5.0.0,<5.1.0)", "notebook", "pip (>=18.1)", "pre-commit", "pytest (>=4.1)", "pytest-cov (>=2.6.1)", "pytest-env (>=0.6.2)", "pytest-mock (>=1.10)", "recommonmark", "requests (>=2.21.0)", "setuptools (>=38.6.0)", "tox", "twine (>=1.11.0)", "wheel (>=0.31.0)"]
+
+[[package]]
 name = "parso"
 version = "0.8.4"
 description = "A Python Parser"
@@ -3178,6 +3235,24 @@ packaging = "*"
 
 [package.extras]
 test = ["pytest (>=6,!=7.0.0,!=7.0.1)", "pytest-cov (>=3.0.0)", "pytest-qt"]
+
+[[package]]
+name = "quarto"
+version = "0.1.0"
+description = "Python Interface to 'Quarto' Markdown Publishing System"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "quarto-0.1.0-py3-none-any.whl", hash = "sha256:8138fc9d1bee6269a5436837baedc699a262be1478f96444d6f99029f1a114f0"},
+    {file = "quarto-0.1.0.tar.gz", hash = "sha256:d9a4978110204f5b9d3af39faa9e195083efcbac8f6a23789e29cb27c72ded15"},
+]
+
+[package.dependencies]
+ipykernel = "*"
+jupyter-core = "*"
+nbclient = "*"
+nbformat = "*"
+pyyaml = "*"
 
 [[package]]
 name = "referencing"
@@ -4512,4 +4587,4 @@ test = ["big-O", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more-it
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "c29a8c64d644a7d809b5f4b5e910a4fe50dc0bd19859d60b94a727a270b929a7"
+content-hash = "520f34d5675dda1bb8385639901643296ba48a47492697e05405095b0a4128f9"

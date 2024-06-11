@@ -1,0 +1,26 @@
+---
+title: "Evaluation Response"
+format:
+  html:
+    toc: true
+---
+
+# This loads data from exported `EvaluationResponse`
+
+```{python}
+#| tags: [parameters]
+
+json_file = "./this_does_not_exist.json"
+```
+
+```{python}
+import pandas as pd
+import json
+
+
+with open(json_file, 'r') as f:
+    response = json.load(f)
+call_results = response['call_results']
+df = pd.DataFrame(call_results)
+df
+```

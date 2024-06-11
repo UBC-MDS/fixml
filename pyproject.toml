@@ -19,6 +19,8 @@ langchain-openai = "^0.1.7"
 langchain-community = "^0.2.1"
 langchain-core = "^0.2.1"
 gitpython = "^3.1.43"
+quarto = "^0.1.0"
+papermill = "^2.6.0"
 
 [tool.poetry.group.dev.dependencies]
 jupyter = "^1.0.0"
