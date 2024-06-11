@@ -1,8 +1,11 @@
-import pickle
+from pathlib import Path
+from typing import Union, Optional
+from pprint import pprint
 
 from langchain_openai import ChatOpenAI
 from langchain.globals import set_debug
 
+from .utils import parse_list
 from ..modules.workflow.prompt_format import EvaluationPromptFormat, \
     GenerationPromptFormat
 from ..modules.workflow.runners.evaluator import PerFileTestEvaluator
@@ -14,7 +17,8 @@ from ..modules.checklist.checklist import Checklist
 
 class RepositoryActions(object):
     @staticmethod
-    def generate(checklist_path: str = "./checklist/checklist.csv/",
+    def generate(test_output_path: str,
+                 checklist_path: str = "./checklist/checklist.csv/",
                  model="gpt-3.5-turbo", verbose: bool = False,
                  debug: bool = False):
         """Test spec generation.
@@ -26,15 +30,17 @@ class RepositoryActions(object):
 
         Parameters
         ----------
-        checklist_path
+        test_output_path : str
+            Test file path that the system will write the test functions to.
+        checklist_path : Optional[str]
             Optional flag to use non-default checklist during the operation.
-        model
+        model : Optional[str]
             Optional flag to specify a specific model to be used. Default is
             `gpt-3.5-turbo`.
-        verbose
+        verbose : Optional[bool]
             Optional. If provided, the system will print out evaluation
             results to standard output. Default is `False`.
-        debug
+        debug : Optional[bool]
             Optional. If provided, the system will enable langchain's debug
             mode to expose all debug messages to the standard output.
         """
@@ -46,14 +52,20 @@ class RepositoryActions(object):
         generator = NaiveTestGenerator(llm, prompt_format, checklist=checklist)
         result = generator.run(verbose=verbose)
 
-        print(result)
+        # FIXME: assume overwrite
+        with open(test_output_path, "w") as file:
+            for res in result:
+                file.write(f"# {res['ID']} {res['Title']}\n")
+                file.write(res['Function'])
+                file.write("\n\n")
 
     @staticmethod
     def evaluate(repo_path: str, report_output_path: str = None,
                  response_output_path: str = None,
                  checklist_path: str = "./checklist/checklist.csv/",
                  model="gpt-3.5-turbo", verbose: bool = False,
-                 overwrite: bool = False, debug: bool = False) -> None:
+                 overwrite: bool = False, debug: bool = False,
+                 test_dirs: list[Union[str, Path]] = None) -> None:
         """Evaluate a given repo based on the completeness of the test suites.
 
         This will evaluate the completeness of the test suites given a git
@@ -75,6 +87,11 @@ class RepositoryActions(object):
             PICKLE to the path.
         checklist_path
             Optional flag to use non-default checklist during the operation.
+        test_dirs
+            Optional list of directories to indicate where the test files are
+            located. If provided, only files inside these directories will be
+            scanned. Otherwise, all files in the repository will be scanned,
+            which is the default behaviour.
         model
             Optional flag to specify a specific model to be used. Default is
             `gpt-3.5-turbo`.
@@ -89,17 +106,17 @@ class RepositoryActions(object):
             mode to expose all debug messages to the standard output.
         """
         set_debug(debug)
+        parsed_test_dirs = parse_list(test_dirs)
         llm = ChatOpenAI(model=model, temperature=0)
         checklist = Checklist(checklist_path)
         repo = Repository(repo_path)
         prompt_format = EvaluationPromptFormat()
 
         evaluator = PerFileTestEvaluator(llm, prompt_format=prompt_format,
-                                         repository=repo, checklist=checklist)
+                                         repository=repo, checklist=checklist,
+                                         test_dirs=parsed_test_dirs)
         response = evaluator.run()
         if response_output_path:
-            # with open(response_output_path+".pickle", 'wb') as file:
-            #     pickle.dump(response, file)
             json_str = response.model_dump_json()
             with open(response_output_path, 'w') as f:
                 f.write(json_str)
@@ -107,7 +124,6 @@ class RepositoryActions(object):
         if report_output_path:
             parser = ResponseParser(response)
             parser.get_completeness_score(verbose=verbose)
-
             parser.export_evaluation_report(report_output_path, exist_ok=overwrite)
 
     @staticmethod
@@ -179,3 +195,26 @@ class RepositoryActions(object):
         #     parser.get_completeness_score(verbose=verbose)
         #
         #     parser.export_evaluation_report(report_output_path, exist_ok=overwrite)
+
+    @staticmethod
+    def list_tests(repo_path: str, test_dirs: list[Union[str, Path]] = None):
+        """List out all tests found in this repository.
+
+        Parameters
+        ----------
+        repo_path
+            The path of the git repository to be analyzed.
+        test_dirs
+            Optional list of directories to indicate where the test files are
+            located. If provided, only files inside these directories will be
+            scanned. Otherwise, all files in the repository will be scanned,
+            which is the default behaviour.
+        """
+
+        dirs = parse_list(test_dirs)
+        repo = Repository(repo_path)
+        test_lang_file_map = repo.list_test_files(test_dirs=dirs)
+        print("Test files found:")
+        for lang, files in test_lang_file_map.items():
+            print(f"{lang}: ", end='')
+            pprint(files)

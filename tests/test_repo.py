@@ -1,4 +1,5 @@
 from pathlib import Path
+from contextlib import nullcontext as does_not_raise
 
 import pytest
 from test_creation.modules.code_analyzer import repo as r
@@ -37,6 +38,25 @@ def test_repository_should_be_able_to_read_git_repo(test_git_repo):
     path = test_git_repo.workspace
     repo = r.Repository(path)
     assert any(['src/python/main.py' in file for file in repo._get_all_files()])
+
+
+@pytest.mark.parametrize(
+    "fixture_name, dirs_input, expected_result, expectation",
+    [
+        ("test_git_repo", ["src", "./src/python"], ["src"], does_not_raise()),
+        ("test_git_repo", ["~/.vimrc"], [], pytest.raises(FileNotFoundError)),
+        ("test_git_repo", ["./src/python/main.py"], [], pytest.raises(NotADirectoryError)),
+        ("test_git_repo", ["..", "../.."], [], pytest.raises(ValueError)),
+        ("test_git_repo", ["/non/existent/path"], [], pytest.raises(FileNotFoundError)),
+    ],
+)
+def test_repository_normalize_dirs_works_as_expected(fixture_name, dirs_input,
+                                                     expected_result,
+                                                     expectation, request):
+    path = request.getfixturevalue(fixture_name).workspace
+    repo = r.Repository(path)
+    with expectation:
+        assert repo.normalize_dirs(dirs_input) == [repo.root / dir for dir in expected_result]
 
 
 ################################################################################
