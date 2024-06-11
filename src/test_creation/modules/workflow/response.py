@@ -1,11 +1,12 @@
 from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Any, Optional, Union
+from typing import List, Dict, Optional, Union
 
 from pydantic import BaseModel, Field, ConfigDict
 
 from ..code_analyzer.repo import Repository
 from ..checklist.checklist import Checklist
+from ..mixins import WriteableMixin
 
 
 class LLMInfo(BaseModel):
@@ -15,6 +16,7 @@ class LLMInfo(BaseModel):
 
 class RepositoryInfo(BaseModel):
     path: Union[str, Path] = Field(description="Path of the repository")
+    git_commit: str = Field(description="Commit hash used during evaluation")
     object: Repository = Field(description="Repository object", exclude=True)
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
@@ -49,7 +51,7 @@ class CallResult(BaseModel):
     error: Optional[ErrorInfo] = Field(description="List of errors (if any)", default=None)
 
 
-class EvaluationResponse(BaseModel):
+class EvaluationResponse(BaseModel, WriteableMixin):
     """A data class to store all information from test evaluation runs.
 
     Here is the schema:
@@ -60,6 +62,7 @@ class EvaluationResponse(BaseModel):
         }
         repository {
             path
+            git_commit
             object (excluded when exporting)
         }
         checklist {
@@ -89,3 +92,13 @@ class EvaluationResponse(BaseModel):
     repository: RepositoryInfo = Field(description="Repository-related information")
     checklist: ChecklistInfo = Field(description="Checklist-related information")
     call_results: List[CallResult] = Field(description="List of call results", default=[])
+
+    def __init__(self, **data):
+        super().__init__(**data)
+
+    def to_json(self, output_path: Union[str, Path], exist_ok=False):
+        self._filedump_check(output_path, exist_ok=exist_ok)
+        json_str = self.model_dump_json()
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(json_str)
+

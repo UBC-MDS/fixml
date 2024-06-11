@@ -11,7 +11,8 @@ class GitContext:
         self.git_dir = Path(git_dir)
         self.git_repo = Repo(self.git_dir)
 
-        self.branch = self._get_current_branch()
+        self.head_commit_hash = self.git_repo.head.commit.hexsha
+        self.branch = self._get_current_head()
         self.host, self.org, self.repo_name = self._get_remote_info()
 
         self.remote_link_format_map = {
@@ -24,7 +25,20 @@ class GitContext:
         self.remote_protocol = "https"
         self.remote_service_family = self.__get_remote_service_family()
 
-    def __get_remote_service_family(self):
+    def __get_remote_service_family(self) -> str:
+        """Determine the remote service family.
+
+        This will do a keyword-based matching between the remote URL and the
+        dictionary containing URL rules for different supported git hosting
+        service families. For example, remotes pointing to "github.com",
+        "github.example.com" will return "github", while "gitlab.example.com"
+        will produce "gitlab".
+
+        Returns
+        -------
+        str
+            The key links to git hosting service family.
+        """
         result = None
         if self.host:
             hits = [key for key in self.remote_link_format_map.keys() if
@@ -33,9 +47,20 @@ class GitContext:
                 result = hits[0]
         return result
 
-    def _get_current_branch(self):
+    def _get_current_head(self) -> str:
+        """Getting the representation of current HEAD.
+
+        This is to obtain branch name/commit hash for later use when
+        constructing a URL to the git hosting service.
+
+        Returns
+        -------
+        str
+            The representation of current HEAD. This could be either the branch
+            name or the commit hash.
+        """
         if self.git_repo.head.is_detached:
-            return self.git_repo.head.commit.hexsha
+            return self.head_commit_hash
         else:
             return self.git_repo.active_branch.name
 

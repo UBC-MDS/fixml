@@ -19,4 +19,4 @@ def get_extension(file_path: Union[str, Path]) -> str:
     str
         The extracted and normalized extension of the file.
     """
-    return Path(file_path).suffix.lstrip(".").lower()
+    return Path(file_path).resolve().suffix.lstrip(".").lower()
