@@ -60,8 +60,8 @@ class RepositoryActions(object):
                 file.write("\n\n")
 
     @staticmethod
-    def evaluate(repo_path: str, save_to: str = None,
-                 render_report_to: str = None,
+    def evaluate(repo_path: str, save_response_to: str = None,
+                 export_report_to: str = None,
                  checklist_path: str = "./checklist/checklist.csv/",
                  model="gpt-3.5-turbo", verbose: bool = False,
                  overwrite: bool = False, debug: bool = False,
@@ -72,17 +72,17 @@ class RepositoryActions(object):
         repository, based on a checklist which consists of items relevant to
         various aspects related to Data Science/Machine Learning projects. A
         JSON file containing the evaluation results would be saved. Optionally,
-        you can provide the `render_report_to` flag to use the content of the
+        you can provide the `export_report_to` flag to use the content of the
         JSON file to render a human-readable report in HTML or PDF format.
 
         Parameters
         ----------
         repo_path
             The path of the git repository to be analyzed.
-        save_to
+        save_response_to
             Optional. If provided, the JSON file saved would be in the specified
             path instead of the default location.
-        render_report_to
+        export_report_to
             Optional. If provided, the system will render the evaluation report
             to the specified path. The format of the evaluation report will be
             based on the extension provided in this path. The extensions must be
@@ -106,10 +106,6 @@ class RepositoryActions(object):
         debug
             Optional. If provided, the system will enable langchain's debug
             mode to expose all debug messages to the standard output.
-        """
-        set_debug(debug)
-        parsed_test_dirs = parse_list(test_dirs)
-        llm = ChatOpenAI(model=model, temperature=0)
         checklist = Checklist(checklist_path)
         repo = Repository(repo_path)
         prompt_format = EvaluationPromptFormat()
@@ -119,7 +115,7 @@ class RepositoryActions(object):
                                          test_dirs=parsed_test_dirs)
         response = evaluator.run(verbose=verbose)
 
-        if not save_to:
+        if not save_response_to:
             repo_name = response.repository.object.root.stem
             commit_hash = response.repository.git_commit
             eval_time = response.call_results[0].start_time.timestamp()
@@ -127,17 +123,17 @@ class RepositoryActions(object):
                 f"./evaluation_{repo_name}_{commit_hash}_{eval_time:0.0f}.json"
             ).resolve()
         else:
-            response_output_path = Path(save_to).resolve()
+            response_output_path = Path(save_response_to).resolve()
 
         response.to_json(output_path=response_output_path, exist_ok=overwrite)
         print(f"Evaluation response saved to {response_output_path}.")
 
-        if render_report_to:
+        if export_report_to:
             parser = ResponseParser(response)
             parser.get_completeness_score(verbose=verbose)
-            parser.export_evaluation_report(render_report_to,
+            parser.export_evaluation_report(export_report_to,
                                             exist_ok=overwrite)
-            print(f"Evaluation report exported to {render_report_to}.")
+            print(f"Evaluation report exported to {export_report_to}.")
 
     @staticmethod
     def list_tests(repo_path: str, test_dirs: list[Union[str, Path]] = None):
