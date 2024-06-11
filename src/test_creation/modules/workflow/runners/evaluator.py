@@ -41,8 +41,9 @@ class PerFileTestEvaluator(PromptInjectionRunner):
     def _load_test_file_into_splits(file_path: str) -> List[Document]:
         loader = PythonLoader(file_path)
         py = loader.load()
-        py_splits = RecursiveCharacterTextSplitter.from_language(language=Language.PYTHON, chunk_size=1000,
-                                                                 chunk_overlap=0).split_documents(py)
+        py_splits = RecursiveCharacterTextSplitter.from_language(
+            language=Language.PYTHON, chunk_size=1000,
+            chunk_overlap=0).split_documents(py)
         return py_splits
 
     def _validate_response(self, raw_response: dict) -> None:
@@ -57,7 +58,11 @@ class PerFileTestEvaluator(PromptInjectionRunner):
     def run(self, verbose: bool = False) -> EvaluationResponse:
         eval_response = EvaluationResponse(
             model={'name': self.llm.model_name, 'temperature': self.llm.temperature},
-            repository={'path': self.repository.root, 'object': self.repository},
+            repository={
+                'path': self.repository.root,
+                'git_commit': self.repository.git_context.head_commit_hash,
+                'object': self.repository
+            },
             checklist={'path': self.checklist.path, 'object': self.checklist}
         )
 
@@ -131,7 +136,7 @@ class PerFileTestEvaluator(PromptInjectionRunner):
                     'output_count': cb.completion_tokens
                 },
                 files_evaluated=[fp],
-                injected=context,
+                context={k: str(v) for k, v in context.items()},
                 prompt=self.prompt_format.prompt.format(**context),
                 success=bool(response),
                 parsed_response=response,

@@ -11,7 +11,8 @@ from test_creation.modules.utils import get_extension
         (Path("checklist/checklist.csv"), "csv"),
         ("ALL/CAPITAL/PATH/TEST.ZIP", "zip"),
         ("test/multi_ext.tar.gz", "gz"),
-        (Path("test/README"), "")
+        (Path("test/README"), ""),
+        ("checklist/checklist.csv/dummy/..", "csv")
     ]
 )
 def test_extension_from_string_can_be_extracted_correctly(path, expected):

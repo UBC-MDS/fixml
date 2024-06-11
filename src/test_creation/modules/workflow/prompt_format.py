@@ -4,7 +4,7 @@ from typing import List
 
 from pydantic import BaseModel, Field
 from langchain_core.prompts.prompt import PromptTemplate
-from langchain_core.output_parsers import JsonOutputParser, PydanticOutputParser
+from langchain_core.output_parsers import PydanticOutputParser
 
 
 class PromptFormat(ABC):

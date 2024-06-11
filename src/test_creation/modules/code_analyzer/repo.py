@@ -140,7 +140,7 @@ class Repository:
                     language_file_map[v].append(file)
         return language_file_map
 
-    def _get_file_function_lineno_map(self) -> dict[str, dict[str, list[str]]]:
+    def _get_file_function_lineno_map(self) -> dict[str, dict[str, dict[str, int]]]:
         file_function_lineno_map = defaultdict(lambda: defaultdict(int))
         for lang, files in self.lf_map.items():
             # TODO: only Python is supported now
