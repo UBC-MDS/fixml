@@ -51,9 +51,10 @@ class CodeAnalyzer(ABC):
             codecs.lookup(encoding)
             return encoding
         except LookupError as e:
-            print("failed to extract codec that is readable by Python, falling back to `utf-8`...")
+            print("failed to extract codec that is readable by Python, "
+                  "cowardly returning None...")
             print("error:", e.__class__.__name__, str(e))
-            return 'utf-8'
+            return None
 
 
 class PythonASTCodeAnalyzer(CodeAnalyzer):
@@ -63,10 +64,20 @@ class PythonASTCodeAnalyzer(CodeAnalyzer):
         self._tree = None
 
     def read(self, file_path: Union[str, Path]):
-        encoding = self._determine_encodings(file_path)
-        with open(file_path, 'r', encoding=encoding) as f:
-            self.content = f.read()
-            self._tree = ast.parse(self.content)
+        # TODO: duplicated code
+        try:
+            with open(file_path, 'r') as f:
+                self.content = f.read()
+        except Exception as e:
+            print("exception occurred when reading the file. (Wrong encoding?)")
+            print("trying to detect encoding and retry reading it...")
+            try:
+                encoding = self._determine_encodings(file_path)
+                with open(file_path, 'r', encoding=encoding) as f:
+                    self.content = f.read()
+            except Exception as e:
+                raise RuntimeError("Failed to read file.")
+        self._tree = ast.parse(self.content)
 
     @assert_have_read_content
     def _get_function_lineno_map(self):
@@ -121,9 +132,19 @@ class PythonNaiveCodeAnalyzer(CodeAnalyzer):
         self.content = None
 
     def read(self, file_path: Union[str, Path]):
-        encoding = self._determine_encodings(file_path)
-        with open(file_path, 'r', encoding=encoding) as f:
-            self.content = f.readlines()
+        # TODO: duplicated code
+        try:
+            with open(file_path, 'r') as f:
+                self.content = f.readlines()
+        except Exception as e:
+            print("exception occurred when reading the file. (Wrong encoding?)")
+            print("trying to detect encoding and retry reading it...")
+            try:
+                encoding = self._determine_encodings(file_path)
+                with open(file_path, 'r', encoding=encoding) as f:
+                    self.content = f.readlines()
+            except Exception as e:
+                raise RuntimeError("Failed to read file.")
 
     @assert_have_read_content
     def _get_function_lineno_map(self):
