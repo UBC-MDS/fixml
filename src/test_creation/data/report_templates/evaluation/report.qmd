@@ -1,8 +1,5 @@
 ---
 title: "Evaluation Response"
-format:
-  html:
-    toc: true
 ---
 
 # This loads data from exported `EvaluationResponse`

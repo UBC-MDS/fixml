@@ -1,10 +1,7 @@
 import os
 from abc import ABC, abstractmethod
-from typing import Union
-from pathlib import Path
 
 import pypandoc
-import quarto
 
 from .utils import get_extension
 
@@ -111,44 +108,3 @@ class MarkdownExportableMixin(WriteableMixin, ABC):
         self._export_check(output_path, format="qmd", exist_ok=exist_ok)
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(self.as_quarto_markdown())
-
-
-class RenderableMixin(WriteableMixin, ABC):
-    """A mixin that provides functionality to render content using Quarto.
-
-    Extends WriteableMixin.
-
-    This mixin relies on Quarto documents, which will be run during the
-    rendering process.
-
-    The class including mixin must have `self._qmd_template_path` sepecified.
-    """
-
-    def __init__(self, qmd_template_path: str):
-        self._qmd_template = qmd_template_path
-
-    def render(self, to: Union[str, Path], format: str = "html"):
-        quarto.render(self._qmd_template,
-                      execute_params={"json_file": self._response_json})
-
-    @abstractmethod
-    def as_markdown(self) -> str:
-        pass
-
-    @abstractmethod
-    def as_quarto_markdown(self) -> str:
-        pass
-
-    def __format_check(self, output_path, format):
-        formats = {
-            "pdf": ["pdf"],
-            "html": ["htm", "html"],
-            "qmd": ["qmd"]
-        }
-
-        if get_extension(output_path) not in formats[format]:
-            raise ValueError(f"Output file path `{output_path}` does not meet expectation. When specifying `{format}` to be exported, please use one of the following extensions: {str(formats[format])}.")
-
-    def _export_check(self, output_path: str, format: str, exist_ok: bool):
-        self._filedump_check(output_path, exist_ok)
-        self.__format_check(output_path, format)
