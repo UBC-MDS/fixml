@@ -77,7 +77,8 @@ class PerFileTestEvaluator(PromptInjectionRunner):
             retry_count = 0
             start_time = datetime.now()
 
-            context = {"codebase": splits, "checklist": json.dumps(self._test_items)}
+            context = {"codebase": str(splits),
+                       "checklist": json.dumps(self._test_items)}
 
             while not response and retry_count < self.retries:
                 try:
