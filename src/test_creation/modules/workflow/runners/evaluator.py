@@ -108,7 +108,7 @@ class PerFileTestEvaluator(PromptInjectionRunner):
                             'output_count': cb.completion_tokens
                         },
                         files_evaluated=[fp],
-                        injected=context,
+                        context=context,
                         prompt=self.prompt_format.prompt.format(**context),
                         success=bool(response),
                         parsed_response=response,
