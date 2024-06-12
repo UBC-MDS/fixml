@@ -40,7 +40,9 @@ class EvaluationPromptFormat(PromptFormat):
                      "{format_instructions}\n"
                      "For a test item to be considered as `Satisfied` or `Partially Satisfied`, "
                      "the corresponding function(s) satisfying the item's requirement must be "
-                     "provided in the `Functions` attribute.\n"
+                     "provided in the `Functions` attribute. For every item "
+                     "in the checklist, you must provide an evaluation, "
+                     "even if the tests are not related to the item in any way.\n"
                      "Here is the checklist as a list of JSON objects:\n```{checklist}```\n"
                      "Here is the code to be analyzed:\n```{codebase}```",
             description="Code Review for Machine Learning Project",
