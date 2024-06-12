@@ -152,9 +152,13 @@ class Repository:
                         ast.read(file)
                         file_function_lineno_map[lang][file] = ast._get_function_lineno_map()
                     except Exception as e:
-                        logger.info("Exception occurred when parsing using ast (Python 2 code?) Using naive parser...")
-                        naive.read(file)
-                        file_function_lineno_map[lang][file] = naive._get_function_lineno_map()
+                        try:
+                            logger.info("Exception occurred when parsing using ast (Python 2 code?) Using naive parser...")
+                            naive.read(file)
+                            file_function_lineno_map[lang][file] = naive._get_function_lineno_map()
+                        except Exception as e:
+                            logger.info("Still failed to parse the file! "
+                                        "Skipping the file...")
         return file_function_lineno_map
 
     def list_languages(self):
