@@ -1,5 +1,4 @@
 from pathlib import Path
-from typing import Union
 from pprint import pprint
 
 from langchain_openai import ChatOpenAI
@@ -18,8 +17,9 @@ from ..modules.checklist.checklist import Checklist
 class RepositoryActions(object):
     @staticmethod
     def generate(test_output_path: str,
-                 checklist_path: str = "./checklist/checklist.csv/",
-                 model="gpt-3.5-turbo", verbose: bool = False,
+                 checklist_path: str = None,
+                 model : str = "gpt-3.5-turbo",
+                 verbose: bool = False,
                  debug: bool = False):
         """Test spec generation.
 
@@ -30,18 +30,18 @@ class RepositoryActions(object):
 
         Parameters
         ----------
-        test_output_path
+        test_output_path : str
             Test file path that the system will write the test functions to.
-        checklist_path
-            Optional flag to use non-default checklist during the operation.
-        model
-            Optional flag to specify a specific model to be used. Default is
+        checklist_path : str, optional
+            Argument to use non-default checklist during the operation.
+        model : str, optional
+            Argument to specify a specific model to be used. Default is
             `gpt-3.5-turbo`.
-        verbose
-            Optional. If provided, the system will print out evaluation
+        verbose : bool, optional
+            If provided, the system will print out evaluation
             results to standard output. Default is `False`.
-        debug
-            Optional. If provided, the system will enable langchain's debug
+        debug : bool, optional
+            If provided, the system will enable langchain's debug
             mode to expose all debug messages to the standard output.
         """
         set_debug(debug)
@@ -62,10 +62,10 @@ class RepositoryActions(object):
     @staticmethod
     def evaluate(repo_path: str, save_response_to: str = None,
                  export_report_to: str = None,
-                 checklist_path: str = "./checklist/checklist.csv/",
+                 checklist_path: str = None,
                  model="gpt-3.5-turbo", verbose: bool = False,
                  overwrite: bool = False, debug: bool = False,
-                 test_dirs: list[Union[str, Path]] = None) -> None:
+                 test_dirs: list[str] = None) -> None:
         """Evaluate a given repo based on the completeness of the test suites.
 
         This will evaluate the completeness of the test suites given a git
@@ -77,34 +77,34 @@ class RepositoryActions(object):
 
         Parameters
         ----------
-        repo_path
+        repo_path : str
             The path of the git repository to be analyzed.
-        save_response_to
-            Optional. If provided, the JSON file saved would be in the specified
+        save_response_to : str, optional
+            If provided, the JSON file saved would be in the specified
             path instead of the default location.
-        export_report_to
-            Optional. If provided, the system will render the evaluation report
+        export_report_to : str, optional
+            If provided, the system will render the evaluation report
             to the specified path. The format of the evaluation report will be
             based on the extension provided in this path. The extensions must be
             either one of `.html`, `.htm`, `.pdf`, or `.qmd`.
-        checklist_path
-            Optional flag to use non-default checklist during the operation.
-        test_dirs
-            Optional list of directories to indicate where the test files are
+        checklist_path : str, optional
+            Argument to use non-default checklist during the operation.
+        test_dirs : list, optional
+            A list of directories to indicate where the test files are
             located. If provided, only files inside these directories will be
             scanned. Otherwise, all files in the repository will be scanned,
             which is the default behaviour.
-        model
-            Optional flag to specify a specific model to be used. Default is
+        model : str, optional
+            Argument to specify a specific model to be used. Default is
             `gpt-3.5-turbo`.
-        verbose
-            Optional. If provided, the system will print out evaluation
+        verbose : bool, optional
+            If provided, the system will print out evaluation
             results to standard output. Default is `False`.
-        overwrite
-            Optional. If provided, the system will not stop when
+        overwrite : bool, optional
+            If provided, the system will not stop when
             attempting to overwrite an existing evaluation report.
-        debug
-            Optional. If provided, the system will enable langchain's debug
+        debug : bool, optional
+            If provided, the system will enable langchain's debug
             mode to expose all debug messages to the standard output.
         """
         set_debug(debug)
@@ -140,15 +140,15 @@ class RepositoryActions(object):
             print(f"Evaluation report exported to {export_report_to}.")
 
     @staticmethod
-    def list_tests(repo_path: str, test_dirs: list[Union[str, Path]] = None):
+    def list_tests(repo_path: str, test_dirs: list[str] = None):
         """List out all tests found in this repository.
 
         Parameters
         ----------
-        repo_path
+        repo_path : str
             The path of the git repository to be analyzed.
-        test_dirs
-            Optional list of directories to indicate where the test files are
+        test_dirs : list, optional
+            A list of directories to indicate where the test files are
             located. If provided, only files inside these directories will be
             scanned. Otherwise, all files in the repository will be scanned,
             which is the default behaviour.
