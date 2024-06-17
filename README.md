@@ -4,23 +4,43 @@ To be filled
 
 ## Installation
 
-1. Create a conda envionment using `environment.yml` in the repo:
+1. Create a conda environment using `environment.yml` in the repo:
 
 ```bash
 conda env create -f environment.yml
 ```
 
 2. Activate the newly created conda environment (default name `test-creation`):
+
 ```bash
 conda activate test-creation
 ```
 
-3. add `.env` with API key attached:
+3. In the conda environment, `poetry` should be installed. Use Poetry to install the package:
+
+```bash
+poetry install
+```
+
+4. add `.env` with API key attached:
+
 ```bash
 echo "OPENAI_API_KEY=..." > .env
 ```
 
-4. Enjoy!
+5. Enjoy! This package comes will an executable `test-creation` and a bunch of scripts. Here are some examples:
+```bash
+
+# evaluate a repository and write a HTML report, display verbose messages
+test-creation evaluate $REPO_PATH ./report.html --verbose
+
+# optional arguments to modify the default behaviour
+# see `test-creation evaluate --help`
+test-creation evaluate $REPO_PATH --test_dirs=./tests,./src/tests --model=gpt-4o
+
+# export checklist items into a PDF, overwrite file if exists in the specified path
+test-creation checklist export ./checklist/checklist.csv/ checklist.pdf --overwrite
+```
 
 ## Usage
 

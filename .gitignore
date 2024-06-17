@@ -10,3 +10,6 @@ draft/*
 
 # Intellij IDE
 .idea/
+
+# pycache
+**/__pycache__/
