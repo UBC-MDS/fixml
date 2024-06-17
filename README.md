@@ -1,12 +1,9 @@
 # fixml
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="./img/logo.png?raw=true" width="175" height="175">
-    </td>
-  </tr>
-</table>
+<p align="center">
+    <img src="./img/logo.png?raw=true" width="175" height="175">
+</p>
+
 
 A system for evaluating the test quality per each important test area in ML and generating test specifications specifically.
 
