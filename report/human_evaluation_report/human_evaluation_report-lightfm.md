@@ -6,6 +6,8 @@
 
 **Completeness Score**: 5.5/7
 
+The evaluation for the lightfm project covers 7 test files, providing a comprehensive overview of the test coverage. The test files demonstrate strengths in ensuring data format correctness, model performance verification, etc. However, there are areas needing improvement, such as model output alignment check and checking for duplicate records. Overall, the test suite is robust with a completeness score of 5.5 out of 7.
+
 **Completeness Score per Checklist Item**: 
 
 |   ID | Title                                             |   is_Satisfied |   n_files_tested |
@@ -157,4 +159,4 @@
   - (test_evaluation.py): 'Functions': [`test_precision_at_k`, `test_precision_at_k_with_ties`, `test_recall_at_k`, `test_auc_score`, `test_intersections_check`]
 
 ## Communication Records
-[#113](https://github.com/UBC-MDS/test-creation/issues/113)
+[#113](https://github.com/UBC-MDS/fixml/issues/113)
