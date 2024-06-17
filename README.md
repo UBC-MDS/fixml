@@ -1,6 +1,6 @@
 # fixml
 
-<figure>
+<figure style="text-align: center;">
     <img src="./img/logo.png?raw=true" width="175" height="175">
 </figure>
 
