@@ -115,7 +115,7 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 If you use fixml in your work, please cite:
 
 ```
-@misc{singh2020mmf,
+@misc{mds2024fixml,
   author =       {John Shiu, Orix Au Yeung, Tony Shum, and Yingzi Jin},
   title =        {fixml: A Comprehensive Tool for Test Evaluation and Specification Generation},
   howpublished = {\url{https://https://github.com/UBC-MDS/fixml}},
