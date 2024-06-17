@@ -5,6 +5,7 @@ description = "Package for automated test evaluation and creation"
 authors = ["John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin"]
 license = "MIT"
 readme = "README.md"
+include = ["src/test_creation/data"]
 
 [tool.poetry.dependencies]
 python = "^3.12"
