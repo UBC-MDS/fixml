@@ -54,9 +54,6 @@ The end goal of our product is to generate the following three artifacts in rela
 
 {accuracy graph}
 
-![image](../../img/consistency_score_sample_1.png)
-![image](../../img/consistency_score_sample_2.png)
-
 2) Our product's success will depend on mutation testing of the test functions developed based on our application-generated specifications. The evaluation metric is the success rate of detecting the perturbations introduced to the ML project code.
 
 Our partners and stakeholders expect a significant improvement in the testing suites of their ML systems post-application usage. As a result, the testing suites will demonstrate high accuracy in detecting faults, ensuring consistency and high quality of ML projects during updates.
