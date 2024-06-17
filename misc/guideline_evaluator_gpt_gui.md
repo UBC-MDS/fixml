@@ -11,7 +11,7 @@ grep -lr " pytest"
 ...
 ```
 
-![](../../img/grep_example2.png)
+![](../img/grep_example2.png)
 
 2. Go to the directory containing the test functions, zip all file under it:
 
@@ -31,7 +31,7 @@ I would like a classification of the tests into data pipeline related tests and 
 I would also like a detailed analysis of the ML pipeline related test functions.
 ```
 
-![](../../img/analysis1.png)
+![](../img/analysis1.png)
 
 ### 2. Compare ML Pipeline Among N Projects
 
@@ -42,8 +42,8 @@ Enter the prompt below for summary among all projects
 Compare and contrast the ML pipeline related test functions among all projects in sentences.
 I would also like a detailed analysis of the commonalities of ML pipeline related test functions among all projects which highlights the corresponding test functions, in tabular format.
 ```
-![](../../img/analysis2.png)
-![](../../img/analysis3.png)
+![](../img/analysis2.png)
+![](../img/analysis3.png)
 
 ### 3. Generate Test Score and Reasons
 
@@ -65,5 +65,5 @@ Based on the checklist below, evaluate whether the {target project} has fulfille
 {ML test checklist}
 ```
 
-![](../../img/completeness_score.png)
-![](../../img/evaluation_reason.png)
+![](../img/completeness_score.png)
+![](../img/evaluation_reason.png)
