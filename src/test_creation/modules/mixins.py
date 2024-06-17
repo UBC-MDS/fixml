@@ -11,7 +11,6 @@ class WriteableMixin:
     def _filedump_check(self, output_path: str, exist_ok: bool, expects_directory_if_exists: bool = False):
         normalized_path = os.path.abspath(os.path.normpath(output_path))
         dir_path = os.path.dirname(normalized_path)
-        print(normalized_path, dir_path)
         if not os.access(dir_path, os.W_OK):
             raise PermissionError(f"Write permission is not granted for the output path: {dir_path}")
 
@@ -38,12 +37,14 @@ class WriteableMixin:
 
 
 class ExportableMixin(WriteableMixin, ABC):
-    """A mixin that provides functionality to export (dump) content as HTML/PDF/Quarto documents.
+    """A mixin that provides functionality to export (dump) content as markdown,
+    then to convert it into HTML/PDF/Quarto documents.
 
     Extends WriteableMixin.
 
-    Relies on markdown representations of the object.
-    The class including mixin must have `.as_markdown()` and `.as_quarto_markdown()` implemented.
+    This mixin relies on markdown representations of the object.
+    The class including mixin must have `.as_markdown()` and
+    `.as_quarto_markdown()` implemented.
     """
 
     def __init__(self):
@@ -56,8 +57,6 @@ class ExportableMixin(WriteableMixin, ABC):
 
     def export(self, output_path: str, exist_ok: bool = False):
         to_ext = get_extension(output_path)
-        print(output_path)
-        print(to_ext)
         if to_ext not in self.export_ext_func_map.keys():
             raise ValueError(
                 f"Invalid output format(s) provided. The "
