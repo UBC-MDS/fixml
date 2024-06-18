@@ -41,18 +41,32 @@ To create the environment, open your terminal and navigate to the directory wher
 
 ```bash
 $ conda env create -f environment.yaml
-$ conda activate fixml
 ```
 
 #### Step 3: Install the Package Using Poetry
 
 With the Conda environment activated, you can now use Poetry to install the package. Run the following command to install the package using Poetry:
 
+1. Activate the newly created conda environment (default name `fixml`):
+
 ```bash
-$ poetry install
+conda activate fixml
+```
+
+2. In the conda environment, `poetry` should be installed. Use Poetry to install the package:
+
+```bash
+poetry install
 ```
 
 This command reads the pyproject.toml file in your project (if present) and installs the dependencies listed there.
+
+3. add `.env` with your API key:
+
+```bash
+$ touch .env
+$ echo "OPENAI_API_KEY=your_openai_api_key_here" >> .env
+```
 
 #### Running the tests
 Navigate to the project root directory and use the following command in terminal to test the functions defined in the projects. 
@@ -127,3 +141,4 @@ If you use fixml in your work, please cite:
 ## Acknowledgements
 
 We'd like to thank everyone who has contributed to the development of the `fixml` package. This is a new project aimed at enhancing the robustness and reproducibility of applied machine learning software. It will be subsequently developed openly on GitHub and we welcome it to be read, revised, and supported by data scientists, machine learning engineers, educators, practitioners, and hobbyists. Your contributions and feedback are invaluable in making this package a reliable resource for the community.
+

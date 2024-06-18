@@ -40,9 +40,9 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `test_creation` for local development.
+Ready to contribute? Here's how to set up `fixml` for local development.
 
-1. Download a copy of `test_creation` locally.
+1. Download a copy of `fixml` locally.
 2. Create a new conda environment and Install all essential libraries:
 
     ```console
@@ -52,7 +52,7 @@ Ready to contribute? Here's how to set up `test_creation` for local development.
 3. Activate the newly created environment:
 
     ```console
-    $ conda activate test-creation
+    $ conda activate fixml
     ```
 
 4. Use `git` (or similar) to create a branch for local development and make your changes:
@@ -75,5 +75,5 @@ Before you submit a pull request, check that it meets these guidelines:
 
 ## Code of Conduct
 
-Please note that the `test_creation` project is released with a
+Please note that the `fixml` project is released with a
 [Code of Conduct](CONDUCT.md). By contributing to this project you agree to abide by its terms.
