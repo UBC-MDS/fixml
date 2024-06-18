@@ -1,4 +1,4 @@
-# test_creation
+# fixml
 
 To be filled
 
@@ -61,8 +61,8 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 
 ## License
 
-`test_creation` was created by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin. It is licensed under the terms of the MIT license.
+`fixml` was created by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin. It is licensed under the terms of the MIT license.
 
 ## Credits
 
-`test_creation` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
+`fixml` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
