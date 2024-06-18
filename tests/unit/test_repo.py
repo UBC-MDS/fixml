@@ -1,8 +1,8 @@
 from contextlib import nullcontext as does_not_raise
 
 import pytest
-from test_creation.modules.code_analyzer import repo as r
-from test_creation.modules.code_analyzer.git import GitContext
+from fixml.modules.code_analyzer import repo as r
+from fixml.modules.code_analyzer.git import GitContext
 
 
 ################################################################################
@@ -54,14 +54,14 @@ def test_repository_normalize_dirs_works_as_expected(fixture_name, dirs_input,
         (
                 "test_git_repo",
                 "internal",
-                "https://github.com:8080/UBC-MDS/test-creation.git",
-                ("github.com:8080", "UBC-MDS", "test-creation")
+                "https://github.com:8080/UBC-MDS/fixml.git",
+                ("github.com:8080", "UBC-MDS", "fixml")
         ),
         (
                 "test_git_repo",
                 "origin",
-                "http://gitlab.example.com:8080/UBC-MDS/test-creation.git",
-                ("gitlab.example.com:8080", "UBC-MDS", "test-creation")
+                "http://gitlab.example.com:8080/UBC-MDS/fixml.git",
+                ("gitlab.example.com:8080", "UBC-MDS", "fixml")
         ),
         (
                 "test_git_repo",

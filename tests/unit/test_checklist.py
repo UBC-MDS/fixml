@@ -1,7 +1,7 @@
 import os
 
 import pytest
-from test_creation.modules.checklist import checklist as c
+from fixml.modules.checklist import checklist as c
 
 
 ################################################################################
