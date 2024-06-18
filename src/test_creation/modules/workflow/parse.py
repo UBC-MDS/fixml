@@ -3,7 +3,7 @@ from typing import Optional
 import pandas as pd
 import os
 
-from .template import TemplateLoader
+from ..template import TemplateLoader
 from .response import EvaluationResponse
 from ..mixins import ExportableMixin
 from ..utils import get_extension
@@ -17,7 +17,7 @@ class ResponseParser(ExportableMixin):
         self.repository = self.response.repository.object
         self.git_context = self.repository.git_context
         self.items = []
-        self.template = TemplateLoader().load("evaluation")
+        self.export_template = TemplateLoader().load("evaluation")
 
     def _parse_items(self):
         items = []
@@ -139,7 +139,7 @@ class ResponseParser(ExportableMixin):
             "table": export_content,
             "quarto_header": add_quarto_header,
         }
-        return self.template.render(**vars)
+        return self.export_template.render(**vars)
 
         # return _get_md_representation(export_content, 1)
 
