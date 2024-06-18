@@ -1,4 +1,4 @@
-# test_creation
+# fixml
 
 To be filled
 
@@ -10,10 +10,10 @@ To be filled
 conda env create -f environment.yml
 ```
 
-2. Activate the newly created conda environment (default name `test-creation`):
+2. Activate the newly created conda environment (default name `fixml`):
 
 ```bash
-conda activate test-creation
+conda activate fixml
 ```
 
 3. In the conda environment, `poetry` should be installed. Use Poetry to install the package:
@@ -28,18 +28,18 @@ poetry install
 echo "OPENAI_API_KEY=..." > .env
 ```
 
-5. Enjoy! This package comes will an executable `test-creation` and a bunch of scripts. Here are some examples:
+5. Enjoy! This package comes will an executable `fixml` and a bunch of scripts. Here are some examples:
 ```bash
 
 # evaluate a repository and write a HTML report, display verbose messages
-test-creation evaluate $REPO_PATH ./report.html --verbose
+fixml evaluate $REPO_PATH ./report.html --verbose
 
 # optional arguments to modify the default behaviour
-# see `test-creation evaluate --help`
-test-creation evaluate $REPO_PATH --test_dirs=./tests,./src/tests --model=gpt-4o
+# see `fixml evaluate --help`
+fixml evaluate $REPO_PATH --test_dirs=./tests,./src/tests --model=gpt-4o
 
 # export checklist items into a PDF, overwrite file if exists in the specified path
-test-creation checklist export ./checklist/checklist.csv/ checklist.pdf --overwrite
+fixml checklist export ./checklist/checklist.csv/ checklist.pdf --overwrite
 ```
 
 ## Usage
@@ -61,8 +61,8 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 
 ## License
 
-`test_creation` was created by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin. It is licensed under the terms of the MIT license.
+`fixml` was created by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin. It is licensed under the terms of the MIT license.
 
 ## Credits
 
-`test_creation` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
+`fixml` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).

@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "test_creation"
+name = "fixml"
 version = "0.1.0"
 description = "Package for automated test evaluation and creation"
 authors = ["John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin"]
 license = "MIT"
 readme = "README.md"
-include = ["src/test_creation/data"]
+include = ["src/fixml/data"]
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -31,7 +31,7 @@ pytest = "^8.2.1"
 pytest-git = "^1.7.0"
 
 [tool.poetry.scripts]
-test-creation = "test_creation:cli_main"
+fixml = "fixml:cli_main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

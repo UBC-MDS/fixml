@@ -150,7 +150,7 @@ class Checklist(ExportableMixin):
             'yml': YamlChecklistIO
         }
         if not checklist_path:
-            checklist_path = files("test_creation.data.checklist") / "checklist.csv"
+            checklist_path = files("fixml.data.checklist") / "checklist.csv"
         ext = get_extension(checklist_path)
         self.__check_ext_is_valid(ext)
         self.path = checklist_path
