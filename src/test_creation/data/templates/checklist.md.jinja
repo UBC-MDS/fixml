@@ -1,0 +1,40 @@
+{%- set areas = checklist['Test Areas'] -%}
+{%- if quarto_header -%}
+---
+title: "Checklist for Machine Learning Projects"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+---
+{%- endif %}
+
+# {{ checklist['Title'] }}
+
+**Description**: {{ checklist['Description'] }}
+
+## Metadata
+
+**Template used**: {{ template_path }}
+
+{% for area in areas -%}
+## {{ area['ID'] }}. {{ area['Topic'] }}
+
+**Description**: {{ area['Description'] }}
+
+{% for test in area['Tests'] -%}
+### {{ test['ID'] }} {{ test['Title'] }}
+
+**Requirement**: {{ test['Requirement'] }}
+
+**Explanation**: {{ test['Explanation'] }}
+
+**Is Evaluator Applicable**: {{ test['Is Evaluator Applicable'] }}
+
+**References:**
+{% for ref in test['References'] %}
+  - {{ ref }}
+{%- endfor %}
+
+{% endfor %}
+{% endfor %}

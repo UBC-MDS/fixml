@@ -9,6 +9,7 @@ from abc import ABC, abstractmethod
 
 from ruamel.yaml import YAML
 
+from ..template import TemplateLoader
 from ..mixins import ExportableMixin
 from ..utils import get_extension
 
@@ -157,6 +158,7 @@ class Checklist(ExportableMixin):
             raise FileNotFoundError("Checklist file not found.")
         self.content = self.ext_io_map[ext].read(self.path)
         self.test_areas = set([x["Topic"] for x in self.content["Test Areas"]])
+        self.export_template = TemplateLoader().load("checklist")
 
     def __check_ext_is_valid(self, ext: str) -> bool:
         if ext not in self.ext_io_map:
@@ -219,37 +221,13 @@ class Checklist(ExportableMixin):
         self._filedump_check(output_path, exist_ok, expects_directory_if_exists=True)
         CsvChecklistIO.write(output_path, self.content)
 
-    def as_markdown(self):
-        def _get_md_representation(content: dict, curr_level: int):
-            repeated_col = [k for k, v in content.items() if isinstance(v, list)]
-
-            # print out header for each item
-            md_repr = '#' * curr_level
-            if 'ID' in content.keys():
-                md_repr += f" {content['ID']}"
-            if 'Title' in content.keys():
-                md_repr += f" {content['Title']}\n\n"
-            elif 'Topic' in content.keys():
-                md_repr += f" {content['Topic']}\n\n"
-
-            # print out non-title, non-repeated items
-            for k, v in content.items():
-                if k not in repeated_col and k not in ['Title', 'Topic', 'ID']:
-                    md_repr += f'**{k}**: {v}\n\n'
-
-            # handle repeated columns and references
-            for k in repeated_col:
-                if k != 'References':
-                    for item in content[k]:
-                        md_repr += _get_md_representation(item, curr_level=curr_level + 1)
-                else:
-                    md_repr += '**References:**\n\n' + '\n'.join(
-                        f'  - {item}' for item in content['References']) + '\n\n'
-
-            return md_repr
-
-        return _get_md_representation(self.content, curr_level=1)
+    def as_markdown(self, add_quarto_header: bool = False):
+        vars = {
+            "checklist": self.content,
+            "quarto_header": add_quarto_header,
+            "template_path": self.export_template.filename
+        }
+        return self.export_template.render(**vars)
 
     def as_quarto_markdown(self):
-        header = '---\ntitle: "{}"\nformat:\n  html:\n    code-fold: true\n---\n\n'.format(self.content['Title'])
-        return header + self.as_markdown()
+        return self.as_markdown(add_quarto_header=True)
