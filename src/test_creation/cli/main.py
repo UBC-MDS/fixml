@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 from .checklist import ChecklistActions
 from .repository import RepositoryActions
+from .export import ExportActions
 
 load_dotenv()
 
@@ -15,6 +16,7 @@ class TestCreation(object):
     def __init__(self):
         self.repository = RepositoryActions()
         self.checklist = ChecklistActions()
+        self.export = ExportActions()
 
         self.evaluate = self.repository.evaluate
         self.generate = self.repository.generate
