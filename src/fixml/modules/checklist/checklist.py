@@ -1,6 +1,7 @@
 import os
 import csv
 import copy
+from importlib.resources import files
 from pathlib import Path
 from enum import Enum
 from typing import Union
@@ -140,13 +141,15 @@ class CsvChecklistIO(ChecklistIO):
 
 
 class Checklist(ExportableMixin):
-    def __init__(self, checklist_path: str):
+    def __init__(self, checklist_path: str = None):
         super().__init__()
         self.ext_io_map = {
             'csv': CsvChecklistIO,
             'yaml': YamlChecklistIO,
             'yml': YamlChecklistIO
         }
+        if not checklist_path:
+            checklist_path = files("fixml.data.checklist") / "checklist.csv"
         ext = get_extension(checklist_path)
         self.__check_ext_is_valid(ext)
         self.path = checklist_path

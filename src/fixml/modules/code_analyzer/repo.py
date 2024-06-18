@@ -8,7 +8,7 @@ from typing import Optional, Union, Iterable
 from .analyzers.python import PythonNaiveCodeAnalyzer, PythonASTCodeAnalyzer
 from .git import GitContext
 
-logger = logging.getLogger("test-creation.repo")
+logger = logging.getLogger("fixml.repo")
 
 
 def requires_git_context(func):
