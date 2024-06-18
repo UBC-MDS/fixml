@@ -91,7 +91,7 @@ class ResponseParser(ExportableMixin):
                 print(f"WARNING: `n_files_tested` is not unique!")
                 print()
             print(f'Result: {num_items_satisfied} items are satisfied out of {num_items}')
-            print(f'Score: {fraction_satisfied*100:.1f}%')
+            print(f'Score: {fraction_satisfied:.1%}')
             print()
 
         if score_format == 'fraction':
