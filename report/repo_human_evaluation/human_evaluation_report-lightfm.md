@@ -157,4 +157,4 @@
   - (test_evaluation.py): 'Functions': [`test_precision_at_k`, `test_precision_at_k_with_ties`, `test_recall_at_k`, `test_auc_score`, `test_intersections_check`]
 
 ## Communication Records
-[#113](https://github.com/UBC-MDS/test-creation/issues/113)
+[#113](https://github.com/UBC-MDS/fixml/issues/113)

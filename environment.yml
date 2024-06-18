@@ -1,4 +1,4 @@
-name: test-creation
+name: fixml
 channels:
   - conda-forge
   - defaults

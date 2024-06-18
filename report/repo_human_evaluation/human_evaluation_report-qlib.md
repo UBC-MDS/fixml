@@ -163,4 +163,4 @@ The evaluation for the qlib project covers 31 test files, providing a comprehens
   - {'File Path': '../../../qlib/tests/rl/test_trainer.py', 'Functions': ['test_trainer', 'test_trainer_earlystop']}
 
 ## Communication Records
-[#130](https://github.com/UBC-MDS/test-creation/issues/130)
+[#130](https://github.com/UBC-MDS/fixml/issues/130)
