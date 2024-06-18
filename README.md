@@ -60,13 +60,15 @@ Run `fixml --help` for more details.
 
 > [!IMPORTANT]
 > By default, this tool uses OpenAI's `gpt3.5-turbo` for evaluation. To run any
-> commands that requires calls to LLM, an environment variable `OPENAI_API_KEY`
-> needs to be set. To do so, either use `export` to set the variable in your
-> current session, or not create a `.env` file with a line
-`OPENAI_API_KEY={your-api-key}` saved in your working directory.
+command that requires calls to LLM (i.e. `fixml evaluate`, `fixml generate`),
+an environment variable `OPENAI_API_KEY` needs to be set. To do so, either use
+`export` to set the variable in your current session, or create a `.env` file
+with a line `OPENAI_API_KEY={your-api-key}` saved in your working directory.
 
 > [!TIP]
-> Currently, only calls to OpenAI endpoints are supported. This tool is still in ongoing development and integrations with other service providers and locally hosted LLMs are planned.
+> Currently, only calls to OpenAI endpoints are supported. This tool is still in
+ongoing development and integrations with other service providers and locally
+hosted LLMs are planned.
 
 #### Test Evaluator
 
