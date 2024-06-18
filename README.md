@@ -1,4 +1,7 @@
 # FixML
+![CI status check](https://github.com/UBC-MDS/fixml/actions/workflows/ci.yml/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 <p align="center">
     <img src="./img/logo.png?raw=true" width="175" height="175">
