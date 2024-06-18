@@ -1,0 +1,8 @@
+ID,Topic,Description
+1,General,The following items describe best practices for all tests to be written.
+2,Data Presence,"The following items describe tests that need to be done for testing the presence of data. This area of tests mainly concern whether the reading and saving operations are behaving as expected, and any unexpected behavior would not be passed silently."
+3,Data Quality,"The following items describe tests that need to be done for testing the quality of data. This area of tests mainly concern whether the data supplied is in the expected format, data containing null values or outliers to make sure that the data processing pipeline is robust."
+4,Data Ingestion,The following items describe tests that need to be done for testing if the data is ingestion properly.
+5,Model Fitting,The following items describe tests that need to be done for testing the model fitting process. The unit tests written for this section usually mock model load and model predictions similarly to mocking file access.
+6,Model Evaluation,The following items describe tests that need to be done for testing the model evaluation process.
+7,Artifact Testing,"The following items involves explicit checks for behaviors that we expect the artifacts e.g. models, plots, etc., to follow."
