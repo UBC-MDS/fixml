@@ -1,0 +1,38 @@
+{%- if quarto_header %}
+    ---
+    title: "Test Evaluation Report"
+    format:
+      html:
+        code-fold: true
+        code-summary: "Show the code"
+    ---
+{%- endif %}
+# Evaluation Report
+
+This is the Evaluation Report for the evaluation
+
+## Metadata
+
+Template used: {{ template_name }}
+
+## Run details
+
+- **Checklist used**: {{ response.checklist.path}}
+- **Repository path**: {{ response.repository.path }}
+- **HEAD commit**: {{ response.git_commit }}
+- **Start Time**: {{ response.call_results[0].start_time }}
+- **End Time**:  {{ response.call_results[-1].end_time }}
+- **Time taken**:
+- **Successful/Failed calls**: {{ successful }} / {{ failed }} ({{ perc }}%Success Rate)
+- **Files evaluated**: {{ files_evaluated }}
+- **LLM model used**: {{ response.model.name }}
+
+## Summary
+
+{{ summary_table }}
+
+## Detailed Breakdown
+
+{% for item in call_results %}
+    lol
+{% endfor %}
