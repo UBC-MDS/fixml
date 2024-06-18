@@ -158,7 +158,7 @@ class Checklist(ExportableMixin):
             raise FileNotFoundError("Checklist file not found.")
         self.content = self.ext_io_map[ext].read(self.path)
         self.test_areas = set([x["Topic"] for x in self.content["Test Areas"]])
-        self.export_template = TemplateLoader().load("checklist")
+        self.export_template = TemplateLoader.load("checklist")
 
     def __check_ext_is_valid(self, ext: str) -> bool:
         if ext not in self.ext_io_map:

@@ -23,7 +23,7 @@ def requires_git_context(func):
 
 
 class Repository:
-    def __init__(self, path: str, ):
+    def __init__(self, path: str):
         if not os.path.exists(path):
             raise FileNotFoundError(f"Repository {path} does not exist.")
         elif os.path.isfile(path):
