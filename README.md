@@ -44,6 +44,8 @@ workflows.
 
 This tool is on PyPI. To install, please run:
 
+Run this command to install the package
+
 ```bash
 $ pip install fixml
 ```
@@ -118,6 +120,19 @@ To create the environment, open your terminal and navigate to the directory
 where the environment.yaml file is located. Then, run the following command:
 
 2. Activate the newly created conda environment (default name `fixml`):
+Create a new Conda environment using the environment.yaml file provided in this repository. This file contains all the necessary dependencies, including both Python and Poetry versions.
+
+To create the environment, open your terminal and navigate to the directory where the environment.yaml file is located. Then, run the following command:
+
+```bash
+$ conda env create -f environment.yaml
+```
+
+#### Step 3: Install the Package Using Poetry
+
+With the Conda environment activated, you can now use Poetry to install the package. Run the following command to install the package using Poetry:
+
+1. Activate the newly created conda environment (default name `fixml`):
 
 ```bash
 conda activate fixml
@@ -154,6 +169,16 @@ installs the dependencies listed there.
 Navigate to the project root directory and use the following command in terminal
 to test the functions defined in the projects.
 
+3. add `.env` with your API key:
+
+```bash
+$ touch .env
+$ echo "OPENAI_API_KEY=your_openai_api_key_here" >> .env
+```
+
+#### Running the tests
+Navigate to the project root directory and use the following command in terminal to test the functions defined in the projects. 
+
 ``` bash
 $ pytest tests/*
 ```
@@ -179,6 +204,43 @@ fixml evaluate $REPO_PATH --test_dirs=./tests,./src/tests --model=gpt-4o
 fixml checklist export ./checklist/checklist.csv/ checklist.pdf --overwrite
 ```
 
+#### Troubleshooting
+Environment Creation Issues: If you encounter problems while creating the Conda environment, ensure that the environment.yaml file is in the correct directory and that you have the correct version of Conda installed.
+
+## Usage
+
+### Test Evaluator
+
+#### Description
+The test evaluator command is used to evaluate the test results of your repository. It generates an evaluation report and provides various options for customization, such as specifying a checklist file, output format, and verbosity.
+
+#### Example
+
+```bash
+$ fixml evaluate /path/to/your/repo -e ./eval_report.html -v -o -c checklist/checklist.csv
+```
+
+or
+```bash
+$ fixml evaluate /path/to/your/repo -e ./eval_report.html -v
+```
+
+### Test Spec Generator
+
+#### Description
+The test spec generator command is used to generate a test specification from a checklist. It allows for the inclusion of an optional checklist file to guide the test specification generation process.
+
+
+#### Example
+```bash
+$ fixml generate test.py -c checklist/checklist.csv
+```
+
+or
+```bash
+$ fixml generate test.py
+```
+
 ## Contributing
 
 Interested in contributing? Check out the contributing guidelines. Please note
@@ -192,7 +254,6 @@ deliverable product during our capstone project of the UBC-MDS program in
 collaboration with Dr. Tiffany Timbers and Dr. Simon Goring. It is licensed
 under the terms of the MIT license for software code. Reports and instructional
 materials are licensed under the terms of the CC-BY 4.0 license.
-
 ## Citation
 
 If you use fixml in your work, please cite:
@@ -207,7 +268,6 @@ If you use fixml in your work, please cite:
 ```
 
 ## Acknowledgements
-
 We'd like to thank everyone who has contributed to the development of
 the `fixml` package. This is a new project aimed at enhancing the robustness and
 reproducibility of applied machine learning software. It is meant to be a
