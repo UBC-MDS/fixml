@@ -3,7 +3,7 @@ import os
 import yaml
 
 from tqdm import tqdm
-from test_creation.cli.repository import RepositoryActions
+from fixml.cli.repository import RepositoryActions
 
 from dotenv import load_dotenv
 load_dotenv()

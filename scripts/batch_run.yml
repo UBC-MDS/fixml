@@ -1,5 +1,5 @@
 runs: 30
-checklist_path: '../checklist/checklist.csv/'
+checklist_path: null
 repo_base_path: '../data/raw/openja/'
 response_path: '../data/processed/batch_run'
 repo:
