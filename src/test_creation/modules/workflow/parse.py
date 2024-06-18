@@ -3,6 +3,7 @@ from typing import Optional
 import pandas as pd
 import os
 
+from .template import TemplateLoader
 from .response import EvaluationResponse
 from ..mixins import ExportableMixin
 from ..utils import get_extension
@@ -10,14 +11,13 @@ from ..utils import get_extension
 
 class ResponseParser(ExportableMixin):
     def __init__(self, response: EvaluationResponse):
-        # FIXME: respository is required to extract the line numbers for functions
-        #        I added an optional argument "respository" here, can't think of any better way to handle it yet
         super().__init__()
         self.response = response
         self.evaluation_report = None
         self.repository = self.response.repository.object
         self.git_context = self.repository.git_context
         self.items = []
+        self.template = TemplateLoader().load("evaluation")
 
     def _parse_items(self):
         items = []
@@ -95,34 +95,34 @@ class ResponseParser(ExportableMixin):
             print()
         return score
 
-    def as_markdown(self) -> str:
-        def _get_md_representation(content: dict, curr_level: int):
-            repeated_col = [k for k, v in content.items() if isinstance(v, list)]
-
-            # print out header for each item
-            md_repr = '#' * curr_level
-            if 'ID' in content.keys():
-                md_repr += f" {content['ID']}"
-            if 'Title' in content.keys():
-                md_repr += f" {content['Title']}\n\n"
-            elif 'Topic' in content.keys():
-                md_repr += f" {content['Topic']}\n\n"
-
-            # print out non-title, non-repeated items
-            for k, v in content.items():
-                if k not in repeated_col and k not in ['Title', 'Topic', 'ID']:
-                    md_repr += f'**{k}**: {v}\n\n'
-
-            # handle repeated columns and references
-            point_form_col = ['References', 'Function References', 'Observations']
-            for k in repeated_col:
-                if k not in point_form_col:
-                    for item in content[k]:
-                        md_repr += _get_md_representation(item, curr_level=curr_level + 1)
-                else:
-                    md_repr += f'**{k}:**\n\n' + '\n'.join(f'  - {item}' for item in content[k]) + '\n\n'
-
-            return md_repr
+    def as_markdown(self, add_quarto_header: bool = False) -> str:
+        # def _get_md_representation(content: dict, curr_level: int):
+        #     repeated_col = [k for k, v in content.items() if isinstance(v, list)]
+        #
+        #     # print out header for each item
+        #     md_repr = '#' * curr_level
+        #     if 'ID' in content.keys():
+        #         md_repr += f" {content['ID']}"
+        #     if 'Title' in content.keys():
+        #         md_repr += f" {content['Title']}\n\n"
+        #     elif 'Topic' in content.keys():
+        #         md_repr += f" {content['Topic']}\n\n"
+        #
+        #     # print out non-title, non-repeated items
+        #     for k, v in content.items():
+        #         if k not in repeated_col and k not in ['Title', 'Topic', 'ID']:
+        #             md_repr += f'**{k}**: {v}\n\n'
+        #
+        #     # handle repeated columns and references
+        #     point_form_col = ['References', 'Function References', 'Observations']
+        #     for k in repeated_col:
+        #         if k not in point_form_col:
+        #             for item in content[k]:
+        #                 md_repr += _get_md_representation(item, curr_level=curr_level + 1)
+        #         else:
+        #             md_repr += f'**{k}:**\n\n' + '\n'.join(f'  - {item}' for item in content[k]) + '\n\n'
+        #
+        #     return md_repr
 
         score = self.get_completeness_score(score_format='fraction')
         summary_df = self.evaluation_report[['ID', 'Title', 'is_Satisfied', 'n_files_tested']]
@@ -134,11 +134,17 @@ class ResponseParser(ExportableMixin):
         export_content['Report Areas'].append({'Title': 'Summary', 'Completeness Score': score, 'Completeness Score per Checklist Item': '\n\n' + summary_df.to_markdown(index=False)})
         export_content['Report Areas'].append({'Title': 'Details', 'Report Detail': details})
 
-        return _get_md_representation(export_content, 1)
+        vars = {
+            "response": self.response,
+            "table": export_content,
+            "quarto_header": add_quarto_header,
+        }
+        return self.template.render(**vars)
+
+        # return _get_md_representation(export_content, 1)
 
     def as_quarto_markdown(self) -> str:
-        header = '---\ntitle: "Test Evaluation Report"\nformat:\n  html:\n  code-fold: true\n---\n\n'
-        return header + self.as_markdown()
+        return self.as_markdown(add_quarto_header=True)
 
     def export_evaluation_report(self, output_path,
                                  exist_ok: bool = False) -> None:
