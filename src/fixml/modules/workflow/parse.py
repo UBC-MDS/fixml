@@ -70,10 +70,9 @@ class ResponseParser(ExportableMixin):
         report_df.columns = ['Requirement', 'is_Satisfied', 'n_files_tested', 'Observations', 'Function References']
         self.evaluation_report = report_df.reset_index()
 
-        if score_format == 'fraction':
-            score = f"{report_df['is_Satisfied'].sum()}/{report_df['is_Satisfied'].count()}"
-        elif score_format == 'number':
-            score = report_df['is_Satisfied'].sum()/report_df['is_Satisfied'].count()
+        num_items_satisfied = report_df['is_Satisfied'].sum()
+        num_items = report_df['is_Satisfied'].count()
+        fraction_satisfied = num_items_satisfied / num_items
 
         if verbose:
             print("Report:")
@@ -91,9 +90,14 @@ class ResponseParser(ExportableMixin):
                 print()
                 print(f"WARNING: `n_files_tested` is not unique!")
                 print()
-            print(f'Score: {score}')
+            print(f'Result: {num_items_satisfied} items are satisfied out of {num_items}')
+            print(f'Score: {fraction_satisfied:.1%}')
             print()
-        return score
+
+        if score_format == 'fraction':
+            return f"{num_items_satisfied}/{num_items}"
+        elif score_format == 'number':
+            return fraction_satisfied
 
     def as_markdown(self) -> str:
         def _get_md_representation(content: dict, curr_level: int):
