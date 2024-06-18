@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import pytest
-from test_creation.modules.checklist import checklist as c
+from fixml.modules.checklist import checklist as c
 
 
 @pytest.fixture()
