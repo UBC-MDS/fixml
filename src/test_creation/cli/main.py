@@ -9,7 +9,7 @@ from .repository import RepositoryActions
 load_dotenv()
 
 
-class TestCreation(object):
+class TestCreation:
     """Context-aware test suite evaluation and generation tool."""
 
     def __init__(self):
