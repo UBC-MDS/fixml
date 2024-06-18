@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union
 
 import pandas as pd
 import os
@@ -17,7 +17,7 @@ class ResponseParser(ExportableMixin):
         self.repository = self.response.repository.object
         self.git_context = self.repository.git_context
         self.items = []
-        self.export_template = TemplateLoader().load("evaluation")
+        self.export_template = TemplateLoader.load("evaluation")
 
     def _parse_items(self):
         items = []
@@ -38,7 +38,7 @@ class ResponseParser(ExportableMixin):
         self.items = items
         return items
 
-    def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> Optional[float]:
+    def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> Optional[Union[float, str]]:
         """Compute Evaluation Report and Completeness Score."""
 
         # TODO: change this after putting the logic to load data from JSON file
@@ -96,52 +96,46 @@ class ResponseParser(ExportableMixin):
         return score
 
     def as_markdown(self, add_quarto_header: bool = False) -> str:
-        # def _get_md_representation(content: dict, curr_level: int):
-        #     repeated_col = [k for k, v in content.items() if isinstance(v, list)]
-        #
-        #     # print out header for each item
-        #     md_repr = '#' * curr_level
-        #     if 'ID' in content.keys():
-        #         md_repr += f" {content['ID']}"
-        #     if 'Title' in content.keys():
-        #         md_repr += f" {content['Title']}\n\n"
-        #     elif 'Topic' in content.keys():
-        #         md_repr += f" {content['Topic']}\n\n"
-        #
-        #     # print out non-title, non-repeated items
-        #     for k, v in content.items():
-        #         if k not in repeated_col and k not in ['Title', 'Topic', 'ID']:
-        #             md_repr += f'**{k}**: {v}\n\n'
-        #
-        #     # handle repeated columns and references
-        #     point_form_col = ['References', 'Function References', 'Observations']
-        #     for k in repeated_col:
-        #         if k not in point_form_col:
-        #             for item in content[k]:
-        #                 md_repr += _get_md_representation(item, curr_level=curr_level + 1)
-        #         else:
-        #             md_repr += f'**{k}:**\n\n' + '\n'.join(f'  - {item}' for item in content[k]) + '\n\n'
-        #
-        #     return md_repr
 
         score = self.get_completeness_score(score_format='fraction')
         summary_df = self.evaluation_report[['ID', 'Title', 'is_Satisfied', 'n_files_tested']]
-        details = self.evaluation_report[['ID', 'Title', 'Requirement', 'Observations', 'Function References']].to_dict(orient='records')
 
-        export_content = dict()
-        export_content['Title'] = 'Test Evaluation Report'
-        export_content['Report Areas'] = []
-        export_content['Report Areas'].append({'Title': 'Summary', 'Completeness Score': score, 'Completeness Score per Checklist Item': '\n\n' + summary_df.to_markdown(index=False)})
-        export_content['Report Areas'].append({'Title': 'Details', 'Report Detail': details})
+        response = self.response
+        call_results = response.call_results
+
+        metadata = {
+            "template_path": self.export_template.filename,
+        }
+        run_details = {
+            "checklist_path": response.checklist.path,
+            "repo_path": response.repository.path,
+            "head_commit": response.repository.git_commit,
+            "start_time": min([x.start_time for x in call_results]),
+            "end_time": max([x.end_time for x in call_results]),
+            "time_taken": max([x.end_time for x in call_results]) - min([x.start_time for x in call_results]),
+            "input_token_count": sum([x.tokens_used.input_count for x in call_results]),
+            "output_token_count": sum([x.tokens_used.output_count for x in call_results]),
+            "successful_count": sum([x.success for x in call_results]),
+            "failure_count": sum([not x.success for x in call_results]),
+            "success_perc": sum([x.success for x in call_results]) / len(call_results),
+            "files_evaluated": [file for x in call_results for file in x.files_evaluated],
+            "model_name_used": response.model.name,
+        }
+        eval_summary = {
+            "table": summary_df.to_markdown(index=False),
+            "score": score
+        }
+        eval_details = self.evaluation_report[['ID', 'Title', 'Requirement', 'Observations', 'Function References']].to_dict(orient='records')
 
         vars = {
-            "response": self.response,
-            "table": export_content,
             "quarto_header": add_quarto_header,
+            "title": "Test Evaluation Report",
+            "metadata": metadata,
+            "run_details": run_details,
+            "eval_summary": eval_summary,
+            "eval_details": eval_details
         }
         return self.export_template.render(**vars)
-
-        # return _get_md_representation(export_content, 1)
 
     def as_quarto_markdown(self) -> str:
         return self.as_markdown(add_quarto_header=True)
