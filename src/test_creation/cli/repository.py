@@ -86,7 +86,7 @@ class RepositoryActions(object):
             If provided, the system will render the evaluation report
             to the specified path. The format of the evaluation report will be
             based on the extension provided in this path. The extensions must be
-            either one of `.html`, `.htm`, `.pdf`, or `.qmd`.
+            either one of `.html`, `.htm`, `.pdf`, `.qmd`, or `.md`.
         checklist_path : str, optional
             Argument to use non-default checklist during the operation.
         test_dirs : list, optional
