@@ -51,17 +51,17 @@ To develop our automated code review tool, GitHub repositories of ML projects ar
 
 By developing our approach, we expect that it can provide reliable test suites evaluation to multiple ML projects in a scalable manner. However, we acknowledged that the consolidation of best practices currently focused on a few high priority test areas due to time constraint, where we expect to expand in the future. The test evaluation results provided by our tool are yet as reliable as human evaluation, where we will quantify its performance using the success metrics below.
 
-### Success Metrics (FIXME: this section is to be removed?)
+### Success Metrics
 
-To properly evaluate the performance of our tool where its core part leverages the capability of LLMs, we have researched and taken reference of the study in {cite}`alexander2023evaluating` and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (researchers, ML engineers, etc.) can assess the trustworthiness while obtaining the evaluation results from our tool.
+To properly assess the performance of our tool which leverages the capability of LLMs, we have researched and taken reference of the methods in {cite}`alexander2023evaluating` and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (researchers, ML engineers, etc.) can assess the trustworthiness while obtaining the evaluation results from our tool.
 
-1.  **Accuracy of the Application Response vs Human Expert Judgement**
+1.  **Accuracy of the Application vs Human Expert Judgement**
 
-We begin by running 30 times with our tool on the 11 ML projects in {cite}`openja2023studying` to obtain the evaluation results per each ML test best practice item (i.e. the satisfying score). We then manually assess the test suites of these ML projects based on the same best practice items as the ground truth data. Machine evaluation results are compared and contrasted with the ground truth data and are summarized into distributions of how many run results match/mismatch in general and per best practice item. Accuracy is defined as the number of matching results over total number of results.
+We run our tool on the ML projects in {cite}`openja2023studying` to obtain the evaluation results (i.e. completeness score) per each ML test best practice item. We then manually assess the test suites of these ML projects using the same criteria as the ground truth data. Machine evaluation results are compared and contrasted with the ground truth data. Accuracy is defined as the number of matching results over total number of results.
 
-2.  **Consistency of the Application Response**
+2.  **Consistency of the Application**
 
-We begin by the 30 run results as mentioned above. The standard deviation of these run results per ML projects will be calculated as a measure of consistency. These standard deviations are summarized into distributions in general and per best practice item. The distributions are studied to deduce the directions of improvement of our tool for better results.
+Multiple runs on each ML project are performed and the evaluation results per each ML test best practice item are obtained. Standard deviation of these results per ML projects are calculated as a measure of consistency.
 
 ## Data Product & Results
 
@@ -143,57 +143,54 @@ The artifacts stores the test specification responses from LLMs in Python script
 
 ### Evaluation Results
 
-We assessed the quality of evaluation determined by the system by examining the breakdown of the ML Completeness Score using the repositories mentioned in Openja et al. (2023) on two metrics: Accuracy and Consistency. (FIXME: would it be better to show a table of the repos? like how the Openja does?) We ran 30 iterations on each of the repositories.
+As illustrated in `Success Metrics`, we ran 30 iterations on each of the repositories in {cite}`openja2023studying` and examined the breakdown of the ML Completeness Score to assessed the quality of evaluation determined by our tool. (FIXME: would it be better to show a table of the repos? like how the Openja does?) 
 
 #### Accuracy
 
-To examine the accuracy of the output on a given repository, we need ground truth, i.e., satisfied or not satisfied for each checklist item, on that repository. We manually evaluated the lightfm (FIXME: link), qlib (FIXME: link), and DeepSpeech (FIXME: link) repositories and compared the system output to the manually created ground truth.
+For accuracy, we targeted 3 of the repositories (`lightfm` (FIXME: link), `qlib` (FIXME: link), `DeepSpeech` (FIXME: link)) for human evaluation and compared the ground truth with the outputs from our tool.
 
 ```{python}
 # FIXME: table: checklist id, title, (ground truth, (lightfm, qlib, DeepSpeech))
 ```
-
-The plot below shows the comparison of the satisfaction determined by our system for each checklist item and the ground truth for `lightfm`, `qlib`, and `DeepSpeech`.
+> Caption: Ground truth data on the 3 repositories
 
 ```{python}
 # FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
 ```
+> Caption: Comparison of the satisfaction determined by our system versus the ground truth for each checklist item and repository
 
-We found that for the items that are truly satisfied (score = 1), our system tends to determine them as partially satisfied (score = 0.5); for the items that are partially satisfied (score = 0.5), our system often determines them as not satisfied (score = 0). The table below summarizes our findings for each repository.
+We found that our tool tends to undermine the actual satisfying cases. For the items that are actually satisfied (score = 1), our tool tends to classify as partially satisfied (score = 0.5), while for those that are partially satisfied (score = 0.5), our tool often classfies as not satisfied (score = 0).
 
 ```{python}
 # FIXME: contingency table
 ```
+> Contingency table of the satisfaction determined by our system versus the ground truth
 
-The inaccuracies may be attributed to the need for improvement in the prompt for each checklist item, defined in the "Requirement" in the checklist.
+The accuracy issue may be attributed to the need for improvement of prompts in our checklist.
 
 #### Consistency
 
-The LLM output is not deterministic, so the completeness score is also not deterministic. The question we want to examine here is: How inconsistent are the scores for the checklist items?
-
-The chart below shows the standard deviations of the score for each checklist item, with each colored dot corresponding to the standard deviation of a checklist item from 30 runs of a specific repository.
+Since the completeness score from LLMs contain randomness, we further studied the consistency of scores across checklist items and reposities.
 
 ```{python}
 # FIXME: jitter-boxplot, checklist item vs. SD
 ```
+> Caption: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores of 30 runs of a sigle repository
 
-We found that some items, e.g., item 3.2 "Data in the Expected Format," tend to have high standard deviations for all the repositories. This might be due to the poor quality of the prompt, making it ambiguous for the LLM and hence hard to produce consistent results. Prompt engineering might solve this problem.
+We found 2 diverging cases. For example, it shows high standard deviations across repositories for item `3.2 Data in the Expected Format`. This might be a proof of poor prompt quality, making it ambiguous for the LLM and hence hard to produce consistent results. Prompt engineering might solve this problem.
 
-On the other hand, items like 5.3 "Ensure Model Output Shape Aligns with Expectation" tend to have lower standard deviations, but there are outliers yielding exceptionally high standard deviations. This may be because those repositories are unorthodox, and careful manual examination is required to achieve a more robust conclusion.
+On the other hand, there are outliers yielding exceptionally high standard deviations for item `5.3 Ensure Model Output Shape Aligns with Expectation`. This may be because those repositories are unorthodox, and careful manual examination is required to achieve a more robust conclusion.
 
-```{python}
-# FIXME: where to include the comparison and comments about 3.5-turbo to 4o?
-```
+#### Comparison of `gpt-3.5-turbo` and `gpt-4o`
 
-#### Comparison to `gpt-4o`
-
-In our comparison of system outputs from `gpt-4o` and `gpt-3.5-turbo` on the `lightfm` repository, we observed that the `gpt-4o` system consistently returned "Satisfied".
+To examine if newer LLMs help in both metrics, we preliminarily compared system outputs from `gpt-4o` and `gpt-3.5-turbo` on the `lightfm` repository, we observed that the `gpt-4o` system consistently returned "Satisfied", which deviates from the ground truth.
 
 ```{python}
 # FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
 ```
+> Caption: Comparison of the satisfaction using `gpt-4o` versus using `gpt-3.5-turbo` for each checklist item on `lightfm`
 
-Further investigation into prompt engineering with `gpt-4o` is required to address this issue and enhance the system performance.
+Further investigation into `gpt-4o` is required to address this issue and enhance the system performance.
 
 ## Conclusion
 
