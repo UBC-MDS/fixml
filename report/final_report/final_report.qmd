@@ -1,5 +1,4 @@
 ---
-title: "DSCI591 Capstone Final Report"
 format:
   html:
     code-fold: true
