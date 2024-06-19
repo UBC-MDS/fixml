@@ -86,35 +86,35 @@ The end goal of our product is to generate the following three artifacts in rela
 
 ### Evaluation Results
   
-We evaluated the quality of the ML Test Completeness Score and its breakdown using the repositories mentioned in Openja et al. (2023) on two metrics: Accuracy and Consistency. (FIXME: would it be better to show a table of the repos? like how the Openja does?) We run 30 runs on each of the repositories.
+We assessed the quality of evaluation determined by the system by examining the breakdown of the ML Completeness Score using the repositories mentioned in Openja et al. (2023) on two metrics: Accuracy and Consistency. (FIXME: would it be better to show a table of the repos? like how the Openja does?) We ran 30 iterations on each of the repositories.
 
 #### Accuracy
 
-To examine the accuracy of the output on a given repository, we need ground truth, i.e. satisfied or not for each checklist items, on that repository. We manually evaluated the `lightfm` (FIXME: link), `qlib` (FIXME: link) and `DeepSpeech` (FIXME: link), and compared the system output to the manually created ground truth. 
+To examine the accuracy of the output on a given repository, we need ground truth, i.e., satisfied or not satisfied for each checklist item, on that repository. We manually evaluated the lightfm (FIXME: link), qlib (FIXME: link), and DeepSpeech (FIXME: link) repositories and compared the system output to the manually created ground truth.
 
 (FIXME: table: checklist id, title, (ground truth, (lightfm, qlib, DeepSpeech)))
 
-Below plot shows the comparison of the satisfaction determined by our system of each checklist and the ground truth for `lightfm`, `qlib` and `DeepSpeech`.
+The plot below shows the comparison of the satisfaction determined by our system for each checklist item and the ground truth for `lightfm`, `qlib`, and `DeepSpeech`.
 
 (FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo)
 
-We found that, for the items that are truly satisfied (score = 1), our system tends to determine them as partially satisfied (score = 0.5); for the items that are partially satisfied (score = 0.5), our system often determine them as not satisfied (score = 0). The table below summarizes our finding for each repository.
+We found that for the items that are truly satisfied (score = 1), our system tends to determine them as partially satisfied (score = 0.5); for the items that are partially satisfied (score = 0.5), our system often determines them as not satisfied (score = 0). The table below summarizes our findings for each repository.
 
 (FIXME: contingency table)
 
-The inaccuracy may attribute to the room of improvement of the prompt of each checklist item, defined in the "Requirement" in the checklist.
+The inaccuracies may be attributed to the need for improvement in the prompt for each checklist item, defined in the "Requirement" in the checklist.
 
 #### Consistency 
 
-The LLM output is not deterministic, so the completeness score is not deterministic too. The question we want to examine here is: How inconsistent the scores are for the checklist items?
+The LLM output is not deterministic, so the completeness score is also not deterministic. The question we want to examine here is: How inconsistent are the scores for the checklist items?
 
-The chart below shows the standard deviations of the score for each checklist item, and each color dot corresponds to the standard deviation of a checklist item from 30 runs of specific repository.
+The chart below shows the standard deviations of the score for each checklist item, with each colored dot corresponding to the standard deviation of a checklist item from 30 runs of a specific repository.
 
 (FIXME: jitter-boxplot, checklist item vs. SD)
 
-We found that some items, e.g. item 3.2 "Data in the Expected Format", tend to have high standard deviations for all the repositories. This might be due to poor quality of the prompt, in a way that the LLM finds them ambiguous and hence hard to give consistent result. Prompt engineering might solve the problem.
+We found that some items, e.g., item 3.2 "Data in the Expected Format," tend to have high standard deviations for all the repositories. This might be due to the poor quality of the prompt, making it ambiguous for the LLM and hence hard to produce consistent results. Prompt engineering might solve this problem.
 
-On the other hand, items like 5.3 "Ensure Model Output Shape Aligns with Expectation" tend to have lower standard deviations, but there are outliers yielding exceptionally high standard deviations. It may be because those repositories are unorthodox, careful manual examination is required to archive a more robust conclusion.
+On the other hand, items like 5.3 "Ensure Model Output Shape Aligns with Expectation" tend to have lower standard deviations, but there are outliers yielding exceptionally high standard deviations. This may be because those repositories are unorthodox, and careful manual examination is required to achieve a more robust conclusion.
 
 (FIXME: where to include the comparison and comments about 3.5-turbo to 4o?)
 
