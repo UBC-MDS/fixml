@@ -13,3 +13,6 @@ draft/*
 
 # pycache
 **/__pycache__/
+
+# built package
+dist/
