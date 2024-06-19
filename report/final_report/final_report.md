@@ -4,7 +4,7 @@ by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
 ## Executive Summary
 
-TBC
+#FIXME
 
 ## Introduction
 
@@ -28,7 +28,7 @@ To ensure the reproducibility, trustworthiness and free-of-bias ML system, compr
 
 #### 1. Code Coverage 
 
-Code coverage is a measure of the proportion of source code of a program executed when a particular test suite is run. It is widely used in software development domain as one of the measurements. It quantifies the test quality and is scalable given the short process time. However, it cannot provide the reasons and in which ML areas that the test suites fail under the context of ML system development.
+Code coverage is a measure of the proportion of source code of a program executed when a particular test suite is run. It is widely used in software development domain as one of the measurements. It quantifies the test quality and is scalable given the short process time. However, it cannot provide the reasons and in which ML areas that the test suites fall short under the context of ML system development.
 
 #### 2. Manual Evaluation
 
@@ -90,43 +90,38 @@ The end goal of our product is to generate the following three artifacts in rela
 
 ### Wrap Up
 
-Our project, FixML, represents a significant step forward in the field of machine learning (ML) testing by providing tools that automate and enhance the evaluation and creation of test cases for ML models. The development and implementation of FixML have been driven by the need to address the limitations of traditional testing methods, which are often either too general or focus on quantitative metrics without testing the quality of ML or data science projects. FixML offers the advantages of combining the efficiency of automated testing with the thoroughness of expert evaluation, making it both scalable and reliable for diverse ML applications.
+Our project, FixML, represents a significant step forward in the field of machine learning (ML) testing by providing curated checklists and automated tools that enhance the evaluation and creation of test suites for ML models. The development and implementation of FixML have been driven by both the need of better quality assurance in ML systems, and the current limitations of traditional testing methods on ML projects which are either too general without comprehensive clarification, or are too human-reliant.
 
-#### Key aspects of FixML
+FixML seamlessly takes in the user’s ML codebase, identifies and extracted its existing test suites. Together with the curated checklist on ML testing, FixML leverages Large Language Models (LLMs) to assess the completeness of the test suites and output detailed evaluation reports with completeness scores and specific reasons. This assists users in understanding the performance of their current test suites with insights. Additionally, FixML can generate test function specifications corresponding to the curated checklist, helping users utilizing their test suites.
 
-FixML seamlessly integrates with the user’s codebase, automatically analyzing the code and identifying existing test cases. This automated evaluation process leverages Large Language Models (LLMs) to assess the completeness and quality of existing tests, providing a comprehensive test completeness score. Additionally, FixML includes an automated test function specification generator that produces test function specifications based on checklist items, helping users create comprehensive test suites.
+In return, FixML solution combines the scalability of automated testing with the reliability of expert evaluation. By automating the evaluation process, FixML significantly reduces the time and human effort required to assess the quality of ML test suites. This popularizes thorough and efficient quality assessment on ML projects.
 
-Efficiency and automation are central to FixML’s design. By automating the evaluation process, FixML significantly reduces the time and effort required to assess the quality of machine learning (ML) tests. This combination of automated testing and expert evaluation ensures thorough and efficient quality assessment.
-
-Comprehensive reporting is another crucial aspect of FixML. The system generates detailed evaluation reports that include test completeness scores and specific recommendations for improvement. These reports provide actionable insights to enhance the quality and reliability of ML projects.
-
-By focusing on seamless integration with codebases, automated evaluation and test generation, efficiency, flexibility, customization, and comprehensive reporting, FixML offers a robust, efficient, and customizable solution for evaluating and improving the testing quality of machine learning projects.
-
-#### Limitation & Future Improvement
+### Limitation & Future Improvement
 
 While FixML provides substantial benefits, there are limitations and areas that aim to be addressed in future development:
 
-1. Workflow Optimization
+#### 1. Specialized Checklist
 
-The current test evaluator and test specification generator are separate entities. This could be improved by embedding a workflow engine that allows the system to automatically take actions based on the LLM response. For instance, if the LLM response suggests that test cases are partially satisfied or non-satisfied, the system could automatically run the test generator to produce test function skeletons and then reevaluate them until they are satisfied or some threshold is met. This would create a more cohesive and efficient workflow, reducing manual intervention and improving overall system performance.
+The current checklist is designed to be general and may not cover all specific requirements for different ML projects. Future development will focus on creating more specialized checklists for different domains and project types, allowing for more tailored evaluations. 
+Since the format of the checklist is designed to allow users to easily expand, edit and select checklist items based on their specific use case, we welcome any collaboration with ML researchers on the creation of specalized checklists.
 
-2. Performance Optimization
+#### 2. Enhanced Test Evaluator
+
+Our current study unveils the varying accuracy and consistency issues on the evaluation results using OpenAI GPT models. Future improvements involves prompt enhancement with prompt engineering techniques and support for multiple LLMs for higher performance and flexibility of FixML test evaluator functionality. We also expect to deliver user guidelines in editing the prompts in our system, where ML developers can customize prompts for better performance and collaborate with us to embed them into the system.
+
+#### 3. Customized Test Specification
+
+FixML test specification generator currently produces general test function skeletons solely based on the curated checklist without the context of the specific ML projects. Future developments will involve the integration of the ML project codebase in the generation process to output customized test functions skeletons. This further lower the barrier of ML users in creating comprehensive test suites relevant to the projects.
+
+4. Workflow Optimization #FIXME: have to review whether to include as it seems lower priority.
+
+The current test evaluator and test specification generator are separate entities. This could be improved by embedding a workflow engine that allows the system to automatically take actions based on the LLM response. For instance, if the LLM response suggests that test suites are partially satisfied or non-satisfied, the system could automatically run the test generator to produce test function skeletons and then reevaluate them until they are satisfied or some threshold is met. This would create a more cohesive and efficient workflow, reducing manual intervention and improving overall system performance.
+
+5. Performance Optimization #FIXME: have to review whether to include as it seems lower priority.
 
 Performance optimization is another critical area for future development. As FixML handles large codebases and complex evaluations, optimizing the system to handle these tasks more efficiently is essential. This includes improving the speed and accuracy of the LLM responses, reducing the time taken to analyze and generate reports, and ensuring the system can scale effectively to handle more extensive and more complex projects.
 
-3. Specialized Checklist
-
-The current checklist is designed to be general and may not cover all specific requirements for different ML projects. Future development will focus on creating more specialized checklists for different domains and project types, allowing for more tailored evaluations. Additionally, an interface will be provided to allow users to expand the checklists or select checklist items based on their specific needs, making the system more flexible and user-centric.
-
-4. Enhanced Test Evaluator
-
-The current evaluation relies on the capabilities of large language models (LLMs), which can vary in consistency and accuracy. Future improvements will enhance prompt engineering techniques and provide an interface that allows users to input their customized prompts into the system. This will improve the consistency and reliability of LLM responses. Additionally, expanding support for multiple LLMs will increase robustness and flexibility, ensuring that the system remains adaptable to advancements in LLM technology.
-
-5. Customized Test Specification
-
-The current generator produces general test function skeletons and does not integrate specific details for the projects. Future developments will focus on incorporating function specifications alongside checklists for more precise test generation. Additionally, integrating the project codebase as context for generating more detailed and customized test functions will make the tool more effective and aligned with the specific requirements of each project.
-
 By addressing these limitations and focusing on these future improvements, FixML will become an even more powerful tool for ensuring the quality and robustness of machine learning and data science projects.
 
-## Official Alpha Launch
+#### Official Alpha Launch #FIXME: have to review whether to include the launch as the report audience is partner and faculty mentor.
 As we move forward, we are excited to officially launch the alpha version of FixML. We invite you to test our tool, provide feedback, and collaborate with us to further refine and enhance its capabilities. Together, we can make a significant impact on the quality and reliability of machine learning projects across various domains.
