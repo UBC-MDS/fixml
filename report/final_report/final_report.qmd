@@ -89,20 +89,15 @@ The design principle of our package adheres to object-oriented design and SOLID 
 
 There are five components in the system of our package:
 
-1.  **Code Analyzer** 
-This component extracts the information relevant to test suites from the input codebase, which is essential for injecting only the most relevant information to LLMs given its token limits.
+1.  **Code Analyzer** This component extracts the information relevant to test suites from the input codebase, which is essential for injecting only the most relevant information to LLMs given its token limits.
 
-2.  **Prompt Templates** 
-This component stores the prompt template necessary for instructing LLM to behave and return responses in consistent and expected format. Few-shot learning is applied for the instruction.
+2.  **Prompt Templates** This component stores the prompt template necessary for instructing LLM to behave and return responses in consistent and expected format. Few-shot learning is applied for the instruction.
 
-3.  **Checklist** 
-This component reads the curated checklist, which is stored in CSV format, as a dict with fixed schema for injection into prompt. Default checklist is also included inside the package for distribution.
+3.  **Checklist** This component reads the curated checklist, which is stored in CSV format, as a dict with fixed schema for injection into prompt. Default checklist is also included inside the package for distribution.
 
-4.  **Runners** 
-This component involves the Evaluator module, which evaluates each file from the test suites using LLMs and outputs evaluation results, and Generator module, which generates test specifications. Both modules include validation and retry logics and record all relevant information in the responses.
+4.  **Runners** This component involves the Evaluator module, which evaluates each file from the test suites using LLMs and outputs evaluation results, and Generator module, which generates test specifications. Both modules include validation and retry logics and record all relevant information in the responses.
 
-5.  **Parsers** 
-This components parses the responses from Evaluator into evaluation reports in various formats (HTML, PDF) using Jinja template engine. Adhering to our design principle, this enables flexibility in creating customized report structure.
+5.  **Parsers** This components parses the responses from Evaluator into evaluation reports in various formats (HTML, PDF) using Jinja template engine. Adhering to our design principle, this enables flexibility in creating customized report structure.
 
 #### Checklist Design
 
@@ -111,7 +106,7 @@ The package will incorporate a checklist ([Fig. 1](overview-diagram)) which cont
 Here is an example of how the checklist would be structured:
 
 |                  Column | Description                                                                                          |
-|------------------:|:----------------------------------------------------|
+|------------------------:|:-----------------------------------------------------------------------------------------------------|
 |                      ID | The Unique Identifier of the checklist item                                                          |
 |                   Topic | The Test Area of the checklist item                                                                  |
 |                   Title | The Title of the checklist item                                                                      |
@@ -120,30 +115,27 @@ Here is an example of how the checklist would be structured:
 |               Reference | References of the checklist item, e.g. academic paper                                                |
 | Is Evaluator Applicable | Whether the checklist item is selected to be used during evaluation. 0 indicates No, 1 indicates Yes |
 
-(To be revised) <img src="../../img/checklist_sample.png" width="200" />
+(To be revised) <img src="../../img/checklist_sample.png" width="200"/>
 
 #### Artifacts
 
 There are three artifacts after using our package:
 
-1.  **Evaluation Responses** 
-The artifact stores both the evaluation responses from LLMs and meta-data of the process in JSON format. This supports downstream tasks, such as report render, scientific research, etc.
+1.  **Evaluation Responses** The artifact stores both the evaluation responses from LLMs and meta-data of the process in JSON format. This supports downstream tasks, such as report render, scientific research, etc.
 
 (To be revised) schema of the JSON saved & what kind of information is stored
 
-2.  **Evaluation Report** 
-The artifact stores the evaluation results of the ML projects in a structured format, which includes completeness score breakdown and corresponding detailed reasons.
+2.  **Evaluation Report** The artifact stores the evaluation results of the ML projects in a structured format, which includes completeness score breakdown and corresponding detailed reasons.
 
-(To be revised) <img src="../../img/test_evaluation_report_sample.png" width="200" />
+(To be revised) <img src="../../img/test_evaluation_report_sample.png" width="200"/>
 
-3.  **Test Specification Script** 
-The artifacts stores the test specification responses from LLMs in Python script format.
+3.  **Test Specification Script** The artifacts stores the test specification responses from LLMs in Python script format.
 
-(To be revised) <img src="../../img/test_spec_sample.png" width="200" />
+(To be revised) <img src="../../img/test_spec_sample.png" width="200"/>
 
 ### Evaluation Results
 
-As illustrated in `Success Metrics`, we ran 30 iterations on each of the repositories in {cite}`openja2023studying` and examined the breakdown of the ML Completeness Score to assessed the quality of evaluation determined by our tool. (FIXME: would it be better to show a table of the repos? like how the Openja does?) 
+As illustrated in `Success Metrics`, we ran 30 iterations on each of the repositories in {cite}`openja2023studying` and examined the breakdown of the ML Completeness Score to assessed the quality of evaluation determined by our tool. (FIXME: would it be better to show a table of the repos? like how the Openja does?)
 
 #### Accuracy
 
@@ -152,11 +144,13 @@ For accuracy, we targeted 3 of the repositories (`lightfm` (FIXME: link), `qlib`
 ```{python}
 # FIXME: table: checklist id, title, (ground truth, (lightfm, qlib, DeepSpeech))
 ```
+
 > Caption: Ground truth data on the 3 repositories
 
 ```{python}
 # FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
 ```
+
 > Caption: Comparison of the satisfaction determined by our system versus the ground truth for each checklist item and repository
 
 We found that our tool tends to undermine the actual satisfying cases. For the items that are actually satisfied (score = 1), our tool tends to classify as partially satisfied (score = 0.5), while for those that are partially satisfied (score = 0.5), our tool often classfies as not satisfied (score = 0).
@@ -164,6 +158,7 @@ We found that our tool tends to undermine the actual satisfying cases. For the i
 ```{python}
 # FIXME: contingency table
 ```
+
 > Contingency table of the satisfaction determined by our system versus the ground truth
 
 The accuracy issue may be attributed to the need for improvement of prompts in our checklist.
@@ -175,6 +170,7 @@ Since the completeness score from LLMs contain randomness, we further studied th
 ```{python}
 # FIXME: jitter-boxplot, checklist item vs. SD
 ```
+
 > Caption: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores of 30 runs of a sigle repository
 
 We found 2 diverging cases. For example, it shows high standard deviations across repositories for item `3.2 Data in the Expected Format`. This might be a proof of poor prompt quality, making it ambiguous for the LLM and hence hard to produce consistent results. Prompt engineering might solve this problem.
@@ -188,6 +184,7 @@ To examine if newer LLMs help in both metrics, we preliminarily compared system 
 ```{python}
 # FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
 ```
+
 > Caption: Comparison of the satisfaction using `gpt-4o` versus using `gpt-3.5-turbo` for each checklist item on `lightfm`
 
 Further investigation into `gpt-4o` is required to address this issue and enhance the system performance.
@@ -198,7 +195,7 @@ Further investigation into `gpt-4o` is required to address this issue and enhanc
 
 Our project, FixML, represents a significant step forward in the field of machine learning (ML) testing by providing curated checklists and automated tools that enhance the evaluation and creation of test suites for ML models. The development and implementation of FixML have been driven by both the need of better quality assurance in ML systems, and the current limitations of traditional testing methods on ML projects which are either too general without comprehensive clarification, or are too human-reliant.
 
-FixML seamlessly takes in the user’s ML codebase, identifies and extracted its existing test suites. Together with the curated checklist on ML testing, FixML leverages Large Language Models (LLMs) to assess the completeness of the test suites and output detailed evaluation reports with completeness scores and specific reasons. This assists users in understanding the performance of their current test suites with insights. Additionally, FixML can generate test function specifications corresponding to the curated checklist, helping users utilizing their test suites.
+FixML seamlessly takes in the user's ML codebase, identifies and extracted its existing test suites. Together with the curated checklist on ML testing, FixML leverages Large Language Models (LLMs) to assess the completeness of the test suites and output detailed evaluation reports with completeness scores and specific reasons. This assists users in understanding the performance of their current test suites with insights. Additionally, FixML can generate test function specifications corresponding to the curated checklist, helping users utilizing their test suites.
 
 In return, FixML solution combines the scalability of automated testing with the reliability of expert evaluation. By automating the evaluation process, FixML significantly reduces the time and human effort required to assess the quality of ML test suites. This popularizes thorough and efficient quality assessment on ML projects.
 
