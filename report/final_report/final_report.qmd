@@ -1,3 +1,10 @@
+---
+title: "DSCI591 Capstone Final Report"
+format:
+  html:
+    code-fold: true
+---
+
 # Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis
 
 by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
