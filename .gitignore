@@ -16,3 +16,6 @@ draft/*
 
 # built package
 dist/
+
+# pytest-cov
+.coverage
