@@ -103,23 +103,29 @@ The pro...
 #### System Components
 (TODO)
 1. Code Analyzer
-   - Necessity for extracting information from code base i.e. token limit
-   - RAG often omit important files & depends on quality of the query
-   - ways to extract information from code base
+    - Necessity for extracting information from code base i.e. token limit
+    - RAG often omit important files & depends on quality of the query
+    - ways to extract information from code base
 2. Prompt Templates
     - Necessity for instructing LLM to behave as expected and return consistent
       and workable response
-   - format instruction, used few-shot learning in prompt
+    - format instruction, used few-shot learning in prompt
 3. Runners - Evaluator and Generator
-   - current approach: per file evaluation
-   - validation logics and tools used
-   - record all relevant information during the run
+    - current approach: per file evaluation
+    - validation logics and tools used
+    - record all relevant information during the run
 4. Checklist
-   - incorporates human expertise
-   - customizable format i.e. CSV
-   - included inside the package for distribution
+    - incorporates human expertise
+    - decision for using CSV as format
+    - included inside the package for distribution
+    - class to read CSV as a dict with fixed schema for injection into prompt
+5. Parsers
+    - purpose: parsing response into reports
+    - which template engine used and why
+    - available formats
+    - external dependencies e.g. pandoc, quarto
 
-#### Checklist
+#### Checklist Design
 
 One big challenge in utilizing LLMs to reliably and consistently evaluate ML
 systems is their tendency to generate illogical and/or factually wrong
@@ -142,7 +148,7 @@ Here is an example of how the checklist would be structured:
 (To be revised, also need to talk about the schema of the checklist)
 ![image](../../img/checklist_sample.png)
 
-#### Intermediate artifact: JSON
+#### Intermediate Artifact Design
 (TODO)
 - Consideration to output intermediate artifact
 - why JSON
