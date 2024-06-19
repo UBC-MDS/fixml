@@ -18,51 +18,43 @@ Therefore, defining and promoting an industry standard and establishing robust t
 
 ### Our Objectives
 
-We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate a checklist to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software's trustworthiness, quality, and reproducibility across both the industry and academia {cite}`kapoor2022leakage`.
+We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software's trustworthiness, quality, and reproducibility across both the industry and academia {cite}`kapoor2022leakage`.
 
 ## Data Science Methods
 
-### Other Approaches
+### Current Approaches
+
+To ensure the reproducibility, trustworthiness and free-of-bias ML system, comprehensive assessment is essential. We have observed some traditional approaches in assessing the quality of ML systems, which contain different advantages and drawbacks as follows.
+
+#### 1. Code Coverage 
+
+Code coverage is a measure of the proportion of source code of a program executed when a particular test suite is run. It is widely used in software development domain as one of the measurements. It quantifies the test quality and is scalable given the short process time. However, it cannot provide the reasons and in which ML areas that the test suites fail under the context of ML system development.
+
+#### 2. Manual Evaluation
+
+Manual evaluation involves human expert review at the source code, whom can take the business logic into considerations and find vulnerabilites. Manual evaluation usually delivers comments for improvement under specific development context, and it is still one of the most reliable methods in practice. However, the time cost is large and it is not scalable due to the scarcity of time and human expert. Different human expert might put emphasis on different ML test areas instead of a comprehensive and holistic review on the ML system test suites.
 
 ### Our Approach
 
-### Data
-#### 1) ML Research Paper & Resources 
+Our approach is to deliver an automated code review tool with the best practices of ML test suites embedded, which can be used by ML users to learn the best practices as well as to obtain a comprehensive evaluation on their ML system codes.
 
-#### 2) GitHub Repositories
-In this project, GitHub repositories are our data. 
+To come up with the best practices of ML test suites, ML research paper and online resources are our data. Under the collaboration with our partner, we have researched industrial best practices (cite: Microsoft, Jordan) and published academic literature (cite: OpenJa) and consolidated the testing strategies of ML projects into a format which is easily legible and editable by human (such as researchers, ML engineers, etc.). The format is also machine-friendly that can be easily incorporated into the automated tool.
 
-To develop our testing checklist, we will collect 11 repositories studied in {cite}`openja2023studying`. Additionally, we will collect 377 repositories identified in the study by {cite}`wattanakriengkrai2022github` for our product development.
+To develop our automated code review tool, GitHub repositories of ML projects are our data. We have collected 11 repositories studied in {cite}`openja2023studying`, where these projects include comprehensive test suites and are written in Python programming language, for our product development. Our tool is capable of understanding the test suites in these projects, comparing and contrasting the test suites with the embedded best practices, and delivering evaluations and suggestions to the current test suties.
 
-For each repository, we are interested in the metadata and the ML modeling- and test-related source code. The metadata will be retrieved using the GitHub API, while the source code will be downloaded and filtered using our custom scripts. To ensure the relevance of the repositories to our study, we will apply the following criteria for filtering:
- 1. Repositories that are related to ML systems.
- 2. Repositories that include test cases.
- 3. Repositories whose development is written in the Python programming language.
+By developing our approach, we expect that it can provide reliable test suites evaluation to multiple ML projects in a scalable manner. However, we acknowledged that the consolidation of best practices currently focused on a few high priority test areas due to time constraint, where we expect to expand in the future. The test evaluation results provided by our tool are yet as reliable as human evaluation, where we will quantify its performance using the success metrics below.
 
 ### Success Metrics
 
-1) Accuracy and Consistency of the Application Response vs Human Expert Judgement
+To properly evaluate the performance of our tool where its core part leverages the capability of LLMs, we have researched and taken reference of the study in {cite}`alexander2023evaluating` and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (such as researchers, ML engineers, etc.) can assess the trustworthiness while obtaining the evaluation results from our tool.
 
-{accuracy graph}
+#### 1. Accuracy of the Application Response vs Human Expert Judgement
 
-2) Our product's success will depend on mutation testing of the test functions developed based on our application-generated specifications. The evaluation metric is the success rate of detecting the perturbations introduced to the ML project code.
+We begin by running 30 times with our tool on the 11 ML projects in {cite}`openja2023studying` to obtain the evaluation results per each ML test best practice item (i.e. the satisfying score). We then manually assess the test suites of these ML projects based on the same best practice items as the ground truth data. Machine evaluation results are compared and contrasted with the ground truth data and are summarized into distributions of how many run results match/mismatch in general and per best practice item. Accuracy is defined as the number of matching results over total number of results.
 
-Our partners and stakeholders expect a significant improvement in the testing suites of their ML systems post-application usage. As a result, the testing suites will demonstrate high accuracy in detecting faults, ensuring consistency and high quality of ML projects during updates.
+#### 2. Consistency of the Application Response
 
-Our data science methodology incorporates human expert evaluation and prompt engineering to assess and enhance the test quality of ML systems.
-
-- Human Expert Evaluation
-
-    We will begin by formulating a comprehensive checklist for evaluating the data and ML pipeline based on the established testing strategies outlined in {cite}`openja2023studying` as the foundational framework. Based on the formulated checklist, our team will manually assess the test quality within each repository data. We will refine the checklist to ensure applicability and robustness when testing general ML systems.
-
-- Prompt Engineering
-
-    We will engineer the prompts for LLM to incorporate with the ML system code and the curated checklist and to serve various purposes across the three-stage process:
-  
-    1. Prompts to examine test cases within the ML system source codes and deliver test completeness scores.
-    2. Prompts to compare and contrast the existing tests and the checklist and deliver recommendations.
-    3. Prompts to generate system-specific test specifications based on user-selected testing recommendations {cite}`schafer2023empirical`
-
+We begin by the 30 run results as mentioned above. The standard deviation of these run results per ML projects will be calculated as a measure of consistency. These standard deviations are summarized into distributions in general and per best practice item. The distributions are studied to deduce the directions of improvement of our tool for better results.
 
 ## Data Product & Results
 ### Data Products
