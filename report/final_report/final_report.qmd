@@ -183,15 +183,21 @@ We assessed the quality of evaluation determined by the system by examining the 
 
 To examine the accuracy of the output on a given repository, we need ground truth, i.e., satisfied or not satisfied for each checklist item, on that repository. We manually evaluated the lightfm (FIXME: link), qlib (FIXME: link), and DeepSpeech (FIXME: link) repositories and compared the system output to the manually created ground truth.
 
-(FIXME: table: checklist id, title, (ground truth, (lightfm, qlib, DeepSpeech)))
+```{python}
+# FIXME: table: checklist id, title, (ground truth, (lightfm, qlib, DeepSpeech))
+```
 
 The plot below shows the comparison of the satisfaction determined by our system for each checklist item and the ground truth for `lightfm`, `qlib`, and `DeepSpeech`.
 
-(FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo)
+```{python}
+# FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
+```
 
 We found that for the items that are truly satisfied (score = 1), our system tends to determine them as partially satisfied (score = 0.5); for the items that are partially satisfied (score = 0.5), our system often determines them as not satisfied (score = 0). The table below summarizes our findings for each repository.
 
-(FIXME: contingency table)
+```{python}
+# FIXME: contingency table
+```
 
 The inaccuracies may be attributed to the need for improvement in the prompt for each checklist item, defined in the "Requirement" in the checklist.
 
@@ -201,14 +207,27 @@ The LLM output is not deterministic, so the completeness score is also not deter
 
 The chart below shows the standard deviations of the score for each checklist item, with each colored dot corresponding to the standard deviation of a checklist item from 30 runs of a specific repository.
 
-(FIXME: jitter-boxplot, checklist item vs. SD)
+```{python}
+# FIXME: jitter-boxplot, checklist item vs. SD
+```
 
 We found that some items, e.g., item 3.2 "Data in the Expected Format," tend to have high standard deviations for all the repositories. This might be due to the poor quality of the prompt, making it ambiguous for the LLM and hence hard to produce consistent results. Prompt engineering might solve this problem.
 
 On the other hand, items like 5.3 "Ensure Model Output Shape Aligns with Expectation" tend to have lower standard deviations, but there are outliers yielding exceptionally high standard deviations. This may be because those repositories are unorthodox, and careful manual examination is required to achieve a more robust conclusion.
 
-(FIXME: where to include the comparison and comments about 3.5-turbo to 4o?)
+```{python}
+# FIXME: where to include the comparison and comments about 3.5-turbo to 4o?
+```
 
+#### Comparison to `gpt-4o`
+
+In our comparison of system outputs from `gpt-4o` and `gpt-3.5-turbo` on the `lightfm` repository, we observed that the `gpt-4o` system consistently returned "Satisfied".
+
+```{python}
+# FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
+```
+
+Further investigation into prompt engineering with `gpt-4o` is required to address this issue and enhance the system performance.
 
 ## Conclusion
 
