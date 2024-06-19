@@ -58,19 +58,103 @@ We begin by the 30 run results as mentioned above. The standard deviation of the
 
 ## Data Product & Results
 ### Data Products
-Our solution offers an end-to-end application for evaluating and enhancing the robustness of users' ML systems.
 
+Our solution offers a Python package that facilitates the use of LLMs in
+checklist-based evaluation on the robustness of users' Machine Learning
+projects.
+
+The package are made publicly available for distribution on the Python Packaging
+Index (PyPI).
+
+#### Consideration when making the product
+(TODO)
+- Python being the dominant language in ML/DS landscape
+- Ubiquitous presence of python across OSes
+- Existing libraries for integration with LLMs
+
+#### Ways to interact with the product
+
+There are two ways to make use of this package:
+
+1. **As a CLI tool.** A runnable command `fixml` is provided by the package.
+   Once installed, users can perform the codebase evaluation, test function
+   specification generation and other relevant tasks by running subcommands
+   under `fixml` in terminal environment.
+2. **As a high-level API.** Alternatively, one can use the package to import
+   all components necessary for performing the tasks. The workflows used in the
+   package have been designed to be fully modular as we have taken an
+   object-oriented approach. One can easily switch between different prompts,
+   models and checklists to use. Documentations are provided in terms of 
+   docstrings and a rendered ReadtheDocs site 
+
+#### System Design
+
+(TODO)
+
+(To be revised)
 ![image](../../img/proposed_system_overview.png)
 
-One big challenge in utilizing LLMs to reliably and consistently evaluate ML systems is their tendency to generate illogical and/or factually wrong information known as hallucination {cite}`zhang2023sirens`.
+The pro...
 
-To combat this, the system will incorporate a checklist ([Fig. 1](overview-diagram)) which would be curated manually and incorporate best practices in software testing and identified areas to be tested inside ML pipeline from human experts and past research.
+- adhere to OO Design and SOLID principles 
+- fully modular
+- Promotes code reuse and invites users to extend functionality
 
-This checklist will be our basis in evaluating the effectiveness and completeness of existing tests in a given codebase. Relevant information will be injected into a prompt template, which the LLMs would then be prompted to follow the checklist **exactly** during the evaluation.
+#### System Components
+(TODO)
+1. Code Analyzer
+    - Necessity for extracting information from code base i.e. token limit
+    - RAG often omit important files & depends on quality of the query
+    - ways to extract information from code base
+2. Prompt Templates
+    - Necessity for instructing LLM to behave as expected and return consistent
+      and workable response
+    - format instruction, used few-shot learning in prompt
+3. Runners - Evaluator and Generator
+    - current approach: per file evaluation
+    - validation logics and tools used
+    - record all relevant information during the run
+4. Checklist
+    - incorporates human expertise
+    - decision for using CSV as format
+    - included inside the package for distribution
+    - class to read CSV as a dict with fixed schema for injection into prompt
+5. Parsers
+    - purpose: parsing response into reports
+    - which template engine used and why
+    - available formats
+    - external dependencies e.g. pandoc, quarto
+
+#### Checklist Design
+
+One big challenge in utilizing LLMs to reliably and consistently evaluate ML
+systems is their tendency to generate illogical and/or factually wrong
+information known as hallucination {cite}`zhang2023sirens`.
+
+To combat this, the system will incorporate a
+checklist ([Fig. 1](overview-diagram)) which would be curated manually and
+incorporate best practices in software testing and identified areas to be tested
+inside ML pipeline from human experts and past research.
+
+This checklist will be our basis in evaluating the effectiveness and
+completeness of existing tests in a given codebase. Relevant information will be
+injected into a prompt template, which the LLMs would then be prompted to follow
+the checklist's requirements **exactly** during the evaluation.
 
 Here is an example of how the checklist would be structured:
 
+(TODO)
+
+(To be revised, also need to talk about the schema of the checklist)
 ![image](../../img/checklist_sample.png)
+
+#### Intermediate Artifact Design
+(TODO)
+- Consideration to output intermediate artifact
+- why JSON
+- Examples to use these JSONs in downstream tasks i.e. rendering reports, 
+  comparison between runs
+- schema of the JSON saved & what kind of information is stored
 
 ### Evaluation Artifacts
 
