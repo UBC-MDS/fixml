@@ -1,7 +1,7 @@
 import os
 
 import pytest
-from test_creation.modules.checklist import checklist as c
+from fixml.modules.checklist import checklist as c
 
 
 ################################################################################
@@ -9,7 +9,7 @@ from test_creation.modules.checklist import checklist as c
 ################################################################################
 @pytest.fixture(scope="module")
 def loaded_checklist():
-    return c.Checklist("checklist/checklist.csv/")
+    return c.Checklist()
 
 
 def test_loaded_checklist_is_indeed_a_checklist(loaded_checklist):
