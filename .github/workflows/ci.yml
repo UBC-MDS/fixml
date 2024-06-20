@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-wheel
-          path: dist/${{ steps.wheel-name.outputs.WHEELFILE }}
+          path: ${{ steps.wheel-name.outputs.WHEELFILE }}
 
   wheel-install-test:
     runs-on: ubuntu-latest
