@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>final_report</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./final_report.html">Final Report</a></li><li class="breadcrumb-item"><a href="./final_report.html">Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Final Report</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./final_report.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Proposal</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./proposal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Proposal Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary">Executive Summary</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
+  <li><a href="#our-objectives" id="toc-our-objectives" class="nav-link" data-scroll-target="#our-objectives">Our Objectives</a></li>
+  </ul></li>
+  <li><a href="#data-science-methods" id="toc-data-science-methods" class="nav-link" data-scroll-target="#data-science-methods">Data Science Methods</a>
+  <ul class="collapse">
+  <li><a href="#current-approaches" id="toc-current-approaches" class="nav-link" data-scroll-target="#current-approaches">Current Approaches</a></li>
+  <li><a href="#our-approach" id="toc-our-approach" class="nav-link" data-scroll-target="#our-approach">Our Approach</a></li>
+  <li><a href="#success-metrics" id="toc-success-metrics" class="nav-link" data-scroll-target="#success-metrics">Success Metrics</a></li>
+  </ul></li>
+  <li><a href="#data-product-results" id="toc-data-product-results" class="nav-link" data-scroll-target="#data-product-results">Data Product &amp; Results</a>
+  <ul class="collapse">
+  <li><a href="#data-products" id="toc-data-products" class="nav-link" data-scroll-target="#data-products">Data Products</a></li>
+  <li><a href="#evaluation-results" id="toc-evaluation-results" class="nav-link" data-scroll-target="#evaluation-results">Evaluation Results</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap Up</a></li>
+  <li><a href="#limitation-future-improvement" id="toc-limitation-future-improvement" class="nav-link" data-scroll-target="#limitation-future-improvement">Limitation &amp; Future Improvement</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin</p>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
+<p>#FIXME</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<section id="problem-statement" class="level3">
+<h3 class="anchored" data-anchor-id="problem-statement">Problem Statement</h3>
+<p>The global artificial intelligence (AI) market is growing exponentially {cite}<code>grand2021artificial</code>, driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.</p>
+<p>However, ensuring the software quality of these systems remains a significant challenge {cite}<code>openja2023studying</code>. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses ({cite}<code>Asheeta2019</code>, {cite}<code>Asheeta2019</code>, {cite}<code>Asheeta2019</code>) and safety hazards.</p>
+<p>Therefore, defining and promoting an industry standard and establishing robust testing methodologies for these systems is crucial. But how?</p>
+</section>
+<section id="our-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="our-objectives">Our Objectives</h3>
+<p>We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software’s trustworthiness, quality, and reproducibility across both the industry and academia {cite}<code>kapoor2022leakage</code>.</p>
+</section>
+</section>
+<section id="data-science-methods" class="level2">
+<h2 class="anchored" data-anchor-id="data-science-methods">Data Science Methods</h2>
+<section id="current-approaches" class="level3">
+<h3 class="anchored" data-anchor-id="current-approaches">Current Approaches</h3>
+<p>To ensure the reproducibility, trustworthiness and free-of-bias ML system, comprehensive assessment is essential. We have observed some traditional approaches in assessing the quality of ML systems, which contain different advantages and drawbacks as follows.</p>
+<section id="code-coverage" class="level4">
+<h4 class="anchored" data-anchor-id="code-coverage">1. Code Coverage</h4>
+<p>Code coverage is a measure of the proportion of source code of a program executed when a particular test suite is run. It is widely used in software development domain as one of the measurements. It quantifies the test quality and is scalable given the short process time. However, it cannot provide the reasons and in which ML areas that the test suites fall short under the context of ML system development.</p>
+</section>
+<section id="manual-evaluation" class="level4">
+<h4 class="anchored" data-anchor-id="manual-evaluation">2. Manual Evaluation</h4>
+<p>Manual evaluation involves human expert review at the source code, whom can take the business logic into considerations and find vulnerabilites. Manual evaluation usually delivers comments for improvement under specific development context, and it is still one of the most reliable methods in practice. However, the time cost is large and it is not scalable due to the scarcity of time and human expert. Different human expert might put emphasis on different ML test areas instead of a comprehensive and holistic review on the ML system test suites.</p>
+</section>
+</section>
+<section id="our-approach" class="level3">
+<h3 class="anchored" data-anchor-id="our-approach">Our Approach</h3>
+<p>Our approach is to deliver an automated code review tool with the best practices of ML test suites embedded, which can be used by ML users to learn the best practices as well as to obtain a comprehensive evaluation on their ML system codes.</p>
+<p>To come up with the best practices of ML test suites, ML research paper and recognized online resources are our data. Under the collaboration with our partner, we have researched industrial best practices (cite: Microsoft, Jordan) and published academic literature (cite: OpenJa) and consolidated the testing strategies of ML projects into a format which is easily legible and editable by human (researchers, ML engineers, etc.). The format is also machine-friendly that can be easily incorporated into the automated tool.</p>
+<p>To develop our automated code review tool, GitHub repositories of ML projects are our data. We have collected 11 repositories studied in {cite}<code>openja2023studying</code>, where these projects include comprehensive test suites and are written in Python programming language, for our product development. Our tool is capable of understanding the test suites in these projects, comparing and contrasting the test suites with the embedded best practices, and delivering evaluations and suggestions to the current test suties.</p>
+<p>By developing our approach, we expect that it can provide reliable test suites evaluation to multiple ML projects in a scalable manner. However, we acknowledged that the consolidation of best practices currently focused on a few high priority test areas due to time constraint, where we expect to expand in the future. The test evaluation results provided by our tool are yet as reliable as human evaluation, where we will quantify its performance using the success metrics below.</p>
+</section>
+<section id="success-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="success-metrics">Success Metrics</h3>
+<p>To properly assess the performance of our tool which leverages the capability of LLMs, we have researched and taken reference of the methods in {cite}<code>alexander2023evaluating</code> and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (researchers, ML engineers, etc.) can assess the trustworthiness while obtaining the evaluation results from our tool.</p>
+<ol type="1">
+<li><strong>Accuracy of the Application vs Human Expert Judgement</strong></li>
+</ol>
+<p>We run our tool on the ML projects in {cite}<code>openja2023studying</code> to obtain the evaluation results (i.e.&nbsp;completeness score) per each ML test best practice item. We then manually assess the test suites of these ML projects using the same criteria as the ground truth data. Machine evaluation results are compared and contrasted with the ground truth data. Accuracy is defined as the number of matching results over total number of results.</p>
+<ol start="2" type="1">
+<li><strong>Consistency of the Application</strong></li>
+</ol>
+<p>Multiple runs on each ML project are performed and the evaluation results per each ML test best practice item are obtained. Standard deviation of these results per ML projects are calculated as a measure of consistency.</p>
+</section>
+</section>
+<section id="data-product-results" class="level2">
+<h2 class="anchored" data-anchor-id="data-product-results">Data Product &amp; Results</h2>
+<section id="data-products" class="level3">
+<h3 class="anchored" data-anchor-id="data-products">Data Products</h3>
+<p>Our solution offers both a curated checklist on robust ML testing, and a Python package that facilitates the use of LLMs in checklist-based evaluation on the robustness of users’ ML projects. The Python package is made publicly available for distribution on the Python Packaging Index (PyPI).</p>
+<p>The justifications for creating these products are, on one hand, checklists have been shown to decrease errors in software systems and promote code submissions (cite: Gawande 2010, Pineau et al.&nbsp;(2021) from Tiffany PDF). Moreover, Python is chosen to be the programing language of our package given its prevalence in the ML landscape, its ubiquitous presence across different OSes and the existence of Python libraries for the integration with LLMs. This lowers the barrier to use and develop our package and provides better user experience.</p>
+<section id="how-to-use-the-product" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-use-the-product">How to use the product</h4>
+<p>There are two ways to make use of this package:</p>
+<ol type="1">
+<li><p><strong>As a CLI tool.</strong> A runnable command <code>fixml</code> is provided by the package. Once installed, users can perform the codebase evaluation, test function specification generation and other relevant tasks by running subcommands under <code>fixml</code> in terminal environment.</p></li>
+<li><p><strong>As a high-level API.</strong> Alternatively, one can use the package to import all components necessary for performing the tasks as part of their own system. Documentations are provided in terms of docstrings.</p></li>
+</ol>
+<p>By formating our product as a CLI tool and API, one (researchers, ML engineers, etc.) will find it user-friendly to interact with. Moreover, it is versatile to support various use cases, such as web application development, data science research, etc.</p>
+</section>
+<section id="system-design" class="level4">
+<h4 class="anchored" data-anchor-id="system-design">System Design</h4>
+<p>(To be revised) <img src="../../img/proposed_system_overview.png" class="img-fluid" alt="image"></p>
+<p>The design principle of our package adheres to object-oriented design and SOLID principles, which is fully modular. One can easily switch between different prompts, models and checklists to use. This enables code reuse and promote users’ collaboration to extend its functionality.</p>
+<p>There are five components in the system of our package:</p>
+<ol type="1">
+<li><p><strong>Code Analyzer</strong> This component extracts the information relevant to test suites from the input codebase, which is essential for injecting only the most relevant information to LLMs given its token limits.</p></li>
+<li><p><strong>Prompt Templates</strong> This component stores the prompt template necessary for instructing LLM to behave and return responses in consistent and expected format. Few-shot learning is applied for the instruction.</p></li>
+<li><p><strong>Checklist</strong> This component reads the curated checklist, which is stored in CSV format, as a dict with fixed schema for injection into prompt. Default checklist is also included inside the package for distribution.</p></li>
+<li><p><strong>Runners</strong> This component involves the Evaluator module, which evaluates each file from the test suites using LLMs and outputs evaluation results, and Generator module, which generates test specifications. Both modules include validation and retry logics and record all relevant information in the responses.</p></li>
+<li><p><strong>Parsers</strong> This components parses the responses from Evaluator into evaluation reports in various formats (HTML, PDF) using Jinja template engine. Adhering to our design principle, this enables flexibility in creating customized report structure.</p></li>
+</ol>
+</section>
+<section id="checklist-design" class="level4">
+<h4 class="anchored" data-anchor-id="checklist-design">Checklist Design</h4>
+<p>The package will incorporate a checklist (<a href="overview-diagram">Fig. 1</a>) which contains the best practices in testing ML pipeline and is curated manually based on ML researches and recognized online resources. Prompt engineering is applied to the checklist for better performance. This also helps combating the hallucination of LLMs ({cite}<code>zhang2023sirens</code>) during the evaluation of ML projects by prompting it to follow <strong>exactly</strong> the checklist.</p>
+<p>Here is an example of how the checklist would be structured:</p>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Column</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">ID</td>
+<td style="text-align: left;">The Unique Identifier of the checklist item</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Topic</td>
+<td style="text-align: left;">The Test Area of the checklist item</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Title</td>
+<td style="text-align: left;">The Title of the checklist item</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Requirement</td>
+<td style="text-align: left;">The Prompt of the checklist item to be injected into LLMs for evaluation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Explanations</td>
+<td style="text-align: left;">Detailed explanations of the checklist item for human understanding</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Reference</td>
+<td style="text-align: left;">References of the checklist item, e.g.&nbsp;academic paper</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Is Evaluator Applicable</td>
+<td style="text-align: left;">Whether the checklist item is selected to be used during evaluation. 0 indicates No, 1 indicates Yes</td>
+</tr>
+</tbody>
+</table>
+<p>(To be revised) <img src="../../img/checklist_sample.png" width="200"></p>
+</section>
+<section id="artifacts" class="level4">
+<h4 class="anchored" data-anchor-id="artifacts">Artifacts</h4>
+<p>There are three artifacts after using our package:</p>
+<ol type="1">
+<li><strong>Evaluation Responses</strong> The artifact stores both the evaluation responses from LLMs and meta-data of the process in JSON format. This supports downstream tasks, such as report render, scientific research, etc.</li>
+</ol>
+<p>(To be revised) schema of the JSON saved &amp; what kind of information is stored</p>
+<ol start="2" type="1">
+<li><strong>Evaluation Report</strong> The artifact stores the evaluation results of the ML projects in a structured format, which includes completeness score breakdown and corresponding detailed reasons.</li>
+</ol>
+<p>(To be revised) <img src="../../img/test_evaluation_report_sample.png" width="200"></p>
+<ol start="3" type="1">
+<li><strong>Test Specification Script</strong> The artifacts stores the test specification responses from LLMs in Python script format.</li>
+</ol>
+<p>(To be revised) <img src="../../img/test_spec_sample.png" width="200"></p>
+</section>
+</section>
+<section id="evaluation-results" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation-results">Evaluation Results</h3>
+<p>As illustrated in <code>Success Metrics</code>, we ran 30 iterations on each of the repositories in {cite}<code>openja2023studying</code> and examined the breakdown of the ML Completeness Score to assessed the quality of evaluation determined by our tool. (FIXME: would it be better to show a table of the repos? like how the Openja does?)</p>
+<section id="accuracy" class="level4">
+<h4 class="anchored" data-anchor-id="accuracy">Accuracy</h4>
+<p>For accuracy, we targeted 3 of the repositories (<code>lightfm</code> (FIXME: link), <code>qlib</code> (FIXME: link), <code>DeepSpeech</code> (FIXME: link)) for human evaluation and compared the ground truth with the outputs from our tool.</p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: table: checklist id, title, (ground truth, (lightfm, qlib, DeepSpeech))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<blockquote class="blockquote">
+<p>Caption: Ground truth data on the 3 repositories</p>
+</blockquote>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: jitter-mean-sd plot (checklist item vs. score) for each repo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<blockquote class="blockquote">
+<p>Caption: Comparison of the satisfaction determined by our system versus the ground truth for each checklist item and repository</p>
+</blockquote>
+<p>We found that our tool tends to undermine the actual satisfying cases. For the items that are actually satisfied (score = 1), our tool tends to classify as partially satisfied (score = 0.5), while for those that are partially satisfied (score = 0.5), our tool often classfies as not satisfied (score = 0).</p>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: contingency table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<blockquote class="blockquote">
+<p>Contingency table of the satisfaction determined by our system versus the ground truth</p>
+</blockquote>
+<p>The accuracy issue may be attributed to the need for improvement of prompts in our checklist.</p>
+</section>
+<section id="consistency" class="level4">
+<h4 class="anchored" data-anchor-id="consistency">Consistency</h4>
+<p>Since the completeness score from LLMs contain randomness, we further studied the consistency of scores across checklist items and reposities.</p>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: jitter-boxplot, checklist item vs. SD</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<blockquote class="blockquote">
+<p>Caption: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores of 30 runs of a sigle repository</p>
+</blockquote>
+<p>We found 2 diverging cases. For example, it shows high standard deviations across repositories for item <code>3.2 Data in the Expected Format</code>. This might be a proof of poor prompt quality, making it ambiguous for the LLM and hence hard to produce consistent results. Prompt engineering might solve this problem.</p>
+<p>On the other hand, there are outliers yielding exceptionally high standard deviations for item <code>5.3 Ensure Model Output Shape Aligns with Expectation</code>. This may be because those repositories are unorthodox, and careful manual examination is required to achieve a more robust conclusion.</p>
+</section>
+<section id="comparison-of-gpt-3.5-turbo-and-gpt-4o" class="level4">
+<h4 class="anchored" data-anchor-id="comparison-of-gpt-3.5-turbo-and-gpt-4o">Comparison of <code>gpt-3.5-turbo</code> and <code>gpt-4o</code></h4>
+<p>To examine if newer LLMs help in both metrics, we preliminarily compared system outputs from <code>gpt-4o</code> and <code>gpt-3.5-turbo</code> on the <code>lightfm</code> repository, we observed that the <code>gpt-4o</code> system consistently returned “Satisfied”, which deviates from the ground truth.</p>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: jitter-mean-sd plot (checklist item vs. score) for each repo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<blockquote class="blockquote">
+<p>Caption: Comparison of the satisfaction using <code>gpt-4o</code> versus using <code>gpt-3.5-turbo</code> for each checklist item on <code>lightfm</code></p>
+</blockquote>
+<p>Further investigation into <code>gpt-4o</code> is required to address this issue and enhance the system performance.</p>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<section id="wrap-up" class="level3">
+<h3 class="anchored" data-anchor-id="wrap-up">Wrap Up</h3>
+<p>Our project, FixML, represents a significant step forward in the field of machine learning (ML) testing by providing curated checklists and automated tools that enhance the evaluation and creation of test suites for ML models. The development and implementation of FixML have been driven by both the need of better quality assurance in ML systems, and the current limitations of traditional testing methods on ML projects which are either too general without comprehensive clarification, or are too human-reliant.</p>
+<p>FixML seamlessly takes in the user’s ML codebase, identifies and extracted its existing test suites. Together with the curated checklist on ML testing, FixML leverages Large Language Models (LLMs) to assess the completeness of the test suites and output detailed evaluation reports with completeness scores and specific reasons. This assists users in understanding the performance of their current test suites with insights. Additionally, FixML can generate test function specifications corresponding to the curated checklist, helping users utilizing their test suites.</p>
+<p>In return, FixML solution combines the scalability of automated testing with the reliability of expert evaluation. By automating the evaluation process, FixML significantly reduces the time and human effort required to assess the quality of ML test suites. This popularizes thorough and efficient quality assessment on ML projects.</p>
+</section>
+<section id="limitation-future-improvement" class="level3">
+<h3 class="anchored" data-anchor-id="limitation-future-improvement">Limitation &amp; Future Improvement</h3>
+<p>While FixML provides substantial benefits, there are limitations and areas that aim to be addressed in future development:</p>
+<ol type="1">
+<li><strong>Specialized Checklist</strong></li>
+</ol>
+<p>The current checklist is designed to be general and may not cover all specific requirements for different ML projects. Future development will focus on creating more specialized checklists for different domains and project types, allowing for more tailored evaluations. Since the format of the checklist is designed to allow users to easily expand, edit and select checklist items based on their specific use case, we welcome any collaboration with ML researchers on the creation of specalized checklists.</p>
+<ol start="2" type="1">
+<li><strong>Enhanced Test Evaluator</strong></li>
+</ol>
+<p>Our current study unveils the varying accuracy and consistency issues on the evaluation results using OpenAI GPT models. Future improvements involves prompt enhancement with prompt engineering techniques and support for multiple LLMs for higher performance and flexibility of FixML test evaluator functionality. We also expect to deliver user guidelines in editing the prompts in our system, where ML developers can customize prompts for better performance and collaborate with us to embed them into the system.</p>
+<ol start="3" type="1">
+<li><strong>Customized Test Specification</strong></li>
+</ol>
+<p>FixML test specification generator currently produces general test function skeletons solely based on the curated checklist without the context of the specific ML projects. Future developments will involve the integration of the ML project codebase in the generation process to output customized test functions skeletons. This further lower the barrier of ML users in creating comprehensive test suites relevant to the projects.</p>
+<ol start="4" type="1">
+<li>Workflow Optimization #FIXME: have to review whether to include as it seems lower priority.</li>
+</ol>
+<p>The current test evaluator and test specification generator are separate entities. This could be improved by embedding a workflow engine that allows the system to automatically take actions based on the LLM response. For instance, if the LLM response suggests that test suites are partially satisfied or non-satisfied, the system could automatically run the test generator to produce test function skeletons and then reevaluate them until they are satisfied or some threshold is met. This would create a more cohesive and efficient workflow, reducing manual intervention and improving overall system performance.</p>
+<ol start="5" type="1">
+<li>Performance Optimization #FIXME: have to review whether to include as it seems lower priority.</li>
+</ol>
+<p>Performance optimization is another critical area for future development. As FixML handles large codebases and complex evaluations, optimizing the system to handle these tasks more efficiently is essential. This includes improving the speed and accuracy of the LLM responses, reducing the time taken to analyze and generate reports, and ensuring the system can scale effectively to handle more extensive and more complex projects.</p>
+<p>By addressing these limitations and focusing on these future improvements, FixML will become an even more powerful tool for ensuring the quality and robustness of machine learning and data science projects.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
