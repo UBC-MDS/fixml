@@ -40,13 +40,13 @@ Code coverage is a measure of the proportion of source code of a program execute
 
 2. **Manual Evaluation**
 
-Manual evaluation involves human expert review at the source code, whom can take the business logic into considerations and find vulnerabilites. Manual evaluation usually delivers comments for improvement under specific development context, and it is still one of the most reliable methods in practice ({cite}`openja2023studying`, {cite}`alexander2023evaluating`). However, the time cost is large and it is not scalable due to the scarcity of time and human expert. Different human expert might put emphasis on different ML test areas instead of a comprehensive and holistic review on the ML system test suites.
+Manual evaluation involves human expert review at the source code, whom can take the business logic into considerations and find vulnerabilites. Manual evaluation usually delivers comments for improvement under specific development context, and it is still one of the most reliable methods in practice ([@openja2023studying], [@alexander2023evaluating]). However, the time cost is large and it is not scalable due to the scarcity of time and human expert. Different human expert might put emphasis on different ML test areas instead of a comprehensive and holistic review on the ML system test suites.
 
 ### Our Approach
 
 Our approach is to deliver an automated code review tool with the best practices of ML test suites embedded, which can be used by ML users to learn the best practices as well as to obtain a comprehensive evaluation on their ML system codes.
 
-To come up with the best practices of ML test suites, ML research paper and recognized online resources are our data. Under the collaboration with our partner, we have researched industrial best practices ({cite}`msise2023`, {cite}`jordan2020`) and published academic literature ({cite}`openja2023studying`) and consolidated the testing strategies of ML projects into a checklist which is easily legible and editable by human (researchers, ML engineers, etc.). The checklist is also machine-friendly that can be embedded into the automated tool.
+To come up with the best practices of ML test suites, ML research paper and recognized online resources are our data. Under the collaboration with our partner, we have researched industrial best practices ([@msise2023], [@jordan2020]) and published academic literature ([@openja2023studying]) and consolidated the testing strategies of ML projects into a checklist which is easily legible and editable by human (researchers, ML engineers, etc.). The checklist is also machine-friendly that can be embedded into the automated tool.
 
 To develop our automated code review tool, GitHub repositories of ML projects are our data. We have collected 11 repositories studied in [@openja2023studying], where these projects include comprehensive test suites and are written in Python programming language, for our product development. Our tool is capable of understanding the test suites in these projects, comparing and contrasting the test suites with the embedded best practices, and delivering evaluations to the current test suites.
 
@@ -70,7 +70,7 @@ Multiple runs on each ML project are performed and the evaluation results per ea
 
 Our solution offers both a curated checklist on robust ML testing, and a Python package that facilitates the use of LLMs in checklist-based evaluation on the robustness of users' ML projects. The Python package is made publicly available for distribution on the Python Packaging Index (PyPI).
 
-The justifications for creating these products are, on one hand, checklists have been shown to decrease errors in software systems and promote code submissions ({cite}`Atul2010`,  {cite}`pineau2021improving`). Moreover, Python is chosen to be the programming language of our package given its prevalence in the ML landscape, its ubiquitous presence across different OSes and the existence of Python libraries for the integration with LLMs. This lowers the barrier to use and develop our package and provides better user experience.
+The justifications for creating these products are, on one hand, checklists have been shown to decrease errors in software systems and promote code submissions ([@Atul2010],  [@pineau2021improving]). Moreover, Python is chosen to be the programming language of our package given its prevalence in the ML landscape, its ubiquitous presence across different OSes and the existence of Python libraries for the integration with LLMs. This lowers the barrier to use and develop our package and provides better user experience.
 
 #### How to use the product
 
@@ -393,3 +393,5 @@ The current test evaluator and test specification generator are separate entitie
 Performance optimization is another critical area for future development. As FixML handles large codebases and complex evaluations, optimizing the system to handle these tasks more efficiently is essential. This includes improving the speed and accuracy of the LLM responses, reducing the time taken to analyze and generate reports, and ensuring the system can scale effectively to handle more extensive and more complex projects.
 
 By addressing these limitations with future improvements, we hope FixML achieves better performance and promotes better ML systems and thus better human life.
+
+## References
