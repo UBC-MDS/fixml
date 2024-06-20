@@ -1,5 +1,7 @@
 project:
   type: website
+  render:
+    - "*qmd"
   output-dir: docs
 
 website:
@@ -11,7 +13,7 @@ website:
       - text: "Capstone Final Report"
         href: final_report.qmd
       - text: "Capstone Proposal"
-        href: proposal.ipynb
+        href: proposal.qmd
 
 format:
   html:
