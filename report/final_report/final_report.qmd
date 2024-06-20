@@ -20,13 +20,13 @@ by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
 The global artificial intelligence (AI) market is growing exponentially [@grand2021artificial], driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.
 
-However, ensuring the software quality of these systems remains a significant challenge [@openja2023studying]. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses ({cite}`Asheeta2019`, {cite}`Asheeta2019`, {cite}`Asheeta2019`) and safety hazards. (FIXME: false information to clients, bias to society, substantial financial losses)
+However, ensuring the software quality of these systems remains a significant challenge [@openja2023studying]. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses ([@Asheeta2019], [@Asheeta2019], [@Asheeta2019]) and safety hazards. (FIXME: false information to clients, bias to society, substantial financial losses)
 
 Therefore, defining and promoting an industry standard and establishing robust testing methodologies for these systems is crucial. But how?
 
 ### Our Objectives
 
-We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software's trustworthiness, quality, and reproducibility across both the industry and academia {cite}`kapoor2022leakage`.
+We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software's trustworthiness, quality, and reproducibility across both the industry and academia [@kapoor2022leakage].
 
 ## Data Science Methods
 
@@ -48,17 +48,17 @@ Our approach is to deliver an automated code review tool with the best practices
 
 To come up with the best practices of ML test suites, ML research paper and recognized online resources are our data. Under the collaboration with our partner, we have researched industrial best practices (cite: Microsoft, Jordan) and published academic literature (cite: OpenJa) and consolidated the testing strategies of ML projects into a format which is easily legible and editable by human (researchers, ML engineers, etc.). The format is also machine-friendly that can be easily incorporated into the automated tool.
 
-To develop our automated code review tool, GitHub repositories of ML projects are our data. We have collected 11 repositories studied in {cite}`openja2023studying`, where these projects include comprehensive test suites and are written in Python programming language, for our product development. Our tool is capable of understanding the test suites in these projects, comparing and contrasting the test suites with the embedded best practices, and delivering evaluations and suggestions (FIXME: no suggestions right?) to the current test suites.
+To develop our automated code review tool, GitHub repositories of ML projects are our data. We have collected 11 repositories studied in [@openja2023studying], where these projects include comprehensive test suites and are written in Python programming language, for our product development. Our tool is capable of understanding the test suites in these projects, comparing and contrasting the test suites with the embedded best practices, and delivering evaluations and suggestions (FIXME: no suggestions right?) to the current test suites.
 
 By developing our approach, we expect that it can provide reliable test suites evaluation to multiple ML projects in a scalable manner. However, we acknowledged that the consolidation of best practices currently only focused on a few high priority test areas due to time constraint, where we expect to expand in the future. The test evaluation results provided by our tool are yet as reliable as human evaluation, where we will quantify its performance using the success metrics below.
 
 ### Success Metrics
 
-To properly assess the performance of our tool which leverages the capability of LLMs, we have researched and taken reference of the methods in {cite}`alexander2023evaluating` and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (researchers, ML engineers, etc.) can assess the degree of trustworthiness of the evaluation results from our tool.
+To properly assess the performance of our tool which leverages the capability of LLMs, we have researched and taken reference of the methods in [@alexander2023evaluating] and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (researchers, ML engineers, etc.) can assess the degree of trustworthiness of the evaluation results from our tool.
 
 1.  **Accuracy of the Application vs Human Expert Judgement**
 
-We run our tool on the ML projects in {cite}`openja2023studying` to obtain the evaluation results (i.e. completeness score) per each ML test best practice item. We then manually assess the test suites of these ML projects using the same criteria as the ground truth data. Machine evaluation results are compared and contrasted with the ground truth data. Accuracy is defined as the number of matching results over total number of results.
+We run our tool on the ML projects in [@openja2023studying] to obtain the evaluation results (i.e. completeness score) per each ML test best practice item. We then manually assess the test suites of these ML projects using the same criteria as the ground truth data. Machine evaluation results are compared and contrasted with the ground truth data. Accuracy is defined as the number of matching results over total number of results.
 
 2.  **Consistency of the Application**
 
@@ -107,7 +107,7 @@ This components parses the responses from Evaluator into evaluation reports in v
 
 #### Checklist Design
 
-The package will incorporate a checklist ([Fig. 1](overview-diagram)) which contains the best practices in testing ML pipeline and is curated manually based on ML researches and recognized online resources. Prompt engineering is applied to the checklist for better performance. This also helps combating the hallucination of LLMs ({cite}`zhang2023sirens`) during the evaluation of ML projects by prompting it to follow **exactly** the checklist.
+The package will incorporate a checklist ([Fig. 1](overview-diagram)) which contains the best practices in testing ML pipeline and is curated manually based on ML researches and recognized online resources. Prompt engineering is applied to the checklist for better performance. This also helps combating the hallucination of LLMs ([@zhang2023sirens]) during the evaluation of ML projects by prompting it to follow **exactly** the checklist.
 
 Here is an example of how the checklist would be structured:
 
@@ -144,7 +144,7 @@ The artifacts stores the test specification responses from LLMs in Python script
 
 ### Evaluation Results
 
-As illustrated in `Success Metrics`, we ran 30 iterations on each of the repositories in {cite}`openja2023studying` and examined the breakdown of the completeness score to assessed the quality of evaluation determined by our tool. (FIXME: would it be better to show a table of the repos? like how the Openja does?) 
+As illustrated in `Success Metrics`, we ran 30 iterations on each of the repositories in [@openja2023studying] and examined the breakdown of the completeness score to assessed the quality of evaluation determined by our tool. (FIXME: would it be better to show a table of the repos? like how the Openja does?) 
 
 #### Accuracy
 
