@@ -1,12 +1,20 @@
-name: ci
+name: ci-full
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
 
   ci:
     # Set up operating system
     runs-on: ubuntu-latest
+
+    environment: integration-testing
 
     # Define job steps
     steps:
@@ -30,5 +38,5 @@ jobs:
       - name: Install tectonic
         run: sudo snap refresh && sudo snap install tectonic
 
-      - name: Test with pytest (skip integration tests)
-        run: poetry run pytest --cov -m "not integration"
+      - name: Test with pytest
+        run: poetry run pytest --cov
