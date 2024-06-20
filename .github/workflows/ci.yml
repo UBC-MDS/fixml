@@ -41,13 +41,13 @@ jobs:
 
       - name: Get built wheel path
         id: wheel-name
-        run: echo "WHEELFILE=$(ls dist/*.whl)" >> "$GITHUB_OUTPUT"
+        run: echo "WHEELFILE=$(ls dist)" >> "$GITHUB_OUTPUT"
 
       - name: Upload test build as artifact
         uses: actions/upload-artifact@v4
         with:
           name: test-wheel
-          path: ${{ steps.wheel-name.outputs.WHEELFILE }}
+          path: dist/${{ steps.wheel-name.outputs.WHEELFILE }}
 
   wheel-install-test:
     runs-on: ubuntu-latest
