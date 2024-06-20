@@ -7,11 +7,6 @@ from fixml.modules.checklist import checklist as c
 ################################################################################
 # Checklist loading
 ################################################################################
-@pytest.fixture(scope="module")
-def loaded_checklist():
-    return c.Checklist()
-
-
 def test_loaded_checklist_is_indeed_a_checklist(loaded_checklist):
     assert loaded_checklist is not None and isinstance(loaded_checklist, c.Checklist)
 
@@ -28,11 +23,6 @@ def test_checklist_content_is_a_dictionary(loaded_checklist):
 ################################################################################
 # Checklist exporting to HTML
 ################################################################################
-@pytest.fixture()
-def export_html_path(tmp_path):
-    return tmp_path / "checklist.html"
-
-
 def test_checklist_can_be_exported_successfully(loaded_checklist, export_html_path):
     loaded_checklist.export_html(export_html_path)
     assert os.path.exists(export_html_path)
@@ -52,11 +42,6 @@ def test_checklist_will_overwrite_existing_file_without_error_when_arg_is_provid
 ################################################################################
 # Checklist writing to YAML
 ################################################################################
-@pytest.fixture()
-def write_yaml_path(tmp_path):
-    return tmp_path / "checklist.yaml"
-
-
 def test_checklist_will_not_write_yaml_by_default(loaded_checklist, write_yaml_path):
     with pytest.raises(NotImplementedError):
         loaded_checklist.to_yaml(write_yaml_path)
@@ -82,16 +67,6 @@ def test_checklist_will_overwrite_when_exist_ok_is_provided(loaded_checklist, wr
 ################################################################################
 # Checklist writing to CSV
 ################################################################################
-@pytest.fixture()
-def write_csv_path(tmp_path):
-    return tmp_path / "checklist.csv/"
-
-
-@pytest.fixture()
-def csv_file_paths(write_csv_path):
-    return [write_csv_path / x for x in ["tests.csv", "topics.csv", "overview.csv"]]
-
-
 def test_checklist_will_write_csv_successfully_with_no_preserve_format(loaded_checklist, write_csv_path):
     loaded_checklist.to_csv(write_csv_path)
     assert os.path.exists(write_csv_path)

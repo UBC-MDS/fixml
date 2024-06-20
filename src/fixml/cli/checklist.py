@@ -1,7 +1,7 @@
 from ..modules.checklist.checklist import Checklist
 
 
-class ChecklistActions(object):
+class ChecklistActions:
 
     @staticmethod
     def convert(from_path: str, to_path: str, overwrite: bool = False) -> None:
