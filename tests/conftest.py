@@ -1,7 +1,16 @@
 from pathlib import Path
 
+from dotenv import find_dotenv, load_dotenv
+from git import Repo
 import pytest
 from fixml.modules.checklist import checklist as c
+
+
+@pytest.fixture(scope='session', autouse=True)
+def load_env():
+    env_file = find_dotenv('.env.tests')
+    load_dotenv(env_file)
+    # load_dotenv()
 
 
 @pytest.fixture()
@@ -54,3 +63,38 @@ def csv_file_paths(write_csv_path):
     return [write_csv_path / x for x in ["tests.csv", "topics.csv", "overview.csv"]]
 
 
+@pytest.fixture(scope='session')
+def git_clone_root_dir(tmp_path_factory):
+    return tmp_path_factory.mktemp('test_repos')
+
+
+@pytest.fixture(scope='session')
+def lightfm_repo(git_clone_root_dir):
+    repo_url = "https://github.com/lyst/lightfm.git"
+    clone_to = git_clone_root_dir / 'lightfm'
+    repo = Repo.clone_from(repo_url, clone_to)
+    return repo
+
+
+@pytest.fixture(scope='session')
+def qlib_repo(git_clone_root_dir):
+    repo_url = "https://github.com/microsoft/qlib.git"
+    clone_to = git_clone_root_dir / 'qlib'
+    repo = Repo.clone_from(repo_url, clone_to)
+    return repo
+
+
+@pytest.fixture(scope='session')
+def group8_repo(git_clone_root_dir):
+    repo_url = "https://github.com/UBC-MDS/dsci_522_group_8_bank_marketing_project.git"
+    clone_to = git_clone_root_dir / 'group8'
+    repo = Repo.clone_from(repo_url, clone_to)
+    return repo
+
+
+@pytest.fixture(scope='session')
+def group21_repo(git_clone_root_dir):
+    repo_url = "https://github.com/UBC-MDS/group21_top-three-predictors-of-term-deposit-subscriptions.git"
+    clone_to = git_clone_root_dir / 'group21'
+    repo = Repo.clone_from(repo_url, clone_to)
+    return repo
