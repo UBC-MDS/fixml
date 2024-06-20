@@ -299,12 +299,25 @@ div.csl-indent {
 <p>The design of our package follows object-oriented and SOLID principles, which is fully modularity. Users can easily switch between different prompts, models, and checklists, which facilitates code reusability and collaboration to extend its functionality.</p>
 <p>There are five components in the system of our package:</p>
 <ol type="1">
-<li><p><strong>Code Analyzer</strong> It extracts test suites from the input codebase, to ensure only the most relevants details are provided to LLMs given token limits.</p></li>
-<li><p><strong>Prompt Templates</strong> It stores prompt templates for instructing LLMs to generate responses in the expected format.</p></li>
-<li><p><strong>Checklist</strong> It reads the curated checklist from a CSV file into a dictionary with a fixed schema for LLM injection. The package includes a default checklist for distribution.</p></li>
-<li><p><strong>Runners</strong> It includes the Evaluator module, which assesses each test suite file using LLMs and outputs evaluation results, and the Generator module, which creates test specifications. Both modules feature validation, retry logic, and record response and relevant information.</p></li>
-<li><p><strong>Parsers</strong> It converts Evaluator responses into evaluation reports in various formats (HTML, PDF) using the Jinja template engine, which enables customizable report structures.</p></li>
+<li><strong>Code Analyzer</strong></li>
 </ol>
+<p>It extracts test suites from the input codebase, to ensure only the most relevants details are provided to LLMs given token limits.</p>
+<ol start="2" type="1">
+<li><strong>Prompt Templates</strong></li>
+</ol>
+<p>It stores prompt templates for instructing LLMs to generate responses in the expected format.</p>
+<ol start="3" type="1">
+<li><strong>Checklist</strong></li>
+</ol>
+<p>It reads the curated checklist from a CSV file into a dictionary with a fixed schema for LLM injection. The package includes a default checklist for distribution.</p>
+<ol start="4" type="1">
+<li><strong>Runners</strong></li>
+</ol>
+<p>It includes the Evaluator module, which assesses each test suite file using LLMs and outputs evaluation results, and the Generator module, which creates test specifications. Both modules feature validation, retry logic, and record response and relevant information.</p>
+<ol start="5" type="1">
+<li><strong>Parsers</strong></li>
+</ol>
+<p>It converts Evaluator responses into evaluation reports in various formats (HTML, PDF) using the Jinja template engine, which enables customizable report structures.</p>
 </section>
 <section id="checklist-design" class="level4">
 <h4 class="anchored" data-anchor-id="checklist-design">Checklist Design</h4>
@@ -358,16 +371,19 @@ div.csl-indent {
 <h4 class="anchored" data-anchor-id="artifacts">Artifacts</h4>
 <p>Using our package results in three artifacts:</p>
 <ol type="1">
-<li><strong>Evaluation Responses</strong> These responses include both LLM evaluation results and process metadata stored in JSON format.This supports downsteam tasks like report rendering and scientific research, etc.</li>
+<li><strong>Evaluation Responses</strong></li>
 </ol>
+<p>These responses include both LLM evaluation results and process metadata stored in JSON format.This supports downsteam tasks like report rendering and scientific research, etc.</p>
 <p>(FIXME To be revised) schema of the JSON saved &amp; what kind of information is stored</p>
 <ol start="2" type="1">
-<li><strong>Evaluation Report</strong> This report presents structured evaluation results of ML projects, which includes a detailed breakdown of completeness scores and reasons for each score.</li>
+<li><strong>Evaluation Report</strong></li>
 </ol>
+<p>This report presents structured evaluation results of ML projects, which includes a detailed breakdown of completeness scores and reasons for each score.</p>
 <p>(FIXME To be revised) <img src="img/test_evaluation_report_sample.png" width="600"></p>
 <ol start="3" type="1">
-<li><strong>Test Specification Script</strong> Generated test specifications are stored as Python scripts.</li>
+<li><strong>Test Specification Script</strong></li>
 </ol>
+<p>Generated test specifications are stored as Python scripts.</p>
 <p>(FIXME To be revised) <img src="img/test_spec_sample.png" width="600"></p>
 </section>
 </section>
@@ -386,7 +402,7 @@ div.csl-indent {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> pd.read_csv(<span class="st">'ground_truth.csv'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>gt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
@@ -465,7 +481,7 @@ div.csl-indent {
 </div>
 </div>
 <blockquote class="blockquote">
-<p>Caption: Ground truth data for the 3 repositories. (1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied)</p>
+<p>Ground truth data for the 3 repositories. (1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied)</p>
 </blockquote>
 <div class="cell" data-execution_count="2">
 <details>
@@ -524,26 +540,26 @@ div.csl-indent {
 <span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    titleFontSize<span class="op">=</span><span class="dv">12</span></span>
 <span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="22">
 
 <style>
-  #altair-viz-e2d705a0787d4985b7fab6f0df943cec.vega-embed {
+  #altair-viz-559a5d7f63344848ba0c79151d499e2f.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e2d705a0787d4985b7fab6f0df943cec.vega-embed details,
-  #altair-viz-e2d705a0787d4985b7fab6f0df943cec.vega-embed details summary {
+  #altair-viz-559a5d7f63344848ba0c79151d499e2f.vega-embed details,
+  #altair-viz-559a5d7f63344848ba0c79151d499e2f.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e2d705a0787d4985b7fab6f0df943cec"></div>
+<div id="altair-viz-559a5d7f63344848ba0c79151d499e2f"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e2d705a0787d4985b7fab6f0df943cec") {
-      outputDiv = document.getElementById("altair-viz-e2d705a0787d4985b7fab6f0df943cec");
+    if (outputDiv.id !== "altair-viz-559a5d7f63344848ba0c79151d499e2f") {
+      outputDiv = document.getElementById("altair-viz-559a5d7f63344848ba0c79151d499e2f");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -594,7 +610,7 @@ div.csl-indent {
 </div>
 </div>
 <blockquote class="blockquote">
-<p>Caption: Comparison of our system’s satisfaction determination versus the ground truth for each checklist item and repository</p>
+<p>Comparison of our system’s satisfaction determination versus the ground truth for each checklist item and repository</p>
 </blockquote>
 <p>Our tool tends to underrate satisfying cases, which often classifies fully satisfied items as partially satisfied and partially satisfied items as not satisfied.</p>
 <div class="cell" data-execution_count="3">
@@ -615,7 +631,7 @@ div.csl-indent {
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>contingency_table.index.names <span class="op">=</span> [<span class="st">'Repository'</span>, <span class="st">'Checklist Item'</span>, <span class="st">'Ground Truth'</span>]</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>contingency_table.sort_index(level<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
 
@@ -746,7 +762,7 @@ div.csl-indent {
 </div>
 </div>
 <blockquote class="blockquote">
-<p>Caption: Contingency table of our system’s satisfaction determination versus the ground truth</p>
+<p>Contingency table of our system’s satisfaction determination versus the ground truth</p>
 </blockquote>
 <p>The accuracy issue may be attributed to a need to improve our checklist prompts.</p>
 <ol start="2" type="1">
@@ -800,26 +816,26 @@ div.csl-indent {
 <span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"30 Runs on Openja's Repositories for each Checklist Item"</span></span>
 <span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="24">
 
 <style>
-  #altair-viz-8ed9c22bdac84b2ab309b00af6d2b6f9.vega-embed {
+  #altair-viz-3e80eba69b234319b871f10f1a35af5e.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-8ed9c22bdac84b2ab309b00af6d2b6f9.vega-embed details,
-  #altair-viz-8ed9c22bdac84b2ab309b00af6d2b6f9.vega-embed details summary {
+  #altair-viz-3e80eba69b234319b871f10f1a35af5e.vega-embed details,
+  #altair-viz-3e80eba69b234319b871f10f1a35af5e.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-8ed9c22bdac84b2ab309b00af6d2b6f9"></div>
+<div id="altair-viz-3e80eba69b234319b871f10f1a35af5e"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-8ed9c22bdac84b2ab309b00af6d2b6f9") {
-      outputDiv = document.getElementById("altair-viz-8ed9c22bdac84b2ab309b00af6d2b6f9");
+    if (outputDiv.id !== "altair-viz-3e80eba69b234319b871f10f1a35af5e") {
+      outputDiv = document.getElementById("altair-viz-3e80eba69b234319b871f10f1a35af5e");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -870,13 +886,17 @@ div.csl-indent {
 </div>
 </div>
 <blockquote class="blockquote">
-<p>Caption: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores from 30 runs of a single repository.</p>
+<p>Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores from 30 runs of a single repository.</p>
 </blockquote>
 <p>We identified two diverging cases:</p>
-<ol type="1">
-<li><p><strong>High Standard Deviations</strong> Items like <code>3.2 Data in the Expected Format</code> showed high standard deviations across repositories. This might indicate potential poor prompt quality for the LLM to produce consistent results. Improved prompt engineering could address this issue.</p></li>
-<li><p><strong>Outliers with High Standard Deviations</strong> Items like <code>5.3 Ensure Model Output Shape Aligns with Expectation</code> had outliers with exceptionally high standard deviations, which is possibly due to unorthodox repositories. A careful manual examination is required for a more definitive conclusion.</p></li>
+<ol type="i">
+<li><strong>High Standard Deviations</strong></li>
 </ol>
+<p>Items like <code>3.2 Data in the Expected Format</code> showed high standard deviations across repositories. This might indicate potential poor prompt quality for the LLM to produce consistent results. Improved prompt engineering could address this issue.</p>
+<ol start="2" type="i">
+<li><strong>Outliers with High Standard Deviations</strong></li>
+</ol>
+<p>Items like <code>5.3 Ensure Model Output Shape Aligns with Expectation</code> had outliers with exceptionally high standard deviations, which is possibly due to unorthodox repositories. A careful manual examination is required for a more definitive conclusion.</p>
 <section id="comparison-of-gpt-3.5-turbo-and-gpt-4o" class="level4">
 <h4 class="anchored" data-anchor-id="comparison-of-gpt-3.5-turbo-and-gpt-4o">Comparison of <code>gpt-3.5-turbo</code> and <code>gpt-4o</code></h4>
 <p>To evaluate if newer LLMs improve performance, we preliminarily compared outputs from <code>gpt-4o</code> and <code>gpt-3.5-turbo</code> on the <code>lightfm</code> repository. We observed that <code>gpt-4o</code> consistently returned “Satisfied,” which deviated from the ground truth.</p>
@@ -940,26 +960,26 @@ div.csl-indent {
 <span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    titleFontSize<span class="op">=</span><span class="dv">12</span></span>
 <span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="25">
 
 <style>
-  #altair-viz-495b39cc8cbb4d48a4c7e4742f753d5f.vega-embed {
+  #altair-viz-131a6c120ebb47b19e0141d88109bfc1.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-495b39cc8cbb4d48a4c7e4742f753d5f.vega-embed details,
-  #altair-viz-495b39cc8cbb4d48a4c7e4742f753d5f.vega-embed details summary {
+  #altair-viz-131a6c120ebb47b19e0141d88109bfc1.vega-embed details,
+  #altair-viz-131a6c120ebb47b19e0141d88109bfc1.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-495b39cc8cbb4d48a4c7e4742f753d5f"></div>
+<div id="altair-viz-131a6c120ebb47b19e0141d88109bfc1"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-495b39cc8cbb4d48a4c7e4742f753d5f") {
-      outputDiv = document.getElementById("altair-viz-495b39cc8cbb4d48a4c7e4742f753d5f");
+    if (outputDiv.id !== "altair-viz-131a6c120ebb47b19e0141d88109bfc1") {
+      outputDiv = document.getElementById("altair-viz-131a6c120ebb47b19e0141d88109bfc1");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -1010,7 +1030,7 @@ div.csl-indent {
 </div>
 </div>
 <blockquote class="blockquote">
-<p>Caption: Comparison of satisfaction using <code>gpt-4o</code> versus <code>gpt-3.5-turbo</code> for each checklist item on lightfm</p>
+<p>Comparison of satisfaction using <code>gpt-4o</code> versus <code>gpt-3.5-turbo</code> for each checklist item on lightfm</p>
 </blockquote>
 <p>Further investigation into <code>gpt-4o</code> is required to determine its effectiveness in system performance.</p>
 </section>
@@ -1034,8 +1054,11 @@ div.csl-indent {
 </ol>
 <p>Our study reveals the accuracy and consistency issues on the evaluation results using OpenAI GPT-3.5-turbo model. Future improvements involves better prompt engineering techniques and support for multiple LLMs for enhanced performance and flexibility. User guidelines in prompt creation will be provided to facilitate collaboration with ML developers.</p>
 <ol start="3" type="1">
-<li><p><strong>Customized Test Specification</strong> Future developments will integrate project-specific information to produce customized test function skeletons. This may further encourage users to create comprehensive tests.</p></li>
-<li><p>Workflow Optimization #FIXME: have to review whether to include as it seems lower priority.</p></li>
+<li><strong>Customized Test Specification</strong></li>
+</ol>
+<p>Future developments will integrate project-specific information to produce customized test function skeletons. This may further encourage users to create comprehensive tests.</p>
+<ol start="4" type="1">
+<li>Workflow Optimization #FIXME: have to review whether to include as it seems lower priority.</li>
 </ol>
 <p>The test evaluator and test specification generator are currently separate. Future improvements could embed a workflow engine that automatically takes actions based on LLM responses. This creates a more cohesive and efficient workflow, recues manual intervention, and improves overall system performance.</p>
 <ol start="5" type="1">
