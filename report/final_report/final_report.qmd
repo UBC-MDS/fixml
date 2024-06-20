@@ -17,51 +17,51 @@ by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
 ### Problem Statement
 
-The global artificial intelligence (AI) market is growing exponentially {cite}`grand2021artificial`, driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.
+The global artificial intelligence (AI) market is growing exponentially ({cite}`grand2021artificial`), driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.
 
-However, ensuring the software quality of these systems remains a significant challenge {cite}`openja2023studying`. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses ({cite}`Asheeta2019`, {cite}`Asheeta2019`, {cite}`Asheeta2019`) and safety hazards.
+However, ensuring the software quality of these systems remains a significant challenge ({cite}`openja2023studying`). Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as misinformation ({cite}`Ashley2024`), social bias ({cite}`Alice2023`), substantial financial losses ({cite}`Asheeta2019`) and safety hazards.
 
 Therefore, defining and promoting an industry standard and establishing robust testing methodologies for these systems is crucial. But how?
 
 ### Our Objectives
 
-We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software's trustworthiness, quality, and reproducibility across both the industry and academia {cite}`kapoor2022leakage`.
+We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and to curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software's trustworthiness, quality, and reproducibility across both the industry and academia ({cite}`kapoor2022leakage`).
 
 ## Data Science Methods
 
 ### Current Approaches
 
-To ensure the reproducibility, trustworthiness and free-of-bias ML system, comprehensive assessment is essential. We have observed some traditional approaches in assessing the quality of ML systems, which contain different advantages and drawbacks as follows.
+To ensure the reproducibility, trustworthiness and free-of-bias ML system, comprehensive testing is essential. We have observed some traditional approaches in assessing the completeness of ML system tests, which contain different advantages and drawbacks as follows.
 
-#### 1. Code Coverage
+1. **Code Coverage**
 
-Code coverage is a measure of the proportion of source code of a program executed when a particular test suite is run. It is widely used in software development domain as one of the measurements. It quantifies the test quality and is scalable given the short process time. However, it cannot provide the reasons and in which ML areas that the test suites fall short under the context of ML system development.
+Code coverage is a measure of the proportion of source code of a program executed when a particular test suite is run. It is widely used in software development domain as one of the measurements. It quantifies the test quality and is scalable given the short processing time. However, it cannot provide the reasons and in which ML areas that the test suites fall short under the context of ML system development.
 
-#### 2. Manual Evaluation
+2. **Manual Evaluation**
 
-Manual evaluation involves human expert review at the source code, whom can take the business logic into considerations and find vulnerabilites. Manual evaluation usually delivers comments for improvement under specific development context, and it is still one of the most reliable methods in practice. However, the time cost is large and it is not scalable due to the scarcity of time and human expert. Different human expert might put emphasis on different ML test areas instead of a comprehensive and holistic review on the ML system test suites.
+Manual evaluation involves human expert review at the source code, whom can take the business logic into considerations and find vulnerabilites. Manual evaluation usually delivers comments for improvement under specific development context, and it is still one of the most reliable methods in practice ({cite}`openja2023studying`, {cite}`alexander2023evaluating`). However, the time cost is large and it is not scalable due to the scarcity of time and human expert. Different human expert might put emphasis on different ML test areas instead of a comprehensive and holistic review on the ML system test suites.
 
 ### Our Approach
 
 Our approach is to deliver an automated code review tool with the best practices of ML test suites embedded, which can be used by ML users to learn the best practices as well as to obtain a comprehensive evaluation on their ML system codes.
 
-To come up with the best practices of ML test suites, ML research paper and recognized online resources are our data. Under the collaboration with our partner, we have researched industrial best practices (cite: Microsoft, Jordan) and published academic literature (cite: OpenJa) and consolidated the testing strategies of ML projects into a format which is easily legible and editable by human (researchers, ML engineers, etc.). The format is also machine-friendly that can be easily incorporated into the automated tool.
+To come up with the best practices of ML test suites, ML research paper and recognized online resources are our data. Under the collaboration with our partner, we have researched industrial best practices ({cite}`msise2023`, {cite}`jordan2020`) and published academic literature ({cite}`openja2023studying`) and consolidated the testing strategies of ML projects into a checklist which is easily legible and editable by human (researchers, ML engineers, etc.). The checklist is also machine-friendly that can be embedded into the automated tool.
 
-To develop our automated code review tool, GitHub repositories of ML projects are our data. We have collected 11 repositories studied in {cite}`openja2023studying`, where these projects include comprehensive test suites and are written in Python programming language, for our product development. Our tool is capable of understanding the test suites in these projects, comparing and contrasting the test suites with the embedded best practices, and delivering evaluations and suggestions to the current test suties.
+To develop our automated code review tool, GitHub repositories of ML projects are our data. We have collected 11 repositories studied in {cite}`openja2023studying`, where these projects include comprehensive test suites and are written in Python programming language, for our product development. Our tool is capable of understanding the test suites in these projects, comparing and contrasting the test suites with the embedded best practices, and delivering evaluations to the current test suites.
 
-By developing our approach, we expect that it can provide reliable test suites evaluation to multiple ML projects in a scalable manner. However, we acknowledged that the consolidation of best practices currently focused on a few high priority test areas due to time constraint, where we expect to expand in the future. The test evaluation results provided by our tool are yet as reliable as human evaluation, where we will quantify its performance using the success metrics below.
+By developing our approach, we expect that it can provide reliable test suites evaluation to multiple ML projects in a scalable manner. However, we acknowledged that the current consolidation of best practices only focused on a few high priority test areas due to time constraint. The test evaluation results provided by our tool are yet as reliable as human evaluation, where we will quantify its performance.
 
 ### Success Metrics
 
-To properly assess the performance of our tool which leverages the capability of LLMs, we have researched and taken reference of the methods in {cite}`alexander2023evaluating` and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (researchers, ML engineers, etc.) can assess the trustworthiness while obtaining the evaluation results from our tool.
+To properly assess the performance of our tool which leverages the capability of LLMs, we have researched and taken reference of the methods in {cite}`alexander2023evaluating` and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (researchers, ML engineers, etc.) can assess the degree of trustworthiness of the evaluation results from our tool.
 
 1.  **Accuracy of the Application vs Human Expert Judgement**
 
-We run our tool on the ML projects in {cite}`openja2023studying` to obtain the evaluation results (i.e. completeness score) per each ML test best practice item. We then manually assess the test suites of these ML projects using the same criteria as the ground truth data. Machine evaluation results are compared and contrasted with the ground truth data. Accuracy is defined as the number of matching results over total number of results.
+We run our tool on the ML projects in {cite}`openja2023studying` to obtain the evaluation results (i.e. completeness score) per each checklist item on ML test. We then manually assess the test suites of these ML projects using the same criteria as the ground truth data. Machine evaluation results are compared and contrasted with the ground truth data. Accuracy is defined as the number of matching results over total number of results.
 
 2.  **Consistency of the Application**
 
-Multiple runs on each ML project are performed and the evaluation results per each ML test best practice item are obtained. Standard deviation of these results per ML projects are calculated as a measure of consistency.
+Multiple runs on each ML project are performed and the evaluation results per each checklist item are obtained. Standard deviation of these results per ML projects are calculated as a measure of consistency.
 
 ## Data Product & Results
 
@@ -69,7 +69,7 @@ Multiple runs on each ML project are performed and the evaluation results per ea
 
 Our solution offers both a curated checklist on robust ML testing, and a Python package that facilitates the use of LLMs in checklist-based evaluation on the robustness of users' ML projects. The Python package is made publicly available for distribution on the Python Packaging Index (PyPI).
 
-The justifications for creating these products are, on one hand, checklists have been shown to decrease errors in software systems and promote code submissions (cite: Gawande 2010, Pineau et al. (2021) from Tiffany PDF). Moreover, Python is chosen to be the programing language of our package given its prevalence in the ML landscape, its ubiquitous presence across different OSes and the existence of Python libraries for the integration with LLMs. This lowers the barrier to use and develop our package and provides better user experience.
+The justifications for creating these products are, on one hand, checklists have been shown to decrease errors in software systems and promote code submissions ({cite}`Atul2010`,  {cite}`pineau2021improving`). Moreover, Python is chosen to be the programming language of our package given its prevalence in the ML landscape, its ubiquitous presence across different OSes and the existence of Python libraries for the integration with LLMs. This lowers the barrier to use and develop our package and provides better user experience.
 
 #### How to use the product
 
@@ -79,13 +79,13 @@ There are two ways to make use of this package:
 
 2.  **As a high-level API.** Alternatively, one can use the package to import all components necessary for performing the tasks as part of their own system. Documentations are provided in terms of docstrings.
 
-By formating our product as a CLI tool and API, one (researchers, ML engineers, etc.) will find it user-friendly to interact with. Moreover, it is versatile to support various use cases, such as web application development, data science research, etc.
+By formatting our product as a CLI tool and API, one (researchers, ML engineers, etc.) will find it user-friendly to interact with, and versatile to support various use cases, e.g. web application development, scientific research, etc.
 
 #### System Design
 
-(To be revised) ![image](../../img/proposed_system_overview.png)
+(FIXME To be revised) ![image](../../img/proposed_system_overview.png)
 
-The design principle of our package adheres to object-oriented design and SOLID principles, which is fully modular. One can easily switch between different prompts, models and checklists to use. This enables code reuse and promote users' collaboration to extend its functionality.
+The design principle of our package adheres to object-oriented design and SOLID principles, which is fully modular. One can easily switch between different prompts, models and checklists to use. This facilitates code reusability and users' collaboration to extend its functionality.
 
 There are five components in the system of our package:
 
@@ -93,10 +93,10 @@ There are five components in the system of our package:
 This component extracts the information relevant to test suites from the input codebase, which is essential for injecting only the most relevant information to LLMs given its token limits.
 
 2.  **Prompt Templates** 
-This component stores the prompt template necessary for instructing LLM to behave and return responses in consistent and expected format. Few-shot learning is applied for the instruction.
+This component stores the prompt template necessary for instructing LLMs to behave and return responses in the expected format.
 
 3.  **Checklist** 
-This component reads the curated checklist, which is stored in CSV format, as a dict with fixed schema for injection into prompt. Default checklist is also included inside the package for distribution.
+This component reads the curated checklist, which is stored in CSV format, as a dictionary with fixed schema for injection to LLMs. Default checklist is also included inside the package for distribution.
 
 4.  **Runners** 
 This component involves the Evaluator module, which evaluates each file from the test suites using LLMs and outputs evaluation results, and Generator module, which generates test specifications. Both modules include validation and retry logics and record all relevant information in the responses.
@@ -106,7 +106,7 @@ This components parses the responses from Evaluator into evaluation reports in v
 
 #### Checklist Design
 
-The package will incorporate a checklist ([Fig. 1](overview-diagram)) which contains the best practices in testing ML pipeline and is curated manually based on ML researches and recognized online resources. Prompt engineering is applied to the checklist for better performance. This also helps combating the hallucination of LLMs ({cite}`zhang2023sirens`) during the evaluation of ML projects by prompting it to follow **exactly** the checklist.
+The checklist ([Fig. 1](overview-diagram)) embedded in the package contains the best practices in testing ML pipeline and is curated manually based on ML researches and recognized online resources. Prompt engineering is applied for better performance. This also helps combating the hallucination of LLMs ({cite}`zhang2023sirens`) during the evaluation of ML projects by prompting it to follow **exactly** the checklist.
 
 Here is an example of how the checklist would be structured:
 
@@ -120,46 +120,48 @@ Here is an example of how the checklist would be structured:
 |               Reference | References of the checklist item, e.g. academic paper                                                |
 | Is Evaluator Applicable | Whether the checklist item is selected to be used during evaluation. 0 indicates No, 1 indicates Yes |
 
-(To be revised) <img src="../../img/checklist_sample.png" width="200" />
+(FIXME To be revised) <img src="../../img/checklist_sample.png" width="200" />
 
 #### Artifacts
 
 There are three artifacts after using our package:
 
 1.  **Evaluation Responses** 
-The artifact stores both the evaluation responses from LLMs and meta-data of the process in JSON format. This supports downstream tasks, such as report render, scientific research, etc.
+The artifact stores both the evaluation responses from LLMs and meta-data of the process in JSON format. This supports downstream tasks, e.g. report render, scientific research, etc.
 
-(To be revised) schema of the JSON saved & what kind of information is stored
+(FIXME To be revised) schema of the JSON saved & what kind of information is stored
 
 2.  **Evaluation Report** 
 The artifact stores the evaluation results of the ML projects in a structured format, which includes completeness score breakdown and corresponding detailed reasons.
 
-(To be revised) <img src="../../img/test_evaluation_report_sample.png" width="200" />
+(FIXME To be revised) <img src="../../img/test_evaluation_report_sample.png" width="200" />
 
 3.  **Test Specification Script** 
-The artifacts stores the test specification responses from LLMs in Python script format.
+The artifacts stores the test specifications generated by LLMs in Python script format.
 
-(To be revised) <img src="../../img/test_spec_sample.png" width="200" />
+(FIXME To be revised) <img src="../../img/test_spec_sample.png" width="200" />
 
 ### Evaluation Results
 
-As illustrated in `Success Metrics`, we ran 30 iterations on each of the repositories in {cite}`openja2023studying` and examined the breakdown of the ML Completeness Score to assessed the quality of evaluation determined by our tool. (FIXME: would it be better to show a table of the repos? like how the Openja does?) 
+As illustrated in `Success Metrics`, we ran 30 iterations on each of the repositories in {cite}`openja2023studying` and examined the breakdown of the completeness score to assess the evaluation quality by our tool. 
 
-#### Accuracy
+(FIXME: would it be better to show a table of the repos? like how the Openja does?) 
 
-For accuracy, we targeted 3 of the repositories (`lightfm` (FIXME: link), `qlib` (FIXME: link), `DeepSpeech` (FIXME: link)) for human evaluation and compared the ground truth with the outputs from our tool.
+1. **Accuracy**
+
+For accuracy, we targeted 3 of the repositories ([`lightfm`](https://github.com/lyst/lightfm), [`qlib`](https://github.com/microsoft/qlib), [`DeepSpeech`](https://github.com/mozilla/DeepSpeech)) for human evaluation and compared the ground truth with the outputs from our tool.
 
 ```{python}
 # FIXME: table: checklist id, title, (ground truth, (lightfm, qlib, DeepSpeech))
 ```
-> Caption: Ground truth data on the 3 repositories
+> Caption: Ground truth data on the 3 repositories. 1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied
 
 ```{python}
 # FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
 ```
 > Caption: Comparison of the satisfaction determined by our system versus the ground truth for each checklist item and repository
 
-We found that our tool tends to undermine the actual satisfying cases. For the items that are actually satisfied (score = 1), our tool tends to classify as partially satisfied (score = 0.5), while for those that are partially satisfied (score = 0.5), our tool often classfies as not satisfied (score = 0).
+We found that our tool tends to undermine the actual satisfying cases. For the items that are actually satisfied, our tool tends to classify as partially satisfied, while for those that are partially satisfied, our tool often classifies as not satisfied.
 
 ```{python}
 # FIXME: contingency table
@@ -168,55 +170,51 @@ We found that our tool tends to undermine the actual satisfying cases. For the i
 
 The accuracy issue may be attributed to the need for improvement of prompts in our checklist.
 
-#### Consistency
+2. **Consistency**
 
-Since the completeness score from LLMs contain randomness, we further studied the consistency of scores across checklist items and reposities.
+Since the completeness score from LLMs contain randomness, we further studied the consistency of scores across checklist items and repositories.
 
 ```{python}
 # FIXME: jitter-boxplot, checklist item vs. SD
 ```
-> Caption: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores of 30 runs of a sigle repository
+> Caption: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores of 30 runs of a single repository
 
-We found 2 diverging cases. For example, it shows high standard deviations across repositories for item `3.2 Data in the Expected Format`. This might be a proof of poor prompt quality, making it ambiguous for the LLM and hence hard to produce consistent results. Prompt engineering might solve this problem.
+We found 2 diverging cases. For example, it shows high standard deviations across repositories for item `3.2 Data in the Expected Format`. This might be a proof of poor prompt quality, making it ambiguous for the LLM to produce consistent results. Prompt engineering might solve this problem.
 
-On the other hand, there are outliers yielding exceptionally high standard deviations for item `5.3 Ensure Model Output Shape Aligns with Expectation`. This may be because those repositories are unorthodox, and careful manual examination is required to achieve a more robust conclusion.
+On the other hand, there are outliers yielding exceptionally high standard deviations for item `5.3 Ensure Model Output Shape Aligns with Expectation`. This might be because those repositories are unorthodox, but careful manual examination is required for a more definite conclusion.
 
 #### Comparison of `gpt-3.5-turbo` and `gpt-4o`
 
-To examine if newer LLMs help in both metrics, we preliminarily compared system outputs from `gpt-4o` and `gpt-3.5-turbo` on the `lightfm` repository, we observed that the `gpt-4o` system consistently returned "Satisfied", which deviates from the ground truth.
+To examine if newer LLMs help in both metrics, we preliminarily compared system outputs from `gpt-4o` versus `gpt-3.5-turbo` on the `lightfm` repository. We observed that the one from `gpt-4o` consistently returned "Satisfied", which deviates from the ground truth.
 
 ```{python}
 # FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
 ```
 > Caption: Comparison of the satisfaction using `gpt-4o` versus using `gpt-3.5-turbo` for each checklist item on `lightfm`
 
-Further investigation into `gpt-4o` is required to address this issue and enhance the system performance.
+Further investigation into `gpt-4o` is required to address if it can enhance the system performance.
 
 ## Conclusion
 
 ### Wrap Up
 
-Our project, FixML, represents a significant step forward in the field of machine learning (ML) testing by providing curated checklists and automated tools that enhance the evaluation and creation of test suites for ML models. The development and implementation of FixML have been driven by both the need of better quality assurance in ML systems, and the current limitations of traditional testing methods on ML projects which are either too general without comprehensive clarification, or are too human-reliant.
-
-FixML seamlessly takes in the user’s ML codebase, identifies and extracted its existing test suites. Together with the curated checklist on ML testing, FixML leverages Large Language Models (LLMs) to assess the completeness of the test suites and output detailed evaluation reports with completeness scores and specific reasons. This assists users in understanding the performance of their current test suites with insights. Additionally, FixML can generate test function specifications corresponding to the curated checklist, helping users utilizing their test suites.
-
-In return, FixML solution combines the scalability of automated testing with the reliability of expert evaluation. By automating the evaluation process, FixML significantly reduces the time and human effort required to assess the quality of ML test suites. This popularizes thorough and efficient quality assessment on ML projects.
+The development of FixML have been driven by both the need of better quality assurance in ML systems, and the current limitations of traditional testing methods on ML projects. FixML provides curated checklists and automated tools that enhance the evaluation and creation of test suites for ML projects, which in return, significantly reduces the time and human effort required to assess the completeness of ML test suites. This popularizes thorough and efficient assessment on ML projects.
 
 ### Limitation & Future Improvement
 
-While FixML provides substantial benefits, there are limitations and areas that aim to be addressed in future development:
+While FixML provides substantial benefits, there are limitations and areas to be addressed in future development:
 
 1.  **Specialized Checklist**
 
-The current checklist is designed to be general and may not cover all specific requirements for different ML projects. Future development will focus on creating more specialized checklists for different domains and project types, allowing for more tailored evaluations. Since the format of the checklist is designed to allow users to easily expand, edit and select checklist items based on their specific use case, we welcome any collaboration with ML researchers on the creation of specalized checklists.
+The default checklist is general and might not cover all requirements for different ML projects. Future development will focus on creating more specialized checklists for more tailored evaluations across domains and project types. We welcome any collaboration with ML researchers on the creation of specalized checklists based on their use cases.
 
 2.  **Enhanced Test Evaluator**
 
-Our current study unveils the varying accuracy and consistency issues on the evaluation results using OpenAI GPT models. Future improvements involves prompt enhancement with prompt engineering techniques and support for multiple LLMs for higher performance and flexibility of FixML test evaluator functionality. We also expect to deliver user guidelines in editing the prompts in our system, where ML developers can customize prompts for better performance and collaborate with us to embed them into the system.
+Our study reveals the accuracy and consistency issues on the evaluation results using OpenAI GPT-3.5-turbo model. Future improvements involves better prompt engineering techniques and support for multiple LLMs for enhanced performance and flexibility. We expect to include user guidelines in prompt creation to faciliate collaboration with ML developers.
 
 3.  **Customized Test Specification**
 
-FixML test specification generator currently produces general test function skeletons solely based on the curated checklist without the context of the specific ML projects. Future developments will involve the integration of the ML project codebase in the generation process to output customized test functions skeletons. This further lower the barrier of ML users in creating comprehensive test suites relevant to the projects.
+FixML currently produces general test function skeletons solely based on the curated checklist. Future developments involve the integration of the ML project infromation in the generation process to produce customized test functions skeletons. This further incentivizes users to create comprehensive tests.
 
 4.  Workflow Optimization #FIXME: have to review whether to include as it seems lower priority.
 
@@ -226,4 +224,4 @@ The current test evaluator and test specification generator are separate entitie
 
 Performance optimization is another critical area for future development. As FixML handles large codebases and complex evaluations, optimizing the system to handle these tasks more efficiently is essential. This includes improving the speed and accuracy of the LLM responses, reducing the time taken to analyze and generate reports, and ensuring the system can scale effectively to handle more extensive and more complex projects.
 
-By addressing these limitations and focusing on these future improvements, FixML will become an even more powerful tool for ensuring the quality and robustness of machine learning and data science projects.
+By addressing these limitations with future improvements, we hope FixML promote better ML systems and thus better human life.
