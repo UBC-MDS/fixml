@@ -49,10 +49,11 @@ To come up with the best practices of ML test suites, ML research paper and reco
 
 To develop our automated code review tool, GitHub repositories of ML projects are our data. We have collected 11 repositories studied in {cite}`openja2023studying`, where these projects include comprehensive test suites and are written in Python programming language, for our product development. Our tool is capable of understanding the test suites in these projects, comparing and contrasting the test suites with the embedded best practices, and delivering evaluations to the current test suites.
 
-By developing our approach, we expect that it can provide reliable test suites evaluation to multiple ML projects in a scalable manner. However, we acknowledged that the current consolidation of best practices only focused on a few high priority test areas due to time constraint. The test evaluation results provided by our tool are yet as reliable as human evaluation, where we will quantify its performance.
+By developing our approach, we expect that it can provide reliable test suites evaluation to multiple ML projects in a scalable manner. However, we acknowledged that the consolidation of best practices currently focused on a few high priority test areas due to time constraint, where we expect to expand in the future. The test evaluation results provided by our tool are yet as reliable as human evaluation, where we will quantify its performance using the success metrics below.
 
 ### Success Metrics
 
+To properly assess the performance of our tool which leverages the capability of LLMs, we have researched and taken reference of the methods in {cite}`alexander2023evaluating` and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (researchers, ML engineers, etc.) can assess the degree of trustworthiness of the evaluation results from our tool.
 To properly assess the performance of our tool which leverages the capability of LLMs, we have researched and taken reference of the methods in {cite}`alexander2023evaluating` and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (researchers, ML engineers, etc.) can assess the degree of trustworthiness of the evaluation results from our tool.
 
 1.  **Accuracy of the Application vs Human Expert Judgement**
@@ -85,6 +86,7 @@ By formatting our product as a CLI tool and API, one (researchers, ML engineers,
 
 (FIXME To be revised) ![image](../../img/proposed_system_overview.png)
 
+The design principle of our package adheres to object-oriented design and SOLID principles, which is fully modular. One can easily switch between different prompts, models and checklists to use. This facilitates code reusability and users' collaboration to extend its functionality.
 The design principle of our package adheres to object-oriented design and SOLID principles, which is fully modular. One can easily switch between different prompts, models and checklists to use. This facilitates code reusability and users' collaboration to extend its functionality.
 
 There are five components in the system of our package:
@@ -173,10 +175,12 @@ The accuracy issue may be attributed to the need for improvement of prompts in o
 2. **Consistency**
 
 Since the completeness score from LLMs contain randomness, we further studied the consistency of scores across checklist items and repositories.
+Since the completeness score from LLMs contain randomness, we further studied the consistency of scores across checklist items and repositories.
 
 ```{python}
 # FIXME: jitter-boxplot, checklist item vs. SD
 ```
+> Caption: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores of 30 runs of a single repository
 > Caption: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores of 30 runs of a single repository
 
 We found 2 diverging cases. For example, it shows high standard deviations across repositories for item `3.2 Data in the Expected Format`. This might be a proof of poor prompt quality, making it ambiguous for the LLM to produce consistent results. Prompt engineering might solve this problem.
