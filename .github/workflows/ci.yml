@@ -8,6 +8,9 @@ jobs:
     # Set up operating system
     runs-on: ubuntu-latest
 
+    outputs:
+      wheelfile: ${{ steps.wheel-name.outputs.WHEELFILE }}
+
     # Define job steps
     steps:
       - name: Set up Python
@@ -38,7 +41,7 @@ jobs:
 
       - name: Get built wheel path
         id: wheel-name
-        run: echo "WHEELFILE=$(ls dist/)" >> "$GITHUB_OUTPUT"
+        run: echo "WHEELFILE=$(ls dist/*.whl)" >> "$GITHUB_OUTPUT"
 
       - name: Upload test build as artifact
         uses: actions/upload-artifact@v4
@@ -61,4 +64,4 @@ jobs:
          name: test-wheel
 
      - name: Test pip install local wheel
-       run: pip install -U wheel ${{ steps.wheel-name.outputs.WHEELFILE }}
+       run: pip install -U wheel ${{needs.unit-and-build-test.outputs.wheelfile}}
