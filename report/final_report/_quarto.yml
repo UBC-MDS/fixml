@@ -5,7 +5,7 @@ project:
 website:
   sidebar:
     style: "docked"
-    logo: "logo.png"
+    logo: "img/logo.png"
     search: true
     contents:
       - section: "Final Report"

@@ -87,7 +87,7 @@ By offering it as both CLI tool and API, our product is user-friendly to interac
 
 #### System Design
 
-(FIXME To be revised) ![image](../../img/proposed_system_overview.png)
+(FIXME To be revised) ![image](img/proposed_system_overview.png)
 
 The design of our package follows object-oriented and SOLID principles, which is fully modularity. Users can easily switch between different prompts, models, and checklists, which facilitates code reusability and collaboration to extend its functionality.
 
@@ -124,7 +124,7 @@ Example checklist structure:
 |               Reference | References for the checklist item, e.g., academic papers                                                |
 | Is Evaluator Applicable | Indicates if the checklist item is used during evaluation (0 = No, 1 = Yes) |
 
-(FIXME To be revised) <img src="../../img/checklist_sample.png" width="200" />
+(FIXME To be revised) <img src="img/checklist_sample.png" width="600" />
 
 #### Artifacts
 
@@ -138,12 +138,12 @@ These responses include both LLM evaluation results and process metadata stored 
 2.  **Evaluation Report** 
 This report presents structured evaluation results of ML projects, which includes a detailed breakdown of completeness scores and reasons for each score.
 
-(FIXME To be revised) <img src="../../img/test_evaluation_report_sample.png" width="200" />
+(FIXME To be revised) <img src="img/test_evaluation_report_sample.png" width="600" />
 
 3.  **Test Specification Script** 
 Generated test specifications are stored as Python scripts.
 
-(FIXME To be revised) <img src="../../img/test_spec_sample.png" width="200" />
+(FIXME To be revised) <img src="img/test_spec_sample.png" width="600" />
 
 ### Evaluation Results
 
