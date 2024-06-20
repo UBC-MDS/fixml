@@ -32,3 +32,20 @@ jobs:
 
       - name: Test with pytest (skip integration tests)
         run: poetry run pytest --cov -m "not integration"
+
+      - name: Test package building process
+        run: poetry build
+
+      - name: Get built wheel path
+        run: |
+          {
+            echo 'WHEELFILE<<EOF'
+            find ./dist/ -name '*.whl' -print
+            echo EOF
+          } >> "$GITHUB_ENV"
+
+      - name: Upload test build as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: $WHEELFILE
+          path: ./dist/$WHEELFILE
