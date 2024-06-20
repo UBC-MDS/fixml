@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
 
-  ci:
+  unit-and-build-test:
     # Set up operating system
     runs-on: ubuntu-latest
 
@@ -43,5 +43,21 @@ jobs:
       - name: Upload test build as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.wheel-name.outputs.WHEELFILE }}
+          name: test-wheel
           path: dist/${{ steps.wheel-name.outputs.WHEELFILE }}
+
+  wheel-install-test:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+     - name: Download built wheel
+       uses: actions/download-artifact@v4
+       with:
+         name: test-wheel
+
+     - name: Test pip install local wheel
+       run: pip install -U wheel ${{ steps.wheel-name.outputs.WHEELFILE }}
