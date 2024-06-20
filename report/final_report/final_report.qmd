@@ -3,6 +3,7 @@ title: "DSCI591 Capstone Final Report"
 format:
   html:
     code-fold: true
+bibliography: references.bib
 ---
 
 # Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis
@@ -17,9 +18,9 @@ by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
 ### Problem Statement
 
-The global artificial intelligence (AI) market is growing exponentially {cite}`grand2021artificial`, driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.
+The global artificial intelligence (AI) market is growing exponentially [@grand2021artificial], driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.
 
-However, ensuring the software quality of these systems remains a significant challenge {cite}`openja2023studying`. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses ({cite}`Asheeta2019`, {cite}`Asheeta2019`, {cite}`Asheeta2019`) and safety hazards. (FIXME: false information to clients, bias to society, substantial financial losses)
+However, ensuring the software quality of these systems remains a significant challenge [@openja2023studying]. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses ({cite}`Asheeta2019`, {cite}`Asheeta2019`, {cite}`Asheeta2019`) and safety hazards. (FIXME: false information to clients, bias to society, substantial financial losses)
 
 Therefore, defining and promoting an industry standard and establishing robust testing methodologies for these systems is crucial. But how?
 
@@ -150,19 +151,86 @@ As illustrated in `Success Metrics`, we ran 30 iterations on each of the reposit
 For accuracy, we targeted 3 of the repositories (`lightfm` (FIXME: link), `qlib` (FIXME: link), `DeepSpeech` (FIXME: link)) for human evaluation and compared the ground truth with the outputs from our tool.
 
 ```{python}
-# FIXME: table: checklist id, title, (ground truth, (lightfm, qlib, DeepSpeech))
+import pandas as pd
+gt = pd.read_csv('ground_truth.csv')
+gt
 ```
 > Caption: Ground truth data on the 3 repositories
 
 ```{python}
 # FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
+import altair as alt
+import pandas as pd
+
+df_repo__stat = pd.read_csv('score_stat_by_repo_3.5-turbo.csv')
+gt = pd.read_csv('ground_truth.csv')
+gt = gt.melt(id_vars=['id', 'title'], var_name='repo', value_name='ground_truth')
+
+df_repo__stat_with_gt = df_repo__stat.merge(gt, on=['id', 'title', 'repo'])
+
+base = alt.Chart(
+    df_repo__stat_with_gt.query('repo in ["lightfm", "qlib", "DeepSpeech"]')
+).transform_calculate(
+    min="max(0, datum.mean-datum.std)",
+    max="min(1, datum.mean+datum.std)"
+)
+    
+# generate the points
+points = base.mark_point(
+    filled=True,
+    size=50,
+    color='black'
+).encode(
+    x=alt.X('mean:Q').scale(domainMin=0, domainMax=1).title("Score").axis(
+        labelExpr="datum.value % 0.5 ? null : datum.label"
+    ),
+    y=alt.Y('id_title:N', title=None, axis=alt.Axis(labelPadding=10, labelLimit=1000, grid=False))#.scale(domainMin=0, domainMax=1).title('Score'),
+)
+
+# generate the points for ground truth
+gt_points = base.mark_point(
+    filled=True,
+    size=200,
+    color='green',
+    shape="diamond"
+).encode(
+    x=alt.X('ground_truth:Q'),
+    y=alt.Y('id_title:N')
+)
+
+# generate the error bars
+errorbars = base.mark_errorbar().encode(
+    x=alt.X("min:Q").title('1 SD'), #"id:N",
+    x2="max:Q",
+    y="id_title:N"
+)
+
+(gt_points + points + errorbars).facet(
+    column=alt.Column('repo:N').title(None)
+).configure_axis( 
+    labelFontSize=12, 
+    titleFontSize=12
+)
 ```
 > Caption: Comparison of the satisfaction determined by our system versus the ground truth for each checklist item and repository
 
-We found that our tool tends to undermine the actual satisfying cases. For the items that are actually satisfied (score = 1), our tool tends to classify as partially satisfied (score = 0.5), while for those that are partially satisfied (score = 0.5), our tool often classifies as not satisfied (score = 0).
+We found that our tool tends to undermine the actual satisfying cases. For the items that are actually satisfied (score = 1), our tool tends to classify as partially satisfied (score = 0.5), (FIXME: in the newer run, the actual 0.5 seems to be tagged quite accurately) while for those that are partially satisfied (score = 0.5), our tool often classifies as not satisfied (score = 0).
 
 ```{python}
-# FIXME: contingency table
+df_repo_run = pd.read_csv('score_by_repo_run_3.5-turbo.csv')
+
+df_repo_run = df_repo_run.merge(gt, on=['id', 'title', 'repo'])
+
+contingency_table = pd.pivot_table(
+    df_repo_run,
+    values='run', 
+    index=['repo', 'id_title', 'ground_truth'], 
+    columns=['score'],
+    aggfunc='count', 
+    fill_value=0
+)
+contingency_table.index.names = ['Repository', 'Checklist Item', 'Ground Truth']
+contingency_table.sort_index(level=[0, 2])
 ```
 > Contingency table of the satisfaction determined by our system versus the ground truth
 
@@ -173,7 +241,49 @@ The accuracy issue may be attributed to the need for improvement of prompts in o
 Since the completeness score from LLMs contain randomness, we further studied the consistency of scores across checklist items and repositories.
 
 ```{python}
-# FIXME: jitter-boxplot, checklist item vs. SD
+stds = df_repo__stat[['repo', 'std', 'id_title']].pivot(index='repo', columns='id_title').copy()
+stds.columns = [col[1] for col in stds.columns]
+stds = stds.reset_index()
+stds = stds.melt(id_vars='repo', var_name='id_title')
+
+base = alt.Chart(stds)
+
+box = base.mark_boxplot(
+    color='grey',
+    opacity=0.5,
+    size=20,
+).encode(
+    x=alt.X('value:Q').title('Standard Deviation of Scores'),
+    y=alt.Y('id_title:N', title=None, axis=alt.Axis(labelPadding=10, labelLimit=1000, grid=False))
+)
+
+stripplot = base.mark_circle(size=100).encode(
+    y=alt.Y( 
+        'id_title:N',
+        axis=alt.Axis(ticks=False, grid=True, labels=True), 
+        scale=alt.Scale(), 
+    ), 
+    x='value:Q',
+    yOffset="jitter:Q",
+    color=alt.Color('id_title:N', legend=None),
+    tooltip='repo'
+).transform_calculate(
+    # Generate Gaussian jitter with a Box-Muller transform
+    jitter="sqrt(-2*log(random()))*cos(2*PI*random())"
+)
+
+(
+    box + stripplot
+).configure_view( 
+    stroke=None
+).configure_axis( 
+    labelFontSize=12, 
+    titleFontSize=12
+).properties(
+    height=300, 
+    width=600,
+    title="30 Runs on Openja's Repositories for each Checklist Item"
+) 
 ```
 > Caption: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores of 30 runs of a single repository
 
@@ -187,6 +297,61 @@ To examine if newer LLMs help in both metrics, we preliminarily compared system 
 
 ```{python}
 # FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
+df_repo_4o__stat = pd.read_csv('score_stat_by_repo_4o.csv')
+df_repo_4o__stat_with_gt = df_repo_4o__stat.merge(gt, on=['id', 'title', 'repo'])
+df_repo_4o__stat_with_gt['model'] = 'gpt-4o'
+
+df_repo_35turbo__stat_with_gt = df_repo__stat_with_gt.query("repo == 'lightfm'").copy()
+df_repo_35turbo__stat_with_gt['model'] = 'gpt-3.5-turbo'
+
+df_model_comp = pd.concat(
+    (df_repo_35turbo__stat_with_gt, df_repo_4o__stat_with_gt), 
+    axis=0
+)
+
+base = alt.Chart(
+    df_model_comp
+).transform_calculate(
+    min="max(0, datum.mean-datum.std)",
+    max="min(1, datum.mean+datum.std)"
+)
+    
+# generate the points
+points = base.mark_point(
+    filled=True,
+    size=50,
+    color='black'
+).encode(
+    x=alt.X('mean:Q').scale(domainMin=0, domainMax=1).title("Score").axis(
+        labelExpr="datum.value % 0.5 ? null : datum.label"
+    ),
+    y=alt.Y('id_title:N', title=None, axis=alt.Axis(labelPadding=10, labelLimit=1000, grid=False))#.scale(domainMin=0, domainMax=1).title('Score'),
+)
+
+# generate the points for ground truth
+gt_points = base.mark_point(
+    filled=True,
+    size=200,
+    color='green',
+    shape="diamond"
+).encode(
+    x=alt.X('ground_truth:Q'),
+    y=alt.Y('id_title:N')
+)
+
+# generate the error bars
+errorbars = base.mark_errorbar().encode(
+    x=alt.X("min:Q").title('1 SD'), #"id:N",
+    x2="max:Q",
+    y="id_title:N"
+)
+
+(gt_points + points + errorbars).facet(
+    column=alt.Column('model:N').title(None)
+).configure_axis( 
+    labelFontSize=12, 
+    titleFontSize=12
+)
 ```
 > Caption: Comparison of the satisfaction using `gpt-4o` versus using `gpt-3.5-turbo` for each checklist item on `lightfm`
 
@@ -227,3 +392,5 @@ The current test evaluator and test specification generator are separate entitie
 Performance optimization is another critical area for future development. As FixML handles large codebases and complex evaluations, optimizing the system to handle these tasks more efficiently is essential. This includes improving the speed and accuracy of the LLM responses, reducing the time taken to analyze and generate reports, and ensuring the system can scale effectively to handle more extensive and more complex projects.
 
 By addressing these limitations and focusing on these future improvements, FixML will become an even more powerful tool for ensuring the quality and robustness of machine learning and data science projects.
+
+## References
