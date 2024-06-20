@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>final_report</title>
+<title>DSCI591 Capstone Final Report</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -93,6 +112,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -107,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./final_report.html">Final Report</a></li><li class="breadcrumb-item"><a href="./final_report.html">Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./final_report.html">Final Report</a></li><li class="breadcrumb-item"><a href="./final_report.html">DSCI591 Capstone Final Report</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -144,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./final_report.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</span></a>
+ <span class="menu-text">DSCI591 Capstone Final Report</span></a>
   </div>
 </li>
       </ul>
@@ -176,7 +198,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary">Executive Summary</a></li>
+  <li><a href="#final-report---checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis" id="toc-final-report---checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis" class="nav-link active" data-scroll-target="#final-report---checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis">Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</a>
+  <ul class="collapse">
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link" data-scroll-target="#executive-summary">Executive Summary</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
   <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
@@ -198,6 +222,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap Up</a></li>
   <li><a href="#limitation-future-improvement" id="toc-limitation-future-improvement" class="nav-link" data-scroll-target="#limitation-future-improvement">Limitation &amp; Future Improvement</a></li>
   </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -206,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</h1>
+<h1 class="title">DSCI591 Capstone Final Report</h1>
 </div>
 
 
@@ -221,6 +247,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="final-report---checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis" class="level1">
+<h1>Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</h1>
 <p>by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin</p>
 <section id="executive-summary" class="level2">
 <h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
@@ -230,43 +258,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <section id="problem-statement" class="level3">
 <h3 class="anchored" data-anchor-id="problem-statement">Problem Statement</h3>
-<p>The global artificial intelligence (AI) market is growing exponentially {cite}<code>grand2021artificial</code>, driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.</p>
-<p>However, ensuring the software quality of these systems remains a significant challenge {cite}<code>openja2023studying</code>. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses ({cite}<code>Asheeta2019</code>, {cite}<code>Asheeta2019</code>, {cite}<code>Asheeta2019</code>) and safety hazards.</p>
+<p>The global artificial intelligence (AI) market is growing exponentially <span class="citation" data-cites="grand2021artificial">(<a href="#ref-grand2021artificial" role="doc-biblioref">Grand-View-Research 2021</a>)</span>, driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.</p>
+<p>However, ensuring the software quality of these systems remains a significant challenge <span class="citation" data-cites="openja2023studying">(<a href="#ref-openja2023studying" role="doc-biblioref">Openja et al. 2023</a>)</span>. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses (<span class="citation" data-cites="Asheeta2019">(<a href="#ref-Asheeta2019" role="doc-biblioref">Regidi 2019</a>)</span>, <span class="citation" data-cites="Asheeta2019">(<a href="#ref-Asheeta2019" role="doc-biblioref">Regidi 2019</a>)</span>, <span class="citation" data-cites="Asheeta2019">(<a href="#ref-Asheeta2019" role="doc-biblioref">Regidi 2019</a>)</span>) and safety hazards. (FIXME: false information to clients, bias to society, substantial financial losses)</p>
 <p>Therefore, defining and promoting an industry standard and establishing robust testing methodologies for these systems is crucial. But how?</p>
 </section>
 <section id="our-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="our-objectives">Our Objectives</h3>
-<p>We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software’s trustworthiness, quality, and reproducibility across both the industry and academia {cite}<code>kapoor2022leakage</code>.</p>
+<p>We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software’s trustworthiness, quality, and reproducibility across both the industry and academia <span class="citation" data-cites="kapoor2022leakage">(<a href="#ref-kapoor2022leakage" role="doc-biblioref">Kapoor and Narayanan 2022</a>)</span>.</p>
 </section>
 </section>
 <section id="data-science-methods" class="level2">
 <h2 class="anchored" data-anchor-id="data-science-methods">Data Science Methods</h2>
 <section id="current-approaches" class="level3">
 <h3 class="anchored" data-anchor-id="current-approaches">Current Approaches</h3>
-<p>To ensure the reproducibility, trustworthiness and free-of-bias ML system, comprehensive assessment is essential. We have observed some traditional approaches in assessing the quality of ML systems, which contain different advantages and drawbacks as follows.</p>
+<p>To ensure the reproducibility, trustworthiness and free-of-bias ML system, comprehensive assessment (FIXME: or comprehensive testing?) is essential. We have observed some traditional approaches in assessing the quality (FIXME: test completeness) of ML systems, which contain different advantages and drawbacks as follows.</p>
 <section id="code-coverage" class="level4">
 <h4 class="anchored" data-anchor-id="code-coverage">1. Code Coverage</h4>
 <p>Code coverage is a measure of the proportion of source code of a program executed when a particular test suite is run. It is widely used in software development domain as one of the measurements. It quantifies the test quality and is scalable given the short process time. However, it cannot provide the reasons and in which ML areas that the test suites fall short under the context of ML system development.</p>
 </section>
 <section id="manual-evaluation" class="level4">
 <h4 class="anchored" data-anchor-id="manual-evaluation">2. Manual Evaluation</h4>
-<p>Manual evaluation involves human expert review at the source code, whom can take the business logic into considerations and find vulnerabilites. Manual evaluation usually delivers comments for improvement under specific development context, and it is still one of the most reliable methods in practice. However, the time cost is large and it is not scalable due to the scarcity of time and human expert. Different human expert might put emphasis on different ML test areas instead of a comprehensive and holistic review on the ML system test suites.</p>
+<p>Manual evaluation involves human expert review at the source code, whom can take the business logic into considerations and find vulnerabilites. Manual evaluation usually delivers comments for improvement under specific development context, and it is still one of the most reliable methods in practice. (FIXME: references) However, the time cost is large and it is not scalable due to the scarcity of time and human expert. Different human expert might put emphasis on different ML test areas instead of a comprehensive and holistic review on the ML system test suites.</p>
 </section>
 </section>
 <section id="our-approach" class="level3">
 <h3 class="anchored" data-anchor-id="our-approach">Our Approach</h3>
 <p>Our approach is to deliver an automated code review tool with the best practices of ML test suites embedded, which can be used by ML users to learn the best practices as well as to obtain a comprehensive evaluation on their ML system codes.</p>
 <p>To come up with the best practices of ML test suites, ML research paper and recognized online resources are our data. Under the collaboration with our partner, we have researched industrial best practices (cite: Microsoft, Jordan) and published academic literature (cite: OpenJa) and consolidated the testing strategies of ML projects into a format which is easily legible and editable by human (researchers, ML engineers, etc.). The format is also machine-friendly that can be easily incorporated into the automated tool.</p>
-<p>To develop our automated code review tool, GitHub repositories of ML projects are our data. We have collected 11 repositories studied in {cite}<code>openja2023studying</code>, where these projects include comprehensive test suites and are written in Python programming language, for our product development. Our tool is capable of understanding the test suites in these projects, comparing and contrasting the test suites with the embedded best practices, and delivering evaluations and suggestions to the current test suties.</p>
-<p>By developing our approach, we expect that it can provide reliable test suites evaluation to multiple ML projects in a scalable manner. However, we acknowledged that the consolidation of best practices currently focused on a few high priority test areas due to time constraint, where we expect to expand in the future. The test evaluation results provided by our tool are yet as reliable as human evaluation, where we will quantify its performance using the success metrics below.</p>
+<p>To develop our automated code review tool, GitHub repositories of ML projects are our data. We have collected 11 repositories studied in <span class="citation" data-cites="openja2023studying">(<a href="#ref-openja2023studying" role="doc-biblioref">Openja et al. 2023</a>)</span>, where these projects include comprehensive test suites and are written in Python programming language, for our product development. Our tool is capable of understanding the test suites in these projects, comparing and contrasting the test suites with the embedded best practices, and delivering evaluations and suggestions (FIXME: no suggestions right?) to the current test suites.</p>
+<p>By developing our approach, we expect that it can provide reliable test suites evaluation to multiple ML projects in a scalable manner. However, we acknowledged that the consolidation of best practices currently only focused on a few high priority test areas due to time constraint, where we expect to expand in the future. The test evaluation results provided by our tool are yet as reliable as human evaluation, where we will quantify its performance using the success metrics below.</p>
 </section>
 <section id="success-metrics" class="level3">
 <h3 class="anchored" data-anchor-id="success-metrics">Success Metrics</h3>
-<p>To properly assess the performance of our tool which leverages the capability of LLMs, we have researched and taken reference of the methods in {cite}<code>alexander2023evaluating</code> and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (researchers, ML engineers, etc.) can assess the trustworthiness while obtaining the evaluation results from our tool.</p>
+<p>To properly assess the performance of our tool which leverages the capability of LLMs, we have researched and taken reference of the methods in <span class="citation" data-cites="alexander2023evaluating">(<a href="#ref-alexander2023evaluating" role="doc-biblioref">Alexander et al. 2023</a>)</span> and defined the 2 success metrics: accuracy and consistency. With these metrics, our users (researchers, ML engineers, etc.) can assess the degree of trustworthiness of the evaluation results from our tool.</p>
 <ol type="1">
 <li><strong>Accuracy of the Application vs Human Expert Judgement</strong></li>
 </ol>
-<p>We run our tool on the ML projects in {cite}<code>openja2023studying</code> to obtain the evaluation results (i.e.&nbsp;completeness score) per each ML test best practice item. We then manually assess the test suites of these ML projects using the same criteria as the ground truth data. Machine evaluation results are compared and contrasted with the ground truth data. Accuracy is defined as the number of matching results over total number of results.</p>
+<p>We run our tool on the ML projects in <span class="citation" data-cites="openja2023studying">(<a href="#ref-openja2023studying" role="doc-biblioref">Openja et al. 2023</a>)</span> to obtain the evaluation results (i.e.&nbsp;completeness score) per each ML test best practice item. We then manually assess the test suites of these ML projects using the same criteria as the ground truth data. Machine evaluation results are compared and contrasted with the ground truth data. Accuracy is defined as the number of matching results over total number of results.</p>
 <ol start="2" type="1">
 <li><strong>Consistency of the Application</strong></li>
 </ol>
@@ -278,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="data-products" class="level3">
 <h3 class="anchored" data-anchor-id="data-products">Data Products</h3>
 <p>Our solution offers both a curated checklist on robust ML testing, and a Python package that facilitates the use of LLMs in checklist-based evaluation on the robustness of users’ ML projects. The Python package is made publicly available for distribution on the Python Packaging Index (PyPI).</p>
-<p>The justifications for creating these products are, on one hand, checklists have been shown to decrease errors in software systems and promote code submissions (cite: Gawande 2010, Pineau et al.&nbsp;(2021) from Tiffany PDF). Moreover, Python is chosen to be the programing language of our package given its prevalence in the ML landscape, its ubiquitous presence across different OSes and the existence of Python libraries for the integration with LLMs. This lowers the barrier to use and develop our package and provides better user experience.</p>
+<p>The justifications for creating these products are, on one hand, checklists have been shown to decrease errors in software systems and promote code submissions (cite: Gawande 2010, Pineau et al.&nbsp;(2021) from Tiffany PDF). Moreover, Python is chosen to be the programming language of our package given its prevalence in the ML landscape, its ubiquitous presence across different OSes and the existence of Python libraries for the integration with LLMs. This lowers the barrier to use and develop our package and provides better user experience.</p>
 <section id="how-to-use-the-product" class="level4">
 <h4 class="anchored" data-anchor-id="how-to-use-the-product">How to use the product</h4>
 <p>There are two ways to make use of this package:</p>
@@ -286,16 +314,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>As a CLI tool.</strong> A runnable command <code>fixml</code> is provided by the package. Once installed, users can perform the codebase evaluation, test function specification generation and other relevant tasks by running subcommands under <code>fixml</code> in terminal environment.</p></li>
 <li><p><strong>As a high-level API.</strong> Alternatively, one can use the package to import all components necessary for performing the tasks as part of their own system. Documentations are provided in terms of docstrings.</p></li>
 </ol>
-<p>By formating our product as a CLI tool and API, one (researchers, ML engineers, etc.) will find it user-friendly to interact with. Moreover, it is versatile to support various use cases, such as web application development, data science research, etc.</p>
+<p>By formatting our product as a CLI tool and API, one (researchers, ML engineers, etc.) will find it user-friendly to interact with. Moreover, it is versatile to support various use cases, such as web application development, data science research, etc.</p>
 </section>
 <section id="system-design" class="level4">
 <h4 class="anchored" data-anchor-id="system-design">System Design</h4>
-<p>(To be revised) <img src="../../img/proposed_system_overview.png" class="img-fluid" alt="image"></p>
-<p>The design principle of our package adheres to object-oriented design and SOLID principles, which is fully modular. One can easily switch between different prompts, models and checklists to use. This enables code reuse and promote users’ collaboration to extend its functionality.</p>
+<p>(FIXME: To be revised) <img src="../../img/proposed_system_overview.png" class="img-fluid" alt="image"></p>
+<p>The design principle of our package adheres to object-oriented design and SOLID principles, which is fully modular. One can easily switch between different prompts, models and checklists to use. This facilitates code reusability and users’ collaboration to extend its functionality.</p>
 <p>There are five components in the system of our package:</p>
 <ol type="1">
 <li><p><strong>Code Analyzer</strong> This component extracts the information relevant to test suites from the input codebase, which is essential for injecting only the most relevant information to LLMs given its token limits.</p></li>
-<li><p><strong>Prompt Templates</strong> This component stores the prompt template necessary for instructing LLM to behave and return responses in consistent and expected format. Few-shot learning is applied for the instruction.</p></li>
+<li><p><strong>Prompt Templates</strong> This component stores the prompt template necessary for instructing LLM to behave and return responses in consistent and expected format. Few-shot learning is applied for the instruction. (FIXME: do we have few-shot learning?)</p></li>
 <li><p><strong>Checklist</strong> This component reads the curated checklist, which is stored in CSV format, as a dict with fixed schema for injection into prompt. Default checklist is also included inside the package for distribution.</p></li>
 <li><p><strong>Runners</strong> This component involves the Evaluator module, which evaluates each file from the test suites using LLMs and outputs evaluation results, and Generator module, which generates test specifications. Both modules include validation and retry logics and record all relevant information in the responses.</p></li>
 <li><p><strong>Parsers</strong> This components parses the responses from Evaluator into evaluation reports in various formats (HTML, PDF) using Jinja template engine. Adhering to our design principle, this enables flexibility in creating customized report structure.</p></li>
@@ -303,12 +331,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="checklist-design" class="level4">
 <h4 class="anchored" data-anchor-id="checklist-design">Checklist Design</h4>
-<p>The package will incorporate a checklist (<a href="overview-diagram">Fig. 1</a>) which contains the best practices in testing ML pipeline and is curated manually based on ML researches and recognized online resources. Prompt engineering is applied to the checklist for better performance. This also helps combating the hallucination of LLMs ({cite}<code>zhang2023sirens</code>) during the evaluation of ML projects by prompting it to follow <strong>exactly</strong> the checklist.</p>
+<p>The package will incorporate a checklist (<a href="overview-diagram">Fig. 1</a>) which contains the best practices in testing ML pipeline and is curated manually based on ML researches and recognized online resources. Prompt engineering is applied to the checklist for better performance. This also helps combating the hallucination of LLMs (<span class="citation" data-cites="zhang2023sirens">(<a href="#ref-zhang2023sirens" role="doc-biblioref">Zhang et al. 2023</a>)</span>) during the evaluation of ML projects by prompting it to follow <strong>exactly</strong> the checklist.</p>
 <p>Here is an example of how the checklist would be structured:</p>
 <table class="table">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 80%">
+<col style="width: 26%">
+<col style="width: 73%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -347,7 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>(To be revised) <img src="../../img/checklist_sample.png" width="200"></p>
+<p>(FIXME: To be revised) <img src="../../img/checklist_sample.png" width="200"></p>
 </section>
 <section id="artifacts" class="level4">
 <h4 class="anchored" data-anchor-id="artifacts">Artifacts</h4>
@@ -355,28 +383,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><strong>Evaluation Responses</strong> The artifact stores both the evaluation responses from LLMs and meta-data of the process in JSON format. This supports downstream tasks, such as report render, scientific research, etc.</li>
 </ol>
-<p>(To be revised) schema of the JSON saved &amp; what kind of information is stored</p>
+<p>(FIXME: To be revised) schema of the JSON saved &amp; what kind of information is stored</p>
 <ol start="2" type="1">
 <li><strong>Evaluation Report</strong> The artifact stores the evaluation results of the ML projects in a structured format, which includes completeness score breakdown and corresponding detailed reasons.</li>
 </ol>
-<p>(To be revised) <img src="../../img/test_evaluation_report_sample.png" width="200"></p>
+<p>(FIXME: To be revised) <img src="../../img/test_evaluation_report_sample.png" width="200"></p>
 <ol start="3" type="1">
 <li><strong>Test Specification Script</strong> The artifacts stores the test specification responses from LLMs in Python script format.</li>
 </ol>
-<p>(To be revised) <img src="../../img/test_spec_sample.png" width="200"></p>
+<p>(FIXME: To be revised) <img src="../../img/test_spec_sample.png" width="200"></p>
 </section>
 </section>
 <section id="evaluation-results" class="level3">
 <h3 class="anchored" data-anchor-id="evaluation-results">Evaluation Results</h3>
-<p>As illustrated in <code>Success Metrics</code>, we ran 30 iterations on each of the repositories in {cite}<code>openja2023studying</code> and examined the breakdown of the ML Completeness Score to assessed the quality of evaluation determined by our tool. (FIXME: would it be better to show a table of the repos? like how the Openja does?)</p>
+<p>As illustrated in <code>Success Metrics</code>, we ran 30 iterations on each of the repositories in <span class="citation" data-cites="openja2023studying">(<a href="#ref-openja2023studying" role="doc-biblioref">Openja et al. 2023</a>)</span> and examined the breakdown of the completeness score to assessed the quality of evaluation determined by our tool. (FIXME: would it be better to show a table of the repos? like how the Openja does?)</p>
 <section id="accuracy" class="level4">
 <h4 class="anchored" data-anchor-id="accuracy">Accuracy</h4>
 <p>For accuracy, we targeted 3 of the repositories (<code>lightfm</code> (FIXME: link), <code>qlib</code> (FIXME: link), <code>DeepSpeech</code> (FIXME: link)) for human evaluation and compared the ground truth with the outputs from our tool.</p>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: table: checklist id, title, (ground truth, (lightfm, qlib, DeepSpeech))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> pd.read_csv(<span class="st">'ground_truth.csv'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>gt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">title</th>
+<th data-quarto-table-cell-role="th">DeepSpeech</th>
+<th data-quarto-table-cell-role="th">lightfm</th>
+<th data-quarto-table-cell-role="th">qlib</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2.1</td>
+<td>Ensure Data File Loads as Expected</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>3.2</td>
+<td>Data in the Expected Format</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3.5</td>
+<td>Check for Duplicate Records in Data</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4.2</td>
+<td>Verify Data Split Proportion</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5.3</td>
+<td>Ensure Model Output Shape Aligns with Expectation</td>
+<td>0.0</td>
+<td>0.5</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>6.1</td>
+<td>Verify Evaluation Metrics Implementation</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>6.2</td>
+<td>Evaluate Model's Performance Against Thresholds</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <blockquote class="blockquote">
 <p>Caption: Ground truth data on the 3 repositories</p>
@@ -384,18 +491,280 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: jitter-mean-sd plot (checklist item vs. score) for each repo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: jitter-mean-sd plot (checklist item vs. score) for each repo</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df_repo__stat <span class="op">=</span> pd.read_csv(<span class="st">'score_stat_by_repo_3.5-turbo.csv'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> pd.read_csv(<span class="st">'ground_truth.csv'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> gt.melt(id_vars<span class="op">=</span>[<span class="st">'id'</span>, <span class="st">'title'</span>], var_name<span class="op">=</span><span class="st">'repo'</span>, value_name<span class="op">=</span><span class="st">'ground_truth'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df_repo__stat_with_gt <span class="op">=</span> df_repo__stat.merge(gt, on<span class="op">=</span>[<span class="st">'id'</span>, <span class="st">'title'</span>, <span class="st">'repo'</span>])</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> alt.Chart(</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    df_repo__stat_with_gt.query(<span class="st">'repo in ["lightfm", "qlib", "DeepSpeech"]'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>).transform_calculate(</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span><span class="op">=</span><span class="st">"max(0, datum.mean-datum.std)"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">max</span><span class="op">=</span><span class="st">"min(1, datum.mean+datum.std)"</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the points</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> base.mark_point(</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    filled<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">50</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'black'</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>).encode(</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'mean:Q'</span>).scale(domainMin<span class="op">=</span><span class="dv">0</span>, domainMax<span class="op">=</span><span class="dv">1</span>).title(<span class="st">"Score"</span>).axis(</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        labelExpr<span class="op">=</span><span class="st">"datum.value % 0.5 ? null : datum.label"</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'id_title:N'</span>, title<span class="op">=</span><span class="va">None</span>, axis<span class="op">=</span>alt.Axis(labelPadding<span class="op">=</span><span class="dv">10</span>, labelLimit<span class="op">=</span><span class="dv">1000</span>, grid<span class="op">=</span><span class="va">False</span>))<span class="co">#.scale(domainMin=0, domainMax=1).title('Score'),</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the points for ground truth</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>gt_points <span class="op">=</span> base.mark_point(</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    filled<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'green'</span>,</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    shape<span class="op">=</span><span class="st">"diamond"</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>).encode(</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'ground_truth:Q'</span>),</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'id_title:N'</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the error bars</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>errorbars <span class="op">=</span> base.mark_errorbar().encode(</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">"min:Q"</span>).title(<span class="st">'1 SD'</span>), <span class="co">#"id:N",</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    x2<span class="op">=</span><span class="st">"max:Q"</span>,</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"id_title:N"</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>(gt_points <span class="op">+</span> points <span class="op">+</span> errorbars).facet(</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    column<span class="op">=</span>alt.Column(<span class="st">'repo:N'</span>).title(<span class="va">None</span>)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>).configure_axis( </span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    labelFontSize<span class="op">=</span><span class="dv">12</span>, </span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    titleFontSize<span class="op">=</span><span class="dv">12</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="2">
+
+<style>
+  #altair-viz-359a7ca203b3445f87fd89321e312866.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-359a7ca203b3445f87fd89321e312866.vega-embed details,
+  #altair-viz-359a7ca203b3445f87fd89321e312866.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-359a7ca203b3445f87fd89321e312866"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-359a7ca203b3445f87fd89321e312866") {
+      outputDiv = document.getElementById("altair-viz-359a7ca203b3445f87fd89321e312866");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.17.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.17.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}}, "data": {"name": "data-0cd69fd1c95de279cdd7d1f0310bd508"}, "facet": {"column": {"field": "repo", "title": null, "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "point", "color": "green", "filled": true, "shape": "diamond", "size": 200}, "encoding": {"x": {"field": "ground_truth", "type": "quantitative"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "point", "color": "black", "filled": true, "size": 50}, "encoding": {"x": {"axis": {"labelExpr": "datum.value % 0.5 ? null : datum.label"}, "field": "mean", "scale": {"domainMin": 0, "domainMax": 1}, "title": "Score", "type": "quantitative"}, "y": {"axis": {"grid": false, "labelLimit": 1000, "labelPadding": 10}, "field": "id_title", "title": null, "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "errorbar"}, "encoding": {"x": {"field": "min", "title": "1 SD", "type": "quantitative"}, "x2": {"field": "max"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}]}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-0cd69fd1c95de279cdd7d1f0310bd508": [{"repo": "lightfm", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 1.0}, {"repo": "lightfm", "id": 3.2, "count": 30.0, "mean": 0.5, "std": 0.0, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0}, {"repo": "lightfm", "id": 3.5, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0}, {"repo": "lightfm", "id": 4.2, "count": 30.0, "mean": 0.8166666666666667, "std": 0.2450662589267805, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 1.0}, {"repo": "lightfm", "id": 5.3, "count": 30.0, "mean": 0.4833333333333333, "std": 0.0912870929175276, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 0.5}, {"repo": "lightfm", "id": 6.1, "count": 30.0, "mean": 0.9166666666666666, "std": 0.1895245108947258, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0}, {"repo": "lightfm", "id": 6.2, "count": 30.0, "mean": 0.9833333333333332, "std": 0.0912870929175276, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0}, {"repo": "qlib", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 0.5}, {"repo": "qlib", "id": 3.2, "count": 30.0, "mean": 0.7666666666666667, "std": 0.2537081317024624, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0}, {"repo": "qlib", "id": 3.5, "count": 30.0, "mean": 0.1166666666666666, "std": 0.2150915335760381, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0}, {"repo": "qlib", "id": 4.2, "count": 30.0, "mean": 0.4833333333333333, "std": 0.2069204966986668, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 0.5}, {"repo": "qlib", "id": 5.3, "count": 30.0, "mean": 0.55, "std": 0.2012889499682243, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 1.0}, {"repo": "qlib", "id": 6.1, "count": 30.0, "mean": 0.6333333333333333, "std": 0.2916461404928373, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0}, {"repo": "qlib", "id": 6.2, "count": 30.0, "mean": 0.6, "std": 0.203419051086243, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0}]}}, {"mode": "vega-lite"});
+</script>
+</div>
 </div>
 <blockquote class="blockquote">
 <p>Caption: Comparison of the satisfaction determined by our system versus the ground truth for each checklist item and repository</p>
 </blockquote>
-<p>We found that our tool tends to undermine the actual satisfying cases. For the items that are actually satisfied (score = 1), our tool tends to classify as partially satisfied (score = 0.5), while for those that are partially satisfied (score = 0.5), our tool often classfies as not satisfied (score = 0).</p>
+<p>We found that our tool tends to undermine the actual satisfying cases. For the items that are actually satisfied (score = 1), our tool tends to classify as partially satisfied (score = 0.5), (FIXME: in the newer run, the actual 0.5 seems to be tagged quite accurately) while for those that are partially satisfied (score = 0.5), our tool often classifies as not satisfied (score = 0).</p>
 <div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: contingency table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_repo_run <span class="op">=</span> pd.read_csv(<span class="st">'score_by_repo_run_3.5-turbo.csv'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_repo_run <span class="op">=</span> df_repo_run.merge(gt, on<span class="op">=</span>[<span class="st">'id'</span>, <span class="st">'title'</span>, <span class="st">'repo'</span>])</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>contingency_table <span class="op">=</span> pd.pivot_table(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    df_repo_run,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    values<span class="op">=</span><span class="st">'run'</span>, </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">'repo'</span>, <span class="st">'id_title'</span>, <span class="st">'ground_truth'</span>], </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">'score'</span>],</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    aggfunc<span class="op">=</span><span class="st">'count'</span>, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    fill_value<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>contingency_table.index.names <span class="op">=</span> [<span class="st">'Repository'</span>, <span class="st">'Checklist Item'</span>, <span class="st">'Ground Truth'</span>]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>contingency_table.sort_index(level<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">score</th>
+<th data-quarto-table-cell-role="th">0.0</th>
+<th data-quarto-table-cell-role="th">0.5</th>
+<th data-quarto-table-cell-role="th">1.0</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Repository</th>
+<th data-quarto-table-cell-role="th">Checklist Item</th>
+<th data-quarto-table-cell-role="th">Ground Truth</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="7" data-quarto-table-cell-role="th" data-valign="top">lightfm</td>
+<td data-quarto-table-cell-role="th">3.5. Check for Duplicate Records in Data</td>
+<td data-quarto-table-cell-role="th">0.0</td>
+<td>30</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5.3. Ensure Model Output Shape Aligns with Expectation</td>
+<td data-quarto-table-cell-role="th">0.5</td>
+<td>1</td>
+<td>29</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2.1. Ensure Data File Loads as Expected</td>
+<td data-quarto-table-cell-role="th">1.0</td>
+<td>0</td>
+<td>0</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3.2. Data in the Expected Format</td>
+<td data-quarto-table-cell-role="th">1.0</td>
+<td>0</td>
+<td>30</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4.2. Verify Data Split Proportion</td>
+<td data-quarto-table-cell-role="th">1.0</td>
+<td>0</td>
+<td>11</td>
+<td>19</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6.1. Verify Evaluation Metrics Implementation</td>
+<td data-quarto-table-cell-role="th">1.0</td>
+<td>0</td>
+<td>5</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6.2. Evaluate Model's Performance Against Thresholds</td>
+<td data-quarto-table-cell-role="th">1.0</td>
+<td>0</td>
+<td>1</td>
+<td>29</td>
+</tr>
+<tr class="even">
+<td rowspan="7" data-quarto-table-cell-role="th" data-valign="top">qlib</td>
+<td data-quarto-table-cell-role="th">3.5. Check for Duplicate Records in Data</td>
+<td data-quarto-table-cell-role="th">0.0</td>
+<td>23</td>
+<td>7</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2.1. Ensure Data File Loads as Expected</td>
+<td data-quarto-table-cell-role="th">0.5</td>
+<td>0</td>
+<td>0</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4.2. Verify Data Split Proportion</td>
+<td data-quarto-table-cell-role="th">0.5</td>
+<td>3</td>
+<td>25</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3.2. Data in the Expected Format</td>
+<td data-quarto-table-cell-role="th">1.0</td>
+<td>0</td>
+<td>14</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5.3. Ensure Model Output Shape Aligns with Expectation</td>
+<td data-quarto-table-cell-role="th">1.0</td>
+<td>1</td>
+<td>25</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6.1. Verify Evaluation Metrics Implementation</td>
+<td data-quarto-table-cell-role="th">1.0</td>
+<td>2</td>
+<td>18</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6.2. Evaluate Model's Performance Against Thresholds</td>
+<td data-quarto-table-cell-role="th">1.0</td>
+<td>0</td>
+<td>24</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <blockquote class="blockquote">
 <p>Contingency table of the satisfaction determined by our system versus the ground truth</p>
@@ -404,18 +773,128 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="consistency" class="level4">
 <h4 class="anchored" data-anchor-id="consistency">Consistency</h4>
-<p>Since the completeness score from LLMs contain randomness, we further studied the consistency of scores across checklist items and reposities.</p>
+<p>Since the completeness score from LLMs contain randomness, we further studied the consistency of scores across checklist items and repositories.</p>
 <div class="cell" data-execution_count="4">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: jitter-boxplot, checklist item vs. SD</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>stds <span class="op">=</span> df_repo__stat[[<span class="st">'repo'</span>, <span class="st">'std'</span>, <span class="st">'id_title'</span>]].pivot(index<span class="op">=</span><span class="st">'repo'</span>, columns<span class="op">=</span><span class="st">'id_title'</span>).copy()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>stds.columns <span class="op">=</span> [col[<span class="dv">1</span>] <span class="cf">for</span> col <span class="kw">in</span> stds.columns]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>stds <span class="op">=</span> stds.reset_index()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>stds <span class="op">=</span> stds.melt(id_vars<span class="op">=</span><span class="st">'repo'</span>, var_name<span class="op">=</span><span class="st">'id_title'</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> alt.Chart(stds)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> base.mark_boxplot(</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'grey'</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>).encode(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'value:Q'</span>).title(<span class="st">'Standard Deviation of Scores'</span>),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'id_title:N'</span>, title<span class="op">=</span><span class="va">None</span>, axis<span class="op">=</span>alt.Axis(labelPadding<span class="op">=</span><span class="dv">10</span>, labelLimit<span class="op">=</span><span class="dv">1000</span>, grid<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>stripplot <span class="op">=</span> base.mark_circle(size<span class="op">=</span><span class="dv">100</span>).encode(</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y( </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">'id_title:N'</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        axis<span class="op">=</span>alt.Axis(ticks<span class="op">=</span><span class="va">False</span>, grid<span class="op">=</span><span class="va">True</span>, labels<span class="op">=</span><span class="va">True</span>), </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        scale<span class="op">=</span>alt.Scale(), </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    ), </span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'value:Q'</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    yOffset<span class="op">=</span><span class="st">"jitter:Q"</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span>alt.Color(<span class="st">'id_title:N'</span>, legend<span class="op">=</span><span class="va">None</span>),</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span><span class="st">'repo'</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>).transform_calculate(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate Gaussian jitter with a Box-Muller transform</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    jitter<span class="op">=</span><span class="st">"sqrt(-2*log(random()))*cos(2*PI*random())"</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    box <span class="op">+</span> stripplot</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>).configure_view( </span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    stroke<span class="op">=</span><span class="va">None</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>).configure_axis( </span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    labelFontSize<span class="op">=</span><span class="dv">12</span>, </span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    titleFontSize<span class="op">=</span><span class="dv">12</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">300</span>, </span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">600</span>,</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"30 Runs on Openja's Repositories for each Checklist Item"</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+<style>
+  #altair-viz-eba218e2d2424d34a7c86a5d9ff4286a.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-eba218e2d2424d34a7c86a5d9ff4286a.vega-embed details,
+  #altair-viz-eba218e2d2424d34a7c86a5d9ff4286a.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-eba218e2d2424d34a7c86a5d9ff4286a"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-eba218e2d2424d34a7c86a5d9ff4286a") {
+      outputDiv = document.getElementById("altair-viz-eba218e2d2424d34a7c86a5d9ff4286a");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.17.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.17.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axis": {"labelFontSize": 12, "titleFontSize": 12}}, "layer": [{"mark": {"type": "boxplot", "color": "grey", "opacity": 0.5, "size": 20}, "encoding": {"x": {"field": "value", "title": "Standard Deviation of Scores", "type": "quantitative"}, "y": {"axis": {"grid": false, "labelLimit": 1000, "labelPadding": 10}, "field": "id_title", "title": null, "type": "nominal"}}}, {"mark": {"type": "circle", "size": 100}, "encoding": {"color": {"field": "id_title", "legend": null, "type": "nominal"}, "tooltip": {"field": "repo", "type": "nominal"}, "x": {"field": "value", "type": "quantitative"}, "y": {"axis": {"grid": true, "labels": true, "ticks": false}, "field": "id_title", "scale": {}, "type": "nominal"}, "yOffset": {"field": "jitter", "type": "quantitative"}}, "transform": [{"calculate": "sqrt(-2*log(random()))*cos(2*PI*random())", "as": "jitter"}]}], "data": {"name": "data-6781bc08998d89e40d13eed2c6299b07"}, "height": 300, "title": "30 Runs on Openja's Repositories for each Checklist Item", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-6781bc08998d89e40d13eed2c6299b07": [{"repo": "lightfm", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "magenta", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0912870929175276}, {"repo": "mmf", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "nanodet", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "qlib", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "lightfm", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "magenta", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "mmf", "id_title": "3.2. Data in the Expected Format", "value": 0.2330457998496995}, {"repo": "nanodet", "id_title": "3.2. Data in the Expected Format", "value": 0.2542738138578039}, {"repo": "qlib", "id_title": "3.2. Data in the Expected Format", "value": 0.2537081317024624}, {"repo": "lightfm", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "magenta", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "mmf", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.2537081317024624}, {"repo": "nanodet", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "qlib", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.2150915335760381}, {"repo": "lightfm", "id_title": "4.2. Verify Data Split Proportion", "value": 0.2450662589267805}, {"repo": "magenta", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "mmf", "id_title": "4.2. Verify Data Split Proportion", "value": 0.1728729518208802}, {"repo": "nanodet", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "qlib", "id_title": "4.2. Verify Data Split Proportion", "value": 0.2069204966986668}, {"repo": "lightfm", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0912870929175276}, {"repo": "magenta", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "mmf", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.2491364395612199}, {"repo": "nanodet", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "qlib", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.2012889499682243}, {"repo": "lightfm", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1895245108947258}, {"repo": "magenta", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0}, {"repo": "mmf", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1525642883146823}, {"repo": "nanodet", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.2491364395612199}, {"repo": "qlib", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.2916461404928373}, {"repo": "lightfm", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0912870929175276}, {"repo": "magenta", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "mmf", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.2248882225544018}, {"repo": "nanodet", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.1268540658512312}, {"repo": "qlib", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.203419051086243}]}}, {"mode": "vega-lite"});
+</script>
+</div>
 </div>
 <blockquote class="blockquote">
-<p>Caption: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores of 30 runs of a sigle repository</p>
+<p>Caption: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores of 30 runs of a single repository</p>
 </blockquote>
 <p>We found 2 diverging cases. For example, it shows high standard deviations across repositories for item <code>3.2 Data in the Expected Format</code>. This might be a proof of poor prompt quality, making it ambiguous for the LLM and hence hard to produce consistent results. Prompt engineering might solve this problem.</p>
-<p>On the other hand, there are outliers yielding exceptionally high standard deviations for item <code>5.3 Ensure Model Output Shape Aligns with Expectation</code>. This may be because those repositories are unorthodox, and careful manual examination is required to achieve a more robust conclusion.</p>
+<p>On the other hand, there are outliers yielding exceptionally high standard deviations for item <code>5.3 Ensure Model Output Shape Aligns with Expectation</code>. This may be because those repositories are unorthodox, but careful manual examination is required for a more definite conclusion.</p>
 </section>
 <section id="comparison-of-gpt-3.5-turbo-and-gpt-4o" class="level4">
 <h4 class="anchored" data-anchor-id="comparison-of-gpt-3.5-turbo-and-gpt-4o">Comparison of <code>gpt-3.5-turbo</code> and <code>gpt-4o</code></h4>
@@ -423,8 +902,131 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="5">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: jitter-mean-sd plot (checklist item vs. score) for each repo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: jitter-mean-sd plot (checklist item vs. score) for each repo</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_repo_4o__stat <span class="op">=</span> pd.read_csv(<span class="st">'score_stat_by_repo_4o.csv'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df_repo_4o__stat_with_gt <span class="op">=</span> df_repo_4o__stat.merge(gt, on<span class="op">=</span>[<span class="st">'id'</span>, <span class="st">'title'</span>, <span class="st">'repo'</span>])</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df_repo_4o__stat_with_gt[<span class="st">'model'</span>] <span class="op">=</span> <span class="st">'gpt-4o'</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>df_repo_35turbo__stat_with_gt <span class="op">=</span> df_repo__stat_with_gt.query(<span class="st">"repo == 'lightfm'"</span>).copy()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df_repo_35turbo__stat_with_gt[<span class="st">'model'</span>] <span class="op">=</span> <span class="st">'gpt-3.5-turbo'</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>df_model_comp <span class="op">=</span> pd.concat(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    (df_repo_35turbo__stat_with_gt, df_repo_4o__stat_with_gt), </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> alt.Chart(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    df_model_comp</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>).transform_calculate(</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span><span class="op">=</span><span class="st">"max(0, datum.mean-datum.std)"</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">max</span><span class="op">=</span><span class="st">"min(1, datum.mean+datum.std)"</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the points</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> base.mark_point(</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    filled<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">50</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'black'</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>).encode(</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'mean:Q'</span>).scale(domainMin<span class="op">=</span><span class="dv">0</span>, domainMax<span class="op">=</span><span class="dv">1</span>).title(<span class="st">"Score"</span>).axis(</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        labelExpr<span class="op">=</span><span class="st">"datum.value % 0.5 ? null : datum.label"</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'id_title:N'</span>, title<span class="op">=</span><span class="va">None</span>, axis<span class="op">=</span>alt.Axis(labelPadding<span class="op">=</span><span class="dv">10</span>, labelLimit<span class="op">=</span><span class="dv">1000</span>, grid<span class="op">=</span><span class="va">False</span>))<span class="co">#.scale(domainMin=0, domainMax=1).title('Score'),</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the points for ground truth</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>gt_points <span class="op">=</span> base.mark_point(</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    filled<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'green'</span>,</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    shape<span class="op">=</span><span class="st">"diamond"</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>).encode(</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'ground_truth:Q'</span>),</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'id_title:N'</span>)</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the error bars</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>errorbars <span class="op">=</span> base.mark_errorbar().encode(</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">"min:Q"</span>).title(<span class="st">'1 SD'</span>), <span class="co">#"id:N",</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    x2<span class="op">=</span><span class="st">"max:Q"</span>,</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"id_title:N"</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>(gt_points <span class="op">+</span> points <span class="op">+</span> errorbars).facet(</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    column<span class="op">=</span>alt.Column(<span class="st">'model:N'</span>).title(<span class="va">None</span>)</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>).configure_axis( </span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>    labelFontSize<span class="op">=</span><span class="dv">12</span>, </span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    titleFontSize<span class="op">=</span><span class="dv">12</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="5">
+
+<style>
+  #altair-viz-25d34cfeb746493c859e23f5d35cc270.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-25d34cfeb746493c859e23f5d35cc270.vega-embed details,
+  #altair-viz-25d34cfeb746493c859e23f5d35cc270.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-25d34cfeb746493c859e23f5d35cc270"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-25d34cfeb746493c859e23f5d35cc270") {
+      outputDiv = document.getElementById("altair-viz-25d34cfeb746493c859e23f5d35cc270");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.17.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.17.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}}, "data": {"name": "data-fa92dc5f0050e8b2ad7776e083e19b07"}, "facet": {"column": {"field": "model", "title": null, "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "point", "color": "green", "filled": true, "shape": "diamond", "size": 200}, "encoding": {"x": {"field": "ground_truth", "type": "quantitative"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "point", "color": "black", "filled": true, "size": 50}, "encoding": {"x": {"axis": {"labelExpr": "datum.value % 0.5 ? null : datum.label"}, "field": "mean", "scale": {"domainMin": 0, "domainMax": 1}, "title": "Score", "type": "quantitative"}, "y": {"axis": {"grid": false, "labelLimit": 1000, "labelPadding": 10}, "field": "id_title", "title": null, "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "errorbar"}, "encoding": {"x": {"field": "min", "title": "1 SD", "type": "quantitative"}, "x2": {"field": "max"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}]}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-fa92dc5f0050e8b2ad7776e083e19b07": [{"repo": "lightfm", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 1.0, "model": "gpt-3.5-turbo"}, {"repo": "lightfm", "id": 3.2, "count": 30.0, "mean": 0.5, "std": 0.0, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0, "model": "gpt-3.5-turbo"}, {"repo": "lightfm", "id": 3.5, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0, "model": "gpt-3.5-turbo"}, {"repo": "lightfm", "id": 4.2, "count": 30.0, "mean": 0.8166666666666667, "std": 0.2450662589267805, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 1.0, "model": "gpt-3.5-turbo"}, {"repo": "lightfm", "id": 5.3, "count": 30.0, "mean": 0.4833333333333333, "std": 0.0912870929175276, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 0.5, "model": "gpt-3.5-turbo"}, {"repo": "lightfm", "id": 6.1, "count": 30.0, "mean": 0.9166666666666666, "std": 0.1895245108947258, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0, "model": "gpt-3.5-turbo"}, {"repo": "lightfm", "id": 6.2, "count": 30.0, "mean": 0.9833333333333332, "std": 0.0912870929175276, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0, "model": "gpt-3.5-turbo"}, {"repo": "lightfm", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 1.0, "model": "gpt-4o"}, {"repo": "lightfm", "id": 3.2, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0, "model": "gpt-4o"}, {"repo": "lightfm", "id": 3.5, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0, "model": "gpt-4o"}, {"repo": "lightfm", "id": 4.2, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 1.0, "model": "gpt-4o"}, {"repo": "lightfm", "id": 5.3, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 0.5, "model": "gpt-4o"}, {"repo": "lightfm", "id": 6.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0, "model": "gpt-4o"}, {"repo": "lightfm", "id": 6.2, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0, "model": "gpt-4o"}]}}, {"mode": "vega-lite"});
+</script>
+</div>
 </div>
 <blockquote class="blockquote">
 <p>Caption: Comparison of the satisfaction using <code>gpt-4o</code> versus using <code>gpt-3.5-turbo</code> for each checklist item on <code>lightfm</code></p>
@@ -465,12 +1067,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Performance optimization is another critical area for future development. As FixML handles large codebases and complex evaluations, optimizing the system to handle these tasks more efficiently is essential. This includes improving the speed and accuracy of the LLM responses, reducing the time taken to analyze and generate reports, and ensuring the system can scale effectively to handle more extensive and more complex projects.</p>
 <p>By addressing these limitations and focusing on these future improvements, FixML will become an even more powerful tool for ensuring the quality and robustness of machine learning and data science projects.</p>
+</section>
+</section>
+<section id="references" class="level2">
+
+
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-alexander2023evaluating" class="csl-entry" role="listitem">
+Alexander, Rohan, Lindsay Katz, Callandra Moore, and Zane Schwartz. 2023. <span>“Evaluating the Decency and Consistency of Data Validation Tests Generated by LLMs.”</span> <em>arXiv Preprint arXiv:2310.01402</em>.
+</div>
+<div id="ref-grand2021artificial" class="csl-entry" role="listitem">
+Grand-View-Research. 2021. <span>“Artificial Intelligence Market Size, Share &amp; Trends Analysis Report by Solution, by Technology (Deep Learning, Machine Learning), by End-Use, by Region, and Segment Forecasts, 2023 2030.”</span> Grand View Research San Francisco.
+</div>
+<div id="ref-kapoor2022leakage" class="csl-entry" role="listitem">
+Kapoor, Sayash, and Arvind Narayanan. 2022. <span>“Leakage and the Reproducibility Crisis in ML-Based Science.”</span> <em>arXiv Preprint arXiv:2207.07048</em>.
+</div>
+<div id="ref-openja2023studying" class="csl-entry" role="listitem">
+Openja, Moses, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, et al. 2023. <span>“Studying the Practices of Testing Machine Learning Software in the Wild.”</span> <em>arXiv Preprint arXiv:2312.12604</em>.
+</div>
+<div id="ref-Asheeta2019" class="csl-entry" role="listitem">
+Regidi, Asheeta. 2019. <span>“SEBI’s Circular: The Black Box Conundrum and Misrepresentation in AI-Based Mutual Funds.”</span> Firstpost. <a href="https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html">https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html</a>.
+</div>
+<div id="ref-zhang2023sirens" class="csl-entry" role="listitem">
+Zhang, Yue, Yafu Li, Leyang Cui, Deng Cai, Lemao Liu, Tingchen Fu, Xinting Huang, et al. 2023. <span>“Siren’s Song in the AI Ocean: A Survey on Hallucination in Large Language Models.”</span> <a href="https://arxiv.org/abs/2309.01219">https://arxiv.org/abs/2309.01219</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

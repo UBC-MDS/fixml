@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -110,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./final_report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</span></a>
+ <span class="menu-text">DSCI591 Capstone Final Report</span></a>
   </div>
 </li>
       </ul>
@@ -190,13 +209,13 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <section id="problem-statement" class="level3">
 <h3 class="anchored" data-anchor-id="problem-statement">Problem Statement</h3>
-<p>The global artificial intelligence (AI) market is growing exponentially {cite}<code>grand2021artificial</code>, driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.</p>
-<p>However, ensuring the software quality of these systems remains a significant challenge {cite}<code>openja2023studying</code>. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses {cite}<code>Asheeta2019</code> and safety hazards.</p>
+<p>The global artificial intelligence (AI) market is growing exponentially <span class="citation" data-cites="grand2021artificial">(<a href="#ref-grand2021artificial" role="doc-biblioref">Grand-View-Research 2021</a>)</span>, driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.</p>
+<p>However, ensuring the software quality of these systems remains a significant challenge <span class="citation" data-cites="openja2023studying">(<a href="#ref-openja2023studying" role="doc-biblioref">Openja et al. 2023</a>)</span>. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as substantial financial losses <span class="citation" data-cites="Asheeta2019">(<a href="#ref-Asheeta2019" role="doc-biblioref">Regidi 2019</a>)</span> and safety hazards.</p>
 <p>Therefore, defining and promoting an industry standard and establishing robust testing methodologies for these systems is crucial. But how?</p>
 </section>
 <section id="our-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="our-objectives">Our Objectives</h3>
-<p>We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate a checklist to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software’s trustworthiness, quality, and reproducibility across both the industry and academia {cite}<code>kapoor2022leakage</code>.</p>
+<p>We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate a checklist to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software’s trustworthiness, quality, and reproducibility across both the industry and academia <span class="citation" data-cites="kapoor2022leakage">(<a href="#ref-kapoor2022leakage" role="doc-biblioref">Kapoor and Narayanan 2022</a>)</span>.</p>
 </section>
 </section>
 <section id="our-product" class="level2">
@@ -205,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 <table class="table">
 <thead>
 <tr class="header">
-<th>```tuqkogfb ../../img/proposed_system_overview.png</th>
+<th>```ngsvnkff ../../img/proposed_system_overview.png</th>
 </tr>
 </thead>
 <tbody>
@@ -216,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>Main components and workflow of the proposed system. The checklist would be written in <a href="https://yaml.org/">YAML</a> to maximize readability for both humans and machines. We hope this will encourage researchers/users to read, understand and modify the checklist items, while keeping the checklist closely integrated with other components in our system.</p>
 <pre><code>
-One big challenge in utilizing LLMs to reliably and consistently evaluate ML systems is their tendency to generate illogical and/or factually wrong information known as hallucination {cite}`zhang2023sirens`.
+One big challenge in utilizing LLMs to reliably and consistently evaluate ML systems is their tendency to generate illogical and/or factually wrong information known as hallucination [@zhang2023sirens].
 
 To combat this, the proposed system will incorporate a checklist ([Fig. 1](overview-diagram)) which would be curated manually and incorporate best practices in software testing and identified areas to be tested inside ML pipeline from human experts and past research.
 
@@ -370,7 +389,7 @@ Test Areas:
 <section id="data-github-repositories" class="level4">
 <h4 class="anchored" data-anchor-id="data-github-repositories">Data: GitHub Repositories</h4>
 <p>In this project, GitHub repositories are our data.</p>
-<p>To develop our testing checklist, we will collect 11 repositories studied in {cite}<code>openja2023studying</code>. Additionally, we will collect 377 repositories identified in the study by {cite}<code>wattanakriengkrai2022github</code> for our product development.</p>
+<p>To develop our testing checklist, we will collect 11 repositories studied in <span class="citation" data-cites="openja2023studying">(<a href="#ref-openja2023studying" role="doc-biblioref">Openja et al. 2023</a>)</span>. Additionally, we will collect 377 repositories identified in the study by <span class="citation" data-cites="wattanakriengkrai2022github">(<a href="#ref-wattanakriengkrai2022github" role="doc-biblioref">Wattanakriengkrai et al. 2022</a>)</span> for our product development.</p>
 <p>For each repository, we are interested in the metadata and the ML modeling- and test-related source code. The metadata will be retrieved using the GitHub API, while the source code will be downloaded and filtered using our custom scripts. To ensure the relevance of the repositories to our study, we will apply the following criteria for filtering: 1. Repositories that are related to ML systems. 2. Repositories that include test cases. 3. Repositories whose development is written in the Python programming language.</p>
 </section>
 <section id="methodologies" class="level4">
@@ -378,13 +397,13 @@ Test Areas:
 <p>Our data science methodology incorporates human expert evaluation and prompt engineering to assess and enhance the test quality of ML systems.</p>
 <ul>
 <li><p>Human Expert Evaluation</p>
-<p>We will begin by formulating a comprehensive checklist for evaluating the data and ML pipeline based on the established testing strategies outlined in {cite}<code>openja2023studying</code> as the foundational framework. Based on the formulated checklist, our team will manually assess the test quality within each repository data. We will refine the checklist to ensure applicability and robustness when testing general ML systems.</p></li>
+<p>We will begin by formulating a comprehensive checklist for evaluating the data and ML pipeline based on the established testing strategies outlined in <span class="citation" data-cites="openja2023studying">(<a href="#ref-openja2023studying" role="doc-biblioref">Openja et al. 2023</a>)</span> as the foundational framework. Based on the formulated checklist, our team will manually assess the test quality within each repository data. We will refine the checklist to ensure applicability and robustness when testing general ML systems.</p></li>
 <li><p>Prompt Engineering</p>
 <p>We will engineer the prompts for LLM to incorporate with the ML system code and the curated checklist and to serve various purposes across the three-stage process:</p>
 <ol type="1">
 <li>Prompts to examine test cases within the ML system source codes and deliver test completeness scores.</li>
 <li>Prompts to compare and contrast the existing tests and the checklist and deliver recommendations.</li>
-<li>Prompts to generate system-specific test specifications based on user-selected testing recommendations {cite}<code>schafer2023empirical</code></li>
+<li>Prompts to generate system-specific test specifications based on user-selected testing recommendations <span class="citation" data-cites="schafer2023empirical">(<a href="#ref-schafer2023empirical" role="doc-biblioref">Schäfer et al. 2023</a>)</span></li>
 </ol></li>
 </ul>
 </section>
@@ -442,9 +461,29 @@ Test Areas:
 <pre class="{bibliography}"><code></code></pre>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-grand2021artificial" class="csl-entry" role="listitem">
+Grand-View-Research. 2021. <span>“Artificial Intelligence Market Size, Share &amp; Trends Analysis Report by Solution, by Technology (Deep Learning, Machine Learning), by End-Use, by Region, and Segment Forecasts, 2023 2030.”</span> Grand View Research San Francisco.
+</div>
+<div id="ref-kapoor2022leakage" class="csl-entry" role="listitem">
+Kapoor, Sayash, and Arvind Narayanan. 2022. <span>“Leakage and the Reproducibility Crisis in ML-Based Science.”</span> <em>arXiv Preprint arXiv:2207.07048</em>.
+</div>
+<div id="ref-openja2023studying" class="csl-entry" role="listitem">
+Openja, Moses, Foutse Khomh, Armstrong Foundjem, Zhen Ming, Mouna Abidi, Ahmed E Hassan, et al. 2023. <span>“Studying the Practices of Testing Machine Learning Software in the Wild.”</span> <em>arXiv Preprint arXiv:2312.12604</em>.
+</div>
+<div id="ref-Asheeta2019" class="csl-entry" role="listitem">
+Regidi, Asheeta. 2019. <span>“SEBI’s Circular: The Black Box Conundrum and Misrepresentation in AI-Based Mutual Funds.”</span> Firstpost. <a href="https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html">https://www.firstpost.com/business/sebis-circular-the-black-box-conundrum-and-misrepresentation-in-ai-based-mutual-funds-6625161.html</a>.
+</div>
+<div id="ref-schafer2023empirical" class="csl-entry" role="listitem">
+Schäfer, Max, Sarah Nadi, Aryaz Eghbali, and Frank Tip. 2023. <span>“An Empirical Evaluation of Using Large Language Models for Automated Unit Test Generation.”</span> <em>IEEE Transactions on Software Engineering</em>.
+</div>
+<div id="ref-wattanakriengkrai2022github" class="csl-entry" role="listitem">
+Wattanakriengkrai, Supatsara, Bodin Chinthanet, Hideaki Hata, Raula Gaikovina Kula, Christoph Treude, Jin Guo, and Kenichi Matsumoto. 2022. <span>“GitHub Repositories with Links to Academic Papers: Public Access, Traceability, and Evolution.”</span> <em>Journal of Systems and Software</em> 183: 111117.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

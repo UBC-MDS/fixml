@@ -1,0 +1,8 @@
+repo,id,count,mean,std,title,id_title
+lightfm,2.1,30.0,1.0,0.0,Ensure Data File Loads as Expected,2.1. Ensure Data File Loads as Expected
+lightfm,3.2,30.0,1.0,0.0,Data in the Expected Format,3.2. Data in the Expected Format
+lightfm,3.5,30.0,1.0,0.0,Check for Duplicate Records in Data,3.5. Check for Duplicate Records in Data
+lightfm,4.2,30.0,1.0,0.0,Verify Data Split Proportion,4.2. Verify Data Split Proportion
+lightfm,5.3,30.0,1.0,0.0,Ensure Model Output Shape Aligns with Expectation,5.3. Ensure Model Output Shape Aligns with Expectation
+lightfm,6.1,30.0,1.0,0.0,Verify Evaluation Metrics Implementation,6.1. Verify Evaluation Metrics Implementation
+lightfm,6.2,30.0,1.0,0.0,Evaluate Model's Performance Against Thresholds,6.2. Evaluate Model's Performance Against Thresholds
