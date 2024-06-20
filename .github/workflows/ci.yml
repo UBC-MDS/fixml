@@ -48,6 +48,7 @@ jobs:
 
   wheel-install-test:
     runs-on: ubuntu-latest
+    needs: [unit-and-build-test]
     steps:
      - name: Set up Python
        uses: actions/setup-python@v4
