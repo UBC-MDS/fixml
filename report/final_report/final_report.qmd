@@ -20,7 +20,7 @@ by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
 The global artificial intelligence (AI) market is growing exponentially ([@grand2021artificial]), driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.
 
-However, ensuring the software quality of these systems remains a significant challenge ([@openja2023studying]). Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as misinformation ([@Ashley2024]), social bias ([@Alice2023]), substantial financial losses ([@Asheeta2019]) and safety hazards.
+However, ensuring the software quality of these systems remains a significant challenge ([@openja2023studying]). Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as misinformation ([@Ashley2024]), social bias ([@Alice2023]), substantial financial losses ([@Asheeta2019]) and safety hazards ([@David2023])
 
 Therefore, defining and promoting an industry standard and establishing robust testing methodologies for these systems is crucial. But how?
 
@@ -110,7 +110,7 @@ It converts Evaluator responses into evaluation reports in various formats (HTML
 
 #### Checklist Design
 
-The embedded checklist  ([Fig. 1](overview-diagram)) contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering further improves performance. THis helps mitigate LLM hallucinations ([@zhang2023sirens]) by ensuring strict adherence to the checklist.
+The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering further improves performance. THis helps mitigate LLM hallucinations ([@zhang2023sirens]) by ensuring strict adherence to the checklist.
 
 Example checklist structure:
 
