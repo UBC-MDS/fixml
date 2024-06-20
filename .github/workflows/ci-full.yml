@@ -1,6 +1,10 @@
 name: ci-full
 
 on:
+  # only pushes to the protected branch i.e. `main` should trigger this flow.
+  # enabling this flow to be triggered on push to **unprotected** branches
+  # or Pull Requests to **any** branch risks exposing the secrets for any
+  # unapproved changes (basically RCE)
   push:
     branches:
       - main
@@ -39,4 +43,6 @@ jobs:
         run: sudo snap refresh && sudo snap install tectonic
 
       - name: Test with pytest
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: poetry run pytest --cov
