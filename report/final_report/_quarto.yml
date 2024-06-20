@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  sidebar:
+    style: "docked"
+    logo: "logo.png"
+    search: true
+    contents:
+      - section: "Final Report"
+        contents:
+          - final_report.qmd
+      - section: "Proposal"
+        contents:
+          - proposal.ipynb
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+
