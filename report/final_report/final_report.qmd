@@ -92,14 +92,11 @@ By offering it as both CLI tool and API, our product is user-friendly to interac
 
 #### System Design
 
-(FIXME To be revised)
-
 ::: {#fig-system}
-![](img/proposed_system_overview.png){width=600}
+![](img/proposed_system_overview.png){width=600 fig-align="left"}
 
 Diagram of FixML system design
 :::
-
 
 The design of our package follows object-oriented and SOLID principles, which is fully modularity. Users can easily switch between different prompts, models, and checklists, which facilitates code reusability and collaboration to extend its functionality.
 
@@ -129,7 +126,7 @@ It converts Evaluator responses into evaluation reports in various formats (HTML
 
 The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering further improves performance. THis helps mitigate LLM hallucinations [@zhang2023sirens] by ensuring strict adherence to the checklist.
 
-Example checklist structure:
+::: {#tbl-checklist-schema}
 
 |                  Column | Description                                                                                          |
 |------------------:|:----------------------------------------------------|
@@ -141,10 +138,11 @@ Example checklist structure:
 |               Reference | References for the checklist item, e.g., academic papers                                                |
 | Is Evaluator Applicable | Indicates if the checklist item is used during evaluation (0 = No, 1 = Yes) |
 
-(FIXME To be revised)
+The structure of the checklist
+:::
 
 ::: {#fig-checklist}
-![](img/checklist_sample.png){width=600}
+![](img/checklist_sample.png){width=600 fig-align="left"}
 
 An example of the checklist
 :::
@@ -157,10 +155,8 @@ Using our package results in three artifacts:
 
 These responses include both LLM evaluation results and process metadata stored in JSON format.This supports downsteam tasks like report rendering and scientific research, etc.
 
-(FIXME To be revised)
-
 ::: {#fig-responses}
-![](img/test_evaluation_responses_sample.png){width=600}
+![](img/test_evaluation_responses_sample.png){width=600 fig-align="left"}
 
 An example of the evaluation responses
 :::
@@ -169,10 +165,8 @@ An example of the evaluation responses
 
 This report presents structured evaluation results of ML projects, which includes a detailed breakdown of completeness scores and reasons for each score.
 
-(FIXME To be revised) 
-
 ::: {#fig-report}
-![](img/test_evaluation_report_sample.png){width=600}
+![](img/test_evaluation_report_sample.png){width=600 fig-align="left"}
 
 An example of the evaluation report
 :::
@@ -181,10 +175,8 @@ An example of the evaluation report
 
 Generated test specifications are stored as Python scripts.
 
-(FIXME To be revised) 
-
 ::: {#fig-testspec}
-![](img/test_spec_sample.png){width=600}
+![](img/test_spec_sample.png){width=600 fig-align="left"}
 
 An example of the generated test specifications
 :::
@@ -192,8 +184,6 @@ An example of the generated test specifications
 ### Evaluation Results
 
 As described in `Success Metrics`, we conducted 30 iterations on each repository from [@openja2023studying] and examined the breakdown of the completeness score to assess our tool's evaluation quality. 
-
-(FIXME: would it be better to show a table of the repos? like how the Openja does?) 
 
 1. **Accuracy**
 

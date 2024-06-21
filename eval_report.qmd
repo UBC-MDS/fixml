@@ -1,0 +1,144 @@
+---
+title: "Test Evaluation Report"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+---
+## Evaluation Summary
+
+**Completeness Score**: 1.5/7
+
+**Completeness Score per Checklist Item**:
+
+|   ID | Title                                             |   is_Satisfied |
+|-----:|:--------------------------------------------------|---------------:|
+|  2.1 | Ensure Data File Loads as Expected                |            1   |
+|  3.2 | Data in the Expected Format                       |            0.5 |
+|  3.5 | Check for Duplicate Records in Data               |            0   |
+|  4.2 | Verify Data Split Proportion                      |            0   |
+|  5.3 | Ensure Model Output Shape Aligns with Expectation |            0   |
+|  6.1 | Verify Evaluation Metrics Implementation          |            0   |
+|  6.2 | Evaluate Model's Performance Against Thresholds   |            0   |
+
+## Evaluation Details
+
+### 2.1 Ensure Data File Loads as Expected
+
+**Requirement**: Ensure that data-loading functions correctly fetch datasets from predefined sources or online repositories. Additionally, verify that the functions handle errors or edge cases gracefully.
+
+**Observations:**
+
+- (test_text.py) The code provided does not directly relate to data-loading functions or handling errors. No functions satisfy this requirement.
+- (test_importers.py) The code does not directly address data loading or handling errors in data loading.
+- (test_value_range.py) The code provided contains test functions for checking the loading of data files. The functions test various scenarios such as loading integer and float values, as well as ranges and scalars.
+
+
+**Function References:**
+
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_text.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_importers.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_value_range.py', 'Referenced Functions': ['[test_int_str_scalar](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L14)', '[test_int_str_scalar_radius](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L17)', '[test_int_str_range](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L20)', '[test_int_str_range_radius](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L23)', '[test_int_scalar](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L26)', '[test_int_2tuple](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L29)', '[test_int_3tuple](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L32)', '[test_float_str_scalar](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L35)', '[test_float_str_scalar_radius](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L38)', '[test_float_str_range](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L41)', '[test_float_str_range_radius](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L44)', '[test_float_scalar](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L47)', '[test_float_2tuple](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L50)', '[test_float_3tuple](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L53)', '[test_float_int_3tuple](https://github.com/mozilla/DeepSpeech/blob/master/tests/test_value_range.py#L56)']}
+
+### 3.2 Data in the Expected Format
+
+**Requirement**: Verify that the data matches the expected format. This involves checking the shape, data types, values, and any other properties.
+
+**Observations:**
+
+- (test_text.py) The code provided does not involve data format verification. No functions satisfy this requirement.
+- (test_importers.py) The code does not involve any data format verification.
+- (test_value_range.py) The code provided does not contain any functions related to verifying the format of the data. However, the existing functions can be extended to include data format checks.
+
+
+**Function References:**
+
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_text.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_importers.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_value_range.py', 'Referenced Functions': []}
+
+### 3.5 Check for Duplicate Records in Data
+
+**Requirement**: Verify that there are no duplicate records in the loaded data.
+
+**Observations:**
+
+- (test_text.py) The code provided does not involve checking for duplicate records. No functions satisfy this requirement.
+- (test_importers.py) The code does not check for duplicate records in the data.
+- (test_value_range.py) No functions related to checking for duplicate records in the data are present in the code.
+
+
+**Function References:**
+
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_text.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_importers.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_value_range.py', 'Referenced Functions': []}
+
+### 4.2 Verify Data Split Proportion
+
+**Requirement**: Check that the data is split into training and testing sets in the expected proportion. Verify the split by checking the actual fraction of data points in the training and test sets.
+
+**Observations:**
+
+- (test_text.py) The code provided does not involve data split proportion verification. No functions satisfy this requirement.
+- (test_importers.py) The code does not involve data split verification.
+- (test_value_range.py) No functions related to verifying data split proportion are present in the code.
+
+
+**Function References:**
+
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_text.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_importers.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_value_range.py', 'Referenced Functions': []}
+
+### 5.3 Ensure Model Output Shape Aligns with Expectation
+
+**Requirement**: Ensure that the structure of the model's output matches the expected format based on the task, such as checking the dimensions of the output versus the number of labels in classification task.
+
+**Observations:**
+
+- (test_text.py) The code provided does not involve model output shape verification. No functions satisfy this requirement.
+- (test_importers.py) The code does not involve model output shape verification.
+- (test_value_range.py) No functions related to ensuring model output shape alignment are present in the code.
+
+
+**Function References:**
+
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_text.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_importers.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_value_range.py', 'Referenced Functions': []}
+
+### 6.1 Verify Evaluation Metrics Implementation
+
+**Requirement**: Verify that the evaluation metrics are correctly implemented and appropriate for the model's task. Verify the metric computations with expected values to validate correctness.
+
+**Observations:**
+
+- (test_text.py) The code provided does not involve evaluation metrics implementation verification. No functions satisfy this requirement.
+- (test_importers.py) The code does not involve evaluation metrics verification.
+- (test_value_range.py) No functions related to verifying evaluation metrics implementation are present in the code.
+
+
+**Function References:**
+
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_text.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_importers.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_value_range.py', 'Referenced Functions': []}
+
+### 6.2 Evaluate Model's Performance Against Thresholds
+
+**Requirement**: Compute evaluation metrics for both the training and testing datasets. Verify that these metrics exceed threshold values, indicating acceptable model performance.
+
+**Observations:**
+
+- (test_text.py) The code provided does not involve evaluating model performance against thresholds. No functions satisfy this requirement.
+- (test_importers.py) The code does not evaluate model performance against thresholds.
+- (test_value_range.py) No functions related to evaluating model's performance against thresholds are present in the code.
+
+
+**Function References:**
+
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_text.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_importers.py', 'Referenced Functions': []}
+- {'File Path': '/Users/tonyshum/Documents/mds/dsci591/DeepSpeech/tests/test_value_range.py', 'Referenced Functions': []}
+
