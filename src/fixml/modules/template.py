@@ -44,8 +44,7 @@ class TemplateLoader:
             source = f.read()
 
         if validate_template:
-            ast = cls.env.parse(source)
-            vars_external = meta.find_undeclared_variables(ast)
+            vars_external = cls._get_vars_from_source(source)
             vars_internal = cls.list_vars_in_template(validate_template)
             diff = set(vars_internal).difference(vars_external)
             if diff:
@@ -56,6 +55,11 @@ class TemplateLoader:
         return Template(source)
 
     @classmethod
+    def _get_vars_from_source(cls, source: str) -> set[str]:
+        ast = cls.env.parse(source)
+        return meta.find_undeclared_variables(ast)
+
+    @classmethod
     def list(cls) -> list[str]:
         return cls.env.list_templates(extensions=cls.template_exts)
 
@@ -64,5 +68,4 @@ class TemplateLoader:
         """List all variables present in template."""
         template = cls.load(template_name)
         source = cls.env.loader.get_source(cls.env, template.name)[0]
-        ast = cls.env.parse(source)
-        return meta.find_undeclared_variables(ast)
+        return cls._get_vars_from_source(source)
