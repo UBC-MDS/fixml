@@ -432,23 +432,19 @@ While FixML provides substantial benefits, there are limitations and areas to be
 
 1.  **Specialized Checklist**
 
-The default checklist is general and may not cover all requirements for different ML projects. Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.
+The default checklist is general and may not cover all requirements for different ML projects, as shown in [Figure 2: Checklist for Tests in Machine Learning Projects.](#checklist-design). Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.
 
 2.  **Enhanced Test Evaluator**
 
-Our study reveals the accuracy and consistency issues on the evaluation results using OpenAI GPT-3.5-turbo model. Future improvements involves better prompt engineering techniques and support for multiple LLMs for enhanced performance and flexibility. User guidelines in prompt creation will be provided to facilitate collaboration with ML developers.
+Our study reveals the accuracy and consistency issues on the evaluation results using OpenAI GPT-3.5-turbo model (see [Comparison of our system’s satisfaction determination versus the ground truth for each checklist item and repository](#fig-accu-mean-sd-plot) and [Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores from 30 runs of a single repository](#fig-cons-sd-box-plot)). Future improvements involves better prompt engineering techniques and support for multiple LLMs for enhanced performance and flexibility. User guidelines in prompt creation will be provided to facilitate collaboration with ML developers.
 
 3.  **Customized Test Specification**
 
-Future developments will integrate project-specific information to produce customized test function skeletons. This may further encourage users to create comprehensive tests.
+The current generator produces general test function skeletons and does not integrate specific details for the projects (see[General test specification.](#fig-testspec)).Future developments will integrate project-specific information to produce customized test function skeletons. This may further encourage users to create comprehensive tests.
 
-4.  Workflow Optimization #FIXME: have to review whether to include as it seems lower priority.
+4.  Workflow Optimization 
 
-The test evaluator and test specification generator are currently separate. Future improvements could embed a workflow engine that automatically takes actions based on LLM responses. This creates a more cohesive and efficient workflow, recues manual intervention, and improves overall system performance.
-
-5.  Performance Optimization #FIXME: have to review whether to include as it seems lower priority.
-
-As FixML handles large codebases and complex evaluations, performance optimization is essential. Future developments will focus on improving the speed and accuracy of LLM responses, reducing analysis and report generation times, and ensuring scalability for handling larger and more complex projects.
+The test evaluator and test specification generator are currently separate (see [System design.](#system-design)). Future improvements could embed a workflow engine that automatically takes actions based on LLM responses. This creates a more cohesive and efficient workflow, recues manual intervention, and improves overall system performance.
 
 By addressing these limitations and implementing future improvements, we aim for FixML to achieve better performance and contribute to the development of better ML systems, and ultimately enhance human life.
 
