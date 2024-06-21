@@ -37,7 +37,7 @@ class TemplateLoader:
         ext_template_path : str or pathlib.Path
             Path to the external template file.
         validate_template : str, optional
-            If provided, the external template course will be compared with the
+            If provided, the external template source will be compared with the
             referred internal template to confirm all variables are present.
         """
         with open(ext_template_path, "r") as f:
