@@ -1,16 +1,33 @@
+from os.path import getmtime
 from typing import Union, Optional
 from pathlib import Path
 
-from jinja2 import Environment, PackageLoader, Template, meta
+from jinja2 import (Environment, PackageLoader, Template, meta, BaseLoader,
+                    TemplateNotFound)
+
+
+class ExternalFileLoader(BaseLoader):
+    """A dumber FileSystemLoader which does not accept path and thus allows
+    arbitrary file locations as valid template path."""
+    def __init__(self):
+        pass
+
+    def get_source(self, environment: Environment, path: Union[str, Path]):
+        resolved_path = Path(path).resolve()
+        if not resolved_path.is_file():
+            raise TemplateNotFound(path)
+        mtime = getmtime(path)
+        with open(path) as f:
+            source = f.read()
+        return source, resolved_path, lambda: mtime == getmtime(path)
 
 
 class TemplateLoader:
     """Static wrapper class for setting states for Jinja2's Environment."""
 
     template_exts = ["jinja", "j2"]
-    env = Environment(
-        loader=PackageLoader("fixml.data", "templates")
-    )
+    env = Environment(loader=PackageLoader("fixml.data", "templates"))
+    ext_env = Environment(loader=ExternalFileLoader())
     template_aliases = {
         "evaluation": "eval_report.md.jinja",
         "checklist": "checklist.md.jinja",
@@ -45,10 +62,10 @@ class TemplateLoader:
         jinja2.Template
             Source file loaded as a Jinja2 Template.
         """
-        with open(ext_template_path, "r") as f:
-            source = f.read()
-
+        template = cls.ext_env.get_template(ext_template_path)
         if validate_template:
+            source = cls.ext_env.loader.get_source(cls.ext_env,
+                                                   ext_template_path)[0]
             vars_external = cls._get_vars_from_source(source)
             vars_internal = cls.list_vars_in_template(validate_template)
             diff = set(vars_internal).difference(vars_external)
@@ -57,7 +74,8 @@ class TemplateLoader:
                                  f"variables present in the internal template "
                                  f"{validate_template}. Missing variables: "
                                  f"{diff}")
-        return Template(source)
+
+        return template
 
     @classmethod
     def _get_vars_from_source(cls, source: str) -> set[str]:

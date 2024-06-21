@@ -1,3 +1,4 @@
+from pathlib import Path
 from importlib.resources import files
 
 import pytest
@@ -55,3 +56,16 @@ def test_external_templates_fail_validation_when_vars_dont_match(template_path,
     with pytest.raises(ValueError):
         TemplateLoader.load_from_external(template_path,
                                           validate_template=template_name)
+
+
+
+@pytest.mark.parametrize(
+    "template_path",
+    [
+        ("./src/fixml/data/templates/checklist.md.jinja"),
+        ("./src/fixml/data/templates/eval_report.md.jinja"),
+    ]
+)
+def test_external_template_have_full_file_path(template_path):
+    t = TemplateLoader.load_from_external(template_path)
+    assert t.filename == str(Path(template_path).resolve())
