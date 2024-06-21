@@ -13,3 +13,9 @@ draft/*
 
 # pycache
 **/__pycache__/
+
+# built package
+dist/
+
+# pytest-cov coverage files
+.coverage*
