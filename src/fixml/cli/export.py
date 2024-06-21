@@ -1,8 +1,12 @@
+from .checklist import ChecklistActions
 from ..modules.workflow.parse import ResponseParser
 from ..modules.workflow.response import EvaluationResponse
 
 
 class ExportActions(object):
+
+    def __init__(self):
+        self.checklist = ChecklistActions().export
 
     @staticmethod
     def evaluation_report(json_response_path: str, export_path: str,
