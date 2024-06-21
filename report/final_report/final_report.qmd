@@ -11,7 +11,13 @@ by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
 ## Executive Summary
 
-#FIXME
+The global AI market is expanding rapidly and demanding for robust quality assurance for ML systems to prevent risks such as misinformation, social bias, financial losses, and safety hazards. FixML addresses these challenges by offering an automated code review tool embedded with best practices for ML test suites, curated from ML research and industry standards.
+
+Our approach includes developing the tool in Python package based on Large Language Models (LLMs) and creating comprehensive checklists to enhance ML software's trustworthiness, quality, and reproducibility. The tool analyzes ML projects, compares test suites against best practices, and delivers evaluations, which can significantly reduce the time and effort required for manual assessments.
+
+To ensure reliability, we defined two success metrics: accuracy (comparison with human expert judgments) and consistency (standard deviation across multiple runs). Our findings indicated that while our tool is effective, there is room to improce in both metrics, which requires further prompt engineering and refinement for enhanced performance.
+
+The FixML package is available on PyPI and can be used as a CLI tool and a high-level API, which makes it user-friendly and versatile. Future improvements will focus on specialized checklists, enhanced evaluators, customized test specifications, workflow and performance optimization to further improve ML system quality and user experience.
 
 ## Introduction
 
