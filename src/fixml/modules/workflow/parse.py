@@ -143,11 +143,3 @@ class ResponseParser(ExportableMixin):
 
     def as_quarto_markdown(self) -> str:
         return self.as_markdown(add_quarto_header=True)
-
-    def export_evaluation_report(self, output_path,
-                                 exist_ok: bool = False) -> None:
-        """
-        Export the test evaluation report
-        """
-        ext = get_extension(output_path)
-        self.export_ext_func_map[ext](output_path, exist_ok)

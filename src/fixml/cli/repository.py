@@ -141,8 +141,7 @@ class RepositoryActions(WriteableMixin):
         if export_report_to:
             parser = ResponseParser(response)
             parser.get_completeness_score(verbose=verbose)
-            parser.export_evaluation_report(export_report_to,
-                                            exist_ok=overwrite)
+            parser.export(export_report_to, exist_ok=overwrite)
             print(f"Evaluation report exported to {export_report_to}.")
 
     @staticmethod
