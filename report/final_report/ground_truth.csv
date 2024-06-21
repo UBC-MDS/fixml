@@ -1,0 +1,8 @@
+id,title,DeepSpeech,lightfm,qlib
+2.1,Ensure Data File Loads as Expected,0.0,1.0,0.5
+3.2,Data in the Expected Format,0.0,1.0,1.0
+3.5,Check for Duplicate Records in Data,0.0,0.0,0.0
+4.2,Verify Data Split Proportion,0.0,1.0,0.5
+5.3,Ensure Model Output Shape Aligns with Expectation,0.0,0.5,1.0
+6.1,Verify Evaluation Metrics Implementation,0.0,1.0,1.0
+6.2,Evaluate Model's Performance Against Thresholds,0.0,1.0,1.0

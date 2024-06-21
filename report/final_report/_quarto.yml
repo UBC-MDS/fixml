@@ -1,19 +1,19 @@
 project:
   type: website
+  render:
+    - "*qmd"
   output-dir: docs
 
 website:
   sidebar:
     style: "docked"
-    logo: "logo.png"
+    logo: "img/logo.png"
     search: true
     contents:
-      - section: "Final Report"
-        contents:
-          - final_report.qmd
-      - section: "Proposal"
-        contents:
-          - proposal.ipynb
+      - text: "Capstone Final Report"
+        href: final_report.qmd
+      - text: "Capstone Proposal"
+        href: proposal.qmd
 
 format:
   html:
