@@ -17,6 +17,9 @@ def parse_list(raw_input: Any, delim: str = ',') -> tuple:
     ----------
     raw_input : Any
         The input passed on by python-fire.
+    delim : str, optional
+        Delimiter to split the input into when the input is string.
+        Defaults to ','.
 
     Returns
     -------
