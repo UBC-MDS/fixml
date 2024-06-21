@@ -18,11 +18,11 @@ from fixml.modules.workflow.response import EvaluationResponse
     ],
 )
 def test_evaluation_will_output_response_json_at_working_dir(fixture_name,
-                                                             request):
+                                                             request,
+                                                             git_clone_root_dir,
+                                                             monkeypatch):
     """Equivalent to `fixml evaluate {repo-name}`."""
     fixture = request.getfixturevalue(fixture_name)
-    git_clone_root_dir = request.getfixturevalue("git_clone_root_dir")
-    monkeypatch = request.getfixturevalue("monkeypatch")
 
     repo_path = Path(fixture.working_tree_dir)
     working_dir = git_clone_root_dir / f"{fixture_name}_output"
