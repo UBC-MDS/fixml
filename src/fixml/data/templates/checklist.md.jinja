@@ -1,15 +1,15 @@
 {%- set areas = checklist['Test Areas'] -%}
 {%- if quarto_header -%}
 ---
-title: "Checklist for Machine Learning Projects"
+title: "{{ checklist['Title'] }}"
 format:
   html:
     code-fold: true
     code-summary: "Show the code"
 ---
-{%- endif %}
-
+{%- else -%}
 # {{ checklist['Title'] }}
+{%- endif %}
 
 **Description**: {{ checklist['Description'] }}
 
