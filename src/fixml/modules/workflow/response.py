@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Optional, Union
@@ -102,3 +103,17 @@ class EvaluationResponse(BaseModel, WriteableMixin):
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(json_str)
 
+    @classmethod
+    def from_json(cls, json_path: Union[str, Path]):
+        """Reconstruct an instance of EvaluationResponse from JSON file.
+
+        Requires checklist path and repository path to actually exist in the
+        system, otherwise an error will be thrown.
+        """
+        with open(json_path, "r", encoding="utf-8") as f:
+            deserialized = json.load(f)
+        repo_obj = Repository(deserialized["repository"]["path"])
+        checklist_obj = Checklist(deserialized["checklist"]["path"])
+        deserialized["repository"]["object"] = repo_obj
+        deserialized["checklist"]["object"] = checklist_obj
+        return cls(**deserialized)

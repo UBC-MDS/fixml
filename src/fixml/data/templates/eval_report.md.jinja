@@ -1,0 +1,58 @@
+{%- if quarto_header -%}
+---
+title: "{{ title }}"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+---
+{%- else -%}
+# {{ title }}
+{% endif %}
+## Metadata
+
+**Template used**: {{ metadata.template_path }}
+
+## Run details
+
+- **Checklist Path**: {{ run_details.checklist_path }}
+- **Repository Path**: {{ run_details.repo_path }}
+- **HEAD Commit**: {{ run_details.head_commit }}
+- **Start Time**: {{ run_details.start_time }}
+- **End Time**:  {{ run_details.end_time }}
+- **Time Taken**: {{ run_details.time_taken }}
+- **Total Input/Output Tokens Used**: {{ run_details.input_token_count }}/{{ run_details.output_token_count }}
+- **Successful/Failed Calls**: {{ run_details.successful_count }}/{{ run_details.failure_count }} ({{ "{:.0%}".format(run_details.success_perc) }} Success Rate)
+- **Files Evaluated**:
+  {%- for file in run_details.files_evaluated %}
+  - {{ file }}
+  {%- endfor %}
+- **LLM Model Used**: {{ run_details.model_name_used }}
+
+## Evaluation Summary
+
+**Completeness Score**: {{ eval_summary.score }}
+
+**Completeness Score per Checklist Item**:
+
+{{ eval_summary.table }}
+
+## Evaluation Details
+
+{% for item in eval_details -%}
+### {{ item['ID'] }} {{ item['Title'] }}
+
+**Requirement**: {{ item['Requirement'] }}
+
+**Observations:**
+
+{% for obs in item['Observations'] -%}
+  - {{ obs }}
+{% endfor %}
+
+**Function References:**
+
+{% for ref in item['Function References'] -%}
+- {{ ref }}
+{% endfor %}
+{% endfor %}
