@@ -89,7 +89,7 @@ class RepositoryActions(WriteableMixin):
             If provided, the system will render the evaluation report
             to the specified path. The format of the evaluation report will be
             based on the extension provided in this path. The extensions must be
-            either one of `.html`, `.htm`, `.pdf`, or `.qmd`.
+            either one of `.html`, `.htm`, `.pdf`, `.qmd`, or `.md`.
         checklist_path : str, optional
             Argument to use non-default checklist during the operation.
         test_dirs : list, optional
@@ -141,8 +141,7 @@ class RepositoryActions(WriteableMixin):
         if export_report_to:
             parser = ResponseParser(response)
             parser.get_completeness_score(verbose=verbose)
-            parser.export_evaluation_report(export_report_to,
-                                            exist_ok=overwrite)
+            parser.export(export_report_to, exist_ok=overwrite)
             print(f"Evaluation report exported to {export_report_to}.")
 
     @staticmethod

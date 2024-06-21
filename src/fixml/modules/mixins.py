@@ -52,7 +52,8 @@ class ExportableMixin(WriteableMixin, ABC):
             'html': self.export_html,
             'htm': self.export_html,
             'pdf': self.export_pdf,
-            'qmd': self.export_quarto
+            'qmd': self.export_quarto,
+            'md': self.export_markdown
         }
 
     def export(self, output_path: str, exist_ok: bool = False):
@@ -81,7 +82,8 @@ class ExportableMixin(WriteableMixin, ABC):
         formats = {
             "pdf": ["pdf"],
             "html": ["htm", "html"],
-            "qmd": ["qmd"]
+            "qmd": ["qmd"],
+            "md": ["md"]
         }
 
         if get_extension(output_path) not in formats[format]:
@@ -108,3 +110,8 @@ class ExportableMixin(WriteableMixin, ABC):
         self._export_check(output_path, format="qmd", exist_ok=exist_ok)
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(self.as_quarto_markdown())
+
+    def export_markdown(self, output_path: str, exist_ok: bool = False):
+        self._export_check(output_path, format="md", exist_ok=exist_ok)
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(self.as_markdown())
