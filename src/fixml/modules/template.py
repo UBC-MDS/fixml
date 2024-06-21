@@ -39,6 +39,11 @@ class TemplateLoader:
         validate_template : str, optional
             If provided, the external template source will be compared with the
             referred internal template to confirm all variables are present.
+
+        Returns
+        -------
+        jinja2.Template
+            Source file loaded as a Jinja2 Template.
         """
         with open(ext_template_path, "r") as f:
             source = f.read()
