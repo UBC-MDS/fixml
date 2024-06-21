@@ -1,4 +1,4 @@
-runs: 30
+runs: 28
 checklist_path: null
 model: 'gpt-4-turbo'
 repo_base_path: '../data/raw/openja/'
