@@ -6,7 +6,7 @@ class TemplateLoader:
 
     template_exts = ["jinja", "j2"]
     env = Environment(
-        loader=PackageLoader("test_creation.data", "templates")
+        loader=PackageLoader("fixml.data", "templates")
     )
     template_aliases = {
         "evaluation": "eval_report.md.jinja",
