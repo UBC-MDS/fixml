@@ -102,7 +102,7 @@ class ResponseParser(ExportableMixin):
     def as_markdown(self, add_quarto_header: bool = False) -> str:
 
         score = self.get_completeness_score(score_format='fraction')
-        summary_df = self.evaluation_report[['ID', 'Title', 'is_Satisfied', 'n_files_tested']]
+        summary_df = self.evaluation_report[['ID', 'Title', 'is_Satisfied']]
 
         response = self.response
         call_results = response.call_results
