@@ -1,3 +1,6 @@
+from typing import Union, Optional
+from pathlib import Path
+
 from jinja2 import Environment, PackageLoader, Template, meta
 
 
@@ -21,6 +24,36 @@ class TemplateLoader:
         candidates = [template_name, cls.template_aliases.get(template_name)]
         candidates = [x for x in candidates if x is not None]
         return cls.env.select_template(candidates)
+
+    @classmethod
+    def load_from_external(cls, ext_template_path: Union[str, Path],
+                           validate_template: Optional[str] = None) -> Template:
+        """Load template from external file.
+
+        Return the source as a Jinja2 Template when given a path.
+
+        Parameters
+        ----------
+        ext_template_path : str or pathlib.Path
+            Path to the external template file.
+        validate_template : str, optional
+            If provided, the external template course will be compared with the
+            referred internal template to confirm all variables are present.
+        """
+        with open(ext_template_path, "r") as f:
+            source = f.read()
+
+        if validate_template:
+            ast = cls.env.parse(source)
+            vars_external = meta.find_undeclared_variables(ast)
+            vars_internal = cls.list_vars_in_template(validate_template)
+            diff = set(vars_internal).difference(vars_external)
+            if diff:
+                raise ValueError(f"The external template does not contain all "
+                                 f"variables present in the internal template "
+                                 f"{validate_template}. Missing variables: "
+                                 f"{diff}")
+        return Template(source)
 
     @classmethod
     def list(cls) -> list[str]:
