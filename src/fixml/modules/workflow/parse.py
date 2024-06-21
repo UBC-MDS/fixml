@@ -1,4 +1,5 @@
 from typing import Optional, Union
+from pathlib import Path
 
 import pandas as pd
 import os
@@ -6,18 +7,24 @@ import os
 from ..template import TemplateLoader
 from .response import EvaluationResponse
 from ..mixins import ExportableMixin
-from ..utils import get_extension
 
 
 class ResponseParser(ExportableMixin):
-    def __init__(self, response: EvaluationResponse):
+    def __init__(self, response: EvaluationResponse,
+                 export_template_path: Optional[Union[str, Path]] = None):
         super().__init__()
         self.response = response
         self.evaluation_report = None
         self.repository = self.response.repository.object
         self.git_context = self.repository.git_context
         self.items = []
-        self.export_template = TemplateLoader.load("evaluation")
+        if not export_template_path:
+            # use default template from package
+            self.export_template = TemplateLoader.load("evaluation")
+        else:
+            # load from external source, validate all vars are present
+            self.export_template = TemplateLoader.load_from_external(
+                export_template_path, "evaluation")
 
     def _parse_items(self):
         items = []
