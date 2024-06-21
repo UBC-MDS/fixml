@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Proposal Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</title>
+<title>proposal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,7 +92,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./proposal.html">Proposal</a></li><li class="breadcrumb-item"><a href="./proposal.html">Proposal Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./proposal.html">Capstone Proposal</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -107,7 +107,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -117,40 +117,18 @@ div.csl-indent {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Final Report</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./final_report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">DSCI591 Capstone Final Report</span></a>
+ <span class="menu-text">Capstone Final Report</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Proposal</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./proposal.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Proposal Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</span></a>
+ <span class="menu-text">Capstone Proposal</span></a>
   </div>
 </li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -221,32 +199,17 @@ div.csl-indent {
 <section id="our-product" class="level2">
 <h2 class="anchored" data-anchor-id="our-product">Our Product</h2>
 <p>Our solution offers an end-to-end application for evaluating and enhancing the robustness of users’ ML systems.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>```ngsvnkff ../../img/proposed_system_overview.png</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>name: overview-diagram</td>
-</tr>
-</tbody>
-</table>
-<p>Main components and workflow of the proposed system. The checklist would be written in <a href="https://yaml.org/">YAML</a> to maximize readability for both humans and machines. We hope this will encourage researchers/users to read, understand and modify the checklist items, while keeping the checklist closely integrated with other components in our system.</p>
-<pre><code>
-One big challenge in utilizing LLMs to reliably and consistently evaluate ML systems is their tendency to generate illogical and/or factually wrong information known as hallucination [@zhang2023sirens].
-
-To combat this, the proposed system will incorporate a checklist ([Fig. 1](overview-diagram)) which would be curated manually and incorporate best practices in software testing and identified areas to be tested inside ML pipeline from human experts and past research.
-
-This checklist will be our basis in evaluating the effectiveness and completeness of existing tests in a given codebase. Relevant information will be injected into a prompt template, which the LLMs would then be prompted to follow the checklist **exactly** during the evaluation.
-
-Here is an example of how the proposed checklist would be structured:
-
-
-```{toggle}
-```yaml
-%YAML 1.2
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/proposed_system_overview.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Main components and workflow of the proposed system. The checklist would be written in <a href="https://yaml.org/">YAML</a> to maximize readability for both humans and machines. We hope this will encourage researchers/users to read, understand and modify the checklist items, while keeping the checklist closely integrated with other components in our system.</figcaption>
+</figure>
+</div>
+<p>One big challenge in utilizing LLMs to reliably and consistently evaluate ML systems is their tendency to generate illogical and/or factually wrong information known as hallucination <span class="citation" data-cites="zhang2023sirens">(<a href="#ref-zhang2023sirens" role="doc-biblioref">Zhang et al. 2023</a>)</span>.</p>
+<p>To combat this, the proposed system will incorporate a checklist (<a href="overview-diagram">Fig. 1</a>) which would be curated manually and incorporate best practices in software testing and identified areas to be tested inside ML pipeline from human experts and past research.</p>
+<p>This checklist will be our basis in evaluating the effectiveness and completeness of existing tests in a given codebase. Relevant information will be injected into a prompt template, which the LLMs would then be prompted to follow the checklist <strong>exactly</strong> during the evaluation.</p>
+<p>Here is an example of how the proposed checklist would be structured:</p>
+<pre class="{yaml}"><code>%YAML 1.2
 ---
 Title: Checklist for Tests in Machine Learning Projects
 Description: &gt;
@@ -457,8 +420,7 @@ Test Areas:
 </table>
 </section>
 <section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<pre class="{bibliography}"><code></code></pre>
+
 
 
 
@@ -482,6 +444,9 @@ Schäfer, Max, Sarah Nadi, Aryaz Eghbali, and Frank Tip. 2023. <span>“An Empir
 </div>
 <div id="ref-wattanakriengkrai2022github" class="csl-entry" role="listitem">
 Wattanakriengkrai, Supatsara, Bodin Chinthanet, Hideaki Hata, Raula Gaikovina Kula, Christoph Treude, Jin Guo, and Kenichi Matsumoto. 2022. <span>“GitHub Repositories with Links to Academic Papers: Public Access, Traceability, and Evolution.”</span> <em>Journal of Systems and Software</em> 183: 111117.
+</div>
+<div id="ref-zhang2023sirens" class="csl-entry" role="listitem">
+Zhang, Yue, Yafu Li, Leyang Cui, Deng Cai, Lemao Liu, Tingchen Fu, Xinting Huang, et al. 2023. <span>“Siren’s Song in the AI Ocean: A Survey on Hallucination in Large Language Models.”</span> <a href="https://arxiv.org/abs/2309.01219">https://arxiv.org/abs/2309.01219</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
