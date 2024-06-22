@@ -1,27 +1,28 @@
-runs: 30
+runs: 28
 checklist_path: null
+model: 'gpt-4-turbo'
 repo_base_path: '../data/raw/openja/'
-response_path: '../data/processed/batch_run'
+response_path: '../data/processed/batch_run_4-turbo'
 repo:
   - name: lightfm
     path: './lightfm'
-  - name: qlib
-    path: './qlib'
-  - name: mmf
-    path: './mmf'
-  - name: nanodet
-    path: './nanodet'
-  - name: magenta
-    path: './magenta'
-  - name: nupic
-    path: './nupic'
-  - name: DeepSpeech
-    path: './DeepSpeech'
-  - name: apollo
-    path: './apollo'
-  - name: 'paperless-ng'
-    path: './paperless-ng'
-  - name: 'mycroft-core'
-    path: './mycroft-core'
-  - name: deepchem
-    path: './deepchem'
+      #  - name: qlib
+      #    path: './qlib'
+      #  - name: mmf
+      #    path: './mmf'
+      #  - name: nanodet
+      #    path: './nanodet'
+      #  - name: magenta
+      #    path: './magenta'
+      #  - name: nupic
+      #    path: './nupic'
+      #  - name: DeepSpeech
+      #    path: './DeepSpeech'
+      #  - name: apollo
+      #    path: './apollo'
+      #  - name: 'paperless-ng'
+      #    path: './paperless-ng'
+      #  - name: 'mycroft-core'
+      #    path: './mycroft-core'
+      #  - name: deepchem
+      #    path: './deepchem'

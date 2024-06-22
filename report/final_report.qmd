@@ -1,0 +1,410 @@
+---
+format:
+  html:
+    code-fold: true
+bibliography: references.bib
+---
+
+# Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis
+
+by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
+
+## Executive Summary
+
+#FIXME
+
+## Introduction
+
+### Problem Statement
+
+The global artificial intelligence (AI) market is growing exponentially ([@grand2021artificial]), driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.
+
+However, ensuring the software quality of these systems remains a significant challenge ([@openja2023studying]). Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as misinformation ([@Ashley2024]), social bias ([@Alice2023]), substantial financial losses ([@Asheeta2019]) and safety hazards ([@David2023])
+
+Therefore, defining and promoting an industry standard and establishing robust testing methodologies for these systems is crucial. But how?
+
+### Our Objectives
+
+We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software's trustworthiness, quality, and reproducibility across both the industry and academia [@kapoor2022leakage].
+
+## Data Science Methods
+
+### Current Approaches
+
+To ensure the reproducibility, trustworthiness, and lack of bias in ML systems, comprehensive testing is essential. We outlined some traditional approaches for assessing the completeness of ML system tests with their advantages and drawbacks as follows.
+
+1. **Code Coverage**
+
+Code coverage measures the proportion of source code of a program executed when a particular test suite is run. Widely used in software development, it quantifies test quality and is scalable due to its short processing time. However, it cannot indicate the reasons or specific ML areas where the test suites fall short under the context of ML system development.
+
+2. **Manual Evaluation**
+
+Manual evaluation involves human experts reviewing the source code, whom can take the business logic into considerations and identify vulnerabilites. It often provides context-specific improvement suggestions and remains one of the most reliable practices ([@openja2023studying], [@alexander2023evaluating]). However, it is time-consuming and not scalable due to the scarcity of human experts. Moreover, different experts might put emphasis on different ML test areas and lack a comprehensive and holistic review of the ML system test suites.
+
+### Our Approach
+
+Our approach is to deliver an automated code review tool with the best practices of ML test suites embedded. This tool aims to educate ML users on best practices while providing comprehensive evaluations of their ML system codes.
+
+To establish these best practices, we utilized data from ML research papers and recognized online resources. In collaboration with our partner, we researched industrial best practices ([@msise2023], [@jordan2020]) and academic literature ([@openja2023studying]), and consolidated testing strategies into a human-readable and machine-friendly checklist that can be embedded into the automated tool.
+
+For development, we collected 11 GitHub repositories of ML projects as studied in [@openja2023studying]. These Python-based projects include comprehensive test suites. Our tool should be able to analyze these test suites, compare them with embedded best practices, and deliver evaluations.
+
+We expect that our approach will provide scalable and reliable test suite evaluations for multiple ML projects. However, we recognize that our current best practices only focus on a few high-priority test areas due to time constraints. We plan to expand this scope in the future. While our tool's evaluations are not yet as reliable as human evaluations, we will quantify its performance.
+
+### Success Metrics
+
+To properly assess the performance of our tool which leverages LLMs capability, we have taken reference of the methods in [@alexander2023evaluating] and defined two success metrics: accuracy and consistency. These metrics will help users (researchers, ML engineers, etc.) gauge the trustworthiness of our tool's evaluation results.
+
+1.  **Accuracy vs Human Expert Judgement**
+
+We run our tool on ML projects from [@openja2023studying] to obtain evaluation results for each ML checklist item. These results are then compared with our manually assessed ground truth data based on the same criteria. Accuracy is calculated as the proportion of matching results to the total number of results.
+
+2.  **Consistency**
+
+We perform multiple runs on each ML project to obtain evaluation results for each checklist item. Consistency is measured by calculating the standard deviation of these results across multiple runs for each project.
+
+## Data Product & Results
+
+### Data Products
+
+Our solution includes a curated checklist for robust ML testing and a Python package for checklist-based evaluation of ML project testing robustness using LLMs. The package is publicly available on the Python Packaging Index (PyPI).
+
+Justifications for these products are:
+
+- Checklists have been shown to reduce errors in software systems and promote code submissions ([@Atul2010], [@pineau2021improving]).
+- Python is widely used in ML, compatible with various OSes, and integrates well with LLMs. These ensure the ease of use and development.
+
+#### How to use the product
+
+There are two ways to make use of this package:
+
+1.  **As a CLI tool.** A runnable command `fixml` is provided by the package. Once installed, users can perform codebase evaluations, generate test function specifications, and more by running subcommands under `fixml` in the terminal.
+
+2.  **As a high-level API.** Users can import necessary components from the package into their own systems. Documentation is available through docstrings.
+
+By offering it as both CLI tool and API, our product is user-friendly to interact with, and versatile to support various use cases such as web application development and scientific research.
+
+#### System Design
+
+(FIXME To be revised) ![image](../img/proposed_system_overview.png)
+
+The design of our package follows object-oriented and SOLID principles, which is fully modularity. Users can easily switch between different prompts, models, and checklists, which facilitates code reusability and collaboration to extend its functionality.
+
+There are five components in the system of our package:
+
+1.  **Code Analyzer** 
+
+It extracts test suites from the input codebase, to ensure only the most relevants details are provided to LLMs given token limits.
+
+2.  **Prompt Templates** 
+
+It stores prompt templates for instructing LLMs to generate responses in the expected format.
+
+3.  **Checklist** 
+
+It reads the curated checklist from a CSV file into a dictionary with a fixed schema for LLM injection. The package includes a default checklist for distribution.
+
+4.  **Runners** 
+
+It includes the Evaluator module, which assesses each test suite file using LLMs and outputs evaluation results, and the Generator module, which creates test specifications. Both modules feature validation, retry logic, and record response and relevant information.
+
+5.  **Parsers** 
+
+It converts Evaluator responses into evaluation reports in various formats (HTML, PDF) using the Jinja template engine, which enables customizable report structures.
+
+#### Checklist Design
+
+The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering further improves performance. THis helps mitigate LLM hallucinations ([@zhang2023sirens]) by ensuring strict adherence to the checklist.
+
+Example checklist structure:
+
+|                  Column | Description                                                                                          |
+|------------------:|:----------------------------------------------------|
+|                      ID | Unique Identifier of the checklist item                                                          |
+|                   Topic | Test Area of the checklist item                                                                  |
+|                   Title | Title of the checklist item                                                                      |
+|             Requirement | Prompt for the checklist item to be injected into LLMs for evaluation                             |
+|            Explanations | Detailed explanations for human understanding                                  |
+|               Reference | References for the checklist item, e.g., academic papers                                                |
+| Is Evaluator Applicable | Indicates if the checklist item is used during evaluation (0 = No, 1 = Yes) |
+
+(FIXME To be revised) <img src="../img/checklist_sample.png" width="600" />
+
+#### Artifacts
+
+Using our package results in three artifacts:
+
+1.  **Evaluation Responses** 
+
+These responses include both LLM evaluation results and process metadata stored in JSON format.This supports downsteam tasks like report rendering and scientific research, etc.
+
+(FIXME To be revised) schema of the JSON saved & what kind of information is stored
+
+2.  **Evaluation Report** 
+
+This report presents structured evaluation results of ML projects, which includes a detailed breakdown of completeness scores and reasons for each score.
+
+(FIXME To be revised) <img src="../img/test_evaluation_report_sample.png" width="600" />
+
+3.  **Test Specification Script** 
+
+Generated test specifications are stored as Python scripts.
+
+(FIXME To be revised) <img src="../img/test_spec_sample.png" width="600" />
+
+### Evaluation Results
+
+As described in `Success Metrics`, we conducted 30 iterations on each repository from [@openja2023studying] and examined the breakdown of the completeness score to assess our tool's evaluation quality. 
+
+(FIXME: would it be better to show a table of the repos? like how the Openja does?) 
+
+1. **Accuracy**
+
+We targeted 3 of the repositories ([`lightfm`](https://github.com/lyst/lightfm), [`qlib`](https://github.com/microsoft/qlib), [`DeepSpeech`](https://github.com/mozilla/DeepSpeech)) for human evaluation compared our tool's outputs with the ground truth.
+
+```{python}
+import pandas as pd
+gt = pd.read_csv('../data/processed/ground_truth.csv')
+gt
+```
+> Ground truth data for the 3 repositories. (1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied)
+
+```{python}
+# FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
+import altair as alt
+import pandas as pd
+
+df_repo__stat = pd.read_csv('../data/processed/score_stat_by_repo_3.5-turbo.csv')
+gt = pd.read_csv('../data/processed/ground_truth.csv')
+gt = gt.melt(id_vars=['id', 'title'], var_name='repo', value_name='ground_truth')
+
+df_repo__stat_with_gt = df_repo__stat.merge(gt, on=['id', 'title', 'repo'])
+
+base = alt.Chart(
+    df_repo__stat_with_gt.query('repo in ["lightfm", "qlib", "DeepSpeech"]')
+).transform_calculate(
+    min="max(0, datum.mean-datum.std)",
+    max="min(1, datum.mean+datum.std)"
+)
+    
+# generate the points
+points = base.mark_point(
+    filled=True,
+    size=50,
+    color='black'
+).encode(
+    x=alt.X('mean:Q').scale(domainMin=0, domainMax=1).title("Score").axis(
+        labelExpr="datum.value % 0.5 ? null : datum.label"
+    ),
+    y=alt.Y('id_title:N', title=None, axis=alt.Axis(labelPadding=10, labelLimit=1000, grid=False))#.scale(domainMin=0, domainMax=1).title('Score'),
+)
+
+# generate the points for ground truth
+gt_points = base.mark_point(
+    filled=True,
+    size=200,
+    color='green',
+    shape="diamond"
+).encode(
+    x=alt.X('ground_truth:Q'),
+    y=alt.Y('id_title:N')
+)
+
+# generate the error bars
+errorbars = base.mark_errorbar().encode(
+    x=alt.X("min:Q").title('1 SD'), #"id:N",
+    x2="max:Q",
+    y="id_title:N"
+)
+
+(gt_points + points + errorbars).facet(
+    column=alt.Column('repo:N').title(None)
+).configure_axis( 
+    labelFontSize=12, 
+    titleFontSize=12
+)
+```
+> Comparison of our system's satisfaction determination versus the ground truth for each checklist item and repository
+
+Our tool tends to underrate satisfying cases, which often classifies fully satisfied items as partially satisfied and partially satisfied items as not satisfied.
+
+```{python}
+df_repo_run = pd.read_csv('../data/processed/score_by_repo_run_3.5-turbo.csv')
+
+df_repo_run = df_repo_run.merge(gt, on=['id', 'title', 'repo'])
+
+contingency_table = pd.pivot_table(
+    df_repo_run,
+    values='run', 
+    index=['repo', 'id_title', 'ground_truth'], 
+    columns=['score'],
+    aggfunc='count', 
+    fill_value=0
+)
+contingency_table.index.names = ['Repository', 'Checklist Item', 'Ground Truth']
+contingency_table.sort_index(level=[0, 2])
+```
+> Contingency table of our system's satisfaction determination versus the ground truth
+
+The accuracy issue may be attributed to a need to improve our checklist prompts.
+
+2. **Consistency**
+
+As the completeness scores from LLMs contain randomness, we examined the consistency of completeness scores across checklist items and repositories.
+
+```{python}
+stds = df_repo__stat[['repo', 'std', 'id_title']].pivot(index='repo', columns='id_title').copy()
+stds.columns = [col[1] for col in stds.columns]
+stds = stds.reset_index()
+stds = stds.melt(id_vars='repo', var_name='id_title')
+
+base = alt.Chart(stds)
+
+box = base.mark_boxplot(
+    color='grey',
+    opacity=0.5,
+    size=20,
+).encode(
+    x=alt.X('value:Q').title('Standard Deviation of Scores'),
+    y=alt.Y('id_title:N', title=None, axis=alt.Axis(labelPadding=10, labelLimit=1000, grid=False))
+)
+
+stripplot = base.mark_circle(size=100).encode(
+    y=alt.Y( 
+        'id_title:N',
+        axis=alt.Axis(ticks=False, grid=True, labels=True), 
+        scale=alt.Scale(), 
+    ), 
+    x='value:Q',
+    yOffset="jitter:Q",
+    color=alt.Color('id_title:N', legend=None),
+    tooltip='repo'
+).transform_calculate(
+    # Generate Gaussian jitter with a Box-Muller transform
+    jitter="sqrt(-2*log(random()))*cos(2*PI*random())"
+)
+
+(
+    box + stripplot
+).configure_view( 
+    stroke=None
+).configure_axis( 
+    labelFontSize=12, 
+    titleFontSize=12
+).properties(
+    height=300, 
+    width=600,
+    title="30 Runs on Openja's Repositories for each Checklist Item"
+) 
+```
+> Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores from 30 runs of a single repository.
+
+We identified two diverging cases:
+
+i. **High Standard Deviations** 
+
+Items like `3.2 Data in the Expected Format` showed high standard deviations across repositories. This might indicate potential poor prompt quality for the LLM to produce consistent results. Improved prompt engineering could address this issue.
+
+ii. **Outliers with High Standard Deviations**
+
+Items like `5.3 Ensure Model Output Shape Aligns with Expectation` had outliers with exceptionally high standard deviations, which is possibly due to unorthodox repositories. A careful manual examination is required for a more definitive conclusion.
+
+#### Comparison of `gpt-3.5-turbo` and `gpt-4o`
+
+To evaluate if newer LLMs improve performance, we preliminarily compared outputs from `gpt-4o` and `gpt-3.5-turbo` on the `lightfm` repository. We observed that `gpt-4o` consistently returned "Satisfied," which deviated from the ground truth.
+
+```{python}
+# FIXME: jitter-mean-sd plot (checklist item vs. score) for each repo
+df_repo_4o__stat = pd.read_csv('../data/processed/score_stat_by_repo_4o.csv')
+df_repo_4o__stat_with_gt = df_repo_4o__stat.merge(gt, on=['id', 'title', 'repo'])
+df_repo_4o__stat_with_gt['model'] = 'gpt-4o'
+
+df_repo_35turbo__stat_with_gt = df_repo__stat_with_gt.query("repo == 'lightfm'").copy()
+df_repo_35turbo__stat_with_gt['model'] = 'gpt-3.5-turbo'
+
+df_model_comp = pd.concat(
+    (df_repo_35turbo__stat_with_gt, df_repo_4o__stat_with_gt), 
+    axis=0
+)
+
+base = alt.Chart(
+    df_model_comp
+).transform_calculate(
+    min="max(0, datum.mean-datum.std)",
+    max="min(1, datum.mean+datum.std)"
+)
+    
+# generate the points
+points = base.mark_point(
+    filled=True,
+    size=50,
+    color='black'
+).encode(
+    x=alt.X('mean:Q').scale(domainMin=0, domainMax=1).title("Score").axis(
+        labelExpr="datum.value % 0.5 ? null : datum.label"
+    ),
+    y=alt.Y('id_title:N', title=None, axis=alt.Axis(labelPadding=10, labelLimit=1000, grid=False))#.scale(domainMin=0, domainMax=1).title('Score'),
+)
+
+# generate the points for ground truth
+gt_points = base.mark_point(
+    filled=True,
+    size=200,
+    color='green',
+    shape="diamond"
+).encode(
+    x=alt.X('ground_truth:Q'),
+    y=alt.Y('id_title:N')
+)
+
+# generate the error bars
+errorbars = base.mark_errorbar().encode(
+    x=alt.X("min:Q").title('1 SD'), #"id:N",
+    x2="max:Q",
+    y="id_title:N"
+)
+
+(gt_points + points + errorbars).facet(
+    column=alt.Column('model:N').title(None)
+).configure_axis( 
+    labelFontSize=12, 
+    titleFontSize=12
+)
+```
+> Comparison of satisfaction using `gpt-4o` versus `gpt-3.5-turbo` for each checklist item on lightfm
+
+Further investigation into `gpt-4o` is required to determine its effectiveness in system performance.
+
+## Conclusion
+
+### Wrap Up
+
+The development of FixML has been driven by the need of better quality assurance in ML systems and the current limitations of traditional testing methods on ML projects. FixML provides curated checklists and automated tools that enhance the evaluation and creation of test suites for ML projects. This in return, significantly reduces the time and effort required to assess the completeness of ML test suites, and thus promotes thorough and efficient assessment on ML projects.
+
+### Limitation & Future Improvement
+
+While FixML provides substantial benefits, there are limitations and areas to be addressed in future development:
+
+1.  **Specialized Checklist**
+
+The default checklist is general and may not cover all requirements for different ML projects. Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.
+
+2.  **Enhanced Test Evaluator**
+
+Our study reveals the accuracy and consistency issues on the evaluation results using OpenAI GPT-3.5-turbo model. Future improvements involves better prompt engineering techniques and support for multiple LLMs for enhanced performance and flexibility. User guidelines in prompt creation will be provided to facilitate collaboration with ML developers.
+
+3.  **Customized Test Specification**
+
+Future developments will integrate project-specific information to produce customized test function skeletons. This may further encourage users to create comprehensive tests.
+
+4.  Workflow Optimization #FIXME: have to review whether to include as it seems lower priority.
+
+The test evaluator and test specification generator are currently separate. Future improvements could embed a workflow engine that automatically takes actions based on LLM responses. This creates a more cohesive and efficient workflow, recues manual intervention, and improves overall system performance.
+
+5.  Performance Optimization #FIXME: have to review whether to include as it seems lower priority.
+
+As FixML handles large codebases and complex evaluations, performance optimization is essential. Future developments will focus on improving the speed and accuracy of LLM responses, reducing analysis and report generation times, and ensuring scalability for handling larger and more complex projects.
+
+By addressing these limitations and implementing future improvements, we aim for FixML to achieve better performance and contribute to the development of better ML systems, and ultimately enhance human life.
+
+## References

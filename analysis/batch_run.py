@@ -25,14 +25,16 @@ if __name__ == '__main__':
         from_dir = config['repo_base_path']
         to_dir = config['response_path']
         repos = config['repo']
+        model = config['model']
 
         record = []
         for repo in tqdm(repos):
             for run in range(1, runs+1):
                 action.evaluate(
                     repo_path=os.path.join(from_dir, repo['path']),
-                    save_to=f"{to_dir}/{repo['name']}_{"{:02d}".format(run)}.json",
-                    checklist_path=checklist_path
+                    save_response_to=f"{to_dir}/{repo['name']}_{"{:02d}".format(run)}.json",
+                    checklist_path=checklist_path,
+                    model=model
                 )
                 
                 record.append({
