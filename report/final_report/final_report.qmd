@@ -120,7 +120,7 @@ It includes the Evaluator module, which assesses each test suite file using LLMs
 
 5.  **Parsers** 
 
-It converts Evaluator responses into evaluation reports in various formats (HTML, PDF) using the Jinja template engine, which enables customizable report structures.
+It reads the report templates and converts Evaluator's responses into evaluation reports in various formats (QMD, HTML, PDF) using the Jinja template engine, which enables customizable report structures.
 
 #### Checklist Design
 
@@ -150,7 +150,7 @@ Using our package results in three artifacts:
 
 1.  **Evaluation Responses** 
 
-These responses include both LLM evaluation results and process metadata stored in JSON format.This supports downsteam tasks like report rendering and scientific research, etc.
+These responses include both LLM evaluation results and process metadata stored in JSON format. This supports various downsteam tasks, e.g. report rendering and scientific research, etc. based on the cherry-picking of information.
 
 ::: {#fig-responses}
 ![](img/test_evaluation_responses_sample.png){width=600 fig-align="left"}
@@ -160,17 +160,17 @@ An example of the evaluation responses. It stores evaluation results in `call_re
 
 2.  **Evaluation Report** 
 
-This report presents structured evaluation results of ML projects, which includes a detailed breakdown of completeness scores and reasons for each score.
+This report presents well-formatted evaluation results of ML projects, which includes a summary of completeness score, a detailed breakdown and reasons of the scores per checklist item.
 
 ::: {#fig-report}
 ![](img/test_evaluation_report_sample.png){width=600 fig-align="left"}
 
-An example of the evaluation report.
+An example of the evaluation report exported in PDF format using our default template. Users can customize their reports by creating templates.
 :::
 
 3.  **Test Specification Script** 
 
-Generated test specifications are stored as Python scripts.
+It is the generated test specifications stored as Python scripts.
 
 ::: {#fig-testspec}
 ![](img/test_spec_sample.png){width=600 fig-align="left"}
@@ -279,11 +279,11 @@ The accuracy issue may be attributed to a need to improve our checklist prompts.
 
 2. **Consistency**
 
-As the completeness scores from LLMs contain randomness, we examined the consistency of completeness scores across checklist items and repositories.
+Consistency is another consideration because it directly links to the reliability of the evaluation results from user perspective. As the completeness scores from LLMs contain randomness, we plotted graphs of the uncertainty of completeness scores across checklist items and repositories to show how consistent these results were.
 
 ```{python}
 #| label: fig-cons-sd-box-plot
-#| fig-cap: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores from 30 runs of a single repository
+#| fig-cap: Analysis of uncertainty of the scores (in standard deviation, scale of 0 - 1) per checklist item. Each dot represents the uncertainty of scores from 30 runs of a single repository. It shows different patterns across checklist items.
 
 stds = df_repo__stat[['repo', 'std', 'id_title']].pivot(index='repo', columns='id_title').copy()
 stds.columns = [col[1] for col in stds.columns]
@@ -330,15 +330,15 @@ stripplot = base.mark_circle(size=100).encode(
 ) 
 ```
 
-We identified two diverging cases:
+When we examined the consistency, we have observed various patterns and tried to deduce the reasons, which could provide ideas for future improvement. To conclude, we have identified two categories that show diverging patterns:
 
-i. **High Standard Deviations** 
+i. **High Uncertainty** 
 
-Items like `3.2 Data in the Expected Format` showed high standard deviations across repositories. This might indicate potential poor prompt quality for the LLM to produce consistent results. Improved prompt engineering could address this issue.
+Items like `6.1 Verify Evaluation Metrics Implementation` showed high standard deviations across repositories (median = 0.12). This might indicate potential poor prompt quality for the LLM to produce consistent results. Improved prompt engineering could address this issue.
 
-ii. **Outliers with High Standard Deviations**
+ii. **Outliers with High Uncertainty**
 
-Items like `5.3 Ensure Model Output Shape Aligns with Expectation` had outliers with exceptionally high standard deviations, which is possibly due to unorthodox repositories. A careful manual examination is required for a more definitive conclusion.
+Items like `2.1 Ensure Data File Loads as Expected` had outliers with exceptionally high standard deviations, which is possibly due to unorthodox repositories. A careful manual examination is required for a more definitive conclusion.
 
 #### Comparison of `gpt-3.5-turbo` and `gpt-4o`
 

@@ -329,7 +329,7 @@ div.csl-indent {
 <ol start="5" type="1">
 <li><strong>Parsers</strong></li>
 </ol>
-<p>It converts Evaluator responses into evaluation reports in various formats (HTML, PDF) using the Jinja template engine, which enables customizable report structures.</p>
+<p>It reads the report templates and converts Evaluator’s responses into evaluation reports in various formats (QMD, HTML, PDF) using the Jinja template engine, which enables customizable report structures.</p>
 </section>
 <section id="checklist-design" class="level4">
 <h4 class="anchored" data-anchor-id="checklist-design">Checklist Design</h4>
@@ -396,7 +396,7 @@ div.csl-indent {
 <ol type="1">
 <li><strong>Evaluation Responses</strong></li>
 </ol>
-<p>These responses include both LLM evaluation results and process metadata stored in JSON format.This supports downsteam tasks like report rendering and scientific research, etc.</p>
+<p>These responses include both LLM evaluation results and process metadata stored in JSON format. This supports various downsteam tasks, e.g.&nbsp;report rendering and scientific research, etc. based on the cherry-picking of information.</p>
 <div id="fig-responses" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-left">
@@ -410,7 +410,7 @@ div.csl-indent {
 <ol start="2" type="1">
 <li><strong>Evaluation Report</strong></li>
 </ol>
-<p>This report presents structured evaluation results of ML projects, which includes a detailed breakdown of completeness scores and reasons for each score.</p>
+<p>This report presents well-formatted evaluation results of ML projects, which includes a summary of completeness score, a detailed breakdown and reasons of the scores per checklist item.</p>
 <div id="fig-report" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-left">
@@ -418,13 +418,13 @@ div.csl-indent {
 <p><img src="img/test_evaluation_report_sample.png" class="img-fluid figure-img" width="600"></p>
 </figure>
 </div>
-<figcaption class="figure-caption">Figure&nbsp;4: An example of the evaluation report.</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;4: An example of the evaluation report exported in PDF format using our default template. Users can customize their reports by creating templates.</figcaption>
 </figure>
 </div>
 <ol start="3" type="1">
 <li><strong>Test Specification Script</strong></li>
 </ol>
-<p>Generated test specifications are stored as Python scripts.</p>
+<p>It is the generated test specifications stored as Python scripts.</p>
 <div id="fig-testspec" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-left">
@@ -451,7 +451,7 @@ div.csl-indent {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> pd.read_csv(<span class="st">'ground_truth.csv'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>gt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -604,23 +604,23 @@ div.csl-indent {
 <figure class="figure">
 
 <style>
-  #altair-viz-f88ee59862bc4932b7dba1962d6b2825.vega-embed {
+  #altair-viz-7ed89834d8164ee992fd10e30149e693.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-f88ee59862bc4932b7dba1962d6b2825.vega-embed details,
-  #altair-viz-f88ee59862bc4932b7dba1962d6b2825.vega-embed details summary {
+  #altair-viz-7ed89834d8164ee992fd10e30149e693.vega-embed details,
+  #altair-viz-7ed89834d8164ee992fd10e30149e693.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-f88ee59862bc4932b7dba1962d6b2825"></div>
+<div id="altair-viz-7ed89834d8164ee992fd10e30149e693"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-f88ee59862bc4932b7dba1962d6b2825") {
-      outputDiv = document.getElementById("altair-viz-f88ee59862bc4932b7dba1962d6b2825");
+    if (outputDiv.id !== "altair-viz-7ed89834d8164ee992fd10e30149e693") {
+      outputDiv = document.getElementById("altair-viz-7ed89834d8164ee992fd10e30149e693");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -691,7 +691,7 @@ div.csl-indent {
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>contingency_table.index.names <span class="op">=</span> [<span class="st">'Repository'</span>, <span class="st">'Checklist Item'</span>, <span class="st">'Ground Truth'</span>]</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>contingency_table.sort_index(level<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -840,7 +840,7 @@ div.csl-indent {
 <ol start="2" type="1">
 <li><strong>Consistency</strong></li>
 </ol>
-<p>As the completeness scores from LLMs contain randomness, we examined the consistency of completeness scores across checklist items and repositories.</p>
+<p>Consistency is another consideration because it directly links to the reliability of the evaluation results from user perspective. As the completeness scores from LLMs contain randomness, we plotted graphs of the uncertainty of completeness scores across checklist items and repositories to show how consistent these results were.</p>
 <div class="cell" data-execution_count="4">
 <details>
 <summary>Code</summary>
@@ -892,23 +892,23 @@ div.csl-indent {
 <figure class="figure">
 
 <style>
-  #altair-viz-daf123af7afb42fe8d2f52a5a5e62d17.vega-embed {
+  #altair-viz-a97ad32688e3400e87b1fd4c4e972fc6.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-daf123af7afb42fe8d2f52a5a5e62d17.vega-embed details,
-  #altair-viz-daf123af7afb42fe8d2f52a5a5e62d17.vega-embed details summary {
+  #altair-viz-a97ad32688e3400e87b1fd4c4e972fc6.vega-embed details,
+  #altair-viz-a97ad32688e3400e87b1fd4c4e972fc6.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-daf123af7afb42fe8d2f52a5a5e62d17"></div>
+<div id="altair-viz-a97ad32688e3400e87b1fd4c4e972fc6"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-daf123af7afb42fe8d2f52a5a5e62d17") {
-      outputDiv = document.getElementById("altair-viz-daf123af7afb42fe8d2f52a5a5e62d17");
+    if (outputDiv.id !== "altair-viz-a97ad32688e3400e87b1fd4c4e972fc6") {
+      outputDiv = document.getElementById("altair-viz-a97ad32688e3400e87b1fd4c4e972fc6");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -956,19 +956,19 @@ div.csl-indent {
     }
   })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axis": {"labelFontSize": 12, "titleFontSize": 12}}, "layer": [{"mark": {"type": "boxplot", "color": "grey", "opacity": 0.5, "size": 20}, "encoding": {"x": {"field": "value", "title": "Standard Deviation of Scores", "type": "quantitative"}, "y": {"axis": {"grid": false, "labelLimit": 1000, "labelPadding": 10}, "field": "id_title", "title": null, "type": "nominal"}}}, {"mark": {"type": "circle", "size": 100}, "encoding": {"color": {"field": "id_title", "legend": null, "type": "nominal"}, "tooltip": {"field": "repo", "type": "nominal"}, "x": {"field": "value", "type": "quantitative"}, "y": {"axis": {"grid": true, "labels": true, "ticks": false}, "field": "id_title", "scale": {}, "type": "nominal"}, "yOffset": {"field": "jitter", "type": "quantitative"}}, "transform": [{"calculate": "sqrt(-2*log(random()))*cos(2*PI*random())", "as": "jitter"}]}], "data": {"name": "data-94635df82462083524b4d13e8a96bc71"}, "height": 300, "title": "30 Runs on Openja's Repositories for each Checklist Item", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-94635df82462083524b4d13e8a96bc71": [{"repo": "lightfm", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "magenta", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0912870929175276}, {"repo": "mmf", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "nanodet", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "qlib", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "lightfm", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "magenta", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "mmf", "id_title": "3.2. Data in the Expected Format", "value": 0.2330457998496995}, {"repo": "nanodet", "id_title": "3.2. Data in the Expected Format", "value": 0.2542738138578039}, {"repo": "qlib", "id_title": "3.2. Data in the Expected Format", "value": 0.2537081317024624}, {"repo": "lightfm", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "magenta", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "mmf", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.2537081317024624}, {"repo": "nanodet", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "qlib", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.2150915335760381}, {"repo": "lightfm", "id_title": "4.2. Verify Data Split Proportion", "value": 0.2450662589267805}, {"repo": "magenta", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "mmf", "id_title": "4.2. Verify Data Split Proportion", "value": 0.1728729518208802}, {"repo": "nanodet", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "qlib", "id_title": "4.2. Verify Data Split Proportion", "value": 0.2069204966986668}, {"repo": "lightfm", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0912870929175276}, {"repo": "magenta", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "mmf", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.2491364395612199}, {"repo": "nanodet", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "qlib", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.2012889499682243}, {"repo": "lightfm", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1895245108947258}, {"repo": "magenta", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0}, {"repo": "mmf", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1525642883146823}, {"repo": "nanodet", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.2491364395612199}, {"repo": "qlib", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.2916461404928373}, {"repo": "lightfm", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0912870929175276}, {"repo": "magenta", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "mmf", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.2248882225544018}, {"repo": "nanodet", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.1268540658512312}, {"repo": "qlib", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.203419051086243}]}}, {"mode": "vega-lite"});
 </script>
-<figcaption class="figure-caption">Figure&nbsp;7: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores from 30 runs of a single repository</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;7: Analysis of uncertainty of the scores (in standard deviation, scale of 0 - 1) per checklist item. Each dot represents the uncertainty of scores from 30 runs of a single repository. It shows different patterns across checklist items.</figcaption>
 </figure>
 </div>
 </div>
-<p>We identified two diverging cases:</p>
+<p>When we examined the consistency, we have observed various patterns and tried to deduce the reasons, which could provide ideas for future improvement. To conclude, we have identified two categories that show diverging patterns:</p>
 <ol type="i">
-<li><strong>High Standard Deviations</strong></li>
+<li><strong>High Uncertainty</strong></li>
 </ol>
-<p>Items like <code>3.2 Data in the Expected Format</code> showed high standard deviations across repositories. This might indicate potential poor prompt quality for the LLM to produce consistent results. Improved prompt engineering could address this issue.</p>
+<p>Items like <code>6.1 Verify Evaluation Metrics Implementation</code> showed high standard deviations across repositories (median = 0.12). This might indicate potential poor prompt quality for the LLM to produce consistent results. Improved prompt engineering could address this issue.</p>
 <ol start="2" type="i">
-<li><strong>Outliers with High Standard Deviations</strong></li>
+<li><strong>Outliers with High Uncertainty</strong></li>
 </ol>
-<p>Items like <code>5.3 Ensure Model Output Shape Aligns with Expectation</code> had outliers with exceptionally high standard deviations, which is possibly due to unorthodox repositories. A careful manual examination is required for a more definitive conclusion.</p>
+<p>Items like <code>2.1 Ensure Data File Loads as Expected</code> had outliers with exceptionally high standard deviations, which is possibly due to unorthodox repositories. A careful manual examination is required for a more definitive conclusion.</p>
 <section id="comparison-of-gpt-3.5-turbo-and-gpt-4o" class="level4">
 <h4 class="anchored" data-anchor-id="comparison-of-gpt-3.5-turbo-and-gpt-4o">Comparison of <code>gpt-3.5-turbo</code> and <code>gpt-4o</code></h4>
 <p>To evaluate if newer LLMs improve performance, we preliminarily compared outputs from <code>gpt-4o</code> and <code>gpt-3.5-turbo</code> on the <code>lightfm</code> repository. We observed that <code>gpt-4o</code> consistently returned “Satisfied,” which deviated from the ground truth.</p>
@@ -1035,23 +1035,23 @@ div.csl-indent {
 <figure class="figure">
 
 <style>
-  #altair-viz-4efc49cdc3014aa1a4e4821088bf5d97.vega-embed {
+  #altair-viz-b42cb8022d6c4718b2a08d2d1fe47544.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-4efc49cdc3014aa1a4e4821088bf5d97.vega-embed details,
-  #altair-viz-4efc49cdc3014aa1a4e4821088bf5d97.vega-embed details summary {
+  #altair-viz-b42cb8022d6c4718b2a08d2d1fe47544.vega-embed details,
+  #altair-viz-b42cb8022d6c4718b2a08d2d1fe47544.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-4efc49cdc3014aa1a4e4821088bf5d97"></div>
+<div id="altair-viz-b42cb8022d6c4718b2a08d2d1fe47544"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-4efc49cdc3014aa1a4e4821088bf5d97") {
-      outputDiv = document.getElementById("altair-viz-4efc49cdc3014aa1a4e4821088bf5d97");
+    if (outputDiv.id !== "altair-viz-b42cb8022d6c4718b2a08d2d1fe47544") {
+      outputDiv = document.getElementById("altair-viz-b42cb8022d6c4718b2a08d2d1fe47544");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
