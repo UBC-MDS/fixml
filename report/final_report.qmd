@@ -160,7 +160,7 @@ These responses include both LLM evaluation results and process metadata stored 
 (FIXME To be revised)
 
 ::: {#fig-responses}
-![](img/test_evaluation_responses_sample.png){width=600}
+![](../img/test_evaluation_responses_sample.png){width=600}
 
 An example of the evaluation responses
 :::
@@ -268,26 +268,6 @@ errorbars = base.mark_errorbar().encode(
 
 Our tool tends to underrate satisfying cases, which often classifies fully satisfied items as partially satisfied and partially satisfied items as not satisfied.
 
-```{python}
-#| label: tbl-accu-contingency
-#| tbl-cap: Contingency table of our system's satisfaction determination versus the ground truth
-
-df_repo_run = pd.read_csv('../data/processed/score_by_repo_run_3.5-turbo.csv')
-
-df_repo_run = df_repo_run.merge(gt, on=['id', 'title', 'repo'])
-
-contingency_table = pd.pivot_table(
-    df_repo_run,
-    values='run', 
-    index=['repo', 'id_title', 'ground_truth'], 
-    columns=['score'],
-    aggfunc='count', 
-    fill_value=0
-)
-contingency_table.index.names = ['Repository', 'Checklist Item', 'Ground Truth']
-contingency_table.sort_index(level=[0, 2])
-```
-
 The accuracy issue may be attributed to a need to improve our checklist prompts.
 
 2. **Consistency**
@@ -339,7 +319,6 @@ stripplot = base.mark_circle(size=100).encode(
 ).properties(
     height=300, 
     width=600,
-    title="30 Runs on Openja's Repositories for each Checklist Item"
 ) 
 ```
 
@@ -365,11 +344,12 @@ df_repo_4o__stat = pd.read_csv('../data/processed/score_stat_by_repo_4o.csv')
 df_repo_4o__stat_with_gt = df_repo_4o__stat.merge(gt, on=['id', 'title', 'repo'])
 df_repo_4o__stat_with_gt['model'] = 'gpt-4o'
 
-df_repo_35turbo__stat_with_gt = df_repo__stat_with_gt.query("repo == 'lightfm'").copy()
-df_repo_35turbo__stat_with_gt['model'] = 'gpt-3.5-turbo'
+df_repo_4turbo__stat = pd.read_csv('../data/processed/score_stat_by_repo_4-turbo.csv')
+df_repo_4turbo__stat_with_gt = df_repo_4turbo__stat.merge(gt, on=['id', 'title', 'repo'])
+df_repo_4turbo__stat_with_gt['model'] = 'gpt-4-turbo'
 
 df_model_comp = pd.concat(
-    (df_repo_35turbo__stat_with_gt, df_repo_4o__stat_with_gt), 
+    (df_repo_4turbo__stat_with_gt, df_repo_4o__stat_with_gt), 
     axis=0
 )
 
@@ -389,7 +369,7 @@ points = base.mark_point(
     x=alt.X('mean:Q').scale(domainMin=0, domainMax=1).title("Score").axis(
         labelExpr="datum.value % 0.5 ? null : datum.label"
     ),
-    y=alt.Y('id_title:N', title=None, axis=alt.Axis(labelPadding=10, labelLimit=1000, grid=False))#.scale(domainMin=0, domainMax=1).title('Score'),
+    y=alt.Y('id_title:N', title=None, axis=alt.Axis(labelPadding=10, labelLimit=1000, grid=False)),
 )
 
 # generate the points for ground truth
@@ -405,12 +385,14 @@ gt_points = base.mark_point(
 
 # generate the error bars
 errorbars = base.mark_errorbar().encode(
-    x=alt.X("min:Q").title('1 SD'), #"id:N",
+    x=alt.X("min:Q").title('1 SD'),
     x2="max:Q",
     y="id_title:N"
 )
 
-(gt_points + points + errorbars).facet(
+(
+    gt_points + points + errorbars
+).facet(
     column=alt.Column('model:N').title(None)
 ).configure_axis( 
     labelFontSize=12, 
