@@ -543,23 +543,23 @@ div.csl-indent {
 <div class="cell-output cell-output-display" data-execution_count="7">
 
 <style>
-  #altair-viz-1999d76b84e542058601d1322c45e9f7.vega-embed {
+  #altair-viz-1af45f6df270447fa68411c36b4541e0.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-1999d76b84e542058601d1322c45e9f7.vega-embed details,
-  #altair-viz-1999d76b84e542058601d1322c45e9f7.vega-embed details summary {
+  #altair-viz-1af45f6df270447fa68411c36b4541e0.vega-embed details,
+  #altair-viz-1af45f6df270447fa68411c36b4541e0.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-1999d76b84e542058601d1322c45e9f7"></div>
+<div id="altair-viz-1af45f6df270447fa68411c36b4541e0"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-1999d76b84e542058601d1322c45e9f7") {
-      outputDiv = document.getElementById("altair-viz-1999d76b84e542058601d1322c45e9f7");
+    if (outputDiv.id !== "altair-viz-1af45f6df270447fa68411c36b4541e0") {
+      outputDiv = document.getElementById("altair-viz-1af45f6df270447fa68411c36b4541e0");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -605,7 +605,7 @@ div.csl-indent {
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}}, "data": {"name": "data-0cd69fd1c95de279cdd7d1f0310bd508"}, "facet": {"column": {"field": "repo", "title": null, "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "point", "color": "green", "filled": true, "shape": "diamond", "size": 200}, "encoding": {"x": {"field": "ground_truth", "type": "quantitative"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "point", "color": "black", "filled": true, "size": 50}, "encoding": {"x": {"axis": {"labelExpr": "datum.value % 0.5 ? null : datum.label"}, "field": "mean", "scale": {"domainMin": 0, "domainMax": 1}, "title": "Score", "type": "quantitative"}, "y": {"axis": {"grid": false, "labelLimit": 1000, "labelPadding": 10}, "field": "id_title", "title": null, "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "errorbar"}, "encoding": {"x": {"field": "min", "title": "1 SD", "type": "quantitative"}, "x2": {"field": "max"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}]}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-0cd69fd1c95de279cdd7d1f0310bd508": [{"repo": "lightfm", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 1.0}, {"repo": "lightfm", "id": 3.2, "count": 30.0, "mean": 0.5, "std": 0.0, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0}, {"repo": "lightfm", "id": 3.5, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0}, {"repo": "lightfm", "id": 4.2, "count": 30.0, "mean": 0.8166666666666667, "std": 0.2450662589267805, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 1.0}, {"repo": "lightfm", "id": 5.3, "count": 30.0, "mean": 0.4833333333333333, "std": 0.0912870929175276, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 0.5}, {"repo": "lightfm", "id": 6.1, "count": 30.0, "mean": 0.9166666666666666, "std": 0.1895245108947258, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0}, {"repo": "lightfm", "id": 6.2, "count": 30.0, "mean": 0.9833333333333332, "std": 0.0912870929175276, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0}, {"repo": "qlib", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 0.5}, {"repo": "qlib", "id": 3.2, "count": 30.0, "mean": 0.7666666666666667, "std": 0.2537081317024624, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0}, {"repo": "qlib", "id": 3.5, "count": 30.0, "mean": 0.1166666666666666, "std": 0.2150915335760381, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0}, {"repo": "qlib", "id": 4.2, "count": 30.0, "mean": 0.4833333333333333, "std": 0.2069204966986668, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 0.5}, {"repo": "qlib", "id": 5.3, "count": 30.0, "mean": 0.55, "std": 0.2012889499682243, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 1.0}, {"repo": "qlib", "id": 6.1, "count": 30.0, "mean": 0.6333333333333333, "std": 0.2916461404928373, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0}, {"repo": "qlib", "id": 6.2, "count": 30.0, "mean": 0.6, "std": 0.203419051086243, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}}, "data": {"name": "data-a00fed27dd81291d0f791ce5bf77eeda"}, "facet": {"column": {"field": "repo", "title": null, "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "point", "color": "green", "filled": true, "shape": "diamond", "size": 200}, "encoding": {"x": {"field": "ground_truth", "type": "quantitative"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "point", "color": "black", "filled": true, "size": 50}, "encoding": {"x": {"axis": {"labelExpr": "datum.value % 0.5 ? null : datum.label"}, "field": "mean", "scale": {"domainMin": 0, "domainMax": 1}, "title": "Score", "type": "quantitative"}, "y": {"axis": {"grid": false, "labelLimit": 1000, "labelPadding": 10}, "field": "id_title", "title": null, "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "errorbar"}, "encoding": {"x": {"field": "min", "title": "1 SD", "type": "quantitative"}, "x2": {"field": "max"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}]}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-a00fed27dd81291d0f791ce5bf77eeda": [{"repo": "DeepSpeech", "id": 2.1, "count": 30.0, "mean": 0.9666666666666668, "std": 0.1825741858350553, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 3.2, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 3.5, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 4.2, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 5.3, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 6.1, "count": 30.0, "mean": 0.2, "std": 0.4068381021724861, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 6.2, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 0.0}, {"repo": "lightfm", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 1.0}, {"repo": "lightfm", "id": 3.2, "count": 30.0, "mean": 0.5, "std": 0.0, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0}, {"repo": "lightfm", "id": 3.5, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0}, {"repo": "lightfm", "id": 4.2, "count": 30.0, "mean": 0.8166666666666667, "std": 0.2450662589267805, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 1.0}, {"repo": "lightfm", "id": 5.3, "count": 30.0, "mean": 0.4833333333333333, "std": 0.0912870929175276, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 0.5}, {"repo": "lightfm", "id": 6.1, "count": 30.0, "mean": 0.9166666666666666, "std": 0.1895245108947258, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0}, {"repo": "lightfm", "id": 6.2, "count": 30.0, "mean": 0.9833333333333332, "std": 0.0912870929175276, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0}, {"repo": "qlib", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 0.5}, {"repo": "qlib", "id": 3.2, "count": 30.0, "mean": 0.7666666666666667, "std": 0.2537081317024624, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0}, {"repo": "qlib", "id": 3.5, "count": 30.0, "mean": 0.1166666666666666, "std": 0.2150915335760381, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0}, {"repo": "qlib", "id": 4.2, "count": 30.0, "mean": 0.4833333333333333, "std": 0.2069204966986668, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 0.5}, {"repo": "qlib", "id": 5.3, "count": 30.0, "mean": 0.55, "std": 0.2012889499682243, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 1.0}, {"repo": "qlib", "id": 6.1, "count": 30.0, "mean": 0.6333333333333333, "std": 0.2916461404928373, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0}, {"repo": "qlib", "id": 6.2, "count": 30.0, "mean": 0.6, "std": 0.203419051086243, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -656,6 +656,56 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
+<td rowspan="7" data-quarto-table-cell-role="th" data-valign="top">DeepSpeech</td>
+<td data-quarto-table-cell-role="th">2.1. Ensure Data File Loads as Expected</td>
+<td data-quarto-table-cell-role="th">0.0</td>
+<td>1</td>
+<td>0</td>
+<td>29</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3.2. Data in the Expected Format</td>
+<td data-quarto-table-cell-role="th">0.0</td>
+<td>30</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3.5. Check for Duplicate Records in Data</td>
+<td data-quarto-table-cell-role="th">0.0</td>
+<td>30</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4.2. Verify Data Split Proportion</td>
+<td data-quarto-table-cell-role="th">0.0</td>
+<td>30</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5.3. Ensure Model Output Shape Aligns with Expectation</td>
+<td data-quarto-table-cell-role="th">0.0</td>
+<td>30</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6.1. Verify Evaluation Metrics Implementation</td>
+<td data-quarto-table-cell-role="th">0.0</td>
+<td>24</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6.2. Evaluate Model's Performance Against Thresholds</td>
+<td data-quarto-table-cell-role="th">0.0</td>
+<td>30</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
 <td rowspan="7" data-quarto-table-cell-role="th" data-valign="top">lightfm</td>
 <td data-quarto-table-cell-role="th">3.5. Check for Duplicate Records in Data</td>
 <td data-quarto-table-cell-role="th">0.0</td>
@@ -663,49 +713,49 @@ div.csl-indent {
 <td>0</td>
 <td>0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">5.3. Ensure Model Output Shape Aligns with Expectation</td>
 <td data-quarto-table-cell-role="th">0.5</td>
 <td>1</td>
 <td>29</td>
 <td>0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">2.1. Ensure Data File Loads as Expected</td>
 <td data-quarto-table-cell-role="th">1.0</td>
 <td>0</td>
 <td>0</td>
 <td>30</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">3.2. Data in the Expected Format</td>
 <td data-quarto-table-cell-role="th">1.0</td>
 <td>0</td>
 <td>30</td>
 <td>0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">4.2. Verify Data Split Proportion</td>
 <td data-quarto-table-cell-role="th">1.0</td>
 <td>0</td>
 <td>11</td>
 <td>19</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">6.1. Verify Evaluation Metrics Implementation</td>
 <td data-quarto-table-cell-role="th">1.0</td>
 <td>0</td>
 <td>5</td>
 <td>25</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">6.2. Evaluate Model's Performance Against Thresholds</td>
 <td data-quarto-table-cell-role="th">1.0</td>
 <td>0</td>
 <td>1</td>
 <td>29</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td rowspan="7" data-quarto-table-cell-role="th" data-valign="top">qlib</td>
 <td data-quarto-table-cell-role="th">3.5. Check for Duplicate Records in Data</td>
 <td data-quarto-table-cell-role="th">0.0</td>
@@ -713,42 +763,42 @@ div.csl-indent {
 <td>7</td>
 <td>0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">2.1. Ensure Data File Loads as Expected</td>
 <td data-quarto-table-cell-role="th">0.5</td>
 <td>0</td>
 <td>0</td>
 <td>30</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">4.2. Verify Data Split Proportion</td>
 <td data-quarto-table-cell-role="th">0.5</td>
 <td>3</td>
 <td>25</td>
 <td>2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">3.2. Data in the Expected Format</td>
 <td data-quarto-table-cell-role="th">1.0</td>
 <td>0</td>
 <td>14</td>
 <td>16</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">5.3. Ensure Model Output Shape Aligns with Expectation</td>
 <td data-quarto-table-cell-role="th">1.0</td>
 <td>1</td>
 <td>25</td>
 <td>4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">6.1. Verify Evaluation Metrics Implementation</td>
 <td data-quarto-table-cell-role="th">1.0</td>
 <td>2</td>
 <td>18</td>
 <td>10</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">6.2. Evaluate Model's Performance Against Thresholds</td>
 <td data-quarto-table-cell-role="th">1.0</td>
 <td>0</td>
@@ -819,23 +869,23 @@ div.csl-indent {
 <div class="cell-output cell-output-display" data-execution_count="9">
 
 <style>
-  #altair-viz-a5a0777d203546aeaa42f821ea918c6b.vega-embed {
+  #altair-viz-f0fb2fb318404ce7ad754d8e966fcb0a.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-a5a0777d203546aeaa42f821ea918c6b.vega-embed details,
-  #altair-viz-a5a0777d203546aeaa42f821ea918c6b.vega-embed details summary {
+  #altair-viz-f0fb2fb318404ce7ad754d8e966fcb0a.vega-embed details,
+  #altair-viz-f0fb2fb318404ce7ad754d8e966fcb0a.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-a5a0777d203546aeaa42f821ea918c6b"></div>
+<div id="altair-viz-f0fb2fb318404ce7ad754d8e966fcb0a"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-a5a0777d203546aeaa42f821ea918c6b") {
-      outputDiv = document.getElementById("altair-viz-a5a0777d203546aeaa42f821ea918c6b");
+    if (outputDiv.id !== "altair-viz-f0fb2fb318404ce7ad754d8e966fcb0a") {
+      outputDiv = document.getElementById("altair-viz-f0fb2fb318404ce7ad754d8e966fcb0a");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -881,7 +931,7 @@ div.csl-indent {
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axis": {"labelFontSize": 12, "titleFontSize": 12}}, "layer": [{"mark": {"type": "boxplot", "color": "grey", "opacity": 0.5, "size": 20}, "encoding": {"x": {"field": "value", "title": "Standard Deviation of Scores", "type": "quantitative"}, "y": {"axis": {"grid": false, "labelLimit": 1000, "labelPadding": 10}, "field": "id_title", "title": null, "type": "nominal"}}}, {"mark": {"type": "circle", "size": 100}, "encoding": {"color": {"field": "id_title", "legend": null, "type": "nominal"}, "tooltip": {"field": "repo", "type": "nominal"}, "x": {"field": "value", "type": "quantitative"}, "y": {"axis": {"grid": true, "labels": true, "ticks": false}, "field": "id_title", "scale": {}, "type": "nominal"}, "yOffset": {"field": "jitter", "type": "quantitative"}}, "transform": [{"calculate": "sqrt(-2*log(random()))*cos(2*PI*random())", "as": "jitter"}]}], "data": {"name": "data-6781bc08998d89e40d13eed2c6299b07"}, "height": 300, "title": "30 Runs on Openja's Repositories for each Checklist Item", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-6781bc08998d89e40d13eed2c6299b07": [{"repo": "lightfm", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "magenta", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0912870929175276}, {"repo": "mmf", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "nanodet", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "qlib", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "lightfm", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "magenta", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "mmf", "id_title": "3.2. Data in the Expected Format", "value": 0.2330457998496995}, {"repo": "nanodet", "id_title": "3.2. Data in the Expected Format", "value": 0.2542738138578039}, {"repo": "qlib", "id_title": "3.2. Data in the Expected Format", "value": 0.2537081317024624}, {"repo": "lightfm", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "magenta", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "mmf", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.2537081317024624}, {"repo": "nanodet", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "qlib", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.2150915335760381}, {"repo": "lightfm", "id_title": "4.2. Verify Data Split Proportion", "value": 0.2450662589267805}, {"repo": "magenta", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "mmf", "id_title": "4.2. Verify Data Split Proportion", "value": 0.1728729518208802}, {"repo": "nanodet", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "qlib", "id_title": "4.2. Verify Data Split Proportion", "value": 0.2069204966986668}, {"repo": "lightfm", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0912870929175276}, {"repo": "magenta", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "mmf", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.2491364395612199}, {"repo": "nanodet", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "qlib", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.2012889499682243}, {"repo": "lightfm", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1895245108947258}, {"repo": "magenta", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0}, {"repo": "mmf", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1525642883146823}, {"repo": "nanodet", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.2491364395612199}, {"repo": "qlib", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.2916461404928373}, {"repo": "lightfm", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0912870929175276}, {"repo": "magenta", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "mmf", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.2248882225544018}, {"repo": "nanodet", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.1268540658512312}, {"repo": "qlib", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.203419051086243}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axis": {"labelFontSize": 12, "titleFontSize": 12}}, "layer": [{"mark": {"type": "boxplot", "color": "grey", "opacity": 0.5, "size": 20}, "encoding": {"x": {"field": "value", "title": "Standard Deviation of Scores", "type": "quantitative"}, "y": {"axis": {"grid": false, "labelLimit": 1000, "labelPadding": 10}, "field": "id_title", "title": null, "type": "nominal"}}}, {"mark": {"type": "circle", "size": 100}, "encoding": {"color": {"field": "id_title", "legend": null, "type": "nominal"}, "tooltip": {"field": "repo", "type": "nominal"}, "x": {"field": "value", "type": "quantitative"}, "y": {"axis": {"grid": true, "labels": true, "ticks": false}, "field": "id_title", "scale": {}, "type": "nominal"}, "yOffset": {"field": "jitter", "type": "quantitative"}}, "transform": [{"calculate": "sqrt(-2*log(random()))*cos(2*PI*random())", "as": "jitter"}]}], "data": {"name": "data-6aab5f6156d183a21fdd1c0623d42004"}, "height": 300, "title": "30 Runs on Openja's Repositories for each Checklist Item", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-6aab5f6156d183a21fdd1c0623d42004": [{"repo": "DeepSpeech", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.1825741858350553}, {"repo": "apollo", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "deepchem", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "lightfm", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "magenta", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0912870929175276}, {"repo": "mmf", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "mycroft-core", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "nanodet", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "nupic", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.409653624363343}, {"repo": "paperless-ng", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "qlib", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "DeepSpeech", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "apollo", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "deepchem", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "lightfm", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "magenta", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "mmf", "id_title": "3.2. Data in the Expected Format", "value": 0.2330457998496995}, {"repo": "mycroft-core", "id_title": "3.2. Data in the Expected Format", "value": 0.0912870929175276}, {"repo": "nanodet", "id_title": "3.2. Data in the Expected Format", "value": 0.2542738138578039}, {"repo": "nupic", "id_title": "3.2. Data in the Expected Format", "value": 0.2248882225544018}, {"repo": "paperless-ng", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "qlib", "id_title": "3.2. Data in the Expected Format", "value": 0.2537081317024624}, {"repo": "DeepSpeech", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "apollo", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "deepchem", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.1268540658512312}, {"repo": "lightfm", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "magenta", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "mmf", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.2537081317024624}, {"repo": "mycroft-core", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "nanodet", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "nupic", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "paperless-ng", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "qlib", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.2150915335760381}, {"repo": "DeepSpeech", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "apollo", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "deepchem", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "lightfm", "id_title": "4.2. Verify Data Split Proportion", "value": 0.2450662589267805}, {"repo": "magenta", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "mmf", "id_title": "4.2. Verify Data Split Proportion", "value": 0.1728729518208802}, {"repo": "mycroft-core", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "nanodet", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "nupic", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "paperless-ng", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "qlib", "id_title": "4.2. Verify Data Split Proportion", "value": 0.2069204966986668}, {"repo": "DeepSpeech", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "apollo", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "deepchem", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "lightfm", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0912870929175276}, {"repo": "magenta", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "mmf", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.2491364395612199}, {"repo": "mycroft-core", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0912870929175276}, {"repo": "nanodet", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "nupic", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.1895245108947258}, {"repo": "paperless-ng", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "qlib", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.2012889499682243}, {"repo": "DeepSpeech", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.4068381021724861}, {"repo": "apollo", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1268540658512312}, {"repo": "deepchem", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0}, {"repo": "lightfm", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1895245108947258}, {"repo": "magenta", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0}, {"repo": "mmf", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1525642883146823}, {"repo": "mycroft-core", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0912870929175276}, {"repo": "nanodet", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.2491364395612199}, {"repo": "nupic", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0}, {"repo": "paperless-ng", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0}, {"repo": "qlib", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.2916461404928373}, {"repo": "DeepSpeech", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "apollo", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "deepchem", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "lightfm", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0912870929175276}, {"repo": "magenta", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "mmf", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.2248882225544018}, {"repo": "mycroft-core", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.1268540658512312}, {"repo": "nanodet", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.1268540658512312}, {"repo": "nupic", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.3511066249289032}, {"repo": "paperless-ng", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "qlib", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.203419051086243}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -963,23 +1013,23 @@ div.csl-indent {
 <div class="cell-output cell-output-display" data-execution_count="10">
 
 <style>
-  #altair-viz-8cc4c4e5769643588ef22330585b69e2.vega-embed {
+  #altair-viz-cb22ec5ca44d4ff4a6928cac877f3297.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-8cc4c4e5769643588ef22330585b69e2.vega-embed details,
-  #altair-viz-8cc4c4e5769643588ef22330585b69e2.vega-embed details summary {
+  #altair-viz-cb22ec5ca44d4ff4a6928cac877f3297.vega-embed details,
+  #altair-viz-cb22ec5ca44d4ff4a6928cac877f3297.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-8cc4c4e5769643588ef22330585b69e2"></div>
+<div id="altair-viz-cb22ec5ca44d4ff4a6928cac877f3297"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-8cc4c4e5769643588ef22330585b69e2") {
-      outputDiv = document.getElementById("altair-viz-8cc4c4e5769643588ef22330585b69e2");
+    if (outputDiv.id !== "altair-viz-cb22ec5ca44d4ff4a6928cac877f3297") {
+      outputDiv = document.getElementById("altair-viz-cb22ec5ca44d4ff4a6928cac877f3297");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
