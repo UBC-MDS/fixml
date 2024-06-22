@@ -184,11 +184,11 @@ As described in `Success Metrics`, we conducted 30 iterations on each repository
 
 1. **Accuracy**
 
-We targeted 3 of the repositories ([`lightfm`](https://github.com/lyst/lightfm), [`qlib`](https://github.com/microsoft/qlib), [`DeepSpeech`](https://github.com/mozilla/DeepSpeech)) for human evaluation compared our tool's outputs with the ground truth.
+Accuracy is our first consideration as our tool can bring values to users only if its results can generally align with expert judgement. We have targeted 3 of the repositories ([`lightfm`](https://github.com/lyst/lightfm), [`qlib`](https://github.com/microsoft/qlib), [`DeepSpeech`](https://github.com/mozilla/DeepSpeech)) for human evaluation. We then compared and plotted the graph to show how much our tool's outputs align with the ground truth.
 
 ```{python}
 #| label: tbl-gt
-#| tbl-cap: Ground truth data for the 3 repositories. (1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied)
+#| tbl-cap: Ground truth scores for 3 repositories per checklist item based on human evaluation. (1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied)
 
 import pandas as pd
 gt = pd.read_csv('ground_truth.csv')
@@ -197,7 +197,7 @@ gt
 
 ```{python}
 #| label: fig-accu-mean-sd-plot
-#| fig-cap: Comparison of our system's satisfaction determination versus the ground truth for each checklist item and repository
+#| fig-cap: Analysis of accuracy of the scores per checklist item. Black dot and line represents the mean and standard deviation of scores from the tool. Green diamond represents the ground truth score of a single repository. It shows our tool tends to underrate satisfying cases.
 
 import altair as alt
 import pandas as pd
@@ -253,33 +253,16 @@ errorbars = base.mark_errorbar().encode(
 )
 ```
 
-Our tool tends to underrate satisfying cases, which often classifies fully satisfied items as partially satisfied and partially satisfied items as not satisfied.
+When we examined the accuracy, we have observed that our tool can identify non-satisfying cases quite well. Yet, it often classifies fully satisfied items as partially satisfied and partially satisfied items as not satisfied.
 
-```{python}
-#| label: tbl-accu-contingency
-#| tbl-cap: Contingency table of our system's satisfaction determination versus the ground truth
+It is shown that our tool attains certain degree of accuracy. The next questions we asked are:
 
-df_repo_run = pd.read_csv('score_by_repo_run_3.5-turbo.csv')
-
-df_repo_run = df_repo_run.merge(gt, on=['id', 'title', 'repo'])
-
-contingency_table = pd.pivot_table(
-    df_repo_run,
-    values='run', 
-    index=['repo', 'id_title', 'ground_truth'], 
-    columns=['score'],
-    aggfunc='count', 
-    fill_value=0
-)
-contingency_table.index.names = ['Repository', 'Checklist Item', 'Ground Truth']
-contingency_table.sort_index(level=[0, 2])
-```
-
-The accuracy issue may be attributed to a need to improve our checklist prompts.
+- Is there any other consideration in the performance of our tool?
+- In what direction can we improve our tool?
 
 2. **Consistency**
 
-Consistency is another consideration because it directly links to the reliability of the evaluation results from user perspective. As the completeness scores from LLMs contain randomness, we plotted graphs of the uncertainty of completeness scores across checklist items and repositories to show how consistent these results were.
+Consistency is another consideration because it directly links to the reliability of the evaluation results from user perspective. As the completeness scores from LLMs contain randomness, we plotted graphs of the uncertainty of completeness scores across checklist items and all the repositories to show how consistent these results were.
 
 ```{python}
 #| label: fig-cons-sd-box-plot
