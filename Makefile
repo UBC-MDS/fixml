@@ -21,10 +21,15 @@ data/processed/ground_truth.csv : analysis/preprocess_batch_run_result.py data/b
 report/docs/index.html : data/processed/ground_truth.csv
 	quarto render
 
+.PHONY : publish
+publish : data/processed/ground_truth.csv
+	quarto publish gh-pages
+
 # The 'clean' target is used to clean up generated files and directories.
 .PHONY : clean
 clean : 
-	rm -rf report/docs/
+	rm -rf report/docs/*
+	touch report/docs/.gitkeep
 	rm -rf data/batch_run/batch_run_3.5-turbo
 	rm -rf data/batch_run/batch_run_4-turbo
 	rm -rf data/batch_run/batch_run_4o
