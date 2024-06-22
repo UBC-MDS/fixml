@@ -124,9 +124,7 @@ It converts Evaluator responses into evaluation reports in various formats (HTML
 
 #### Checklist Design
 
-The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering further improves performance. THis helps mitigate LLM hallucinations [@zhang2023sirens] by ensuring strict adherence to the checklist.
-
-::: {#tbl-checklist-schema}
+The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering further improves performance. This helps mitigate LLM hallucinations [@zhang2023sirens] by ensuring strict adherence to the checklist.
 
 |                  Column | Description                                                                                          |
 |------------------:|:----------------------------------------------------|
@@ -138,13 +136,12 @@ The embedded checklist contains best practices for testing ML pipelines, and is 
 |               Reference | References for the checklist item, e.g., academic papers                                                |
 | Is Evaluator Applicable | Indicates if the checklist item is used during evaluation (0 = No, 1 = Yes) |
 
-The structure of the checklist
-:::
+: Structure of the checklist in CSV format. Users can easily edit/add more specialized checklist items by adding more rows in the csv {#tbl-checklist-schema}
 
 ::: {#fig-checklist}
 ![](img/checklist_sample.png){width=600 fig-align="left"}
 
-An example of the checklist
+An example of the checklist exported in PDF format. Users can easily read and distribute the checklist.
 :::
 
 #### Artifacts
@@ -422,7 +419,7 @@ While FixML provides substantial benefits, there are limitations and areas to be
 
 1.  **Specialized Checklist**
 
-The default checklist is general and may not cover all requirements for different ML projects, as shown in [Figure 2: Checklist for Tests in Machine Learning Projects.](#checklist-design). Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.
+The default checklist is general and may not cover all requirements for different ML projects. However, the current checklist structure allows users to edit checklist easily (shown in [@tbl-checklist-schema]). Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.
 
 2.  **Enhanced Test Evaluator**
 

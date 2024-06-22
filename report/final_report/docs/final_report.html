@@ -298,7 +298,6 @@ div.csl-indent {
 </section>
 <section id="system-design" class="level4">
 <h4 class="anchored" data-anchor-id="system-design">System Design</h4>
-<p>(FIXME To be revised)</p>
 <div id="fig-system" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-left">
@@ -334,14 +333,10 @@ div.csl-indent {
 </section>
 <section id="checklist-design" class="level4">
 <h4 class="anchored" data-anchor-id="checklist-design">Checklist Design</h4>
-<p>The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering further improves performance. THis helps mitigate LLM hallucinations <span class="citation" data-cites="zhang2023sirens">(<a href="#ref-zhang2023sirens" role="doc-biblioref">Zhang et al. 2023</a>)</span> by ensuring strict adherence to the checklist.</p>
-<div id="tbl-checklist-schema" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
-<p>The structure of the checklist</p>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p>The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering further improves performance. This helps mitigate LLM hallucinations <span class="citation" data-cites="zhang2023sirens">(<a href="#ref-zhang2023sirens" role="doc-biblioref">Zhang et al. 2023</a>)</span> by ensuring strict adherence to the checklist.</p>
+<div id="tbl-checklist-schema" class="anchored">
 <table class="table">
+<caption>Table&nbsp;1: Structure of the checklist in CSV format. Users can easily edit/add more specialized checklist items by adding more rows in the csv</caption>
 <colgroup>
 <col style="width: 26%">
 <col style="width: 73%">
@@ -384,9 +379,6 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<p>(FIXME To be revised)</p>
 <div id="fig-checklist" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <div class="quarto-figure quarto-figure-left">
@@ -394,7 +386,7 @@ div.csl-indent {
 <p><img src="img/checklist_sample.png" class="img-fluid figure-img" width="600"></p>
 </figure>
 </div>
-<figcaption class="figure-caption">Figure&nbsp;2: An example of the checklist</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;2: An example of the checklist exported in PDF format. Users can easily read and distribute the checklist.</figcaption>
 </figure>
 </div>
 </section>
@@ -405,10 +397,13 @@ div.csl-indent {
 <li><strong>Evaluation Responses</strong></li>
 </ol>
 <p>These responses include both LLM evaluation results and process metadata stored in JSON format.This supports downsteam tasks like report rendering and scientific research, etc.</p>
-<p>(FIXME To be revised)</p>
 <div id="fig-responses" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
 <p><img src="img/test_evaluation_responses_sample.png" class="img-fluid figure-img" width="600"></p>
+</figure>
+</div>
 <figcaption class="figure-caption">Figure&nbsp;3: An example of the evaluation responses</figcaption>
 </figure>
 </div>
@@ -416,10 +411,13 @@ div.csl-indent {
 <li><strong>Evaluation Report</strong></li>
 </ol>
 <p>This report presents structured evaluation results of ML projects, which includes a detailed breakdown of completeness scores and reasons for each score.</p>
-<p>(FIXME To be revised)</p>
 <div id="fig-report" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
 <p><img src="img/test_evaluation_report_sample.png" class="img-fluid figure-img" width="600"></p>
+</figure>
+</div>
 <figcaption class="figure-caption">Figure&nbsp;4: An example of the evaluation report</figcaption>
 </figure>
 </div>
@@ -427,10 +425,13 @@ div.csl-indent {
 <li><strong>Test Specification Script</strong></li>
 </ol>
 <p>Generated test specifications are stored as Python scripts.</p>
-<p>(FIXME To be revised)</p>
 <div id="fig-testspec" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
 <p><img src="img/test_spec_sample.png" class="img-fluid figure-img" width="600"></p>
+</figure>
+</div>
 <figcaption class="figure-caption">Figure&nbsp;5: An example of the generated test specifications</figcaption>
 </figure>
 </div>
@@ -439,7 +440,6 @@ div.csl-indent {
 <section id="evaluation-results" class="level3">
 <h3 class="anchored" data-anchor-id="evaluation-results">Evaluation Results</h3>
 <p>As described in <code>Success Metrics</code>, we conducted 30 iterations on each repository from <span class="citation" data-cites="openja2023studying">(<a href="#ref-openja2023studying" role="doc-biblioref">Openja et al. 2023</a>)</span> and examined the breakdown of the completeness score to assess our tool’s evaluation quality.</p>
-<p>(FIXME: would it be better to show a table of the repos? like how the Openja does?)</p>
 <ol type="1">
 <li><strong>Accuracy</strong></li>
 </ol>
@@ -451,7 +451,7 @@ div.csl-indent {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> pd.read_csv(<span class="st">'ground_truth.csv'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>gt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -469,7 +469,7 @@ div.csl-indent {
 
 <div id="tbl-gt" class="anchored">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<caption>Table&nbsp;1: Ground truth data for the 3 repositories. (1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied)</caption>
+<caption>Table&nbsp;2: Ground truth data for the 3 repositories. (1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied)</caption>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -604,23 +604,23 @@ div.csl-indent {
 <figure class="figure">
 
 <style>
-  #altair-viz-6495c484855c4abf91a18b5aed0b2f31.vega-embed {
+  #altair-viz-6109ee74f1c1419e9792dcc7ce4d3948.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-6495c484855c4abf91a18b5aed0b2f31.vega-embed details,
-  #altair-viz-6495c484855c4abf91a18b5aed0b2f31.vega-embed details summary {
+  #altair-viz-6109ee74f1c1419e9792dcc7ce4d3948.vega-embed details,
+  #altair-viz-6109ee74f1c1419e9792dcc7ce4d3948.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-6495c484855c4abf91a18b5aed0b2f31"></div>
+<div id="altair-viz-6109ee74f1c1419e9792dcc7ce4d3948"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-6495c484855c4abf91a18b5aed0b2f31") {
-      outputDiv = document.getElementById("altair-viz-6495c484855c4abf91a18b5aed0b2f31");
+    if (outputDiv.id !== "altair-viz-6109ee74f1c1419e9792dcc7ce4d3948") {
+      outputDiv = document.getElementById("altair-viz-6109ee74f1c1419e9792dcc7ce4d3948");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -691,7 +691,7 @@ div.csl-indent {
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>contingency_table.index.names <span class="op">=</span> [<span class="st">'Repository'</span>, <span class="st">'Checklist Item'</span>, <span class="st">'Ground Truth'</span>]</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>contingency_table.sort_index(level<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -709,7 +709,7 @@ div.csl-indent {
 
 <div id="tbl-accu-contingency" class="anchored">
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<caption>Table&nbsp;2: Contingency table of our system’s satisfaction determination versus the ground truth</caption>
+<caption>Table&nbsp;3: Contingency table of our system’s satisfaction determination versus the ground truth</caption>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -892,23 +892,23 @@ div.csl-indent {
 <figure class="figure">
 
 <style>
-  #altair-viz-4585197073a64127a16d5d58c383e087.vega-embed {
+  #altair-viz-dcde1a2bbcd141c3b355d049fa966fec.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-4585197073a64127a16d5d58c383e087.vega-embed details,
-  #altair-viz-4585197073a64127a16d5d58c383e087.vega-embed details summary {
+  #altair-viz-dcde1a2bbcd141c3b355d049fa966fec.vega-embed details,
+  #altair-viz-dcde1a2bbcd141c3b355d049fa966fec.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-4585197073a64127a16d5d58c383e087"></div>
+<div id="altair-viz-dcde1a2bbcd141c3b355d049fa966fec"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-4585197073a64127a16d5d58c383e087") {
-      outputDiv = document.getElementById("altair-viz-4585197073a64127a16d5d58c383e087");
+    if (outputDiv.id !== "altair-viz-dcde1a2bbcd141c3b355d049fa966fec") {
+      outputDiv = document.getElementById("altair-viz-dcde1a2bbcd141c3b355d049fa966fec");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -1035,23 +1035,23 @@ div.csl-indent {
 <figure class="figure">
 
 <style>
-  #altair-viz-6834be8c04424593ad6a681098b6aaa5.vega-embed {
+  #altair-viz-931ec63a3e764b62b095cf9de7fe638a.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-6834be8c04424593ad6a681098b6aaa5.vega-embed details,
-  #altair-viz-6834be8c04424593ad6a681098b6aaa5.vega-embed details summary {
+  #altair-viz-931ec63a3e764b62b095cf9de7fe638a.vega-embed details,
+  #altair-viz-931ec63a3e764b62b095cf9de7fe638a.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-6834be8c04424593ad6a681098b6aaa5"></div>
+<div id="altair-viz-931ec63a3e764b62b095cf9de7fe638a"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-6834be8c04424593ad6a681098b6aaa5") {
-      outputDiv = document.getElementById("altair-viz-6834be8c04424593ad6a681098b6aaa5");
+    if (outputDiv.id !== "altair-viz-931ec63a3e764b62b095cf9de7fe638a") {
+      outputDiv = document.getElementById("altair-viz-931ec63a3e764b62b095cf9de7fe638a");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -1119,7 +1119,7 @@ div.csl-indent {
 <ol type="1">
 <li><strong>Specialized Checklist</strong></li>
 </ol>
-<p>The default checklist is general and may not cover all requirements for different ML projects, as shown in <a href="#checklist-design">Figure 2: Checklist for Tests in Machine Learning Projects.</a>. Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.</p>
+<p>The default checklist is general and may not cover all requirements for different ML projects. However, the current checklist structure allows users to edit checklist easily (shown in <a href="#tbl-checklist-schema">Table&nbsp;1</a>). Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.</p>
 <ol start="2" type="1">
 <li><strong>Enhanced Test Evaluator</strong></li>
 </ol>
