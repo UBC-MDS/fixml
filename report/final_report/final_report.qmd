@@ -124,7 +124,7 @@ It converts Evaluator responses into evaluation reports in various formats (HTML
 
 #### Checklist Design
 
-The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering further improves performance. This helps mitigate LLM hallucinations [@zhang2023sirens] by ensuring strict adherence to the checklist.
+The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering is applied to further improve the LLM performance. This helps mitigate LLM hallucinations [@zhang2023sirens] by ensuring strict adherence to the checklist.
 
 |                  Column | Description                                                                                          |
 |------------------:|:----------------------------------------------------|
@@ -136,7 +136,7 @@ The embedded checklist contains best practices for testing ML pipelines, and is 
 |               Reference | References for the checklist item, e.g., academic papers                                                |
 | Is Evaluator Applicable | Indicates if the checklist item is used during evaluation (0 = No, 1 = Yes) |
 
-: Structure of the checklist in CSV format. Users can easily edit/add more specialized checklist items by adding more rows in the csv {#tbl-checklist-schema}
+: Structure of the checklist in CSV format. Users can easily edit & add more specialized checklist items by adding more rows in the csv {#tbl-checklist-schema}
 
 ::: {#fig-checklist}
 ![](img/checklist_sample.png){width=600 fig-align="left"}
@@ -155,7 +155,7 @@ These responses include both LLM evaluation results and process metadata stored 
 ::: {#fig-responses}
 ![](img/test_evaluation_responses_sample.png){width=600 fig-align="left"}
 
-An example of the evaluation responses
+An example of the evaluation responses. It stores evaluation results in `call_results` and information about `model`, `repository`, `checklist`, and the run.
 :::
 
 2.  **Evaluation Report** 
@@ -165,7 +165,7 @@ This report presents structured evaluation results of ML projects, which include
 ::: {#fig-report}
 ![](img/test_evaluation_report_sample.png){width=600 fig-align="left"}
 
-An example of the evaluation report
+An example of the evaluation report.
 :::
 
 3.  **Test Specification Script** 
