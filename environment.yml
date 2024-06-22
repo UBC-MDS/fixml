@@ -4,6 +4,7 @@ channels:
   - defaults
   - anaconda
 dependencies:
+  - altair=5.3
   - tectonic=0.15.0
   - pandoc=3.2
   - poetry=1.8.3
