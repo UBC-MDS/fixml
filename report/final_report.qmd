@@ -324,13 +324,15 @@ ii. **Outliers with High Uncertainty**
 
 Items like `2.1 Ensure Data File Loads as Expected` had outliers with exceptionally high standard deviations, which is possibly due to unorthodox repositories. A careful manual examination is required for a more definitive conclusion.
 
-#### Comparison of `gpt-3.5-turbo` and `gpt-4o`
+#### Comparison among LLMs
 
-To evaluate if newer LLMs improve performance, we preliminarily compared outputs from `gpt-4o` and `gpt-3.5-turbo` on the `lightfm` repository. We observed that `gpt-4o` consistently returned "Satisfied," which deviated from the ground truth.
+To evaluate if newer LLMs improve performance, we obtained outputs from `gpt-4o` and `gpt-4-turbo` on the `lightfm` repository and plotted the graph to show how our tool performs in terms of accuracy and consistency when switched the LLMs. 
+
+By comparing with the results from `gpt-3.5-turbo` (shown in [@fig-accu-mean-sd-plot]), we observed an increase in consistency using newer LLMs given the smaller standard deviations. However, we found that `gpt-4o` returned "Satisfied" for all items, while `gpt-4-turbo` deviated more from the ground truth for item `3.5 Check for Duplicate Records in Data`, `5.3 Ensure Model Output Shape Aligns with Expectation` when compared to `gpt-3.5-turbo`.
 
 ```{python}
 #| label: fig-llm-mean-sd-plot
-#| fig-cap: Comparison of satisfaction using `gpt-4o` versus `gpt-3.5-turbo` for each checklist item on `lightfm`
+#| fig-cap: Analysis of the scores per checklist item on repository `lightfm` using different GPT versions . Black dot and line represents the mean and standard deviation of scores from the tool. Green diamond represents the ground truth score. 
 
 df_repo_4o__stat = pd.read_csv('../data/processed/score_stat_by_repo_4o.csv')
 df_repo_4o__stat_with_gt = df_repo_4o__stat.merge(gt, on=['id', 'title', 'repo'])
@@ -392,7 +394,7 @@ errorbars = base.mark_errorbar().encode(
 )
 ```
 
-Further investigation into `gpt-4o` is required to determine its effectiveness in system performance.
+Based on the graph, there could be a potential improvement of our tool in consistency and/or accuracy when switching to newer LLMs. The caveat is, what in our package works well for the current LLM might not necessarily well for the newer LLMs. This implies exploration in different structure, e.g. prompt engineering for `gpt-4-turbo`, etc.
 
 ## Conclusion
 
@@ -406,19 +408,19 @@ While FixML provides substantial benefits, there are limitations and areas to be
 
 1.  **Specialized Checklist**
 
-The default checklist is general and may not cover all requirements for different ML projects. However, the current checklist structure allows users to edit checklist easily (shown in [@tbl-checklist-schema]). Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.
+Although the default checklist is general and may not cover all requirements for different ML projects, the current checklist structure allows users to edit checklist easily (shown in [@tbl-checklist-schema]). Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.
 
 2.  **Enhanced Test Evaluator**
 
-Our study reveals the accuracy and consistency issues on the evaluation results using OpenAI GPT-3.5-turbo model (see [Comparison of our system’s satisfaction determination versus the ground truth for each checklist item and repository](#fig-accu-mean-sd-plot) and [Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores from 30 runs of a single repository](#fig-cons-sd-box-plot)). Future improvements involves better prompt engineering techniques and support for multiple LLMs for enhanced performance and flexibility. User guidelines in prompt creation will be provided to facilitate collaboration with ML developers.
+As shown in session `Evaluation Results`, there are potential accuracy and consistency issues on the evaluation results using OpenAI `gpt-3.5-turbo` model (shown in [@fig-accu-mean-sd-plot], [@fig-cons-sd-box-plot]). Future improvements involves better prompt engineering techniques and support for multiple LLMs for enhanced performance and flexibility. User guidelines in prompt creation will be provided to facilitate collaboration with ML developers.
 
 3.  **Customized Test Specification**
 
-The current generator produces general test function skeletons and does not integrate specific details for the projects (see[General test specification.](#fig-testspec)).Future developments will integrate project-specific information to produce customized test function skeletons. This may further encourage users to create comprehensive tests.
+As shown in [@fig-testspec], the current generator produces general test function skeletons without project-specific details. Future developments will integrate project-specific information to produce customized test function skeletons. This may further encourage users to create comprehensive tests.
 
-4.  Workflow Optimization 
+4.  **Further Optimization**
 
-The test evaluator and test specification generator are currently separate (see [System design.](#system-design)). Future improvements could embed a workflow engine that automatically takes actions based on LLM responses. This creates a more cohesive and efficient workflow, recues manual intervention, and improves overall system performance.
+Cost affiliated with LLM usage could be one consideration for users to use our tool. Future improvements involve sharing our cost data and the calculation of estimated cost (e.g. cost against number of line of code), while facilitates users to estimate costs and carry out their cost-benefit analysis to make informed decisions when using our tool.
 
 By addressing these limitations and implementing future improvements, we aim for FixML to achieve better performance and contribute to the development of better ML systems, and ultimately enhance human life.
 
