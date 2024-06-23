@@ -92,14 +92,13 @@ By offering it as both CLI tool and API, our product is user-friendly to interac
 
 #### System Design
 
-(FIXME To be revised)
+(FIXME To be revised) 
 
 ::: {#fig-system}
-![](../img/proposed_system_overview.png){width=600}
+![](../img/proposed_system_overview.png){width=600 fig-align="left"}
 
 Diagram of FixML system design
 :::
-
 
 The design of our package follows object-oriented and SOLID principles, which is fully modularity. Users can easily switch between different prompts, models, and checklists, which facilitates code reusability and collaboration to extend its functionality.
 
@@ -123,13 +122,11 @@ It includes the Evaluator module, which assesses each test suite file using LLMs
 
 5.  **Parsers** 
 
-It converts Evaluator responses into evaluation reports in various formats (HTML, PDF) using the Jinja template engine, which enables customizable report structures.
+It reads the report templates and converts Evaluator's responses into evaluation reports in various formats (QMD, HTML, PDF) using the Jinja template engine, which enables customizable report structures.
 
 #### Checklist Design
 
-The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering further improves performance. THis helps mitigate LLM hallucinations [@zhang2023sirens] by ensuring strict adherence to the checklist.
-
-Example checklist structure:
+The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering is applied to further improve the LLM performance. This helps mitigate LLM hallucinations [@zhang2023sirens] by ensuring strict adherence to the checklist.
 
 |                  Column | Description                                                                                          |
 |------------------:|:----------------------------------------------------|
@@ -141,12 +138,12 @@ Example checklist structure:
 |               Reference | References for the checklist item, e.g., academic papers                                                |
 | Is Evaluator Applicable | Indicates if the checklist item is used during evaluation (0 = No, 1 = Yes) |
 
-(FIXME To be revised)
+: Structure of the checklist in CSV format. Users can easily modify and expand the checklist by adding new rows to the CSV file. {#tbl-checklist-schema}
 
 ::: {#fig-checklist}
-![](../img/checklist_sample.png){width=600}
+![](../img/checklist_sample.png){width=600 fig-align="left"}
 
-An example of the checklist
+An example of the checklist exported in PDF format. Users can easily read and distribute the checklist.
 :::
 
 #### Artifacts
@@ -155,36 +152,30 @@ Using our package results in three artifacts:
 
 1.  **Evaluation Responses** 
 
-These responses include both LLM evaluation results and process metadata stored in JSON format.This supports downsteam tasks like report rendering and scientific research, etc.
-
-(FIXME To be revised)
+These responses include both LLM evaluation results and process metadata stored in JSON format. This supports various downsteam tasks, such as report rendering and scientific research, by selectively extracting information.
 
 ::: {#fig-responses}
-![](../img/test_evaluation_responses_sample.png){width=600}
+![](../img/test_evaluation_responses_sample.png){width=600 fig-align="left"}
 
-An example of the evaluation responses
+An example of the evaluation responses. It includes `call_results` for evaluation outcomes and details about the `model`, `repository`, `checklist`, and the run.
 :::
 
 2.  **Evaluation Report** 
 
-This report presents structured evaluation results of ML projects, which includes a detailed breakdown of completeness scores and reasons for each score.
-
-(FIXME To be revised) 
+This report provides a well-structured presentation of evaluation results for ML projects. It includes a summary of the completeness score and a detailed breakdown with explanations for each checklist item score.
 
 ::: {#fig-report}
-![](../img/test_evaluation_report_sample.png){width=600}
+![](../img/test_evaluation_report_sample.png){width=600 fig-align="left"}
 
-An example of the evaluation report
+An example of the evaluation report exported in PDF format using our default template. Users can customize their reports by creating their own templates.
 :::
 
 3.  **Test Specification Script** 
 
-Generated test specifications are stored as Python scripts.
-
-(FIXME To be revised) 
+These are generated test specifications stored as Python scripts.
 
 ::: {#fig-testspec}
-![](../img/test_spec_sample.png){width=600}
+![](../img/test_spec_sample.png){width=600 fig-align="left"}
 
 An example of the generated test specifications
 :::
@@ -193,15 +184,13 @@ An example of the generated test specifications
 
 As described in `Success Metrics`, we conducted 30 iterations on each repository from [@openja2023studying] and examined the breakdown of the completeness score to assess our tool's evaluation quality. 
 
-(FIXME: would it be better to show a table of the repos? like how the Openja does?) 
-
 1. **Accuracy**
 
-We targeted 3 of the repositories ([`lightfm`](https://github.com/lyst/lightfm), [`qlib`](https://github.com/microsoft/qlib), [`DeepSpeech`](https://github.com/mozilla/DeepSpeech)) for human evaluation compared our tool's outputs with the ground truth.
+Accuracy is our primary consideration since our tool's value depends on its ability to align with expert judgment. We targeted 3 of the repositories for human evaluation: [`lightfm`](https://github.com/lyst/lightfm), [`qlib`](https://github.com/microsoft/qlib), [`DeepSpeech`](https://github.com/mozilla/DeepSpeech). We compared and plotted the graph to illustrate how well our tool's outputs align with the ground truth.
 
 ```{python}
 #| label: tbl-gt
-#| tbl-cap: Ground truth data for the 3 repositories. (1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied)
+#| tbl-cap: Ground truth scores for 3 repositories per checklist item based on human evaluation. (1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied)
 
 import pandas as pd
 gt = pd.read_csv('../data/processed/ground_truth.csv')
@@ -210,7 +199,7 @@ gt
 
 ```{python}
 #| label: fig-accu-mean-sd-plot
-#| fig-cap: Comparison of our system's satisfaction determination versus the ground truth for each checklist item and repository
+#| fig-cap: Analysis of accuracy of the scores per checklist item. The black dot and line represent the mean and standard deviation of scores from the tool, while the green diamond represents the ground truth score for a single repository. It shows our tool tends to underrate satisfactory cases.
 
 import altair as alt
 import pandas as pd
@@ -266,17 +255,20 @@ errorbars = base.mark_errorbar().encode(
 )
 ```
 
-Our tool tends to underrate satisfying cases, which often classifies fully satisfied items as partially satisfied and partially satisfied items as not satisfied.
+When examining accuracy, we observed that our tool effectively identifies non-satisfying cases. However, it often classifies fully satisfied items as partially satisfied and partially satisfied items as not satisfied.
 
-The accuracy issue may be attributed to a need to improve our checklist prompts.
+This indicates that our tool achieves a certain degree of accuracy. The next questions we consider are:
+
+- Are there other factors that impact the performance of our tool?
+- In what direction can we improve our tool?
 
 2. **Consistency**
 
-As the completeness scores from LLMs contain randomness, we examined the consistency of completeness scores across checklist items and repositories.
+Consistency is another consideration because it directly impacts the reliability of the evaluation results from user perspective. Given that LLM-generated completeness scores contain some randomness, we plotted the uncertainty of these scores across checklist items and repositories to show how consistent these results were.
 
 ```{python}
 #| label: fig-cons-sd-box-plot
-#| fig-cap: Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores from 30 runs of a single repository
+#| fig-cap: Analysis of the uncertainty of scores (measured in standard deviation on a scale of 0 to 1) per checklist item. Each dot represents the uncertainty of scores from 30 runs of a single repository. It shows different patterns across checklist items.
 
 stds = df_repo__stat[['repo', 'std', 'id_title']].pivot(index='repo', columns='id_title').copy()
 stds.columns = [col[1] for col in stds.columns]
@@ -322,23 +314,25 @@ stripplot = base.mark_circle(size=100).encode(
 ) 
 ```
 
-We identified two diverging cases:
+When we examined the consistency, we observed various patterns and sought to identify potential causes, which could provide ideas for improvements. We identified two categories with diverging patterns:
 
-i. **High Standard Deviations** 
+i. **High Uncertainty** 
 
-Items like `3.2 Data in the Expected Format` showed high standard deviations across repositories. This might indicate potential poor prompt quality for the LLM to produce consistent results. Improved prompt engineering could address this issue.
+Items like `6.1 Verify Evaluation Metrics Implementation` showed high standard deviations across repositories (median = 0.12). This might suggest potential issues with prompt quality for the LLM to produce consistent results, which could be mitigated through improved prompt engineering.
 
-ii. **Outliers with High Standard Deviations**
+ii. **Outliers with High Uncertainty**
 
-Items like `5.3 Ensure Model Output Shape Aligns with Expectation` had outliers with exceptionally high standard deviations, which is possibly due to unorthodox repositories. A careful manual examination is required for a more definitive conclusion.
+Items like `2.1 Ensure Data File Loads as Expected` had outliers with exceptionally high standard deviations, which is possibly due to unorthodox repositories. A careful manual examination is required for a more definitive conclusion.
 
-#### Comparison of `gpt-3.5-turbo` and `gpt-4o`
+#### Comparison among LLMs
 
-To evaluate if newer LLMs improve performance, we preliminarily compared outputs from `gpt-4o` and `gpt-3.5-turbo` on the `lightfm` repository. We observed that `gpt-4o` consistently returned "Satisfied," which deviated from the ground truth.
+To evaluate if newer LLMs improve performance, we obtained outputs from `gpt-4o` and `gpt-4-turbo` on the `lightfm` repository and plotted the graph to compare how our tool performs in terms of accuracy and consistency when switched the LLMs. 
+
+By comparing with the results from `gpt-3.5-turbo` (shown in [@fig-accu-mean-sd-plot]), we observed an increase in consistency using newer LLMs given the smaller standard deviations. However, we found that `gpt-4o` returned "Satisfied" for all items, while `gpt-4-turbo` deviated more from the ground truth for item `3.5 Check for Duplicate Records in Data`, `5.3 Ensure Model Output Shape Aligns with Expectation` compared to `gpt-3.5-turbo`.
 
 ```{python}
 #| label: fig-llm-mean-sd-plot
-#| fig-cap: Comparison of satisfaction using `gpt-4o` versus `gpt-3.5-turbo` for each checklist item on `lightfm`
+#| fig-cap: Analysis of the scores per checklist item on repository `lightfm` using different GPT versions. The black dot and line represent the mean and standard deviation of scores from the tool, while the green diamond represents the ground truth score. 
 
 df_repo_4o__stat = pd.read_csv('../data/processed/score_stat_by_repo_4o.csv')
 df_repo_4o__stat_with_gt = df_repo_4o__stat.merge(gt, on=['id', 'title', 'repo'])
@@ -400,7 +394,7 @@ errorbars = base.mark_errorbar().encode(
 )
 ```
 
-Further investigation into `gpt-4o` is required to determine its effectiveness in system performance.
+The graph suggests a potential improvement in consistency and/or accuracy when switching to newer LLMs. However, it also indicates that what works well with the current LLM may not necessarily perform well with newer models. This implies the need for exploration in different structures, such as prompt engineering for `gpt-4-turbo`.
 
 ## Conclusion
 
@@ -414,19 +408,19 @@ While FixML provides substantial benefits, there are limitations and areas to be
 
 1.  **Specialized Checklist**
 
-The default checklist is general and may not cover all requirements for different ML projects, as shown in [Figure 2: Checklist for Tests in Machine Learning Projects.](#checklist-design). Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.
+Although the default checklist is general and may not cover all requirements for different ML projects, the current checklist structure allows users to edit checklist easily (shown in [@tbl-checklist-schema]). Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.
 
 2.  **Enhanced Test Evaluator**
 
-Our study reveals the accuracy and consistency issues on the evaluation results using OpenAI GPT-3.5-turbo model (see [Comparison of our system’s satisfaction determination versus the ground truth for each checklist item and repository](#fig-accu-mean-sd-plot) and [Standard deviations of the score for each checklist item. Each dot represents the standard deviation of scores from 30 runs of a single repository](#fig-cons-sd-box-plot)). Future improvements involves better prompt engineering techniques and support for multiple LLMs for enhanced performance and flexibility. User guidelines in prompt creation will be provided to facilitate collaboration with ML developers.
+As shown in session `Evaluation Results`, there are potential accuracy and consistency issues on the evaluation results using OpenAI `gpt-3.5-turbo` model (shown in [@fig-accu-mean-sd-plot], [@fig-cons-sd-box-plot]). Future improvements involves better prompt engineering techniques and support for multiple LLMs for enhanced performance and flexibility. User guidelines in prompt creation will be provided to facilitate collaboration with ML developers.
 
 3.  **Customized Test Specification**
 
-The current generator produces general test function skeletons and does not integrate specific details for the projects (see[General test specification.](#fig-testspec)).Future developments will integrate project-specific information to produce customized test function skeletons. This may further encourage users to create comprehensive tests.
+As shown in [@fig-testspec], the current generator produces general test function skeletons without project-specific details. Future developments will integrate project-specific information to produce customized test function skeletons. This may further encourage users to create comprehensive tests.
 
-4.  Workflow Optimization 
+4.  **Further Optimization**
 
-The test evaluator and test specification generator are currently separate (see [System design.](#system-design)). Future improvements could embed a workflow engine that automatically takes actions based on LLM responses. This creates a more cohesive and efficient workflow, recues manual intervention, and improves overall system performance.
+The cost associated with LLM usage is an important consideration for users of our tool. Future improvements will include sharing our cost data and providing calculations for estimated costs (e.g. cost per line of code). This will help users estimate their expenses and conduct a cost-benefit analysis to make informed decisions when using our tool.
 
 By addressing these limitations and implementing future improvements, we aim for FixML to achieve better performance and contribute to the development of better ML systems, and ultimately enhance human life.
 
