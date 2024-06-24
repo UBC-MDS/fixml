@@ -11,27 +11,27 @@ by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
 ## Executive Summary
 
-The global AI market is expanding rapidly and demanding for robust quality assurance for ML systems to prevent risks such as misinformation, social bias, financial losses, and safety hazards. FixML addresses these challenges by offering an automated code review tool embedded with best practices for ML test suites, curated from ML research and industry standards.
+The global artificial intelligence (AI) market is expanding rapidly and demanding for robust quality assurance for machine learning (ML) systems to prevent risks such as misinformation, social bias, financial losses, and safety hazards. FixML addresses these challenges by offering an automated code review tool embedded with best practices for ML test suites, curated from ML research and industry standards.
 
-Our approach includes developing the tool in Python package based on Large Language Models (LLMs) and creating comprehensive checklists to enhance ML software's trustworthiness, quality, and reproducibility. The tool analyzes ML projects, compares test suites against best practices, and delivers evaluations, which can significantly reduce the time and effort required for manual assessments.
+Our approach includes developing the tool in Python package based on Large Language Models (LLMs) and creating comprehensive checklists to enhance ML software's trustworthiness, quality, and reproducibility. The tool analyzes ML projects, compares test suites against best practices, and delivers evaluations and test specifications, which can significantly reduce the time and effort required for manual assessments.
 
-To ensure reliability, we defined two success metrics: accuracy (comparison with human expert judgments) and consistency (standard deviation across multiple runs). Our findings indicated that while our tool is effective, there is room to improce in both metrics, which requires further prompt engineering and refinement for enhanced performance.
+To ensure reliability, we defined two success metrics: accuracy (comparison with human expert judgments) and consistency (standard deviation across multiple runs). Our findings indicated that while our tool is effective, there is room to improve in both metrics, which requires further prompt engineering and refinement for enhanced performance.
 
-The FixML package is available on PyPI and can be used as a CLI tool and a high-level API, which makes it user-friendly and versatile. Future improvements will focus on specialized checklists, enhanced evaluators, customized test specifications, workflow and performance optimization to further improve ML system quality and user experience.
+The FixML package is available on PyPI and can be used as a CLI tool and a high-level API, which makes it user-friendly and versatile. Future improvements will focus on specialized checklists, enhanced evaluators, customized test specifications, and other optimization to further improve ML system quality and user experience.
 
 ## Introduction
 
 ### Problem Statement
 
-The global artificial intelligence (AI) market is growing exponentially [@grand2021artificial], driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.
+The global AI market is growing exponentially [@grand2021artificial], driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.
 
-However, ensuring the software quality of these systems remains a significant challenge [@openja2023studying]. Specifically, the lack of a standardized and comprehensive approach to testing machine learning (ML) systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as misinformation [@Ashley2024], social bias [@Alice2023], substantial financial losses [@Asheeta2019] and safety hazards [@David2023]
+However, ensuring the software quality of these systems remains a significant challenge [@openja2023studying]. Specifically, the lack of a standardized and comprehensive approach to testing ML systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as misinformation [@Ashley2024], social bias [@Alice2023], substantial financial losses [@Asheeta2019] and safety hazards [@David2023]
 
 Therefore, defining and promoting an industry standard and establishing robust testing methodologies for these systems is crucial. But how?
 
 ### Our Objectives
 
-We propose to develop testing suites diagnostic tools based on Large Language Models (LLMs) and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software's trustworthiness, quality, and reproducibility across both the industry and academia [@kapoor2022leakage].
+We propose to develop testing suites diagnostic tools based on LLMs and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. Our goal is to enhance applied ML software's trustworthiness, quality, and reproducibility across both the industry and academia [@kapoor2022leakage].
 
 ## Data Science Methods
 
@@ -45,7 +45,7 @@ Code coverage measures the proportion of source code of a program executed when 
 
 2. **Manual Evaluation**
 
-Manual evaluation involves human experts reviewing the source code, whom can take the business logic into considerations and identify vulnerabilites. It often provides context-specific improvement suggestions and remains one of the most reliable practices [@openja2023studying], [@alexander2023evaluating]. However, it is time-consuming and not scalable due to the scarcity of human experts. Moreover, different experts might put emphasis on different ML test areas and lack a comprehensive and holistic review of the ML system test suites.
+Manual evaluation involves human experts reviewing the source code, whom can take the business logic into considerations and identify vulnerabilities. It often provides context-specific improvement suggestions and remains one of the most reliable practices [@openja2023studying], [@alexander2023evaluating]. However, it is time-consuming and not scalable due to the scarcity of human experts. Moreover, different experts might put emphasis on different ML test areas and lack a comprehensive and holistic review of the ML system test suites.
 
 ### Our Approach
 
@@ -73,7 +73,7 @@ We perform multiple runs on each ML project to obtain evaluation results for eac
 
 ### Data Products
 
-Our solution includes a curated checklist for robust ML testing and a Python package for checklist-based evaluation of ML project testing robustness using LLMs. The package is publicly available on the Python Packaging Index (PyPI).
+Our solution includes a curated checklist for robust ML testing and a Python package for checklist-based evaluation of ML project's testing robustness using LLMs. The package is publicly available on the Python Packaging Index (PyPI).
 
 Justifications for these products are:
 
@@ -100,13 +100,13 @@ By offering it as both CLI tool and API, our product is user-friendly to interac
 Diagram of FixML system design
 :::
 
-The design of our package follows object-oriented and SOLID principles, which is fully modularity. Users can easily switch between different prompts, models, and checklists, which facilitates code reusability and collaboration to extend its functionality.
+The design of our package follows object-oriented and SOLID principles, which is fully modular. Users can easily switch between different prompts, models, and checklists, which facilitates code reusability and collaboration to extend its functionality.
 
 There are five components in the system of our package:
 
 1.  **Code Analyzer** 
 
-It extracts test suites from the input codebase, to ensure only the most relevants details are provided to LLMs given token limits.
+It extracts test suites from the input codebase, to ensure only the most relevant details are provided to LLMs given token limits.
 
 2.  **Prompt Templates** 
 
@@ -135,7 +135,7 @@ The embedded checklist contains best practices for testing ML pipelines, and is 
 |                   Title | Title of the checklist item                                                                      |
 |             Requirement | Prompt for the checklist item to be injected into LLMs for evaluation                             |
 |            Explanations | Detailed explanations for human understanding                                  |
-|               Reference | References for the checklist item, e.g., academic papers                                                |
+|               Reference | References for the checklist item, e.g. academic papers                                                |
 | Is Evaluator Applicable | Indicates if the checklist item is used during evaluation (0 = No, 1 = Yes) |
 
 : Structure of the checklist in CSV format. Users can easily modify and expand the checklist by adding new rows to the CSV file. {#tbl-checklist-schema}
@@ -152,7 +152,7 @@ Using our package results in three artifacts:
 
 1.  **Evaluation Responses** 
 
-These responses include both LLM evaluation results and process metadata stored in JSON format. This supports various downsteam tasks, such as report rendering and scientific research, by selectively extracting information.
+These responses include both LLM evaluation results and process metadata stored in JSON format. This supports various downstream tasks, such as report rendering and scientific research, by selectively extracting information.
 
 ::: {#fig-responses}
 ![](../img/test_evaluation_responses_sample.png){width=600 fig-align="left"}
