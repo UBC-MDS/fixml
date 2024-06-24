@@ -184,6 +184,7 @@ deliverable product during our capstone project of the UBC-MDS program in
 collaboration with Dr. Tiffany Timbers and Dr. Simon Goring. It is licensed
 under the terms of the MIT license for software code. Reports and instructional
 materials are licensed under the terms of the CC-BY 4.0 license.
+
 ## Citation
 
 If you use fixml in your work, please cite:
@@ -207,4 +208,4 @@ learning engineers, educators, practitioners, and hobbyists alike. Your
 contributions and feedback are invaluable in making this package a reliable
 resource for the community. 
 
-Special thanks to the University of British Columbia (UBC) and the University of Wisconsin for their support and resources. We extend our gratitude to Dr. Tiffany and Dr. Simon for their guidance and expertise, which have been instrumental in the development of this project.
+Special thanks to the University of British Columbia (UBC) and the University of Wisconsin-Madison for their support and resources. We extend our gratitude to Dr. Tiffany and Dr. Simon for their guidance and expertise, which have been instrumental in the development of this project.
