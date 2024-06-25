@@ -1,5 +1,7 @@
 # FixML
 [![Python 3.12.0+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![GitHub Release](https://img.shields.io/github/release/ubc-mds/fixml.svg?style=flat)]()
+[![PyPI - Version](https://img.shields.io/pypi/v/fixml)](https://pypi.org/project/fixml/)
 [![GitHub Activity](https://img.shields.io/github/last-commit/ubc-mds/fixml/main.svg?style=flat)]()
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Documentation Status](https://readthedocs.org/projects/fixml/badge/?version=latest)](https://fixml.readthedocs.io/en/latest/?badge=latest)
