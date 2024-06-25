@@ -92,12 +92,17 @@ By offering it as both CLI tool and API, our product is user-friendly to interac
 
 #### System Design
 
-(FIXME To be revised) 
-
 ::: {#fig-system}
-![](../img/proposed_system_overview.png){width=600 fig-align="left"}
+![](../img/proposed_system_overview.png){width=600 fig-align="left" .lightbox}
 
-Diagram of FixML system design
+A diagram showing the high level overview of FixML system design. The
+oval-shaped items are the various components each with different
+responsibility in the pipeline. While the square-shaped items denotes the data
+and artifacts ingested, processed, and produced by the system at different parts
+of the pipeline. The arrows show the flow of data, which from outside the
+system i.e. the codebase, then processed into code snippets and be attached
+to the constructed prompt with checklist and prompt templates, and finally
+transformed into run results.
 :::
 
 The design of our package follows object-oriented and SOLID principles, which is fully modular. Users can easily switch between different prompts, models, and checklists, which facilitates code reusability and collaboration to extend its functionality.
@@ -141,7 +146,7 @@ The embedded checklist contains best practices for testing ML pipelines, and is 
 : Structure of the checklist in CSV format. Users can easily modify and expand the checklist by adding new rows to the CSV file. {#tbl-checklist-schema}
 
 ::: {#fig-checklist}
-![](../img/checklist_sample.png){width=600 fig-align="left"}
+![](../img/checklist_sample.png){width=600 fig-align="left" .lightbox}
 
 An example of the checklist exported in PDF format. Users can easily read and distribute the checklist.
 :::
@@ -155,7 +160,7 @@ Using our package results in three artifacts:
 These responses include both LLM evaluation results and process metadata stored in JSON format. This supports various downstream tasks, such as report rendering and scientific research, by selectively extracting information.
 
 ::: {#fig-responses}
-![](../img/test_evaluation_responses_sample.png){width=600 fig-align="left"}
+![](../img/test_evaluation_responses_sample.png){width=600 fig-align="left" .lightbox}
 
 An example of the evaluation responses. It includes `call_results` for evaluation outcomes and details about the `model`, `repository`, `checklist`, and the run.
 :::
@@ -165,7 +170,7 @@ An example of the evaluation responses. It includes `call_results` for evaluatio
 This report provides a well-structured presentation of evaluation results for ML projects. It includes a summary of the completeness score and a detailed breakdown with explanations for each checklist item score.
 
 ::: {#fig-report}
-![](../img/test_evaluation_report_sample.png){width=600 fig-align="left"}
+![](../img/test_evaluation_report_sample.png){width=600 fig-align="left" .lightbox}
 
 An example of the evaluation report exported in PDF format using our default template. Users can customize their reports by creating their own templates.
 :::
@@ -175,7 +180,7 @@ An example of the evaluation report exported in PDF format using our default tem
 These are generated test specifications stored as Python scripts.
 
 ::: {#fig-testspec}
-![](../img/test_spec_sample.png){width=600 fig-align="left"}
+![](../img/test_spec_sample.png){width=600 fig-align="left" .lightbox}
 
 An example of the generated test specifications
 :::
