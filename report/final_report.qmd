@@ -16,7 +16,7 @@ Our approach includes developing the tool in a Python package based on large lan
 
 We defined two success metrics to ensure reliability: accuracy (comparison with human expert judgments) and consistency (standard deviation across multiple runs). Our findings indicated that while our tool is effective, there is room to improve in both metrics, which requires further prompt engineering and refinement for enhanced performance.
 
-The FixML package is available on PyPI and can be used as a CLI tool and a high-level API, which makes it user-friendly and versatile. Future improvements will focus on specialized checklists, enhanced evaluators, customized test specifications, and other optimizations to improve ML system quality and user experience.
+The FixML package is available on PyPI and can be used as a user-friendly and versatile CLI tool and a high-level API. Future improvements will focus on specialized checklists, enhanced evaluators, customized test specifications, and other optimizations to improve ML system quality and user experience.
 
 ## Introduction
 
@@ -26,7 +26,7 @@ The global AI market is growing exponentially [@grand2021artificial], driven by 
 
 ### Our Objectives
 
-We propose to develop testing suite diagnostic tools based on LLMs and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. We aim to enhance the trustworthiness, quality, and reproducibility of applied ML software across the industry and academia [@kapoor2022leakage].
+We propose to develop testing suite diagnostic tools based on LLMs and curate checklists based on ML research papers and best practices to facilitate comprehensive testing of ML systems with flexibility. We aim to enhance applied ML software's trustworthiness, quality, and reproducibility across the industry and academia [@kapoor2022leakage].
 
 ## Data Science Methods
 
@@ -36,11 +36,11 @@ Comprehensive testing is essential to ensure the reproducibility, trustworthines
 
 1. **Code Coverage**
 
-Code coverage measures the proportion of program source code executed when running a test suite. Widely used in software development, it quantifies test quality and is scalable due to its short processing time. However, it cannot indicate the reasons or specific ML areas where the test suites fall short under the context of ML system development.
+Code coverage measures the proportion of program source code executed when running a test suite. It is widely used in software development to quantify test quality and is scalable due to its short processing time. However, code coverage cannot indicate the reasons or specific ML areas where the test suites fall short in the context of ML system development.
 
 2. **Manual Evaluation**
 
-Manual evaluation involves human experts reviewing the source code, who can consider the business logic and identify vulnerabilities. It often provides context-specific improvement suggestions and remains one of the most reliable practices [@openja2023studying; @alexander2023evaluating]. However, it is time-consuming and not scalable due to the scarcity of human experts. Moreover, experts might emphasize different ML test areas and lack a comprehensive and holistic review of the ML system test suites.
+Manual evaluation involves human experts reviewing the source code, who can consider the business logic and identify vulnerabilities. It often provides context-specific improvement suggestions and remains one of the most reliable practices [@openja2023studying; @alexander2023evaluating]. However, manual evaluation is time-consuming and not scalable due to the scarcity of human experts. Moreover, experts might emphasize different ML test areas, and do not have a comprehensive and holistic review of the ML system test suites.
 
 ### Our Approach
 
@@ -54,7 +54,7 @@ Our approach will provide scalable and reliable test suite evaluations for multi
 
 ### Success Metrics
 
-To properly assess the performance of our tool, which leverages LLMs capability, we have referred to the methods in [@alexander2023evaluating] and defined two success metrics: accuracy and consistency. These metrics will help users (researchers, ML engineers, etc.) gauge the trustworthiness of our tool's evaluation results.
+To assess the performance of our tool, which leverages LLMs capability, we have referred to the methods in [@alexander2023evaluating] and defined two success metrics: accuracy and consistency. These metrics will help users (researchers, ML engineers, etc.) gauge the trustworthiness of our tool's evaluation results.
 
 1.  **Accuracy vs Human Expert Judgement**
 
@@ -83,7 +83,7 @@ There are two ways to make use of this package:
 
 2.  **As a high-level API.** Users can import necessary components from the package into their systems. Documentation is available through docstrings.
 
-By offering it as both a CLI tool and API, our product is user-friendly to interact with and versatile to support various use cases such as web application development and scientific research.
+By offering FixML as both a CLI tool and API, our product is user-friendly and versatile enough to support various use cases, such as web application development and scientific research.
 
 #### System Design
 
@@ -106,23 +106,23 @@ There are five components in the system of our package:
 
 1.  **Code Analyzer** 
 
-It extracts test suites from the input codebase to ensure only the most relevant details are provided to LLMs given token limits.
+FixML extracts test suites from the input codebase to ensure only the most relevant details are provided to LLMs given token limits.
 
 2.  **Prompt Templates** 
 
-It stores prompt templates for instructing LLMs to generate responses in the expected format.
+FixML stores prompt templates for instructing LLMs to generate responses in the expected format.
 
 3.  **Checklist** 
 
-It reads the curated checklist from a CSV file into a dictionary with a fixed schema for LLM injection. The package includes a default checklist for distribution.
+FixML reads the curated checklist from a CSV file into a dictionary with a fixed schema for LLM injection. The package includes a default checklist for distribution.
 
 4.  **Runners** 
 
-It includes the Evaluator module, which assesses each test suite file using LLMs and outputs evaluation results, and the Generator module, which creates test specifications. Both modules feature validation, retry logic, and record response and relevant information.
+FixML includes the Evaluator module, which assesses each test suite file using LLMs and outputs evaluation results, and the Generator module, which creates test specifications. Both modules feature validation, retry logic, and record response and relevant information.
 
 5.  **Parsers** 
 
-It reads the report templates and converts the Evaluator's responses into evaluation reports in various formats (QMD, HTML, PDF) using the Jinja template engine, which enables customizable report structures.
+FixML reads the report templates and converts the Evaluator's responses into evaluation reports in various formats (QMD, HTML, PDF) using the Jinja template engine, which enables customizable report structures.
 
 #### Checklist Design
 
@@ -157,7 +157,7 @@ These responses include LLM evaluation results and process metadata stored in JS
 ::: {#fig-responses}
 ![](../img/test_evaluation_responses_sample.png){width=600 fig-align="left" .lightbox}
 
-This is an example of the evaluation responses. It includes `call_results` for evaluation outcomes and details about the `model`, `repository`, `checklist`, and the run.
+This is an example of the evaluation responses, which includes `call_results` for evaluation outcomes and details about the `model`, `repository`, `checklist`, and the run.
 :::
 
 2.  **Evaluation Report** 
@@ -199,7 +199,7 @@ gt
 
 ```{python}
 #| label: fig-accu-mean-sd-plot
-#| fig-cap: Analysis of the accuracy of the scores per checklist item. The black dot and line represent the mean and standard deviation of scores from the tool, while the green diamond represents the ground truth score for a single repository. It shows our tool tends to underrate satisfactory cases.
+#| fig-cap: Analysis of the accuracy of the scores per checklist item. The black dot and line represent the mean and standard deviation of scores from the tool, while the green diamond represents the ground truth score for a single repository. The result shows that our tool tends to underrate satisfactory cases.
 
 import altair as alt
 import pandas as pd
@@ -266,7 +266,7 @@ Consistency is another consideration because it directly impacts the reliability
 
 ```{python}
 #| label: fig-cons-sd-box-plot
-#| fig-cap: Analysis of the uncertainty of scores (measured in standard deviation on a scale of 0 to 1) per checklist item. Each dot represents the uncertainty of scores from 30 runs of a single repository. It shows different patterns across checklist items.
+#| fig-cap: Analysis of the uncertainty of scores (measured in standard deviation on a scale of 0 to 1) per checklist item. Each dot represents the uncertainty of scores from 30 runs of a single repository. The analysis shows different patterns across checklist items.
 
 stds = df_repo__stat[['repo', 'std', 'id_title']].pivot(index='repo', columns='id_title').copy()
 stds.columns = [col[1] for col in stds.columns]
@@ -412,7 +412,7 @@ As shown in session `Evaluation Results`, there are potential accuracy and consi
 
 3.  **Customized Test Specification**
 
-As shown in [@fig-testspec], the current generator produces general test function skeletons without project-specific details. Future developments will integrate project-specific information to deliver customized test function skeletons, further encouraging users to create comprehensive tests.
+As shown in [@fig-testspec], the current generator produces general test function skeletons without project-specific details. Future developments will integrate project-specific information to deliver customized test function skeletons, encouraging users to create comprehensive tests.
 
 4.  **Further Optimization**
 
