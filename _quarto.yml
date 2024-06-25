@@ -1,10 +1,12 @@
 project:
   type: website
   render:
-    - "report/*qmd"
-  output-dir: report/docs
+    - report/final_report.qmd
+    - report/proposal.qmd
+  output-dir: "report/docs/"
 
 website:
+  title: "FixML - Checklists and LLM prompts for efficient and effective test creation in data analysis"
   sidebar:
     style: "docked"
     logo: "img/logo.png"

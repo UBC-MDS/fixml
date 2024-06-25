@@ -68,15 +68,15 @@ Run `fixml --help` for more details.
 
 > [!IMPORTANT]
 > By default, this tool uses OpenAI's `gpt3.5-turbo` for evaluation. To run any
-command that requires calls to LLM (i.e. `fixml evaluate`, `fixml generate`),
-an environment variable `OPENAI_API_KEY` needs to be set. To do so, either use
+> command that requires calls to LLM (i.e. `fixml evaluate`, `fixml generate`),
+> an environment variable `OPENAI_API_KEY` needs to be set. To do so, either use
 `export` to set the variable in your current session, or create a `.env` file
-with a line `OPENAI_API_KEY={your-api-key}` saved in your working directory.
+> with a line `OPENAI_API_KEY={your-api-key}` saved in your working directory.
 
 > [!TIP]
 > Currently, only calls to OpenAI endpoints are supported. This tool is still in
-ongoing development and integrations with other service providers and locally
-hosted LLMs are planned.
+> ongoing development and integrations with other service providers and locally
+> hosted LLMs are planned.
 
 #### Test Evaluator
 
@@ -199,6 +199,7 @@ deliverable product during our capstone project of the UBC-MDS program in
 collaboration with Dr. Tiffany Timbers and Dr. Simon Goring. It is licensed
 under the terms of the MIT license for software code. Reports and instructional
 materials are licensed under the terms of the CC-BY 4.0 license.
+
 ## Citation
 
 If you use fixml in your work, please cite:
@@ -221,3 +222,8 @@ welcome it to be read, revised, and supported by data scientists, machine
 learning engineers, educators, practitioners, and hobbyists alike. Your
 contributions and feedback are invaluable in making this package a reliable
 resource for the community. 
+
+Special thanks to the University of British Columbia (UBC) and the University of
+Wisconsin-Madison for their support and resources. We extend our gratitude to
+Dr. Tiffany Timbers and Dr. Simon Goringfor their guidance and expertise, which
+have been instrumental in the development of this project.
