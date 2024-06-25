@@ -163,6 +163,16 @@ $ poetry install
 fixml --help
 ```
 
+## Rendering API Documentation
+
+Make sure you have installed dev dependencies listed in `pyproject.toml`.
+
+```bash
+cd docs/
+
+python -m sphinx -T -b html  -D language=en . _build
+```
+
 ## Running the Tests
 
 Navigate to the project root directory and use the following command in terminal

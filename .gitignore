@@ -24,3 +24,10 @@ dist/
 # quarto github page related
 /.quarto/
 /_site/
+
+# quarto artifacts
+report_files/**/*
+report/docs/**/*
+
+# rtd build files
+docs/_build/
