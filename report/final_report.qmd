@@ -12,7 +12,7 @@ by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
 The global artificial intelligence (AI) market is expanding rapidly, with demand for robust quality assurance for Machine Learning (ML) systems,  to prevent risks such as misinformation, social bias, financial losses, and safety hazards. FixML addresses these challenges by offering an automated code review tool embedded with best practices for ML test suites, curated from ML research and industry standards.
 
-Our approach includes developing the tool in a Python package based on large language models (LLMs) and creating comprehensive checklists to enhance ML software's trustworthiness, quality, and reproducibility. The tool analyzes ML projects, compares test suites against best practices, and delivers evaluations and test specifications, which can significantly reduce the time and effort required for manual assessments.
+Our approach includes developing the tool called FixML, a Python package based on large language models (LLMs), and creating comprehensive checklists to enhance ML software's trustworthiness, quality, and reproducibility. The tool analyzes ML projects, compares test suites against best practices, and delivers evaluations and test specifications, which can significantly reduce the time and effort required for manual assessments.
 
 We defined two success metrics to ensure reliability: accuracy (comparison with human expert judgments) and consistency (standard deviation across multiple runs). Our findings indicated that while our tool is effective, there is room to improve in both metrics, which requires further prompt engineering and refinement for enhanced performance.
 
@@ -40,7 +40,7 @@ Code coverage measures the proportion of program source code executed when runni
 
 2. **Manual Evaluation**
 
-Manual evaluation involves human experts reviewing the source code, who can consider the business logic and identify vulnerabilities. It often provides context-specific improvement suggestions and remains one of the most reliable practices [@openja2023studying; @alexander2023evaluating]. However, manual evaluation is time-consuming and not scalable due to the scarcity of human experts. Moreover, experts might emphasize different ML test areas, and do not have a comprehensive and holistic review of the ML system test suites.
+Manual evaluation involves human experts reviewing the source code, who can consider the business logic and identify vulnerabilities. It often provides context-specific improvement suggestions and remains one of the most reliable practices [@openja2023studying; @alexander2023evaluating]. However, manual evaluation is time-consuming and not scalable due to the scarcity of human experts. Moreover, experts might emphasize different ML test areas, and may not have a comprehensive and holistic review of the ML system test suites.
 
 ### Our Approach
 
@@ -68,22 +68,22 @@ We perform multiple runs on each ML project to obtain evaluation results for eac
 
 ### Data Products
 
-Our solution includes a curated checklist for robust ML testing and a Python package for checklist-based evaluation of ML projects' testing robustness using LLMs. The package is publicly available on the Python Packaging Index (PyPI).
+Our solution includes a curated checklist for robust ML testing and FixML, a Python package for checklist-based evaluation of ML projects' testing robustness using LLMs. The package is publicly available on the Python Packaging Index (PyPI).
 
 Justifications for these products are:
 
 - Checklists have been shown to reduce errors in software systems and promote code submissions [@Atul2010; @pineau2021improving].
 - Python is widely used in ML, compatible with various OSes, and integrates well with LLMs. These ensure the ease of use and development.
 
-#### How to use the product
+#### How to use FixML
 
-There are two ways to make use of this package:
+There are two ways to make use of FixML:
 
-1.  **As a CLI tool.** The package provides a runnable command `fixml`. Once installed, users can perform codebase evaluations, generate test function specifications, and more by running subcommands under `fixml` in the terminal.
+1.  **As a CLI tool.** The FixML package provides a runnable command `fixml`. Once installed, users can perform codebase evaluations, generate test function specifications, and more by running subcommands under `fixml` in the terminal.
 
-2.  **As a high-level API.** Users can import necessary components from the package into their systems. Documentation is available through docstrings.
+2.  **As a high-level API.** Users can import necessary components from the FixML package into their systems. Documentation is available through docstrings.
 
-By offering FixML as both a CLI tool and API, our product is user-friendly and versatile enough to support various use cases, such as web application development and scientific research.
+By offering FixML as a CLI tool and API, our product is user-friendly and versatile enough to support various use cases, such as web application development and scientific research.
 
 #### System Design
 
@@ -126,7 +126,7 @@ FixML reads the report templates and converts the Evaluator's responses into eva
 
 #### Checklist Design
 
-The embedded checklist contains best practices for testing ML pipelines and is curated from ML research and recognized online resources. Prompt engineering is applied to improve the LLM performance further. This helps mitigate LLM hallucinations [@zhang2023sirens] by ensuring strict adherence to the checklist.
+The embedded checklist contains best practices for testing ML pipelines and is curated from ML research and recognized online resources. Prompt engineering is applied to further improve LLM performance and mitigate LLM hallucinations [@zhang2023sirens] by ensuring strict adherence to the checklist.
 
 |                  Column | Description                                                                                          |
 |------------------:|:----------------------------------------------------|
@@ -152,17 +152,17 @@ Using our package results in three artifacts:
 
 1.  **Evaluation Responses** 
 
-These responses include LLM evaluation results and process metadata stored in JSON format. By selectively extracting information, these responses support various downstream tasks, such as report rendering and scientific research.
+The evaluation responses include LLM evaluation results and process metadata stored in JSON format. These responses support various downstream tasks, such as report rendering and scientific research, by selectively extracting information.
 
 ::: {#fig-responses}
 ![](../img/test_evaluation_responses_sample.png){width=600 fig-align="left" .lightbox}
 
-This is an example of the evaluation responses, which includes `call_results` for evaluation outcomes and details about the `model`, `repository`, `checklist`, and the run.
+An example of the evaluation responses, which includes `call_results` for evaluation outcomes and details about the `model`, `repository`, `checklist`, and the run.
 :::
 
 2.  **Evaluation Report** 
 
-This report provides a well-structured presentation of evaluation results for ML projects. It includes a summary of the completeness score and a detailed breakdown explaining each checklist item score.
+The evaluation report provides a well-structured presentation of evaluation results for ML projects. It includes a summary of the completeness score and a detailed breakdown explaining each checklist item score.
 
 ::: {#fig-report}
 ![](../img/test_evaluation_report_sample.png){width=600 fig-align="left" .lightbox}
@@ -172,12 +172,12 @@ An example of the evaluation report exported in PDF format using our default tem
 
 3.  **Test Specification Script** 
 
-These are generated test specifications stored as Python scripts.
+The test specification script is a generated Python script, storing the specification of the test function corresponding to each checklist item.
 
 ::: {#fig-testspec}
 ![](../img/test_spec_sample.png){width=600 fig-align="left" .lightbox}
 
-An example of the generated test specifications
+An example of the generated test specifications.
 :::
 
 ### Evaluation Results
@@ -255,7 +255,7 @@ errorbars = base.mark_errorbar().encode(
 )
 ```
 
-When examining accuracy, we observed that our tool effectively identifies non-satisfying cases. However, it often classifies fully satisfied items as partially satisfied and partially satisfied items as not satisfied. This indicates that our tool achieves a certain degree of accuracy. The following questions we consider are:
+When examining accuracy, we observed that our tool effectively identifies non-satisfying cases. However, our tool often classifies fully satisfied items as partially satisfied and partially satisfied items as not satisfied. This observation indicates that our tool achieves a certain degree of accuracy. The following questions we consider are:
 
 - Are there other factors that impact the performance of our tool?
 - In what direction can we improve our tool?
@@ -316,7 +316,7 @@ When we examined the consistency, we observed various patterns and sought to ide
 
 i. **High Uncertainty** 
 
-Items like `6.1 Verify Evaluation Metrics Implementation` showed high standard deviations across repositories (median = 0.12). This might suggest potential issues with prompt quality for the LLM to produce consistent results, which could be mitigated through improved prompt engineering.
+Items like `6.1 Verify Evaluation Metrics Implementation` showed high standard deviations across repositories (median = 0.12). These high standard deviations might suggest potential issues with prompt quality for the LLM to produce consistent results, which could be mitigated through improved prompt engineering.
 
 ii. **Outliers with High Uncertainty**
 
@@ -392,11 +392,11 @@ errorbars = base.mark_errorbar().encode(
 )
 ```
 
-The graph suggests a potential consistency and accuracy improvement when switching to newer LLMs. However, it also indicates that what works well with the current LLM may not perform well with newer models. This implies the need to explore different structures, such as prompt engineering for `gpt-4-turbo`.
+The graph suggests a potential consistency and accuracy improvement when switching to newer LLMs. However, the graph also indicates that what works well with the current LLM may not perform well with newer models. The result implies the need to explore different structures, such as prompt engineering for `gpt-4-turbo`.
 
 ## Conclusion
 
-The need for better quality assurance in ML systems and the current limitations of traditional testing methods on ML projects has driven the development of FixML. FixML provides curated checklists and automated tools that enhance evaluating and creating test suites for ML projects. This significantly reduces the time and effort required to assess the completeness of ML test suites, thus promoting thorough and efficient assessment of ML projects.
+The need for better quality assurance in ML systems and the current limitations of traditional testing methods on ML projects has driven the development of FixML. FixML provides curated checklists and automated tools that enhance evaluating and creating test suites for ML projects. FixML significantly reduces the time and effort required to assess the completeness of ML test suites, thus promoting thorough and efficient assessment of ML projects.
 
 ### Limitation & Future Improvement
 
@@ -416,7 +416,7 @@ As shown in [@fig-testspec], the current generator produces general test functio
 
 4.  **Further Optimization**
 
-The cost associated with LLM usage is an essential consideration for users of our tool. Future improvements will include sharing our cost data and calculating estimated costs (e.g., cost per line of code). This will help users assess their expenses and conduct a cost-benefit analysis to make informed decisions using our tool.
+The cost associated with LLM usage is an essential consideration for users of our tool. Future improvements will include sharing our cost data and calculating estimated costs (e.g., cost per line of code). The cost information will help users assess their expenses and conduct a cost-benefit analysis to make informed decisions using our tool.
 
 By addressing these limitations and implementing future improvements, we aim for FixML to achieve better performance, contribute to developing better ML systems, and ultimately enhance human life.
 
