@@ -1,10 +1,15 @@
 # FixML
+[![Python 3.12.0+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![GitHub Activity](https://img.shields.io/github/last-commit/ubc-mds/fixml/main.svg?style=flat)]()
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Documentation Status](https://readthedocs.org/projects/fixml/badge/?version=latest)](https://fixml.readthedocs.io/en/latest/?badge=latest)
 ![CI status check](https://github.com/UBC-MDS/fixml/actions/workflows/ci.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 <p align="center">
-    <img src="./img/logo.png?raw=true" width="175" height="175">
+    <img src="https://raw.githubusercontent.com/UBC-MDS/fixml/main/img/logo.png?
+raw=true" width="175" height="175">
 </p>
 
 A tool for providing context-aware evaluations using a checklist-based approach
