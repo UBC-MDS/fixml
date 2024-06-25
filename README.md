@@ -8,8 +8,7 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/UBC-MDS/fixml/main/img/logo.png?
-raw=true" width="175" height="175">
+    <img src="https://raw.githubusercontent.com/UBC-MDS/fixml/main/img/logo.png?raw=true" width="175" height="175">
 </p>
 
 A tool for providing context-aware evaluations using a checklist-based approach
@@ -122,7 +121,8 @@ The workflows used in the package have been designed to be fully modular. You
 can easily switch between different prompts, models and checklists to use. You
 can also write your own custom classes to extend the capability of this library.
 
-Consult the API documentation on Readthedocs for more information and example calls.
+Consult the [API documentation on Readthedocs](https://fixml.readthedocs.io/en/latest/)
+for more information and example calls.
 
 ## Development Build
 
