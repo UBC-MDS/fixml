@@ -19,11 +19,12 @@ data/processed/ground_truth.csv : analysis/preprocess_batch_run_result.py data/b
 
 # Build 'report/docs/index.html' by rendering the Jupyter notebooks using Quarto.
 report/docs/index.html : data/processed/ground_truth.csv
-	quarto render
+	quarto render --cache-refresh
+	awk '{gsub(/proposal/,"final_report"); print}' ./report/docs/index.html > tmp && mv tmp ./report/docs/index.html
 
 .PHONY : publish
 publish : data/processed/ground_truth.csv
-	quarto publish gh-pages
+	quarto publish gh-pages ./report
 
 # The 'clean' target is used to clean up generated files and directories.
 .PHONY : clean
@@ -35,4 +36,5 @@ clean :
 	rm -rf data/batch_run/batch_run_4o
 	rm -rf data/processed/ground_truth.csv
 	rm -rf data/processed/score_*csv
+	rm -rf report/.quarto/
 

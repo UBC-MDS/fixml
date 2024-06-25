@@ -1,11 +1,10 @@
 ---
+title: "Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis"
 format:
   html:
     code-fold: true
 bibliography: references.bib
 ---
-
-# Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis
 
 by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
