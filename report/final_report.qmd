@@ -44,13 +44,13 @@ Code coverage measures the proportion of program source code executed when runni
 
 2. **Manual Evaluation**
 
-Manual evaluation involves human experts reviewing the source code, who can consider the business logic and identify vulnerabilities. It often provides context-specific improvement suggestions and remains one of the most reliable practices [@openja2023studying], [@alexander2023evaluating]. However, it is time-consuming and not scalable due to the scarcity of human experts. Moreover, experts might emphasize different ML test areas and lack a comprehensive and holistic review of the ML system test suites.
+Manual evaluation involves human experts reviewing the source code, who can consider the business logic and identify vulnerabilities. It often provides context-specific improvement suggestions and remains one of the most reliable practices [@openja2023studying; @alexander2023evaluating]. However, it is time-consuming and not scalable due to the scarcity of human experts. Moreover, experts might emphasize different ML test areas and lack a comprehensive and holistic review of the ML system test suites.
 
 ### Our Approach
 
 Our approach is to deliver an automated code review tool embedded with the best practices of ML test suites. This tool educates ML users on best practices while comprehensively evaluating their ML system codes.
 
-We established these best practices using data from ML research papers and recognized online resources. In collaboration with our partner, we researched industrial best practices [@msise2023], [@jordan2020], and academic literature [@openja2023studying] and consolidated testing strategies into a human-readable and machine-friendly checklist that can be embedded into the automated tool.
+We established these best practices using data from ML research papers and recognized online resources. In collaboration with our partner, we researched industrial best practices [@msise2023; @jordan2020] and academic literature [@openja2023studying], and consolidated testing strategies into a human-readable and machine-friendly checklist that can be embedded into the automated tool.
 
 We collected 11 GitHub repositories of ML projects for development as studied in [@openja2023studying]. These Python-based projects include comprehensive test suites. Our tool should be able to analyze these test suites, compare them with embedded best practices, and deliver evaluations.
 
@@ -76,7 +76,7 @@ Our solution includes a curated checklist for robust ML testing and a Python pac
 
 Justifications for these products are:
 
-- Checklists have been shown to reduce errors in software systems and promote code submissions [@Atul2010], [@pineau2021improving].
+- Checklists have been shown to reduce errors in software systems and promote code submissions [@Atul2010; @pineau2021improving].
 - Python is widely used in ML, compatible with various OSes, and integrates well with LLMs. These ensure the ease of use and development.
 
 #### How to use the product
@@ -95,11 +95,11 @@ By offering it as both a CLI tool and API, our product is user-friendly to inter
 ![](../img/proposed_system_overview.png){width=600 fig-align="left" .lightbox}
 
 A diagram showing the high-level overview of FixML system design. The
-oval-shaped items are the various components, each with different
+oval-shaped items are the various components, each with a different
 responsibility in the pipeline. While the square-shaped items denote the data
 and artifacts ingested, processed, and produced by the system at different parts
-of the pipeline. The arrows show the flow of data which from outside the
-system i.e., the codebase, then processed into code snippets and attached
+of the pipeline. The arrows show the flow of data from outside the
+system, i.e., the codebase, then processed into code snippets and attached
 to the constructed prompt with checklist and prompt templates, and finally
 transformed into run results.
 :::
@@ -330,7 +330,7 @@ Items like `2.1 Ensure Data File Loads as Expected` had outliers with exceptiona
 
 #### Comparison among LLMs
 
-To evaluate if newer LLMs improve performance, we obtained outputs from `gpt-4o` and `gpt-4-turbo` on the `lightfm` repository. We plotted the graph to compare how our tool performs regarding accuracy and consistency when switching the LLMs. 
+To evaluate if newer LLMs improve performance, we obtained outputs from `gpt-4o` and `gpt-4-turbo` on the `lightfm` repository. We plotted the graph to compare how our tool performs in terms of accuracy and consistency when switching the LLMs. 
 
 By comparing with the results from `gpt-3.5-turbo` (shown in [@fig-accu-mean-sd-plot]), we observed an increase in consistency using newer LLMs given the smaller standard deviations. However, we found that `gpt-4o` returned "Satisfied" for all items. At the same time, `gpt-4-turbo` deviated more from the ground truth for items `3.5 Check for Duplicate Records in Data`, `5.3 Ensure Model Output Shape Aligns with Expectation` compared to `gpt-3.5-turbo`.
 
@@ -418,7 +418,7 @@ As shown in session `Evaluation Results`, there are potential accuracy and consi
 
 3.  **Customized Test Specification**
 
-As shown in [@fig-testspec], the current generator produces general test function skeletons without project-specific details. Future developments will integrate project-specific information to deliver customized test function skeletons. This further encourages users to create comprehensive tests.
+As shown in [@fig-testspec], the current generator produces general test function skeletons without project-specific details. Future developments will integrate project-specific information to deliver customized test function skeletons, further encouraging users to create comprehensive tests.
 
 4.  **Further Optimization**
 
