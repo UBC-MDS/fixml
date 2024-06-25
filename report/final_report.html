@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -76,7 +77,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -92,13 +93,22 @@ div.csl-indent {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -107,13 +117,14 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -126,13 +137,13 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../report/final_report.html">Capstone Final Report</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../report/final_report.html">Capstone Final Report</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -141,7 +152,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -169,14 +180,16 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary">Executive Summary</a></li>
+  <li><a href="#final-report---checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis" id="toc-final-report---checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis" class="nav-link active" data-scroll-target="#final-report---checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis">Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</a>
+  <ul class="collapse">
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link" data-scroll-target="#executive-summary">Executive Summary</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
   <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
@@ -199,29 +212,18 @@ div.csl-indent {
   <li><a href="#limitation-future-improvement" id="toc-limitation-future-improvement" class="nav-link" data-scroll-target="#limitation-future-improvement">Limitation &amp; Future Improvement</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
+<section id="final-report---checklists-and-llm-prompts-for-efficient-and-effective-test-creation-in-data-analysis" class="level1">
+<h1>Final Report - Checklists and LLM prompts for efficient and effective test creation in data analysis</h1>
 <p>by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin</p>
 <section id="executive-summary" class="level2">
 <h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
@@ -298,14 +300,14 @@ div.csl-indent {
 </section>
 <section id="system-design" class="level4">
 <h4 class="anchored" data-anchor-id="system-design">System Design</h4>
-<div id="fig-system" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="../img/proposed_system_overview.png" class="lightbox img-fluid figure-img" width="600"></p>
-</figure>
+<div id="fig-system" class="lightbox quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../img/proposed_system_overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: A diagram showing the high level overview of FixML system design. The oval-shaped items are the various components each with different responsibility in the pipeline. While the square-shaped items denotes the data and artifacts ingested, processed, and produced by the system at different parts of the pipeline. The arrows show the flow of data, which from outside the system i.e.&nbsp;the codebase, then processed into code snippets and be attached to the constructed prompt with checklist and prompt templates, and finally transformed into run results."><img src="../img/proposed_system_overview.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="600"></a>
 </div>
-<figcaption class="figure-caption">Figure&nbsp;1: A diagram showing the high level overview of FixML system design. The oval-shaped items are the various components each with different responsibility in the pipeline. While the square-shaped items denotes the data and artifacts ingested, processed, and produced by the system at different parts of the pipeline. The arrows show the flow of data, which from outside the system i.e.&nbsp;the codebase, then processed into code snippets and be attached to the constructed prompt with checklist and prompt templates, and finally transformed into run results.</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: A diagram showing the high level overview of FixML system design. The oval-shaped items are the various components each with different responsibility in the pipeline. While the square-shaped items denotes the data and artifacts ingested, processed, and produced by the system at different parts of the pipeline. The arrows show the flow of data, which from outside the system i.e.&nbsp;the codebase, then processed into code snippets and be attached to the constructed prompt with checklist and prompt templates, and finally transformed into run results.
+</figcaption>
 </figure>
 </div>
 <p>The design of our package follows object-oriented and SOLID principles, which is fully modular. Users can easily switch between different prompts, models, and checklists, which facilitates code reusability and collaboration to extend its functionality.</p>
@@ -334,9 +336,13 @@ div.csl-indent {
 <section id="checklist-design" class="level4">
 <h4 class="anchored" data-anchor-id="checklist-design">Checklist Design</h4>
 <p>The embedded checklist contains best practices for testing ML pipelines, and is curated from ML research and recognized online resources. Prompt engineering is applied to further improve the LLM performance. This helps mitigate LLM hallucinations <span class="citation" data-cites="zhang2023sirens">(<a href="#ref-zhang2023sirens" role="doc-biblioref">Zhang et al. 2023</a>)</span> by ensuring strict adherence to the checklist.</p>
-<div id="tbl-checklist-schema" class="anchored">
-<table class="table">
-<caption>Table&nbsp;1: Structure of the checklist in CSV format. Users can easily modify and expand the checklist by adding new rows to the CSV file.</caption>
+<div id="tbl-checklist-schema" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-checklist-schema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Structure of the checklist in CSV format. Users can easily modify and expand the checklist by adding new rows to the CSV file.
+</figcaption>
+<div aria-describedby="tbl-checklist-schema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
 <col style="width: 73%">
@@ -379,14 +385,16 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<div id="fig-checklist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="../img/checklist_sample.png" class="lightbox img-fluid figure-img" width="600"></p>
 </figure>
 </div>
-<figcaption class="figure-caption">Figure&nbsp;2: An example of the checklist exported in PDF format. Users can easily read and distribute the checklist.</figcaption>
+<div id="fig-checklist" class="lightbox quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-checklist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../img/checklist_sample.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: An example of the checklist exported in PDF format. Users can easily read and distribute the checklist."><img src="../img/checklist_sample.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="600"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-checklist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: An example of the checklist exported in PDF format. Users can easily read and distribute the checklist.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -397,42 +405,42 @@ div.csl-indent {
 <li><strong>Evaluation Responses</strong></li>
 </ol>
 <p>These responses include both LLM evaluation results and process metadata stored in JSON format. This supports various downstream tasks, such as report rendering and scientific research, by selectively extracting information.</p>
-<div id="fig-responses" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="../img/test_evaluation_responses_sample.png" class="lightbox img-fluid figure-img" width="600"></p>
-</figure>
+<div id="fig-responses" class="lightbox quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-responses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../img/test_evaluation_responses_sample.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: An example of the evaluation responses. It includes call_results for evaluation outcomes and details about the model, repository, checklist, and the run."><img src="../img/test_evaluation_responses_sample.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="600"></a>
 </div>
-<figcaption class="figure-caption">Figure&nbsp;3: An example of the evaluation responses. It includes <code>call_results</code> for evaluation outcomes and details about the <code>model</code>, <code>repository</code>, <code>checklist</code>, and the run.</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-responses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: An example of the evaluation responses. It includes <code>call_results</code> for evaluation outcomes and details about the <code>model</code>, <code>repository</code>, <code>checklist</code>, and the run.
+</figcaption>
 </figure>
 </div>
 <ol start="2" type="1">
 <li><strong>Evaluation Report</strong></li>
 </ol>
 <p>This report provides a well-structured presentation of evaluation results for ML projects. It includes a summary of the completeness score and a detailed breakdown with explanations for each checklist item score.</p>
-<div id="fig-report" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="../img/test_evaluation_report_sample.png" class="lightbox img-fluid figure-img" width="600"></p>
-</figure>
+<div id="fig-report" class="lightbox quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-report-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../img/test_evaluation_report_sample.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: An example of the evaluation report exported in PDF format using our default template. Users can customize their reports by creating their own templates."><img src="../img/test_evaluation_report_sample.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="600"></a>
 </div>
-<figcaption class="figure-caption">Figure&nbsp;4: An example of the evaluation report exported in PDF format using our default template. Users can customize their reports by creating their own templates.</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-report-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: An example of the evaluation report exported in PDF format using our default template. Users can customize their reports by creating their own templates.
+</figcaption>
 </figure>
 </div>
 <ol start="3" type="1">
 <li><strong>Test Specification Script</strong></li>
 </ol>
 <p>These are generated test specifications stored as Python scripts.</p>
-<div id="fig-testspec" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="../img/test_spec_sample.png" class="lightbox img-fluid figure-img" width="600"></p>
-</figure>
+<div id="fig-testspec" class="lightbox quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-testspec-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../img/test_spec_sample.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: An example of the generated test specifications"><img src="../img/test_spec_sample.png" class="img-fluid quarto-figure quarto-figure-left figure-img" width="600"></a>
 </div>
-<figcaption class="figure-caption">Figure&nbsp;5: An example of the generated test specifications</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-testspec-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: An example of the generated test specifications
+</figcaption>
 </figure>
 </div>
 </section>
@@ -445,31 +453,23 @@ div.csl-indent {
 </ol>
 <p>Accuracy is our primary consideration since our tool’s value depends on its ability to align with expert judgment. We targeted 3 of the repositories for human evaluation: <a href="https://github.com/lyst/lightfm"><code>lightfm</code></a>, <a href="https://github.com/microsoft/qlib"><code>qlib</code></a>, <a href="https://github.com/mozilla/DeepSpeech"><code>DeepSpeech</code></a>. We compared and plotted the graph to illustrate how well our tool’s outputs align with the ground truth.</p>
 <div class="cell" data-execution_count="1">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> pd.read_csv(<span class="st">'../data/processed/ground_truth.csv'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>gt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div id="tbl-gt" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-gt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Ground truth scores for 3 repositories per checklist item based on human evaluation. (1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied)
+</figcaption>
+<div aria-describedby="tbl-gt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-
-<div id="tbl-gt" class="anchored">
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<caption>Table&nbsp;2: Ground truth scores for 3 repositories per checklist item based on human evaluation. (1 = fully satisfied, 0.5 = partially satisfied, 0 = not satisfied)</caption>
+<table class="dataframe do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -539,13 +539,15 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
 
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="2">
-<details>
+</figure>
+</div>
+</div>
+<div id="cell-fig-accu-mean-sd-plot" class="cell" data-execution_count="2">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -600,27 +602,28 @@ div.csl-indent {
 <span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    titleFontSize<span class="op">=</span><span class="dv">12</span></span>
 <span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-accu-mean-sd-plot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-accu-mean-sd-plot" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-accu-mean-sd-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 
 <style>
-  #altair-viz-c83a2e14fefb4cf99b92a17b9fbeec5f.vega-embed {
+  #altair-viz-21255f261473430082eccbc03d15b4f3.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-c83a2e14fefb4cf99b92a17b9fbeec5f.vega-embed details,
-  #altair-viz-c83a2e14fefb4cf99b92a17b9fbeec5f.vega-embed details summary {
+  #altair-viz-21255f261473430082eccbc03d15b4f3.vega-embed details,
+  #altair-viz-21255f261473430082eccbc03d15b4f3.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-c83a2e14fefb4cf99b92a17b9fbeec5f"></div>
+<div id="altair-viz-21255f261473430082eccbc03d15b4f3"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-c83a2e14fefb4cf99b92a17b9fbeec5f") {
-      outputDiv = document.getElementById("altair-viz-c83a2e14fefb4cf99b92a17b9fbeec5f");
+    if (outputDiv.id !== "altair-viz-21255f261473430082eccbc03d15b4f3") {
+      outputDiv = document.getElementById("altair-viz-21255f261473430082eccbc03d15b4f3");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -668,7 +671,10 @@ div.csl-indent {
     }
   })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}}, "data": {"name": "data-a00fed27dd81291d0f791ce5bf77eeda"}, "facet": {"column": {"field": "repo", "title": null, "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "point", "color": "green", "filled": true, "shape": "diamond", "size": 200}, "encoding": {"x": {"field": "ground_truth", "type": "quantitative"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "point", "color": "black", "filled": true, "size": 50}, "encoding": {"x": {"axis": {"labelExpr": "datum.value % 0.5 ? null : datum.label"}, "field": "mean", "scale": {"domainMin": 0, "domainMax": 1}, "title": "Score", "type": "quantitative"}, "y": {"axis": {"grid": false, "labelLimit": 1000, "labelPadding": 10}, "field": "id_title", "title": null, "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "errorbar"}, "encoding": {"x": {"field": "min", "title": "1 SD", "type": "quantitative"}, "x2": {"field": "max"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}]}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-a00fed27dd81291d0f791ce5bf77eeda": [{"repo": "DeepSpeech", "id": 2.1, "count": 30.0, "mean": 0.9666666666666668, "std": 0.1825741858350553, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 3.2, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 3.5, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 4.2, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 5.3, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 6.1, "count": 30.0, "mean": 0.2, "std": 0.4068381021724861, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 0.0}, {"repo": "DeepSpeech", "id": 6.2, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 0.0}, {"repo": "lightfm", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 1.0}, {"repo": "lightfm", "id": 3.2, "count": 30.0, "mean": 0.5, "std": 0.0, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0}, {"repo": "lightfm", "id": 3.5, "count": 30.0, "mean": 0.0, "std": 0.0, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0}, {"repo": "lightfm", "id": 4.2, "count": 30.0, "mean": 0.8166666666666667, "std": 0.2450662589267805, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 1.0}, {"repo": "lightfm", "id": 5.3, "count": 30.0, "mean": 0.4833333333333333, "std": 0.0912870929175276, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 0.5}, {"repo": "lightfm", "id": 6.1, "count": 30.0, "mean": 0.9166666666666666, "std": 0.1895245108947258, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0}, {"repo": "lightfm", "id": 6.2, "count": 30.0, "mean": 0.9833333333333332, "std": 0.0912870929175276, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0}, {"repo": "qlib", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 0.5}, {"repo": "qlib", "id": 3.2, "count": 30.0, "mean": 0.7666666666666667, "std": 0.2537081317024624, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0}, {"repo": "qlib", "id": 3.5, "count": 30.0, "mean": 0.1166666666666666, "std": 0.2150915335760381, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0}, {"repo": "qlib", "id": 4.2, "count": 30.0, "mean": 0.4833333333333333, "std": 0.2069204966986668, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 0.5}, {"repo": "qlib", "id": 5.3, "count": 30.0, "mean": 0.55, "std": 0.2012889499682243, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 1.0}, {"repo": "qlib", "id": 6.1, "count": 30.0, "mean": 0.6333333333333333, "std": 0.2916461404928373, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0}, {"repo": "qlib", "id": 6.2, "count": 30.0, "mean": 0.6, "std": 0.203419051086243, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0}]}}, {"mode": "vega-lite"});
 </script>
-<figcaption class="figure-caption">Figure&nbsp;6: Analysis of accuracy of the scores per checklist item. The black dot and line represent the mean and standard deviation of scores from the tool, while the green diamond represents the ground truth score for a single repository. It shows our tool tends to underrate satisfactory cases.</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-accu-mean-sd-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Analysis of accuracy of the scores per checklist item. The black dot and line represent the mean and standard deviation of scores from the tool, while the green diamond represents the ground truth score for a single repository. It shows our tool tends to underrate satisfactory cases.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -682,8 +688,8 @@ div.csl-indent {
 <li><strong>Consistency</strong></li>
 </ol>
 <p>Consistency is another consideration because it directly impacts the reliability of the evaluation results from user perspective. Given that LLM-generated completeness scores contain some randomness, we plotted the uncertainty of these scores across checklist items and repositories to show how consistent these results were.</p>
-<div class="cell" data-execution_count="3">
-<details>
+<div id="cell-fig-cons-sd-box-plot" class="cell" data-execution_count="3">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>stds <span class="op">=</span> df_repo__stat[[<span class="st">'repo'</span>, <span class="st">'std'</span>, <span class="st">'id_title'</span>]].pivot(index<span class="op">=</span><span class="st">'repo'</span>, columns<span class="op">=</span><span class="st">'id_title'</span>).copy()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>stds.columns <span class="op">=</span> [col[<span class="dv">1</span>] <span class="cf">for</span> col <span class="kw">in</span> stds.columns]</span>
@@ -728,27 +734,28 @@ div.csl-indent {
 <span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">600</span>,</span>
 <span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-cons-sd-box-plot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-cons-sd-box-plot" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cons-sd-box-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 
 <style>
-  #altair-viz-3bceed4ad96f433b96806573dedf54f0.vega-embed {
+  #altair-viz-1120b13abebe40bba83904a6442a2ed4.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-3bceed4ad96f433b96806573dedf54f0.vega-embed details,
-  #altair-viz-3bceed4ad96f433b96806573dedf54f0.vega-embed details summary {
+  #altair-viz-1120b13abebe40bba83904a6442a2ed4.vega-embed details,
+  #altair-viz-1120b13abebe40bba83904a6442a2ed4.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-3bceed4ad96f433b96806573dedf54f0"></div>
+<div id="altair-viz-1120b13abebe40bba83904a6442a2ed4"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-3bceed4ad96f433b96806573dedf54f0") {
-      outputDiv = document.getElementById("altair-viz-3bceed4ad96f433b96806573dedf54f0");
+    if (outputDiv.id !== "altair-viz-1120b13abebe40bba83904a6442a2ed4") {
+      outputDiv = document.getElementById("altair-viz-1120b13abebe40bba83904a6442a2ed4");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -796,7 +803,10 @@ div.csl-indent {
     }
   })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axis": {"labelFontSize": 12, "titleFontSize": 12}}, "layer": [{"mark": {"type": "boxplot", "color": "grey", "opacity": 0.5, "size": 20}, "encoding": {"x": {"field": "value", "title": "Standard Deviation of Scores", "type": "quantitative"}, "y": {"axis": {"grid": false, "labelLimit": 1000, "labelPadding": 10}, "field": "id_title", "title": null, "type": "nominal"}}}, {"mark": {"type": "circle", "size": 100}, "encoding": {"color": {"field": "id_title", "legend": null, "type": "nominal"}, "tooltip": {"field": "repo", "type": "nominal"}, "x": {"field": "value", "type": "quantitative"}, "y": {"axis": {"grid": true, "labels": true, "ticks": false}, "field": "id_title", "scale": {}, "type": "nominal"}, "yOffset": {"field": "jitter", "type": "quantitative"}}, "transform": [{"calculate": "sqrt(-2*log(random()))*cos(2*PI*random())", "as": "jitter"}]}], "data": {"name": "data-6aab5f6156d183a21fdd1c0623d42004"}, "height": 300, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-6aab5f6156d183a21fdd1c0623d42004": [{"repo": "DeepSpeech", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.1825741858350553}, {"repo": "apollo", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "deepchem", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "lightfm", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "magenta", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0912870929175276}, {"repo": "mmf", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "mycroft-core", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "nanodet", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "nupic", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.409653624363343}, {"repo": "paperless-ng", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "qlib", "id_title": "2.1. Ensure Data File Loads as Expected", "value": 0.0}, {"repo": "DeepSpeech", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "apollo", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "deepchem", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "lightfm", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "magenta", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "mmf", "id_title": "3.2. Data in the Expected Format", "value": 0.2330457998496995}, {"repo": "mycroft-core", "id_title": "3.2. Data in the Expected Format", "value": 0.0912870929175276}, {"repo": "nanodet", "id_title": "3.2. Data in the Expected Format", "value": 0.2542738138578039}, {"repo": "nupic", "id_title": "3.2. Data in the Expected Format", "value": 0.2248882225544018}, {"repo": "paperless-ng", "id_title": "3.2. Data in the Expected Format", "value": 0.0}, {"repo": "qlib", "id_title": "3.2. Data in the Expected Format", "value": 0.2537081317024624}, {"repo": "DeepSpeech", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "apollo", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "deepchem", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.1268540658512312}, {"repo": "lightfm", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "magenta", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "mmf", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.2537081317024624}, {"repo": "mycroft-core", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "nanodet", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "nupic", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "paperless-ng", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.0}, {"repo": "qlib", "id_title": "3.5. Check for Duplicate Records in Data", "value": 0.2150915335760381}, {"repo": "DeepSpeech", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "apollo", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "deepchem", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "lightfm", "id_title": "4.2. Verify Data Split Proportion", "value": 0.2450662589267805}, {"repo": "magenta", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "mmf", "id_title": "4.2. Verify Data Split Proportion", "value": 0.1728729518208802}, {"repo": "mycroft-core", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "nanodet", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "nupic", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "paperless-ng", "id_title": "4.2. Verify Data Split Proportion", "value": 0.0}, {"repo": "qlib", "id_title": "4.2. Verify Data Split Proportion", "value": 0.2069204966986668}, {"repo": "DeepSpeech", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "apollo", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "deepchem", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "lightfm", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0912870929175276}, {"repo": "magenta", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "mmf", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.2491364395612199}, {"repo": "mycroft-core", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0912870929175276}, {"repo": "nanodet", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "nupic", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.1895245108947258}, {"repo": "paperless-ng", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.0}, {"repo": "qlib", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "value": 0.2012889499682243}, {"repo": "DeepSpeech", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.4068381021724861}, {"repo": "apollo", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1268540658512312}, {"repo": "deepchem", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0}, {"repo": "lightfm", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1895245108947258}, {"repo": "magenta", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0}, {"repo": "mmf", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.1525642883146823}, {"repo": "mycroft-core", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0912870929175276}, {"repo": "nanodet", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.2491364395612199}, {"repo": "nupic", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0}, {"repo": "paperless-ng", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.0}, {"repo": "qlib", "id_title": "6.1. Verify Evaluation Metrics Implementation", "value": 0.2916461404928373}, {"repo": "DeepSpeech", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "apollo", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "deepchem", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "lightfm", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0912870929175276}, {"repo": "magenta", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "mmf", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.2248882225544018}, {"repo": "mycroft-core", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.1268540658512312}, {"repo": "nanodet", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.1268540658512312}, {"repo": "nupic", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.3511066249289032}, {"repo": "paperless-ng", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.0}, {"repo": "qlib", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "value": 0.203419051086243}]}}, {"mode": "vega-lite"});
 </script>
-<figcaption class="figure-caption">Figure&nbsp;7: Analysis of the uncertainty of scores (measured in standard deviation on a scale of 0 to 1) per checklist item. Each dot represents the uncertainty of scores from 30 runs of a single repository. It shows different patterns across checklist items.</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cons-sd-box-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Analysis of the uncertainty of scores (measured in standard deviation on a scale of 0 to 1) per checklist item. Each dot represents the uncertainty of scores from 30 runs of a single repository. It shows different patterns across checklist items.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -812,9 +822,9 @@ div.csl-indent {
 <section id="comparison-among-llms" class="level4">
 <h4 class="anchored" data-anchor-id="comparison-among-llms">Comparison among LLMs</h4>
 <p>To evaluate if newer LLMs improve performance, we obtained outputs from <code>gpt-4o</code> and <code>gpt-4-turbo</code> on the <code>lightfm</code> repository and plotted the graph to compare how our tool performs in terms of accuracy and consistency when switched the LLMs.</p>
-<p>By comparing with the results from <code>gpt-3.5-turbo</code> (shown in <a href="#fig-accu-mean-sd-plot">Figure&nbsp;6</a>), we observed an increase in consistency using newer LLMs given the smaller standard deviations. However, we found that <code>gpt-4o</code> returned “Satisfied” for all items, while <code>gpt-4-turbo</code> deviated more from the ground truth for item <code>3.5 Check for Duplicate Records in Data</code>, <code>5.3 Ensure Model Output Shape Aligns with Expectation</code> compared to <code>gpt-3.5-turbo</code>.</p>
-<div class="cell" data-execution_count="4">
-<details>
+<p>By comparing with the results from <code>gpt-3.5-turbo</code> (shown in <a href="#fig-accu-mean-sd-plot" class="quarto-xref">Figure&nbsp;6</a>), we observed an increase in consistency using newer LLMs given the smaller standard deviations. However, we found that <code>gpt-4o</code> returned “Satisfied” for all items, while <code>gpt-4-turbo</code> deviated more from the ground truth for item <code>3.5 Check for Duplicate Records in Data</code>, <code>5.3 Ensure Model Output Shape Aligns with Expectation</code> compared to <code>gpt-3.5-turbo</code>.</p>
+<div id="cell-fig-llm-mean-sd-plot" class="cell" data-execution_count="4">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_repo_4o__stat <span class="op">=</span> pd.read_csv(<span class="st">'../data/processed/score_stat_by_repo_4o.csv'</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_repo_4o__stat_with_gt <span class="op">=</span> df_repo_4o__stat.merge(gt, on<span class="op">=</span>[<span class="st">'id'</span>, <span class="st">'title'</span>, <span class="st">'repo'</span>])</span>
@@ -875,27 +885,28 @@ div.csl-indent {
 <span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    titleFontSize<span class="op">=</span><span class="dv">12</span></span>
 <span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-llm-mean-sd-plot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div id="fig-llm-mean-sd-plot" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-llm-mean-sd-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 
 <style>
-  #altair-viz-e62469335e3b4df5852bed17ec66eba7.vega-embed {
+  #altair-viz-34c0d57279d44d0f90a04c6a55465abb.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e62469335e3b4df5852bed17ec66eba7.vega-embed details,
-  #altair-viz-e62469335e3b4df5852bed17ec66eba7.vega-embed details summary {
+  #altair-viz-34c0d57279d44d0f90a04c6a55465abb.vega-embed details,
+  #altair-viz-34c0d57279d44d0f90a04c6a55465abb.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e62469335e3b4df5852bed17ec66eba7"></div>
+<div id="altair-viz-34c0d57279d44d0f90a04c6a55465abb"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e62469335e3b4df5852bed17ec66eba7") {
-      outputDiv = document.getElementById("altair-viz-e62469335e3b4df5852bed17ec66eba7");
+    if (outputDiv.id !== "altair-viz-34c0d57279d44d0f90a04c6a55465abb") {
+      outputDiv = document.getElementById("altair-viz-34c0d57279d44d0f90a04c6a55465abb");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -943,7 +954,10 @@ div.csl-indent {
     }
   })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}}, "data": {"name": "data-72007bf239d9a1281a3190e2987a51ce"}, "facet": {"column": {"field": "model", "title": null, "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "point", "color": "green", "filled": true, "shape": "diamond", "size": 200}, "encoding": {"x": {"field": "ground_truth", "type": "quantitative"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "point", "color": "black", "filled": true, "size": 50}, "encoding": {"x": {"axis": {"labelExpr": "datum.value % 0.5 ? null : datum.label"}, "field": "mean", "scale": {"domainMin": 0, "domainMax": 1}, "title": "Score", "type": "quantitative"}, "y": {"axis": {"grid": false, "labelLimit": 1000, "labelPadding": 10}, "field": "id_title", "title": null, "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}, {"mark": {"type": "errorbar"}, "encoding": {"x": {"field": "min", "title": "1 SD", "type": "quantitative"}, "x2": {"field": "max"}, "y": {"field": "id_title", "type": "nominal"}}, "transform": [{"calculate": "max(0, datum.mean-datum.std)", "as": "min"}, {"calculate": "min(1, datum.mean+datum.std)", "as": "max"}]}]}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-72007bf239d9a1281a3190e2987a51ce": [{"repo": "lightfm", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 1.0, "model": "gpt-4-turbo"}, {"repo": "lightfm", "id": 3.2, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0, "model": "gpt-4-turbo"}, {"repo": "lightfm", "id": 3.5, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0, "model": "gpt-4-turbo"}, {"repo": "lightfm", "id": 4.2, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 1.0, "model": "gpt-4-turbo"}, {"repo": "lightfm", "id": 5.3, "count": 30.0, "mean": 0.6166666666666667, "std": 0.2150915335760382, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 0.5, "model": "gpt-4-turbo"}, {"repo": "lightfm", "id": 6.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0, "model": "gpt-4-turbo"}, {"repo": "lightfm", "id": 6.2, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0, "model": "gpt-4-turbo"}, {"repo": "lightfm", "id": 2.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Data File Loads as Expected", "id_title": "2.1. Ensure Data File Loads as Expected", "ground_truth": 1.0, "model": "gpt-4o"}, {"repo": "lightfm", "id": 3.2, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Data in the Expected Format", "id_title": "3.2. Data in the Expected Format", "ground_truth": 1.0, "model": "gpt-4o"}, {"repo": "lightfm", "id": 3.5, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Check for Duplicate Records in Data", "id_title": "3.5. Check for Duplicate Records in Data", "ground_truth": 0.0, "model": "gpt-4o"}, {"repo": "lightfm", "id": 4.2, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Verify Data Split Proportion", "id_title": "4.2. Verify Data Split Proportion", "ground_truth": 1.0, "model": "gpt-4o"}, {"repo": "lightfm", "id": 5.3, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Ensure Model Output Shape Aligns with Expectation", "id_title": "5.3. Ensure Model Output Shape Aligns with Expectation", "ground_truth": 0.5, "model": "gpt-4o"}, {"repo": "lightfm", "id": 6.1, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Verify Evaluation Metrics Implementation", "id_title": "6.1. Verify Evaluation Metrics Implementation", "ground_truth": 1.0, "model": "gpt-4o"}, {"repo": "lightfm", "id": 6.2, "count": 30.0, "mean": 1.0, "std": 0.0, "title": "Evaluate Model's Performance Against Thresholds", "id_title": "6.2. Evaluate Model's Performance Against Thresholds", "ground_truth": 1.0, "model": "gpt-4o"}]}}, {"mode": "vega-lite"});
 </script>
-<figcaption class="figure-caption">Figure&nbsp;8: Analysis of the scores per checklist item on repository <code>lightfm</code> using different GPT versions. The black dot and line represent the mean and standard deviation of scores from the tool, while the green diamond represents the ground truth score.</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llm-mean-sd-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Analysis of the scores per checklist item on repository <code>lightfm</code> using different GPT versions. The black dot and line represent the mean and standard deviation of scores from the tool, while the green diamond represents the ground truth score.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -963,15 +977,15 @@ div.csl-indent {
 <ol type="1">
 <li><strong>Specialized Checklist</strong></li>
 </ol>
-<p>Although the default checklist is general and may not cover all requirements for different ML projects, the current checklist structure allows users to edit checklist easily (shown in <a href="#tbl-checklist-schema">Table&nbsp;1</a>). Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.</p>
+<p>Although the default checklist is general and may not cover all requirements for different ML projects, the current checklist structure allows users to edit checklist easily (shown in <a href="#tbl-checklist-schema" class="quarto-xref">Table&nbsp;1</a>). Future development will focus on creating specialized checklists for tailored evaluations across various domains and project types. Collaboration with ML researchers is welcomed for creating specialized checklists based on specific use cases.</p>
 <ol start="2" type="1">
 <li><strong>Enhanced Test Evaluator</strong></li>
 </ol>
-<p>As shown in session <code>Evaluation Results</code>, there are potential accuracy and consistency issues on the evaluation results using OpenAI <code>gpt-3.5-turbo</code> model (shown in <a href="#fig-accu-mean-sd-plot">Figure&nbsp;6</a>, <a href="#fig-cons-sd-box-plot">Figure&nbsp;7</a>). Future improvements involves better prompt engineering techniques and support for multiple LLMs for enhanced performance and flexibility. User guidelines in prompt creation will be provided to facilitate collaboration with ML developers.</p>
+<p>As shown in session <code>Evaluation Results</code>, there are potential accuracy and consistency issues on the evaluation results using OpenAI <code>gpt-3.5-turbo</code> model (shown in <a href="#fig-accu-mean-sd-plot" class="quarto-xref">Figure&nbsp;6</a>, <a href="#fig-cons-sd-box-plot" class="quarto-xref">Figure&nbsp;7</a>). Future improvements involves better prompt engineering techniques and support for multiple LLMs for enhanced performance and flexibility. User guidelines in prompt creation will be provided to facilitate collaboration with ML developers.</p>
 <ol start="3" type="1">
 <li><strong>Customized Test Specification</strong></li>
 </ol>
-<p>As shown in <a href="#fig-testspec">Figure&nbsp;5</a>, the current generator produces general test function skeletons without project-specific details. Future developments will integrate project-specific information to produce customized test function skeletons. This may further encourage users to create comprehensive tests.</p>
+<p>As shown in <a href="#fig-testspec" class="quarto-xref">Figure&nbsp;5</a>, the current generator produces general test function skeletons without project-specific details. Future developments will integrate project-specific information to produce customized test function skeletons. This may further encourage users to create comprehensive tests.</p>
 <ol start="4" type="1">
 <li><strong>Further Optimization</strong></li>
 </ol>
@@ -985,8 +999,9 @@ div.csl-indent {
 
 
 </section>
+</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-alexander2023evaluating" class="csl-entry" role="listitem">
 Alexander, Rohan, Lindsay Katz, Callandra Moore, and Zane Schwartz. 2023. <span>“Evaluating the Decency and Consistency of Data Validation Tests Generated by LLMs.”</span> <em>arXiv Preprint arXiv:2310.01402</em>.
 </div>
@@ -1062,18 +1077,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1105,11 +1109,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/UBC-MDS\.github\.io\/fixml\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1119,8 +1162,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1132,7 +1184,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1176,6 +1351,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1201,6 +1377,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1261,6 +1463,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":false});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
 
 
 
