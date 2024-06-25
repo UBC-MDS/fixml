@@ -1,7 +1,8 @@
 runs: 30
 checklist_path: null
-repo_base_path: '../data/raw/openja/'
-response_path: '../data/processed/batch_run'
+model: 'gpt-3.5-turbo'
+repo_base_path: 'data/raw/openja/'
+response_path: 'data/processed/batch_run_3.5-turbo'
 repo:
   - name: lightfm
     path: './lightfm'

@@ -1,0 +1,25 @@
+project:
+  type: website
+  render:
+    - "report/*qmd"
+  output-dir: report/docs
+
+website:
+  sidebar:
+    style: "docked"
+    logo: "img/logo.png"
+    search: true
+    contents:
+      - text: "Capstone Final Report"
+        href: report/final_report.qmd
+      - text: "Capstone Proposal"
+        href: report/proposal.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

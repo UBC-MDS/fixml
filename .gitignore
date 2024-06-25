@@ -1,6 +1,7 @@
 draft/*
 **/*~
 .env
+/data/
 
 # vim swap files
 **/*~
@@ -13,3 +14,13 @@ draft/*
 
 # pycache
 **/__pycache__/
+
+# built package
+dist/
+
+# pytest-cov coverage files
+.coverage*
+
+# quarto github page related
+/.quarto/
+/_site/

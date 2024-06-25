@@ -12,9 +12,13 @@ from ..modules.workflow.runners.generator import NaiveTestGenerator
 from ..modules.code_analyzer.repo import Repository
 from ..modules.workflow.parse import ResponseParser
 from ..modules.checklist.checklist import Checklist
+from ..modules.mixins import WriteableMixin
 
 
-class RepositoryActions(object):
+class RepositoryActions(WriteableMixin):
+    def __init__(self):
+        super().__init__()
+
     @staticmethod
     def generate(test_output_path: str,
                  checklist_path: str = None,
@@ -59,8 +63,7 @@ class RepositoryActions(object):
                 file.write(res['Function'])
                 file.write("\n\n")
 
-    @staticmethod
-    def evaluate(repo_path: str, save_response_to: str = None,
+    def evaluate(self, repo_path: str, save_response_to: str = None,
                  export_report_to: str = None,
                  checklist_path: str = None,
                  model="gpt-3.5-turbo", verbose: bool = False,
@@ -86,7 +89,7 @@ class RepositoryActions(object):
             If provided, the system will render the evaluation report
             to the specified path. The format of the evaluation report will be
             based on the extension provided in this path. The extensions must be
-            either one of `.html`, `.htm`, `.pdf`, or `.qmd`.
+            either one of `.html`, `.htm`, `.pdf`, `.qmd`, or `.md`.
         checklist_path : str, optional
             Argument to use non-default checklist during the operation.
         test_dirs : list, optional
@@ -107,6 +110,9 @@ class RepositoryActions(object):
             If provided, the system will enable langchain's debug
             mode to expose all debug messages to the standard output.
         """
+        if export_report_to:
+            self._filedump_check(export_report_to, exist_ok=overwrite)
+
         set_debug(debug)
         parsed_test_dirs = parse_list(test_dirs)
         llm = ChatOpenAI(model=model, temperature=0)
@@ -135,8 +141,7 @@ class RepositoryActions(object):
         if export_report_to:
             parser = ResponseParser(response)
             parser.get_completeness_score(verbose=verbose)
-            parser.export_evaluation_report(export_report_to,
-                                            exist_ok=overwrite)
+            parser.export(export_report_to, exist_ok=overwrite)
             print(f"Evaluation report exported to {export_report_to}.")
 
     @staticmethod

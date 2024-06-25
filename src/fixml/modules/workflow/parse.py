@@ -1,23 +1,30 @@
-from typing import Optional
+from typing import Optional, Union
+from pathlib import Path
 
 import pandas as pd
 import os
 
+from ..template import TemplateLoader
 from .response import EvaluationResponse
 from ..mixins import ExportableMixin
-from ..utils import get_extension
 
 
 class ResponseParser(ExportableMixin):
-    def __init__(self, response: EvaluationResponse):
-        # FIXME: respository is required to extract the line numbers for functions
-        #        I added an optional argument "respository" here, can't think of any better way to handle it yet
+    def __init__(self, response: EvaluationResponse,
+                 export_template_path: Optional[Union[str, Path]] = None):
         super().__init__()
         self.response = response
         self.evaluation_report = None
         self.repository = self.response.repository.object
         self.git_context = self.repository.git_context
         self.items = []
+        if not export_template_path:
+            # use default template from package
+            self.export_template = TemplateLoader.load("evaluation")
+        else:
+            # load from external source, validate all vars are present
+            self.export_template = TemplateLoader.load_from_external(
+                export_template_path, "evaluation")
 
     def _parse_items(self):
         items = []
@@ -38,7 +45,7 @@ class ResponseParser(ExportableMixin):
         self.items = items
         return items
 
-    def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> Optional[float]:
+    def get_completeness_score(self, score_format: str = 'fraction', verbose: bool = False) -> Optional[Union[float, str]]:
         """Compute Evaluation Report and Completeness Score."""
 
         # TODO: change this after putting the logic to load data from JSON file
@@ -99,55 +106,47 @@ class ResponseParser(ExportableMixin):
         elif score_format == 'number':
             return fraction_satisfied
 
-    def as_markdown(self) -> str:
-        def _get_md_representation(content: dict, curr_level: int):
-            repeated_col = [k for k, v in content.items() if isinstance(v, list)]
-
-            # print out header for each item
-            md_repr = '#' * curr_level
-            if 'ID' in content.keys():
-                md_repr += f" {content['ID']}"
-            if 'Title' in content.keys():
-                md_repr += f" {content['Title']}\n\n"
-            elif 'Topic' in content.keys():
-                md_repr += f" {content['Topic']}\n\n"
-
-            # print out non-title, non-repeated items
-            for k, v in content.items():
-                if k not in repeated_col and k not in ['Title', 'Topic', 'ID']:
-                    md_repr += f'**{k}**: {v}\n\n'
-
-            # handle repeated columns and references
-            point_form_col = ['References', 'Function References', 'Observations']
-            for k in repeated_col:
-                if k not in point_form_col:
-                    for item in content[k]:
-                        md_repr += _get_md_representation(item, curr_level=curr_level + 1)
-                else:
-                    md_repr += f'**{k}:**\n\n' + '\n'.join(f'  - {item}' for item in content[k]) + '\n\n'
-
-            return md_repr
+    def as_markdown(self, add_quarto_header: bool = False) -> str:
 
         score = self.get_completeness_score(score_format='fraction')
-        summary_df = self.evaluation_report[['ID', 'Title', 'is_Satisfied', 'n_files_tested']]
-        details = self.evaluation_report[['ID', 'Title', 'Requirement', 'Observations', 'Function References']].to_dict(orient='records')
+        summary_df = self.evaluation_report[['ID', 'Title', 'is_Satisfied']]
 
-        export_content = dict()
-        export_content['Title'] = 'Test Evaluation Report'
-        export_content['Report Areas'] = []
-        export_content['Report Areas'].append({'Title': 'Summary', 'Completeness Score': score, 'Completeness Score per Checklist Item': '\n\n' + summary_df.to_markdown(index=False)})
-        export_content['Report Areas'].append({'Title': 'Details', 'Report Detail': details})
+        response = self.response
+        call_results = response.call_results
 
-        return _get_md_representation(export_content, 1)
+        metadata = {
+            "template_path": self.export_template.filename,
+        }
+        run_details = {
+            "checklist_path": response.checklist.path,
+            "repo_path": response.repository.path,
+            "head_commit": response.repository.git_commit,
+            "start_time": min([x.start_time for x in call_results]),
+            "end_time": max([x.end_time for x in call_results]),
+            "time_taken": max([x.end_time for x in call_results]) - min([x.start_time for x in call_results]),
+            "input_token_count": sum([x.tokens_used.input_count for x in call_results]),
+            "output_token_count": sum([x.tokens_used.output_count for x in call_results]),
+            "successful_count": sum([x.success for x in call_results]),
+            "failure_count": sum([not x.success for x in call_results]),
+            "success_perc": sum([x.success for x in call_results]) / len(call_results),
+            "files_evaluated": [file for x in call_results for file in x.files_evaluated],
+            "model_name_used": response.model.name,
+        }
+        eval_summary = {
+            "table": summary_df.to_markdown(index=False),
+            "score": score
+        }
+        eval_details = self.evaluation_report[['ID', 'Title', 'Requirement', 'Observations', 'Function References']].to_dict(orient='records')
+
+        vars = {
+            "quarto_header": add_quarto_header,
+            "title": "Test Evaluation Report",
+            "metadata": metadata,
+            "run_details": run_details,
+            "eval_summary": eval_summary,
+            "eval_details": eval_details
+        }
+        return self.export_template.render(**vars)
 
     def as_quarto_markdown(self) -> str:
-        header = '---\ntitle: "Test Evaluation Report"\nformat:\n  html:\n  code-fold: true\n---\n\n'
-        return header + self.as_markdown()
-
-    def export_evaluation_report(self, output_path,
-                                 exist_ok: bool = False) -> None:
-        """
-        Export the test evaluation report
-        """
-        ext = get_extension(output_path)
-        self.export_ext_func_map[ext](output_path, exist_ok)
+        return self.as_markdown(add_quarto_header=True)
