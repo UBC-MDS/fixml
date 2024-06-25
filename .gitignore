@@ -26,8 +26,9 @@ dist/
 /_site/
 
 # quarto artifacts
-report_files/**/*
-report/docs/**/*
+report_files/
+report/docs/
+report/.jupyter_cache/
 
 # rtd build files
 docs/_build/
