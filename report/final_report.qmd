@@ -22,11 +22,7 @@ The FixML package is available on PyPI and can be used as a CLI tool and a high-
 
 ### Problem Statement
 
-The global AI market is growing exponentially [@grand2021artificial], driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis.
-
-However, ensuring the software quality of these systems remains a significant challenge [@openja2023studying]. Specifically, the need for a standardized and comprehensive approach to testing ML systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as misinformation [@Ashley2024], social bias [@Alice2023], substantial financial losses [@Asheeta2019], and safety hazards [@David2023]
-
-Therefore, it is crucial to define and promote an industry standard and establish robust testing methodologies for these systems. But how?
+The global AI market is growing exponentially [@grand2021artificial], driven by its ability to autonomously make complex decisions impacting various aspects of human life, including financial transactions, autonomous transportation, and medical diagnosis. However, ensuring the software quality of these systems remains a significant challenge [@openja2023studying]. Specifically, the need for a standardized and comprehensive approach to testing ML systems introduces potential risks to stakeholders. For example, inadequate quality assurance in ML systems can lead to severe consequences, such as misinformation [@Ashley2024], social bias [@Alice2023], substantial financial losses [@Asheeta2019], and safety hazards [@David2023]. Therefore, it is crucial to define and promote an industry standard and establish robust testing methodologies for these systems. But how?
 
 ### Our Objectives
 
@@ -259,9 +255,7 @@ errorbars = base.mark_errorbar().encode(
 )
 ```
 
-When examining accuracy, we observed that our tool effectively identifies non-satisfying cases. However, it often classifies fully satisfied items as partially satisfied and partially satisfied items as not satisfied.
-
-This indicates that our tool achieves a certain degree of accuracy. The following questions we consider are:
+When examining accuracy, we observed that our tool effectively identifies non-satisfying cases. However, it often classifies fully satisfied items as partially satisfied and partially satisfied items as not satisfied. This indicates that our tool achieves a certain degree of accuracy. The following questions we consider are:
 
 - Are there other factors that impact the performance of our tool?
 - In what direction can we improve our tool?
