@@ -4,7 +4,6 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python 3.12.0](https://img.shields.io/badge/python-3.12.0-blue.svg)](https://www.python.org/downloads/release/python-3120/)
 [![version](https://img.shields.io/github/v/release/UBC-MDS/fixml)](https://github.com/UBC-MDS/fixml/releases)
-[![release](https://img.shields.io/github/release-date/UBC-MDS/fixml)](https://github.com/UBC-MDS/fixml/releases)
 [![release date](https://img.shields.io/github/release-date/UBC-MDS/fixml)](https://github.com/UBC-MDS/fixml/releases)
 [![Project Status: Active -- The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
