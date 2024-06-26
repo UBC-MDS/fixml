@@ -17,7 +17,7 @@ from fixml.modules.workflow.response import EvaluationResponse
         ("group21_repo")
     ],
 )
-def test_evaluation_will_output_response_json_at_working_dir(fixture_name,
+def test_evaluation_will_output_response_json_and_qmd_report(fixture_name,
                                                              request,
                                                              git_clone_root_dir,
                                                              monkeypatch):
@@ -32,7 +32,7 @@ def test_evaluation_will_output_response_json_at_working_dir(fixture_name,
     # checks the new working directory does not have any JSON file
     assert not any(['json' in working_dir.iterdir()])
 
-    RepositoryActions().evaluate(repo_path)
+    RepositoryActions().evaluate(repo_path, export_report_to="report.qmd")
 
     # check the assumption only one file is dumped
     jsons = list(working_dir.glob('*.json'))
