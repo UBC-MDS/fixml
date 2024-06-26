@@ -1,1 +1,1 @@
-Sitemap: https://UBC-MDS.github.io/fixml/sitemap.xml
+Sitemap: https://UBC-MDS.github.io/test-creation/sitemap.xml
