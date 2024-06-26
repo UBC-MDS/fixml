@@ -40,30 +40,47 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `fixml` for local development.
+If you are interested in helping the development of this tool, or you would like
+to get the cutting-edge version of this tool, you can install this tool via
+conda.
 
-1. Download a copy of `fixml` locally.
-2. Create a new conda environment and Install all essential libraries:
+To do this, ensure you have Miniconda/Anaconda installed on your system. You can
+download miniconda
+on [their official website](https://docs.anaconda.com/miniconda/).
 
-    ```console
-    $ conda env create -f environment.yaml
+
+1. Clone this repository from GitHub:
+   ```bash
+   git clone git@github.com:UBC-MDS/fixml.git
+   ```
+
+2. Create a conda environment:
+
+    ```bash
+    conda env create -f environment.yml
     ```
 
-3. Activate the newly created environment:
+3. Activate the newly created conda environment (default name `fixml`):
 
-    ```console
-    $ conda activate fixml
+    ```bash
+    conda activate fixml
     ```
 
-4. Use `git` (or similar) to create a branch for local development and make your changes:
+4. Use `poetry` which is preinstalled in the conda environment to create a local package install:
 
-    ```console
-    $ git checkout -b name-of-your-bugfix-or-feature
+    ```bash
+    poetry install
     ```
 
-5. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
+5. Use `git` (or similar) to create a branch for local development and make your changes:
 
-6. Commit your changes and open a pull request.
+    ```console
+    git checkout -b name-of-your-bugfix-or-feature
+    ```
+
+6. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
+
+7. Commit your changes and open a pull request.
 
 ## Pull Request Guidelines
 
