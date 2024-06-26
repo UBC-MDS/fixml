@@ -2480,9 +2480,11 @@ files = [
 ]
 
 [package.dependencies]
+jinja2 = {version = ">=3.1.2", optional = true, markers = "extra == \"output-formatting\""}
 numpy = {version = ">=1.26.0", markers = "python_version >= \"3.12\""}
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
+tabulate = {version = ">=0.9.0", optional = true, markers = "extra == \"output-formatting\""}
 tzdata = ">=2022.7"
 
 [package.extras]
@@ -4671,4 +4673,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "9897b08606b1cb8eaf148ae5f670652bfe73f310317127275fa445071ae59342"
+content-hash = "73d2edd1c52db58fbb0b7743f5a3759e839666a57dea8fbd7585ebca2fd8ecd6"

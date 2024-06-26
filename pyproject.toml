@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fixml"
-version = "0.1.0"
+version = "0.1.1"
 description = "Package for automated test evaluation and creation"
 authors = ["John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin"]
 license = "MIT"
@@ -10,7 +10,7 @@ include = ["src/fixml/data"]
 [tool.poetry.dependencies]
 python = "^3.12"
 fire = "^0.6.0"
-pandas = "^2.2.2"
+pandas = {extras = ["output-formatting"], version = "^2.2.2"}
 pypandoc = "^1.13"
 python-dotenv = "^1.0.1"
 ruamel-yaml = "^0.18.6"
