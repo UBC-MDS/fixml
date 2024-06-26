@@ -1,5 +1,7 @@
 # FixML
 [![Python 3.12.0+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![GitHub Release](https://img.shields.io/github/release/ubc-mds/fixml.svg?style=flat)]()
+[![PyPI - Version](https://img.shields.io/pypi/v/fixml)](https://pypi.org/project/fixml/)
 [![GitHub Activity](https://img.shields.io/github/last-commit/ubc-mds/fixml/main.svg?style=flat)]()
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Documentation Status](https://readthedocs.org/projects/fixml/badge/?version=latest)](https://fixml.readthedocs.io/en/latest/?badge=latest)
@@ -8,8 +10,7 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/UBC-MDS/fixml/main/img/logo.png?
-raw=true" width="175" height="175">
+    <img src="https://raw.githubusercontent.com/UBC-MDS/fixml/main/img/logo.png?raw=true" width="175" height="175">
 </p>
 
 A tool for providing context-aware evaluations using a checklist-based approach
@@ -53,7 +54,7 @@ workflows.
 This tool is on PyPI. To install, please run:
 
 ```bash
-$ pip install fixml
+pip install fixml
 ```
 
 ## Usage
@@ -87,16 +88,16 @@ such as specifying a checklist file, output format, and verbosity.
 Example calls:
 ```bash
 # Evaluate repo, and output the evalutions as a JSON file in working directory
-$ fixml evaluate /path/to/your/repo
+fixml evaluate /path/to/your/repo
 
 # Perform the above verbosely, and use the JSON file to export a HTML report
-$ fixml evaluate /path/to/your/repo -e ./eval_report.html -v
+fixml evaluate /path/to/your/repo -e ./eval_report.html -v
 
 # Perform the above, but use a custom checklist, and to overwrite existing report
-$ fixml evaluate /path/to/your/repo -e ./eval_report.html -v -o -c checklist/checklist.csv
+fixml evaluate /path/to/your/repo -e ./eval_report.html -v -o -c checklist/checklist.csv
 
 # Perform the above, and to use gpt-4o as the evaluation model
-$ fixml evaluate /path/to/your/repo -e ./eval_report.html -v -o -c checklist/checklist.csv -m gpt-4o
+fixml evaluate /path/to/your/repo -e ./eval_report.html -v -o -c checklist/checklist.csv -m gpt-4o
 ```
 
 #### Test Spec Generator
@@ -108,10 +109,10 @@ the test specification generation process.
 Example calls:
 ```bash
 # Generate test function specifications and to write them into a .py file
-$ fixml generate test.py
+fixml generate test.py
 
 # Perform the above, but to use a custom checklist
-$ fixml generate test.py -c checklist/checklist.csv
+fixml generate test.py -c checklist/checklist.csv
 ```
 
 ### Package
@@ -122,7 +123,8 @@ The workflows used in the package have been designed to be fully modular. You
 can easily switch between different prompts, models and checklists to use. You
 can also write your own custom classes to extend the capability of this library.
 
-Consult the API documentation on Readthedocs for more information and example calls.
+Consult the [API documentation on Readthedocs](https://fixml.readthedocs.io/en/latest/)
+for more information and example calls.
 
 ## Development Build
 
@@ -137,25 +139,25 @@ on [their official website](https://docs.anaconda.com/miniconda/).
 
 1. Clone this repository from GitHub:
 ```bash
-$ git clone git@github.com:UBC-MDS/fixml.git
+git clone git@github.com:UBC-MDS/fixml.git
 ```
 
 2. Create a conda environment:
 
 ```bash
-$ conda env create -f environment.yaml
+conda env create -f environment.yaml
 ```
 
 3. Activate the newly created conda environment (default name `fixml`):
 
 ```bash
-$ conda activate fixml
+conda activate fixml
 ```
 
 4. Use `poetry` which is preinstalled in the conda environment to create a local package install:
 
 ```bash
-$ poetry install
+poetry install
 ```
 
 5. You now should be able to run `fixml`, try:
@@ -180,10 +182,10 @@ to run the test suite:
 
 ```bash
 # skip integration tests
-$ pytest -m "not integeration"
+pytest -m "not integeration"
 
 # run ALL tests, which requires OPENAI_API_KEY to be set
-$ pytest
+pytest
 ```
 
 ## Contributing

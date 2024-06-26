@@ -4,8 +4,19 @@
 ```{toctree}
 :maxdepth: 1
 :hidden:
-:caption: Vignettes
+:caption: Guides
 
+changelog.md
+```
+
+```{toctree}
+:maxdepth: 1
+:hidden:
+:caption: Development
+
+contributing.md
+conduct.md
+release_walkthrough.md
 ```
 
 ```{toctree}
@@ -13,8 +24,5 @@
 :hidden:
 :caption: References
 
-changelog.md
-contributing.md
-conduct.md
 autoapi/index
 ```
