@@ -17,7 +17,7 @@ on [their official website](https://docs.anaconda.com/miniconda/).
 2. Create a conda environment:
 
     ```bash
-    conda env create -f environment.yml
+    cd fixml && conda env create -f environment.yml
     ```
 
 3. Activate the newly created conda environment (default name `fixml`):
