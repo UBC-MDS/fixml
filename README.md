@@ -16,183 +16,79 @@
 A tool for providing context-aware evaluations using a checklist-based approach
 on the Machine Learning project code bases.
 
-## Motivation
+## Documentations
 
-Testing codes in Machine Learning project mostly revolves around ensuring the
-findings are reproducible. To achieve this, currently it requires a lot of
-manual efforts. It is because such projects usually have assumptions that are
-hard to quantify in traditional software engineering approach i.e. code
-coverage. One such example would be testing the model's performance, which will
-not result in any errors, but we do expect this result to be reproducible by
-others. Testing such codes, therefore, require us to not only quantitatively,
-but also to qualitatively gauge how effective the tests are.
-
-A common way to handle this currently is to utilize expertise from domain
-experts in this area. Researches and guidelines have been done on how to
-incorporate such knowledge through the use of checklists. However, this requires
-manually validating the checklist items which usually results in poor
-scalability and slow feedback loop for developers, which are incompatible with
-today's fast-paced, competitive landscape in ML developments.
-
-This tool aims to bridge the gap between these two different approaches, by
-adding Large Language Models (LLMs) into the loop, given LLMs' recent
-advancement in multiple areas including NLU tasks and code-related tasks. They
-have been shown to some degrees the ability to analyze codes and to produce
-context-aware suggestions. This tool simplifies such workflow by providing a
-command line tool as well as a high-level API for developers and researchers
-alike to quickly validate if their tests satisfy common areas that are required 
-for reproducibility purposes.
-
-Given LLMs' tendency to provide plausible but factually incorrect information,
-extensive analyses have been done on ensuring the responses are aligned with
-ground truths and human expectations both accurately and consistently. Based on
-these analyses, we are also able to continuously refine our prompts and
-workflows.
+- Guides and API documentations: [https://fixml.readthedocs.org](https://fixml.readthedocs.org)
+- Reports and proposals: [https://ubc-mds.github.io/fixml](https://ubc-mds.github.io/fixml)
 
 ## Installation
 
-This tool is on PyPI. To install, please run:
-
 ```bash
 pip install fixml
+
+# For unix-like systems e.g. Linux, macOS 
+export OPENAI_API_KEY={your-openai-api-key}
+
+# For windows systems
+set OPENAI_API_KEY={your-openai-api-key}
 ```
+
+For more detailed installation guide,
+visit [the related page on ReadtheDocs](https://fixml.readthedocs.io/en/latest/installation.html).
 
 ## Usage
 
 ### CLI tool
 
-Once installed, the tool offers a Command Line Interface (CLI) command `fixml`.
-By using this command you will be able to evaluate your project code bases,
-generate test function specifications, and perform various relevant tasks.
-
-Run `fixml --help` for more details.
-
-> [!IMPORTANT]
-> By default, this tool uses OpenAI's `gpt3.5-turbo` for evaluation. To run any
-> command that requires calls to LLM (i.e. `fixml evaluate`, `fixml generate`),
-> an environment variable `OPENAI_API_KEY` needs to be set. To do so, either use
-`export` to set the variable in your current session, or create a `.env` file
-> with a line `OPENAI_API_KEY={your-api-key}` saved in your working directory.
-
-> [!TIP]
-> Currently, only calls to OpenAI endpoints are supported. This tool is still in
-> ongoing development and integrations with other service providers and locally
-> hosted LLMs are planned.
+FixML offers a CLI command to quick and easy way to evaluate existing tests and
+generate new ones.
 
 #### Test Evaluator
 
-The test evaluator command is used to evaluate the tests of your repository. It
-generates an evaluation report and provides various options for customization,
-such as specifying a checklist file, output format, and verbosity.
+Here is an example command to evaluate a local repo:
 
-Example calls:
 ```bash
-# Evaluate repo, and output the evalutions as a JSON file in working directory
-fixml evaluate /path/to/your/repo
-
-# Perform the above verbosely, and use the JSON file to export a HTML report
-fixml evaluate /path/to/your/repo -e ./eval_report.html -v
-
-# Perform the above, but use a custom checklist, and to overwrite existing report
-fixml evaluate /path/to/your/repo -e ./eval_report.html -v -o -c checklist/checklist.csv
-
-# Perform the above, and to use gpt-4o as the evaluation model
-fixml evaluate /path/to/your/repo -e ./eval_report.html -v -o -c checklist/checklist.csv -m gpt-4o
+fixml evaluate /path/to/your/repo \
+  --export_report_to=./eval_report.html --verbose
 ```
 
 #### Test Spec Generator
 
-The test spec generator command is used to generate a test specification from a
-checklist. It allows for the inclusion of an optional checklist file to guide
-the test specification generation process.
-
-Example calls:
+Here is an example command to evaluate a local repo
 ```bash
-# Generate test function specifications and to write them into a .py file
 fixml generate test.py
-
-# Perform the above, but to use a custom checklist
-fixml generate test.py -c checklist/checklist.csv
 ```
+
+> [!TIP]
+> Run command `fixml {evaluate|generate} --help` for more information and all
+> available options.
+>
+> You can also refer
+> to [our Quickstart guide](https://fixml.readthedocs.io/en/latest/quickstart.html)
+> on more detailed walkthrough on how to use the CLI tool.
 
 ### Package
 
-Alternatively, you can use the package to import all components necessary for running the evaluation/generation workflows listed above.
+Alternatively, you can use the package to import all components necessary for
+running the evaluation/generation workflows listed above.
 
-The workflows used in the package have been designed to be fully modular. You
-can easily switch between different prompts, models and checklists to use. You
-can also write your own custom classes to extend the capability of this library.
-
-Consult the [API documentation on Readthedocs](https://fixml.readthedocs.io/en/latest/)
+Consult [our documentation on using the API](https://fixml.readthedocs.io/en/latest/using-the-api.html)
 for more information and example calls.
 
 ## Development Build
 
-If you are interested in helping the development of this tool, or you would like
-to get the cutting-edge version of this tool, you can install this tool via
-conda.
+Please refer to [the related page in our documentation](https://fixml.readthedocs.io/en/latest/install_devel_build.html).
 
-To do this, ensure you have Miniconda/Anaconda installed on your system. You can
-download miniconda
-on [their official website](https://docs.anaconda.com/miniconda/).
+## Rendering Documentations
 
-
-1. Clone this repository from GitHub:
-```bash
-git clone git@github.com:UBC-MDS/fixml.git
-```
-
-2. Create a conda environment:
-
-```bash
-conda env create -f environment.yaml
-```
-
-3. Activate the newly created conda environment (default name `fixml`):
-
-```bash
-conda activate fixml
-```
-
-4. Use `poetry` which is preinstalled in the conda environment to create a local package install:
-
-```bash
-poetry install
-```
-
-5. You now should be able to run `fixml`, try:
-```bash
-fixml --help
-```
-
-## Rendering API Documentation
-
-Make sure you have installed dev dependencies listed in `pyproject.toml`.
-
-```bash
-cd docs/
-
-python -m sphinx -T -b html  -D language=en . _build
-```
-
-## Running the Tests
-
-Navigate to the project root directory and use the following command in terminal
-to run the test suite:
-
-```bash
-# skip integration tests
-pytest -m "not integeration"
-
-# run ALL tests, which requires OPENAI_API_KEY to be set
-pytest
-```
+Please refer to [the related page in our documentation](https://fixml.readthedocs.io/en/latest/render.html).
 
 ## Contributing
 
-Interested in contributing? Check out the contributing guidelines. Please note
-that this project is released with a Code of Conduct. By contributing to this
-project, you agree to abide by its terms.
+Interested in contributing? Check out
+the [contributing guidelines](CONTRIBUTING.md). Please note that this project is
+released with a [Code of Conduct](CONDUCT.md). By contributing to this project,
+you agree to abide by its terms.
 
 ## License
 
@@ -227,5 +123,5 @@ resource for the community.
 
 Special thanks to the University of British Columbia (UBC) and the University of
 Wisconsin-Madison for their support and resources. We extend our gratitude to
-Dr. Tiffany Timbers and Dr. Simon Goringfor their guidance and expertise, which
+Dr. Tiffany Timbers and Dr. Simon Goring for their guidance and expertise, which
 have been instrumental in the development of this project.

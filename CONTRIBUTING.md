@@ -40,30 +40,18 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `fixml` for local development.
+1. Follow [our guide](https://fixml.readthedocs.io/en/latest/install_devel_build.html)
+on installing the development build of FixML on your system.
 
-1. Download a copy of `fixml` locally.
-2. Create a new conda environment and Install all essential libraries:
-
-    ```console
-    $ conda env create -f environment.yaml
-    ```
-
-3. Activate the newly created environment:
+2. Use `git` (or similar) to create a branch for local development and make your changes:
 
     ```console
-    $ conda activate fixml
+    git checkout -b name-of-your-bugfix-or-feature
     ```
 
-4. Use `git` (or similar) to create a branch for local development and make your changes:
+3. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
 
-    ```console
-    $ git checkout -b name-of-your-bugfix-or-feature
-    ```
-
-5. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
-
-6. Commit your changes and open a pull request.
+4. Commit your changes and open a pull request.
 
 ## Pull Request Guidelines
 

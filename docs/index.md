@@ -4,9 +4,13 @@
 ```{toctree}
 :maxdepth: 1
 :hidden:
-:caption: Guides
+:caption: Getting Started
 
-changelog.md
+motivation.md
+installation.md
+quickstart.md
+using_api.md
+reliability.md
 ```
 
 ```{toctree}
@@ -14,9 +18,12 @@ changelog.md
 :hidden:
 :caption: Development
 
+install_devel_build.md
 contributing.md
 conduct.md
+render.md
 release_walkthrough.md
+changelog.md
 ```
 
 ```{toctree}
