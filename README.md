@@ -123,5 +123,5 @@ resource for the community.
 
 Special thanks to the University of British Columbia (UBC) and the University of
 Wisconsin-Madison for their support and resources. We extend our gratitude to
-Dr. Tiffany Timbers and Dr. Simon Goringfor their guidance and expertise, which
+Dr. Tiffany Timbers and Dr. Simon Goring for their guidance and expertise, which
 have been instrumental in the development of this project.
