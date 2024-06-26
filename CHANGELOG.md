@@ -2,6 +2,11 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.1 (26/06/2024)
+
+- Add missing optional requirement of pandas needed for exporting dataframe 
+  into markdown format.
+
 ## v0.1.0 (25/06/2024)
 
 - First release of `fixml`!
