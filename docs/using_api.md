@@ -39,5 +39,10 @@ It reads the report templates and converts Evaluator's responses into evaluation
 reports in various formats (QMD, HTML, PDF) using the Jinja template engine,
 which enables customizable report structures.
 
+```{note}
+The workflows used in the package have been designed to be fully modular. You
+can easily switch between different prompts, models and checklists to use. You
+can also write your own custom classes to extend the capability of this library.
+```
 
 For more usage and examples, refer to <a href="./autoapi">API Reference</a>.

@@ -40,47 +40,18 @@ If you are proposing a feature:
 
 ## Get Started!
 
-If you are interested in helping the development of this tool, or you would like
-to get the cutting-edge version of this tool, you can install this tool via
-conda.
+1. Follow [our guide](https://fixml.readthedocs.io/en/latest/install_devel_build.html)
+on installing the development build of FixML on your system.
 
-To do this, ensure you have Miniconda/Anaconda installed on your system. You can
-download miniconda
-on [their official website](https://docs.anaconda.com/miniconda/).
-
-
-1. Clone this repository from GitHub:
-   ```bash
-   git clone git@github.com:UBC-MDS/fixml.git
-   ```
-
-2. Create a conda environment:
-
-    ```bash
-    conda env create -f environment.yml
-    ```
-
-3. Activate the newly created conda environment (default name `fixml`):
-
-    ```bash
-    conda activate fixml
-    ```
-
-4. Use `poetry` which is preinstalled in the conda environment to create a local package install:
-
-    ```bash
-    poetry install
-    ```
-
-5. Use `git` (or similar) to create a branch for local development and make your changes:
+2. Use `git` (or similar) to create a branch for local development and make your changes:
 
     ```console
     git checkout -b name-of-your-bugfix-or-feature
     ```
 
-6. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
+3. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
 
-7. Commit your changes and open a pull request.
+4. Commit your changes and open a pull request.
 
 ## Pull Request Guidelines
 
