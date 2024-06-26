@@ -10,7 +10,7 @@ project = "fixml"
 copyright = "2024, John Shiu, Orix Au Yeung, Tony Shum, and Yingzi Jin"
 author = "John Shiu, Orix Au Yeung, Tony Shum, and Yingzi Jin"
 
-release = '0.1'
+release = '0.1.0'
 version = '0.1.0'
 
 # -- General configuration ---------------------------------------------------
