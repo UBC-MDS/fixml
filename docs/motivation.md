@@ -6,10 +6,11 @@ Testing codes in Machine Learning project mostly revolves around ensuring the
 findings are reproducible. To achieve this, currently it requires a lot of
 manual efforts. It is because such projects usually have assumptions that are
 hard to quantify in traditional software engineering approach i.e. code
-coverage. One such example would be testing the model's performance, which will
-not result in any errors, but we do expect this result to be reproducible by
-others. Testing such codes, therefore, require us to not only quantitatively,
-but also to qualitatively gauge how effective the tests are.
+coverage. One such example would be testing the model's performance, in which we
+would not only to check if there is any error during training, but we also
+would write tests to expect the model's performance to be consistent and
+reproducible by others. Testing such codes, therefore, require us to not only
+quantitatively, but also to qualitatively gauge how effective the tests are.
 
 ## OK, but we can evaluate the tests by looking into the tests by ourselves...
 
