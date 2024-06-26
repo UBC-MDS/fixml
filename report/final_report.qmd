@@ -12,9 +12,9 @@ by John Shiu, Orix Au Yeung, Tony Shum, Yingzi Jin
 
 The global artificial intelligence (AI) market is expanding rapidly, with demand for robust quality assurance for Machine Learning (ML) systems,  to prevent risks such as misinformation, social bias, financial losses, and safety hazards. FixML addresses these challenges by offering an automated code review tool embedded with best practices for ML test suites, curated from ML research and industry standards.
 
-Our approach includes developing the tool called FixML, a Python package based on large language models (LLMs), and creating comprehensive checklists to enhance ML software's trustworthiness, quality, and reproducibility. The tool analyzes ML projects, compares test suites against best practices, and delivers evaluations and test specifications, which can significantly reduce the time and effort required for manual assessments.
+Our approach includes developing the tool called FixML, a Python package based on large language models (LLMs), and creating comprehensive checklists to enhance ML software's trustworthiness, quality, and reproducibility. The tool analyzes ML projects, compares test suites against best practices, and delivers evaluations and test specifications. This functionality can significantly reduce the time and effort required for manual assessments.
 
-We defined two success metrics to ensure reliability: accuracy (comparison with human expert judgments) and consistency (standard deviation across multiple runs). Our findings indicated that while our tool is effective, there is room to improve in both metrics, which requires further prompt engineering and refinement for enhanced performance.
+We defined two success metrics to ensure reliability: accuracy (comparison with human expert judgments) and consistency (standard deviation across multiple runs). Our findings indicated that while our tool is effective, there is room to improve in both metrics, by further prompt engineering and refinement for enhanced performance.
 
 The FixML package is available on PyPI and can be used as a user-friendly and versatile CLI tool and a high-level API. Future improvements will focus on specialized checklists, enhanced evaluators, customized test specifications, and other optimizations to improve ML system quality and user experience.
 
@@ -40,13 +40,13 @@ Code coverage measures the proportion of program source code executed when runni
 
 2. **Manual Evaluation**
 
-Manual evaluation involves human experts reviewing the source code, who can consider the business logic and identify vulnerabilities. It often provides context-specific improvement suggestions and remains one of the most reliable practices [@openja2023studying; @alexander2023evaluating]. However, manual evaluation is time-consuming and not scalable due to the scarcity of human experts. Moreover, experts might emphasize different ML test areas, and may not have a comprehensive and holistic review of the ML system test suites.
+Manual evaluation involves human experts reviewing the source code, who can consider the business logic and identify vulnerabilities. It often provides context-specific improvement suggestions and remains one of the most reliable practices [@openja2023studying; @alexander2023evaluating]. However, manual evaluation is time-consuming and not scalable due to the scarcity of human experts. Moreover, experts may emphasize different ML test areas, and may not have a comprehensive and holistic review of the ML system test suites.
 
 ### Our Approach
 
 Our approach is to deliver an automated code review tool embedded with the best practices of ML test suites. This tool educates ML users on best practices while comprehensively evaluating their ML system codes.
 
-We established these best practices using data from ML research papers and recognized online resources. In collaboration with our partner, we researched industrial best practices [@msise2023; @jordan2020] and academic literature [@openja2023studying], and consolidated testing strategies into a human-readable and machine-friendly checklist that can be embedded into the automated tool.
+We established these best practices using data from ML research papers and well-recognized online resources. In collaboration with our partner, we researched industrial best practices [@msise2023; @jordan2020] and academic literature [@openja2023studying], and consolidated testing strategies into a human-readable and machine-friendly checklist that can be embedded into the automated tool.
 
 We collected 11 GitHub repositories of ML projects for development as studied in [@openja2023studying]. These Python-based projects include comprehensive test suites. Our tool should be able to analyze these test suites, compare them with embedded best practices, and deliver evaluations.
 
@@ -100,7 +100,7 @@ to the constructed prompt with checklist and prompt templates, and finally
 transformed into run results.
 :::
 
-Our package's design follows object-oriented and SOLID principles and is fully modular. Users can easily switch between different prompts, models, and checklists, which facilitates code reusability and collaboration to extend its functionality.
+Our package's design follows object-oriented and SOLID principles and is fully modular. Users can easily switch between different prompts, models, and checklists. This design facilitates code reusability and collaboration to extend its functionality.
 
 There are five components in the system of our package:
 
@@ -316,7 +316,7 @@ When we examined the consistency, we observed various patterns and sought to ide
 
 i. **High Uncertainty** 
 
-Items like `6.1 Verify Evaluation Metrics Implementation` showed high standard deviations across repositories (median = 0.12). These high standard deviations might suggest potential issues with prompt quality for the LLM to produce consistent results, which could be mitigated through improved prompt engineering.
+Items like `6.1 Verify Evaluation Metrics Implementation` showed high standard deviations across repositories (median = 0.12). These high standard deviations might suggest potential issues with prompt quality for the LLM to produce consistent results. The issues could be mitigated through improved prompt engineering.
 
 ii. **Outliers with High Uncertainty**
 
