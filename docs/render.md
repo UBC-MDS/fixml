@@ -28,7 +28,7 @@ To render this, you need to install the development build of this tool. The
 dependencies will only be installed when you use development build, but not 
 the regular version of the package.
 
-Refer to [the related documentation](contributing.md#get-started) for how to
+Refer to [the related documentation](install_devel_build.md) for how to
 install a development build of FixML.
 
 After installing the build, run this to render the documentations in HTML:
