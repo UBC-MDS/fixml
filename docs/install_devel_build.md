@@ -26,7 +26,8 @@ on [their official website](https://docs.anaconda.com/miniconda/).
     conda activate fixml
     ```
 
-4. Use `poetry` which is preinstalled in the conda environment to create a local package install:
+4. Use `poetry` which is preinstalled in the conda environment to create a local
+   package install:
 
     ```bash
     poetry install
@@ -44,5 +45,7 @@ on [their official website](https://docs.anaconda.com/miniconda/).
     ```
    
 ```{note}
-For a more detailed walkthrough on how to set up the OpenAI API key , please refer to the API key section of [our installation guide](installation.md).
+For a more detailed walkthrough on how to set up the OpenAI API key , please
+refer to the
+[API key section of our installation guide](installation.md#configuring-api-keys).
 ```
