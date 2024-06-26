@@ -39,5 +39,10 @@ on [their official website](https://docs.anaconda.com/miniconda/).
     pytest -m "not integeration"
 
     # run ALL tests, which requires OPENAI_API_KEY to be set
+    echo "OPENAI_API_KEY={your-openai-api-key}" > .env
     pytest
     ```
+   
+```{note}
+For a more detailed walkthrough on how to set up the OpenAI API key , please refer to the API key section of [our installation guide](installation.md).
+```
