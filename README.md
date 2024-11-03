@@ -66,7 +66,8 @@ fixml evaluate /path/to/your/repo \
   --export_report_to=./eval_report.html \
   --verbose \
   --model=gpt-4o \
-  --checklist_path=checklist/checklist.csv
+  --checklist_path=src/fixml/data/checklist/checklist.csv \
+  --overwrite
 ```
 
 #### Test Spec Generator
@@ -78,7 +79,13 @@ Here is an example command to evaluate a local repo
 > available options.
 
 ```bash
+# A simple run
 fixml generate test.py
+
+# A run that specifies the LLM model and checklist path
+fixml generate test.py \
+  --model=gpt-4o \
+  --checklist_path=src/fixml/data/checklist/checklist.csv
 ```
 
 ### Package
