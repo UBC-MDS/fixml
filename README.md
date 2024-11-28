@@ -43,29 +43,50 @@ visit [the related page on ReadtheDocs](https://fixml.readthedocs.io/en/latest/i
 FixML offers a CLI command to quick and easy way to evaluate existing tests and
 generate new ones.
 
+> [!TIP]
+> You can also refer
+> to [our Quickstart guide](https://fixml.readthedocs.io/en/latest/quickstart.html)
+> on more detailed walkthrough on how to use the CLI tool, e.g. which flag is used to change the LLM model version
+
 #### Test Evaluator
 
 Here is an example command to evaluate a local repo:
 
+> [!TIP]
+> Run command `fixml evaluate --help` for more information and all
+> available options.
+
 ```bash
+# A simple run
 fixml evaluate /path/to/your/repo \
   --export_report_to=./eval_report.html --verbose
+
+# A run that specifies the LLM model and checklist path
+fixml evaluate /path/to/your/repo \
+  --export_report_to=./eval_report.html \
+  --verbose \
+  --model=gpt-4o \
+  --checklist_path=src/fixml/data/checklist/checklist.csv \
+  --overwrite
 ```
 
 #### Test Spec Generator
 
 Here is an example command to evaluate a local repo
-```bash
-fixml generate test.py
-```
 
 > [!TIP]
-> Run command `fixml {evaluate|generate} --help` for more information and all
+> Run command `fixml generate --help` for more information and all
 > available options.
->
-> You can also refer
-> to [our Quickstart guide](https://fixml.readthedocs.io/en/latest/quickstart.html)
-> on more detailed walkthrough on how to use the CLI tool.
+
+```bash
+# A simple run
+fixml generate test.py
+
+# A run that specifies the LLM model and checklist path
+fixml generate test.py \
+  --model=gpt-4o \
+  --checklist_path=src/fixml/data/checklist/checklist.csv
+```
 
 ### Package
 
